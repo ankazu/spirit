@@ -59,29 +59,43 @@
       </template>
     </tbody>
   </table>
+  <OrderModal ref="orderModal" :order="tempOrder" @update-paid="updatePaid"></OrderModal>
+  <div class="d-flex justify-content-center">
+    <Pagination :page="pagination"></Pagination>
+  </div>
 </template>
-
 <script>
+import OrderModal from '@/components/OrderModal.vue';
+import Pagination from '@/components/Pagination.vue';
+
 export default {
   data() {
     return {
       orders: {},
       isLoading: false,
       tempOrder: {},
+      pagination: {},
+      currentPage: 1,
     };
+  },
+  components: {
+    OrderModal,
+    Pagination,
   },
   created() {
     this.getOrders();
   },
   inject: ['pushMessage'],
   methods: {
-    getOrders() {
+    getOrders(page = 1) {
+      this.currentPage = page;
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders`;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?${page}`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           console.log(res.data);
           this.orders = res.data.orders;
+          this.pagination = res.data.pagination;
           this.isLoading = false;
         } else {
           console.log(res.data.message);
@@ -97,13 +111,18 @@ export default {
       this.$http.put(api, { data: paid }).then((res) => {
         if (res.data.success) {
           this.isLoading = false;
+          this.$refs.orderModal.hideModal();
+          this.getOrders(this.currentPage);
           this.pushMessage(res, '更新付款狀態');
         }
       });
     },
     openModal(item) {
       this.tempOrder = { ...item };
+      this.$refs.orderModal.openModal();
     },
   },
 };
 </script>
+
+<style lang="scss" scoped></style>

@@ -56,7 +56,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="page">
+    <div class="d-flex justify-content-center">
       <Pagination :page="pagination" @get-page="getProducts"></Pagination>
     </div>
     <EideProductModal
@@ -174,9 +174,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.page {
-  display: flex;
-  justify-content: center;
-}
-</style>
+<style scoped lang="scss"></style>
