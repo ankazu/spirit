@@ -25,7 +25,7 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="mb-3">
-                <label for="image" class="form-label">輸入圖片網址</label>
+                <label for="image" class="form-label">輸入主要圖片網址</label>
                 <input
                   type="text"
                   class="form-control"
@@ -52,7 +52,7 @@
               <div class="mt-5" v-if="Array.isArray(tempProduct.imagesUrl)">
                 <div class="mb-1" v-for="(img, index) in tempProduct.imagesUrl" :key="index">
                   <div class="form-group">
-                    <label for="imageUrl">輸入圖片網址</label>
+                    <label for="imageUrl">輸入主要圖片網址</label>
                     <input
                       type="text"
                       class="form-control"
@@ -194,7 +194,7 @@
 </template>
 
 <script>
-import Modal from 'bootstrap/js/dist/modal';
+import modalMixin from '@/mixins/modalMixin';
 
 export default {
   props: ['product', 'isNew'],
@@ -205,20 +205,48 @@ export default {
       status: {},
     };
   },
+  // emits: ['updata'],
+  mixins: [modalMixin],
+  inject: ['emitter'],
   watch: {
     product() {
-      this.tempProduct = { ...this.product };
+      this.tempProduct = this.product;
+      if (!this.tempProduct.imagesUrl) {
+        this.tempProduct.imagesUrl = [];
+      }
+      if (!this.tempProduct.imageUrl) {
+        this.tempProduct.imageUrl = '';
+      }
     },
-  },
-  mounted() {
-    this.modal = new Modal(this.$refs.modal, { keyboard: false, backdrop: 'static' });
   },
   methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
+    uploadFile() {
+      const uploadedFile = this.$refs.fileInput.files[0];
+      const formData = new FormData(); // js建構函式
+      formData.append('file-to-upload', uploadedFile);
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload`;
+      this.status.fileUploading = true;
+      this.$http
+        .post(url, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        .then((res) => {
+          this.status.fileUploading = false;
+          if (res.data.success) {
+            this.tempProduct.imageUrl = res.data.imageUrl;
+            this.$refs.fileInput.value = '';
+            this.emitter.emit('push-message', {
+              style: 'success',
+              title: '圖片上傳結果',
+              content: res.data.message,
+            });
+          } else {
+            this.$refs.fileInput.value = '';
+            this.emitter.emit('push-message', {
+              style: 'danger',
+              title: '圖片上傳結果',
+              content: res.data.message,
+            });
+          }
+        });
     },
   },
 };

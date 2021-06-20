@@ -39,31 +39,15 @@
 </template>
 
 <script>
-import Modal from 'bootstrap/js/dist/modal';
+import modalMixin from '@/mixins/modalMixin';
 
 export default {
-  props: ['tempProduct'],
+  props: ['product'],
   data() {
     return {
       modal: '',
-      product: { ...this.tempProduct },
     };
   },
-  watch: {
-    tempProduct() {
-      this.product = { ...this.tempProduct };
-    },
-  },
-  methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
-  },
-  mounted() {
-    this.modal = new Modal(this.$refs.modal, { keyboard: false, backdrop: 'static' });
-  },
+  mixins: [modalMixin],
 };
 </script>

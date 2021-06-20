@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     getOrder() {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders`;
       this.$http.get(url).then((res) => {
         if (res.data.success) {
           console.log(res.data);

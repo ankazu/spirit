@@ -66,7 +66,7 @@
     ></EideProductModal>
     <DeleteProductModal
       ref="DeleteProductModal"
-      :temp-product="tempProduct"
+      :product="tempProduct"
       @updata="deleteProduct"
     ></DeleteProductModal>
   </div>
@@ -98,9 +98,10 @@ export default {
       status: { fileUploading: false },
     };
   },
+  inject: ['emitter'],
   methods: {
     getProducts(page = 1) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.products = res.data.products;
@@ -134,10 +135,10 @@ export default {
       let api = '';
       let path = '';
       if (this.isNew) {
-        api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`;
+        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`;
         path = 'post';
       } else {
-        api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
+        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
         path = 'put';
       }
       this.$http[path](api, { data: item }).then((res) => {
