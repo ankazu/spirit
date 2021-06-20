@@ -11,7 +11,11 @@
       <div class="modal-content border-0">
         <div class="modal-header bg-danger text-white">
           <h5 id="delProductModalLabel" class="modal-title">
-            <span>刪除產品</span>
+            <div>
+              刪除
+              <span v-if="item.title">{{ item.title }}</span>
+              <span v-else>訂單</span>
+            </div>
           </h5>
           <button
             type="button"
@@ -22,14 +26,17 @@
         </div>
         <div class="modal-body">
           是否刪除
-          <span class="product_title">{{ product.title }}</span>
-          <strong class="text-danger"></strong> 商品(刪除後將無法恢復)。
+          <span class="product_title">
+            <span v-if="item.title">{{ item.title }}</span>
+            <span v-else>訂單</span>
+          </span>
+          <strong class="text-danger"></strong> (刪除後將無法恢復)。
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button type="button" class="btn btn-danger" @click="$emit('updata', product)">
+          <button type="button" class="btn btn-danger" @click="$emit('updata', item)">
             確認刪除
           </button>
         </div>
@@ -42,7 +49,7 @@
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
-  props: ['product'],
+  props: ['item'],
   data() {
     return {
       modal: '',

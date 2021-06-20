@@ -65,24 +65,20 @@
       :is-new="isNew"
       @updata="updata"
     ></EideProductModal>
-    <DeleteProductModal
-      ref="DeleteProductModal"
-      :product="tempProduct"
-      @updata="deleteProduct"
-    ></DeleteProductModal>
+    <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct"></DeleteModal>
   </div>
 </template>
 <script>
 import Pagination from '@/components/Pagination.vue';
 import EideProductModal from '@/components/EideProductModal.vue';
-import DeleteProductModal from '@/components/DeleteProductModal.vue';
+import DeleteModal from '@/components/DeleteModal.vue';
 
 export default {
   props: ['token'],
   components: {
     Pagination,
     EideProductModal,
-    DeleteProductModal,
+    DeleteModal,
   },
   data() {
     return {
@@ -132,7 +128,7 @@ export default {
       if (type === 'delete') {
         this.tempProduct = { ...item };
         this.isNew = false;
-        this.$refs.DeleteProductModal.openModal();
+        this.$refs.DeleteModal.openModal();
       }
     },
     updata(item) {
@@ -148,10 +144,10 @@ export default {
       this.$http[path](api, { data: item }).then((res) => {
         if (res.data.success) {
           this.$refs.EideProductModal.hideModal();
-          this.pushMessage(res, `${res.data.message}`);
           this.getProducts();
+          this.pushMessage(res, `${res.data.message}`);
         } else {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         }
       });
     },
@@ -159,11 +155,11 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
       this.$http.delete(api).then((res) => {
         if (res.data.success) {
-          console.log('刪除成功');
-          this.$refs.DeleteProductModal.hideModal();
+          this.$refs.DeleteModal.hideModal();
           this.getProducts();
+          this.pushMessage(res, `${res.data.message}`);
         } else {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         }
       });
     },

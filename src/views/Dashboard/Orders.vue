@@ -60,6 +60,7 @@
     </tbody>
   </table>
   <OrderModal ref="orderModal" :order="tempOrder" @update-paid="updatePaid"></OrderModal>
+  <DeleteModal ref="DeleteModal" :item="tempOrder" @updata="deleteOrder"></DeleteModal>
   <div class="d-flex justify-content-center">
     <Pagination :page="pagination"></Pagination>
   </div>
@@ -67,6 +68,7 @@
 <script>
 import OrderModal from '@/components/OrderModal.vue';
 import Pagination from '@/components/Pagination.vue';
+import DeleteModal from '@/components/DeleteModal.vue';
 
 export default {
   data() {
@@ -81,6 +83,7 @@ export default {
   components: {
     OrderModal,
     Pagination,
+    DeleteModal,
   },
   created() {
     this.getOrders();
@@ -98,7 +101,7 @@ export default {
           this.pagination = res.data.pagination;
           this.isLoading = false;
         } else {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         }
       });
     },
@@ -113,13 +116,32 @@ export default {
           this.isLoading = false;
           this.$refs.orderModal.hideModal();
           this.getOrders(this.currentPage);
-          this.pushMessage(res, '更新付款狀態');
+          this.pushMessage(res, `${res.data.message}`);
+        } else {
+          this.pushMessage(res, `${res.data.message}`);
         }
       });
     },
     openModal(item) {
       this.tempOrder = { ...item };
       this.$refs.orderModal.openModal();
+    },
+    openDelOrderModal(item) {
+      this.tempOrder = { ...item };
+      this.$refs.DeleteModal.openModal();
+    },
+    deleteOrder(item) {
+      this.isLoading = true;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
+      this.$http.delete(api).then((res) => {
+        if (res.data.success) {
+          this.$refs.DeleteModal.hideModal();
+          this.getOrders(this.currentPage);
+          this.pushMessage(res, `${res.data.message}`);
+        } else {
+          this.pushMessage(res, `${res.data.message}`);
+        }
+      });
     },
   },
 };
