@@ -205,7 +205,7 @@ export default {
       status: {},
     };
   },
-  // emits: ['updata'],
+  emits: ['updata'],
   mixins: [modalMixin],
   inject: ['emitter'],
   watch: {

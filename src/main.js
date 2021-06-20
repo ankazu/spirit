@@ -11,6 +11,7 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 import App from './App.vue';
 import router from './router';
+import { date, currency } from './methods/filters';
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
@@ -23,6 +24,11 @@ configure({
 setLocale('zh_TW');
 
 const app = createApp(App);
+
+app.config.globalProperties.$filters = {
+  date,
+  currency,
+};
 app.use(router);
 app.use(VueAxios, axios);
 app.component('Loading', Loading);

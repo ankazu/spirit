@@ -21,8 +21,8 @@
           ></button>
         </div>
         <div class="modal-body">
-          {{ product.title }}
           是否刪除
+          <span class="product_title">{{ product.title }}</span>
           <strong class="text-danger"></strong> 商品(刪除後將無法恢復)。
         </div>
         <div class="modal-footer">
@@ -51,3 +51,8 @@ export default {
   mixins: [modalMixin],
 };
 </script>
+<style lang="scss" scoped>
+.product_title {
+  color: #f00;
+}
+</style>

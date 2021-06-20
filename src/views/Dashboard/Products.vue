@@ -1,4 +1,5 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div>
     <div class="d-flex justify-content-end">
       <button type="button" class="btn btn-primary" @click="openModal('creat')">新增產品</button>
@@ -98,16 +99,19 @@ export default {
       status: { fileUploading: false },
     };
   },
-  inject: ['emitter'],
+  inject: ['emitter', 'pushMessage'],
   methods: {
     getProducts(page = 1) {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.products = res.data.products;
           this.pagination = res.data.pagination;
+          this.isLoading = false;
         } else {
           console.log(res.data.message);
+          this.$router.push('/login');
         }
       });
     },
@@ -144,6 +148,7 @@ export default {
       this.$http[path](api, { data: item }).then((res) => {
         if (res.data.success) {
           this.$refs.EideProductModal.hideModal();
+          this.pushMessage(res, `${res.data.message}`);
           this.getProducts();
         } else {
           console.log(res.data.message);
@@ -151,7 +156,7 @@ export default {
       });
     },
     deleteProduct(item) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
       this.$http.delete(api).then((res) => {
         if (res.data.success) {
           console.log('刪除成功');
