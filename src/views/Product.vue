@@ -49,7 +49,7 @@ export default {
   methods: {
     getProduct(id) {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`;
       this.$http.get(url).then((res) => {
         if (res.data.success) {
           this.product = res.data.product;
@@ -61,7 +61,7 @@ export default {
     },
     addToCart(id, qty = 1) {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       this.loadingStatus.loadingItem = id;
       const cart = {
         product_id: id,

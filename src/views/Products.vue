@@ -56,7 +56,7 @@ export default {
     getProducts(page = 1) {
       this.isLoading = true;
       // 一頁只能產出10個產品嗎?
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`;
       this.$http.get(url).then((res) => {
         if (res.data.success) {
           this.products = res.data.products;
@@ -72,7 +72,7 @@ export default {
     },
     addToCart(id, qty = 1) {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       this.loadingStatus.loadingItem = id;
       const cart = { product_id: id, qty };
       this.$http

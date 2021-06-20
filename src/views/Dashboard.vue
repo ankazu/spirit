@@ -22,12 +22,24 @@
     </nav>
     <div class="mt-5 container">
       <router-view></router-view>
+      <ToastMessages></ToastMessages>
     </div>
   </div>
 </template>
 
 <script>
+import emitter from '@/methods/eventBus';
+import ToastMessages from '@/components/ToastMessages.vue';
+
 export default {
+  provide() {
+    return {
+      emitter,
+    };
+  },
+  components: {
+    ToastMessages,
+  },
   data() {
     return {
       checkSuccess: false,
@@ -41,7 +53,7 @@ export default {
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       if (token) {
         this.$http.defaults.headers.common.Authorization = `${token}`;
-        const api = `${process.env.VUE_APP_API}api/user/check`;
+        const api = `${process.env.VUE_APP_API}/api/user/check`;
         this.$http.post(api, { api_token: this.token }).then((response) => {
           if (response.data.success) {
             this.checkSuccess = true;

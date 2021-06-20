@@ -165,7 +165,7 @@ export default {
   methods: {
     getCart() {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       this.$http.get(url).then((res) => {
         if (res.data.success) {
           this.cart = res.data.data;
@@ -177,7 +177,7 @@ export default {
       });
     },
     removeCartItem(id) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.loadingStatus.loadingItem = id;
       this.$http.delete(url).then((res) => {
         if (res.data.success) {
@@ -189,7 +189,7 @@ export default {
       });
     },
     createOrder() {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
       this.$http.post(url, { data: order }).then((res) => {
         if (res.data.success) {
