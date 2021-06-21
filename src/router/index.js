@@ -37,12 +37,16 @@ const routes = [
     component: () => import('../views/Dashboard.vue'),
     children: [
       {
-        path: 'products', // 為什麼少掉s會報錯
+        path: 'products',
         component: () => import('../views/Dashboard/Products.vue'),
       },
       {
         path: 'orders',
         component: () => import('../views/Dashboard/Orders.vue'),
+      },
+      {
+        path: 'coupons',
+        component: () => import('../views/Dashboard/Coupons.vue'),
       },
     ],
   },

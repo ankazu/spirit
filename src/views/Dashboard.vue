@@ -14,16 +14,23 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <router-link class="nav-link active" to="/">前台首頁</router-link>
-            </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/admin/products">後台產品列表</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/admin/orders">訂單列表</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/admin/coupons">優惠券</router-link>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link class="nav-link active" to="/" @click.prevent="signout"
+                >前台首頁</router-link
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" @click.prevent="signout">登出</a>
@@ -76,7 +83,7 @@ export default {
             //   title: '圖片上傳結果',
             //   content: res.data.message,
             // });
-            // this.pushMessage(res, '登入');
+            this.pushMessage(res, '登入');
           } else {
             this.$router.push('/login');
           }
@@ -86,7 +93,7 @@ export default {
       }
     },
     signout() {
-      document.cookie = 'hexToKen=;expires=;'; // 這是什麼意思
+      document.cookie = 'hexToKen=;expires=;';
       this.$router.push('/login');
     },
   },
