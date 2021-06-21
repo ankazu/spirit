@@ -27,7 +27,13 @@
           </td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-outline-primary btn-sm" type="button">編輯</button>
+              <button
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+                @click="openCouponModal(false, item)"
+              >
+                編輯
+              </button>
               <button
                 class="btn btn-outline-danger btn-sm"
                 type="button"
@@ -40,23 +46,37 @@
         </tr>
       </tbody>
     </table>
-    <DeleteModal ref="DeleteModal" :item="tempCoupon" @updata="deleteCoupon"></DeleteModal>
+    <DeleteModal ref="deleteModal" :item="tempCoupon" @updata="deleteCoupon"></DeleteModal>
+    <CouponModal
+      ref="couponModal"
+      :is-new="isNew"
+      :coupon="tempCoupon"
+      @update-coupon="updataCoupon"
+    ></CouponModal>
   </div>
 </template>
 
 <script>
 import DeleteModal from '@/components/DeleteModal.vue';
+import CouponModal from '@/components/CouponModal.vue';
 
 export default {
   data() {
     return {
       isLoading: false,
       coupons: {},
-      tempCoupon: {},
+      tempCoupon: {
+        title: '',
+        is_enabled: 0,
+        percent: 100,
+        code: '',
+      },
+      isNew: false,
     };
   },
   components: {
     DeleteModal,
+    CouponModal,
   },
   inject: ['pushMessage'],
   methods: {
@@ -70,20 +90,64 @@ export default {
         }
       });
     },
+    updataCoupon(item) {
+      this.isLoading = true;
+      if (this.isNew) {
+        const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`;
+        this.$http.post(api, { data: item }).then((res) => {
+          if (res.data.success) {
+            this.isLoading = false;
+            this.getCoupons();
+            this.pushMessage(res, '新增優惠券');
+            this.$refs.couponModal.hideModal();
+          } else {
+            this.isLoading = false;
+            this.pushMessage(res, '新增優惠券');
+          }
+        });
+      } else {
+        const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
+        this.$http.put(api, { data: item }).then((res) => {
+          if (res.data.success) {
+            this.isLoading = false;
+            this.getCoupons();
+            this.pushMessage(res, '更新優惠券');
+            this.$refs.couponModal.hideModal();
+          } else {
+            this.isLoading = false;
+            this.pushMessage(res, '更新優惠券');
+          }
+        });
+      }
+    },
     deleteCoupon(item) {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons/${item.id}`;
+      this.isLoading = true;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
       this.$http.delete(api).then((res) => {
         if (res.data.success) {
-          this.$refs.DeleteModal.hideModal();
-          this.pushMessage(res, res.data.success);
+          this.$refs.deleteModal.hideModal();
+          this.isLoading = false;
+          this.getCoupons();
+          this.pushMessage(res, '刪除優惠券');
         } else {
-          this.pushMessage(res, res.data.success);
+          this.pushMessage(res, '刪除優惠券');
         }
       });
     },
+    openCouponModal(isNew, item) {
+      this.isNew = isNew;
+      if (this.isNew) {
+        this.tempCoupon = {
+          due_date: new Date().getTime() / 1000,
+        };
+      } else {
+        this.tempCoupon = { ...item };
+      }
+      this.$refs.couponModal.openModal();
+    },
     openDelModal(item) {
       this.tempCoupon = { ...item };
-      this.$refs.DeleteModal.openModal();
+      this.$refs.deleteModal.openModal();
     },
   },
   created() {
