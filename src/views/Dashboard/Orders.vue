@@ -31,11 +31,11 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                :id="`paidSwitch${item.id}`"
+                :id="`paid${item.id}`"
                 v-model="item.is_paid"
                 @change="updatePaid(item)"
               />
-              <label :for="`paid${item.id}`">
+              <label class="form-check-label" :for="`paid${item.id}`">
                 <span v-if="item.is_paid">已付款</span>
                 <span v-else>未付款</span>
               </label>

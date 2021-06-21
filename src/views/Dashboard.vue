@@ -28,9 +28,7 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link active" to="/" @click.prevent="signout"
-                >前台首頁</router-link
-              >
+              <router-link class="nav-link active" to="/">前台首頁</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" @click.prevent="signout">登出</a>
@@ -83,7 +81,7 @@ export default {
             //   title: '圖片上傳結果',
             //   content: res.data.message,
             // });
-            this.pushMessage(res, '登入');
+            // this.pushMessage(res, '登入');
           } else {
             this.$router.push('/login');
           }
