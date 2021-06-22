@@ -34,6 +34,9 @@
     </nav>
     <div class="mt-5 container">
       <router-view />
+      <span class="material-icons">
+        done
+      </span>
     </div>
   </div>
 </template>
