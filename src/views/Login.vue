@@ -47,6 +47,7 @@ export default {
       user: {},
     };
   },
+  inject: ['pushMessage'],
   methods: {
     login() {
       const api = `${process.env.VUE_APP_API}/admin/signin`;

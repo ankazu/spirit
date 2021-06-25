@@ -47,18 +47,17 @@
 <script>
 import emitter from '@/methods/eventBus';
 import ToastMessages from '@/components/ToastMessages.vue';
-import pushMessage from '@/methods/pushMessageState';
 
 export default {
   provide() {
     return {
       emitter,
-      pushMessage,
     };
   },
   components: {
     ToastMessages,
   },
+  inject: ['pushMessage'],
   data() {
     return {
       checkSuccess: false,
@@ -76,12 +75,7 @@ export default {
         this.$http.post(api, { api_token: this.token }).then((res) => {
           if (res.data.success) {
             this.checkSuccess = true;
-            // this.emitter.emit('push-message', {
-            //   style: 'success',
-            //   title: '圖片上傳結果',
-            //   content: res.data.message,
-            // });
-            // this.pushMessage(res, '登入');
+            this.pushMessage(res, '登入');
           } else {
             this.$router.push('/login');
           }

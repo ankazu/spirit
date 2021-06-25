@@ -4,7 +4,13 @@
   </div>
 </template>
 <script>
-export default {};
+import pushMessage from '@/methods/pushMessageState';
+
+export default {
+  provide() {
+    return { pushMessage };
+  },
+};
 </script>
 <style lang="scss">
 @import './assets/all';

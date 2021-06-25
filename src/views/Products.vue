@@ -1,5 +1,6 @@
 <template>
   <loading :active="isLoading"></loading>
+  <div class="container">
   <div class="row">
     <div class="col-3 mb-4 text-start" v-for="item in products" :key="item.id">
       <div class="img_box">
@@ -31,6 +32,7 @@
     <div class="page">
       <Pagination :page="pagination" @get-page="getProducts"></Pagination>
     </div>
+  </div>
   </div>
 </template>
 

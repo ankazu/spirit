@@ -1,5 +1,7 @@
 <template>
-  <div class="container">
-    <h1>首頁</h1>
+  <div>
+    <div class="banner">
+      <img src="../assets/images/banner01.jpg" alt="" />
+    </div>
   </div>
 </template>

@@ -23,7 +23,10 @@
               <router-link class="nav-link" to="/products">產品列表</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/cart">購物車</router-link>
+              <router-link class="nav-link" to="/cart"
+                ><span class="material-icons">shopping_cart</span>
+                <div class="cart_num">123</div>
+              </router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/login">後台登入</router-link>
@@ -32,7 +35,7 @@
         </div>
       </div>
     </nav>
-    <div class="mt-5 container">
+    <div>
       <router-view />
       <span class="material-icons">
         done
@@ -42,5 +45,11 @@
 </template>
 
 <script>
-export default {};
+// import emitter from '@/methods/evenBus';
+
+export default {
+  data() {
+    return {};
+  },
+};
 </script>

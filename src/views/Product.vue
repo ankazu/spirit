@@ -1,5 +1,6 @@
 <template>
   <loading :active="isLoading"></loading>
+  <div class="container">
   <div class="row">
     <div class="col-5">
       <!-- 圖片連結有多張 product.imagesUrl[0]會報錯-->
@@ -29,6 +30,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
