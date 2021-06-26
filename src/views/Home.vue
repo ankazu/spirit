@@ -23,9 +23,9 @@
               <router-link class="nav-link" to="/products">產品列表</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/cart"
+              <router-link class="nav-link cart" to="/cart"
                 ><span class="material-icons">shopping_cart</span>
-                <div class="cart_num">123</div>
+                <div class="cart_num">1</div>
               </router-link>
             </li>
             <li class="nav-item">
@@ -37,9 +37,6 @@
     </nav>
     <div>
       <router-view />
-      <span class="material-icons">
-        done
-      </span>
     </div>
   </div>
 </template>
@@ -53,3 +50,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.cart {
+  position: relative;
+}
+.cart_num {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #aaa;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+  line-height: 18px;
+  width: 18px;
+}
+</style>
