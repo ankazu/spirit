@@ -46,6 +46,9 @@
         </tr>
       </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+      <Pagination :page="pagination" @get-page="getCoupons"></Pagination>
+    </div>
     <DeleteModal ref="deleteModal" :item="tempCoupon" @updata="deleteCoupon"></DeleteModal>
     <CouponModal
       ref="couponModal"
@@ -59,6 +62,7 @@
 <script>
 import DeleteModal from '@/components/DeleteModal.vue';
 import CouponModal from '@/components/CouponModal.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   data() {
@@ -72,20 +76,23 @@ export default {
         code: '',
       },
       isNew: false,
+      pagination: {},
     };
   },
   components: {
     DeleteModal,
     CouponModal,
+    Pagination,
   },
   inject: ['pushMessage'],
   methods: {
     getCoupons(page = 1) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?${page}`;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.coupons = res.data.coupons;
+          this.pagination = res.data.pagination;
           this.isLoading = false;
         }
       });
@@ -102,7 +109,7 @@ export default {
             this.$refs.couponModal.hideModal();
           } else {
             this.isLoading = false;
-            this.pushMessage(res, '新增優惠券');
+            this.pushMessage(res, '欄位皆需為必填');
           }
         });
       } else {
