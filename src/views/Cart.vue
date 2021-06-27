@@ -2,7 +2,7 @@
   <loading :active="isLoading"></loading>
   <div class="container">
     <div class="row justify-content-center">
-      <section class="col-12 col-sm-10">
+      <section class="col-12 col-lg-10">
         <div class="mb-4 mt-4">
           <button
             type="button"
@@ -24,6 +24,8 @@
             <div class="cart_product_title">
               {{ item.product.title }}
             </div>
+            <div class="input-group-text">單位: {{ item.product.unit }}</div>
+            <div class="text-success" v-if="item.coupon">已使用優惠券</div>
           </div>
           <div class="cart_product_quantity">
             <button
@@ -45,13 +47,18 @@
           </div>
           <div class="cart_product_price_box">
             <div class="cart_product_price">
-              <div v-if="!item.product.price">{{ item.product.origin_price }}</div>
+              <!-- <div v-if="!item.product.price">
+                {{ $filters.currency(item.product.origin_price) }}
+              </div>
               <del v-if="item.product.price">
-                <span class="price_dlr">$ </span>{{ item.product.origin_price }}</del
+                <span class="price_dlr">$ </span
+                >{{ $filters.currency(item.product.origin_price) }}</del
               >
               <div v-if="item.product.price">
-                <span class="price_dlr">$ </span>{{ item.product.price }}
-              </div>
+                <span class="price_dlr">$ </span>{{ $filters.currency(item.product.price) }}
+              </div> -->
+              <small v-if="cart.final_total !== cart.total" class="text-success">折扣價：</small>
+              <span class="price_dlr">$ </span> {{ $filters.currency(item.final_total) }}
             </div>
           </div>
           <div class="cart_prodcut_del">
@@ -67,9 +74,43 @@
             </button>
           </div>
         </div>
-        <div class="shop_total">
-          <div class="d-flex justify-content-end">
-            商品金額 <span>${{ cart.total }}</span>
+        <div class="shop_total row">
+          <div class="col-lg-6 d-flex align-items-start">
+            <input
+              type="text"
+              class="coupon_code"
+              v-model="coupon_code"
+              placeholder="請輸入優惠碼"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+                套用優惠碼
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex justify-content-end align-items-end">
+              <span class="shop_dtl_total_title">商品金額</span>
+              <span class="shop_dtl_total"><span>$ </span>{{ $filters.currency(cart.total) }}</span>
+            </div>
+            <div
+              class="d-flex justify-content-end align-items-end"
+              v-if="cart.final_total !== cart.total"
+            >
+              <span class="shop_dtl_total_title">折扣</span>
+              <span class="shop_dtl_total text-success"
+                ><span>$ </span>{{ $filters.currency(cart.final_total - cart.total) }}</span
+              >
+            </div>
+            <div
+              class="d-flex justify-content-end align-items-end"
+              v-if="cart.final_total !== cart.total"
+            >
+              <span class="shop_dtl_total_title">總計</span>
+              <span class="shop_dtl_total total_price"
+                ><span>$ </span>{{ $filters.currency(cart.final_total) }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="cart_continue">
@@ -222,6 +263,7 @@ export default {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
       cart: {},
+      coupon_code: '',
       form: {
         user: {
           email: '',
@@ -244,7 +286,6 @@ export default {
       this.$http.get(url).then((res) => {
         if (res.data.success) {
           this.cart = res.data.data;
-          console.log(this.cart);
           this.isLoading = false;
         } else {
           console.log(res.data.message);
@@ -255,7 +296,6 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${item.id}`;
       let num = item.qty;
-      console.log(action);
       if (action === 'reduce') {
         num -= 1;
       }
@@ -277,6 +317,16 @@ export default {
             console.log(res.data.message);
           }
         });
+    },
+    addCouponCode() {
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
+      const coupon = { code: this.coupon_code };
+      this.isLoading = true;
+      this.$http.post(api, { data: coupon }).then((res) => {
+        this.pushMessage(res, '加入優惠券');
+        this.getCart();
+        this.isLoading = false;
+      });
     },
     removeCartItem(id) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
@@ -392,15 +442,34 @@ export default {
 .shop_total {
   padding: 30px 0;
 }
-.shop_total div span {
-  font-size: 24px;
-  display: block;
-  margin-left: 10px;
+.shop_dtl_total_title {
+  display: inline-block;
+  text-align: right;
+  margin-right: 20px;
+}
+.shop_dtl_total {
+  font-size: 20px;
+  display: inline-block;
+  min-width: 54px;
+  text-align: right;
+}
+
+.total_price {
+  color: #dd0202;
 }
 .cart_continue {
   margin: 30px 0;
   display: flex;
   justify-content: space-between;
+}
+.coupon_code {
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  margin-right: 10px;
+  padding: 7px;
+}
+.coupon_code:focus {
+  outline: none;
 }
 @media only screen and (max-width: 992px) {
   .cart_product_list {

@@ -10,9 +10,9 @@
         </div>
         <div class="mt-2 h5">{{ item.title }}</div>
         <div>
-          <div class="h5" v-if="!item.price">{{ item.origin_price }} 元</div>
-          <del class="h6" v-if="item.price">原價 {{ item.origin_price }} 元</del>
-          <div class="h5" v-if="item.price">現在只要 {{ item.price }} 元</div>
+          <div class="h5" v-if="!item.price">{{ $filters.currency(item.origin_price) }} 元</div>
+          <del class="h6" v-if="item.price">原價 {{ $filters.currency(item.origin_price) }} 元</del>
+          <div class="h5" v-if="item.price">特價 {{ $filters.currency(item.price) }} 元</div>
         </div>
         <div class="d-flex justify-content-center">
           <button
