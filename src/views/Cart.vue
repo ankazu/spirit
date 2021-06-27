@@ -88,7 +88,7 @@
               </button>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 shop_total_dtl">
             <div class="d-flex justify-content-end align-items-end">
               <span class="shop_dtl_total_title">商品金額</span>
               <span class="shop_dtl_total"><span>$ </span>{{ $filters.currency(cart.total) }}</span>
@@ -518,6 +518,11 @@ export default {
     position: absolute;
     right: 0;
     top: 0px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .shop_total_dtl {
+    margin-top: 30px;
   }
 }
 </style>
