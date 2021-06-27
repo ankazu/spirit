@@ -23,6 +23,10 @@ const routes = [
         component: () => import('../views/Cart.vue'),
       },
       {
+        path: 'checkout',
+        component: () => import('../views/Checkout.vue'),
+      },
+      {
         path: ':patchMatch(.*)*',
         component: () => import('../views/NotFound.vue'),
       },
