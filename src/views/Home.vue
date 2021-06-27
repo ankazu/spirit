@@ -35,21 +35,30 @@
         </div>
       </div>
     </nav>
-    <router-view />
+    <main>
+      <router-view />
+    </main>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-// import emitter from '@/methods/evenBus';
+import Footer from '@/views/Footer.vue';
 
 export default {
   data() {
     return {};
   },
+  components: {
+    Footer,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+main {
+  min-height: calc(100vh - 100px);
+}
 .cart {
   position: relative;
 }

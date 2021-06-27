@@ -124,7 +124,6 @@
         </div>
         <div class="cart_continue">
           <button type="button" class="btn btn-secondary btn-lg">繼續購物</button>
-          <button type="button" class="btn btn-primary btn-lg"></button>
           <router-link class="btn btn-primary btn-lg" to="/checkout">下一步</router-link>
         </div>
       </section>
