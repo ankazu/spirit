@@ -39,7 +39,7 @@
     </nav>
     <div class="mt-5 container">
       <ToastMessages></ToastMessages>
-      <router-view></router-view>
+      <router-view v-if="checkSuccess"></router-view>
     </div>
   </div>
 </template>
@@ -87,6 +87,9 @@ export default {
     signout() {
       document.cookie = 'hexToKen=;expires=;';
       this.$router.push('/login');
+      setTimeout(() => {
+        this.$router.push('/');
+      }, 4000);
     },
   },
 };

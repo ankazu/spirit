@@ -2,14 +2,22 @@
   <loading :active="isLoading"></loading>
   <div class="container">
     <div class="row justify-content-center">
-      <section v-if="cart.carts?.length === 0">
-        購物車空的喔
+      <section class="section_empty" v-if="cart.carts?.length === 0">
+        <div class="empty_cart mt-4">
+          <img src="../assets/images/empty_cart.jpg" alt="" />
+          <div class="mt-4">
+            您的購物車是空的，<br />
+            趕快放入喜歡的商品吧！
+          </div>
+          <router-link class="btn btn-primary btn-lg mt-5" to="/products">繼續購物</router-link>
+        </div>
       </section>
       <section v-else class="col-12">
         <div class="mb-4 mt-4">
           <button
             type="button"
             class="btn btn-outline-danger btn-sm d-flex align-items-center ms-auto"
+            @click="clearCart()"
           >
             <span class="material-icons">
               close
@@ -34,7 +42,6 @@
               {{ item.product.title }}
             </div>
             <div class="cart_product_unit">單位 : {{ item.product.unit }}</div>
-            <div class="text-success" v-if="item.coupon">已使用優惠券</div>
           </div>
           <div class="cart_product_quantity">
             <button
@@ -66,8 +73,8 @@
               <div v-if="item.product.price">
                 <span class="price_dlr">$ </span>{{ $filters.currency(item.product.price) }}
               </div> -->
-              <small v-if="cart.final_total !== cart.total" class="text-success">折扣價：</small>
-              <span class="price_dlr">$ </span> {{ $filters.currency(item.final_total) }}
+              <span class="price_dlr material-icons">attach_money </span>
+              {{ $filters.currency(item.final_total) }}
             </div>
           </div>
           <div class="cart_prodcut_del">
@@ -83,106 +90,12 @@
             </button>
           </div>
         </div>
-        <div class="shop_total row">
-          <div class="col-lg-6 d-flex align-items-start">
-            <input
-              type="text"
-              class="coupon_code"
-              v-model="coupon_code"
-              placeholder="請輸入優惠碼"
-            />
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
-                使用優惠碼
-              </button>
-            </div>
-          </div>
-          <div class="col-lg-6 shop_total_dtl">
-            <div class="d-flex justify-content-end align-items-end">
-              <span class="shop_dtl_total_title">商品金額</span>
-              <span class="shop_dtl_total"><span>$ </span>{{ $filters.currency(cart.total) }}</span>
-            </div>
-            <div
-              class="d-flex justify-content-end align-items-end"
-              v-if="cart.final_total !== cart.total"
-            >
-              <span class="shop_dtl_total_title">折扣代碼</span>
-              <span class="shop_dtl_total text-success"
-                ><span>$ </span>{{ $filters.currency(cart.final_total - cart.total) }}</span
-              >
-            </div>
-            <div
-              class="d-flex justify-content-end align-items-end"
-              v-if="cart.final_total !== cart.total"
-            >
-              <span class="shop_dtl_total_title">總計</span>
-              <span class="shop_dtl_total total_price"
-                ><span>$ </span>{{ $filters.currency(cart.final_total) }}</span
-              >
-            </div>
-          </div>
-        </div>
+
         <div class="cart_continue">
-          <button type="button" class="btn btn-secondary btn-lg">繼續購物</button>
+          <router-link class="btn btn-secondary btn-lg" to="/products">繼續購物</router-link>
           <router-link class="btn btn-primary btn-lg" to="/checkout">下一步</router-link>
         </div>
       </section>
-      <div class="col-12 col-sm-6">
-        <table class="table align-middle">
-          <thead>
-            <tr>
-              <th></th>
-              <th>品名</th>
-              <th style="width: 110px">數量</th>
-              <th>單價</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template v-if="cart.carts">
-              <tr v-for="item in cart.carts" :key="item.id">
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-danger btn-sm"
-                    @click="removeCartItem(item.id)"
-                    :disabled="loadingStatus.loadingItem === item.id"
-                  >
-                    <i
-                      class="fas fa-spinner fa-pulse"
-                      v-if="loadingStatus.loadingItem === item.id"
-                    ></i>
-                    移除購物車
-                  </button>
-                </td>
-                <td>
-                  {{ item.product.title }}
-                </td>
-                <td>
-                  <div class="input-group input-group-sm">
-                    {{ item.qty }} / {{ item.product.unit }}
-                  </div>
-                </td>
-                <td class="text-end">
-                  <small v-if="cart.final_total !== cart.total" class="text-success"
-                    >折扣價：</small
-                  >
-                  {{ item.final_total }}
-                </td>
-              </tr>
-            </template>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3" class="text-end">總計</td>
-              <td class="text-end">{{ cart.total }}</td>
-            </tr>
-            <tr v-if="cart.final_total !== cart.total">
-              <td colspan="3" class="text-end text-success">折扣價</td>
-              <td class="text-end text-success">{{ cart.final_total }}</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
     </div>
   </div>
 </template>
@@ -249,24 +162,29 @@ export default {
           }
         });
     },
-    addCouponCode() {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
-      const coupon = { code: this.coupon_code };
+    clearCart() {
       this.isLoading = true;
-      this.$http.post(api, { data: coupon }).then((res) => {
-        this.pushMessage(res, '加入優惠券');
-        this.getCart();
-        this.isLoading = false;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`;
+      this.$http.delete(api).then((res) => {
+        if (res.data.success) {
+          this.isLoading = false;
+          this.pushMessage(res, '清空');
+          this.getCart();
+        } else {
+          this.pushMessage(res, '刪除');
+        }
       });
     },
     removeCartItem(id) {
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.loadingStatus.loadingItem = id;
-      this.$http.delete(url).then((res) => {
+      this.$http.delete(api).then((res) => {
         if (res.data.success) {
+          this.pushMessage(res, '刪除');
           this.loadingStatus.loadingItem = '';
           this.getCart();
         } else {
+          this.pushMessage(res, '刪除');
           console.log(res.data.message);
         }
       });
@@ -278,6 +196,20 @@ export default {
 <style lang="scss" scoped>
 .material-icons {
   font-size: 19px;
+}
+.section_empty {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+.empty_cart {
+  font-size: 28px;
+  width: 100%;
+}
+.empty_cart img {
+  border-radius: 20px;
 }
 .cart_product_header {
   width: 100%;
@@ -400,7 +332,9 @@ export default {
 }
 .shop_dtl_total {
   font-size: 20px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-width: 54px;
   text-align: right;
 }
