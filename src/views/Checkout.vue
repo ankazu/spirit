@@ -125,7 +125,9 @@
             <router-link class="btn btn-secondary" to="/cart">上一步</router-link>
           </div>
           <div class="text-end w-50">
-            <button type="submit" class="btn btn-primary" :disabled="btnStatus">送出訂單</button>
+            <button type="submit" class="btn btn-primary" :disabled="btnStatus">
+              送出訂單
+            </button>
           </div>
         </Form>
       </div>
@@ -202,6 +204,8 @@
   </div>
 </template>
 <script>
+import swalert from '@/methods/swal';
+
 export default {
   data() {
     return {
@@ -259,10 +263,10 @@ export default {
         if (res.data.success) {
           this.$refs.form.resetForm();
           this.form.message = '';
-          this.pushMessage(res, '表單送出');
-          this.getCart();
+          swalert('success', '表單送出');
+          this.$router.push('/checkoutpaid');
         } else {
-          this.pushMessage(res, '表單送出');
+          swalert('success', '表單送出失敗');
         }
       });
     },

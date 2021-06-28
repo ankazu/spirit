@@ -27,6 +27,10 @@ const routes = [
         component: () => import('../views/Checkout.vue'),
       },
       {
+        path: 'checkoutpaid',
+        component: () => import('../views/Checkoutpaid.vue'),
+      },
+      {
         path: ':patchMatch(.*)*',
         component: () => import('../views/NotFound.vue'),
       },
