@@ -31,7 +31,7 @@
               <router-link class="nav-link active" to="/">前台首頁</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click.prevent="signout">登出</a>
+              <a class="nav-link" href="#" @click.prevent="signout()">登出</a>
             </li>
           </ul>
         </div>
@@ -85,11 +85,8 @@ export default {
       }
     },
     signout() {
-      document.cookie = 'hexToKen=;expires=;';
+      document.cookie = 'hexToken=;expires=;';
       this.$router.push('/login');
-      setTimeout(() => {
-        this.$router.push('/');
-      }, 4000);
     },
   },
 };
