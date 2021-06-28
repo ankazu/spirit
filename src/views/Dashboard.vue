@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="/">Spirit</a>
+        <a class="navbar-brand spirit" href="/">Spirit</a>
         <button
           class="navbar-toggler"
           type="button"
