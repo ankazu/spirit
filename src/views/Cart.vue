@@ -101,25 +101,16 @@
 </template>
 
 <script>
+import swalert from '@/methods/swal';
+
 export default {
   data() {
     return {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
       cart: {},
-      coupon_code: '',
-      form: {
-        user: {
-          email: '',
-          name: '',
-          tel: '',
-          address: '',
-        },
-        message: '',
-      },
     };
   },
-  inject: ['pushMessage'],
   created() {
     this.getCart();
   },
@@ -168,10 +159,8 @@ export default {
       this.$http.delete(api).then((res) => {
         if (res.data.success) {
           this.isLoading = false;
-          this.pushMessage(res, '清空');
+          swalert('success', '已清空購物車');
           this.getCart();
-        } else {
-          this.pushMessage(res, '刪除');
         }
       });
     },
@@ -180,11 +169,10 @@ export default {
       this.loadingStatus.loadingItem = id;
       this.$http.delete(api).then((res) => {
         if (res.data.success) {
-          this.pushMessage(res, '刪除');
           this.loadingStatus.loadingItem = '';
+          swalert('success', '已刪除商品');
           this.getCart();
         } else {
-          this.pushMessage(res, '刪除');
           console.log(res.data.message);
         }
       });

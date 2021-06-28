@@ -38,6 +38,7 @@
 
 <script>
 import Pagination from '@/components/Pagination.vue';
+import swalert from '@/methods/swal';
 
 export default {
   components: {
@@ -75,7 +76,6 @@ export default {
     addToCart(id, qty = 1) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-      this.loadingStatus.loadingItem = id;
       const cart = { product_id: id, qty };
       this.$http
         .post(api, {
@@ -83,7 +83,7 @@ export default {
         })
         .then((res) => {
           if (res.data.success) {
-            this.loadingStatus.loadingItem = '';
+            swalert('success', '已加入購物車');
             this.isLoading = false;
           } else {
             console.log(res.data.message);

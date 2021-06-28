@@ -9,6 +9,8 @@ import AllRules from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import App from './App.vue';
 import router from './router';
 import { date, currency } from './methods/filters';
@@ -31,6 +33,7 @@ app.config.globalProperties.$filters = {
 };
 app.use(router);
 app.use(VueAxios, axios);
+app.use(VueSweetalert2);
 app.component('Loading', Loading);
 app.component('Form', Form);
 app.component('Field', Field);
