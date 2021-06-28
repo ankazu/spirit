@@ -94,3 +94,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.spirit {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.4rem;
+}
+</style>

@@ -2,7 +2,7 @@
   <div class="home">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="/">Spirit</a>
+        <a class="navbar-brand spirit" href="/">Spirit</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -56,6 +56,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.spirit {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.4rem;
+}
 main {
   min-height: calc(100vh - 100px);
 }
