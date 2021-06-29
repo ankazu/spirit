@@ -36,6 +36,7 @@
 
 <script>
 import swalert from '@/methods/swal';
+import emitter from '@/methods/eventBus';
 
 export default {
   data() {
@@ -74,6 +75,7 @@ export default {
       this.$http.post(url, { data: cart }).then((res) => {
         if (res.data.success) {
           this.loadingStatus.loadingItem = '';
+          emitter.emit('updata-cart');
           swalert('success', '已加入購物車');
           this.isLoading = false;
         } else {

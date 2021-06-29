@@ -102,6 +102,7 @@
 
 <script>
 import swalert from '@/methods/swal';
+import emitter from '@/methods/eventBus';
 
 export default {
   data() {
@@ -158,6 +159,7 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`;
       this.$http.delete(api).then((res) => {
         if (res.data.success) {
+          emitter.emit('updata-cart');
           this.isLoading = false;
           swalert('success', '已清空購物車');
           this.getCart();
@@ -170,6 +172,7 @@ export default {
       this.$http.delete(api).then((res) => {
         if (res.data.success) {
           this.loadingStatus.loadingItem = '';
+          emitter.emit('updata-cart');
           swalert('success', '已刪除商品');
           this.getCart();
         } else {

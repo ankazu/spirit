@@ -56,6 +56,7 @@
 <script>
 import Pagination from '@/components/Pagination.vue';
 import swalert from '@/methods/swal';
+import emitter from '@/methods/eventBus';
 
 export default {
   components: {
@@ -73,7 +74,7 @@ export default {
       productValue: '',
     };
   },
-  created() {
+  mounted() {
     this.getProducts();
   },
   methods: {
@@ -135,6 +136,7 @@ export default {
         })
         .then((res) => {
           if (res.data.success) {
+            emitter.emit('updata-cart');
             swalert('success', '已加入購物車');
             this.isLoading = false;
           } else {
