@@ -5,7 +5,12 @@
       <div class="col-2 nav_left">
         <ul>
           <li @click="getProducts()">全部產品</li>
-          <li v-for="item in product_category" :key="item.id" @click="filterCategory(item)">
+          <li
+            v-for="item in product_category"
+            :key="item.id"
+            @click="filterCategory(item)"
+            :class="{ active: item === productValue }"
+          >
             {{ item }}
           </li>
         </ul>
@@ -65,6 +70,7 @@ export default {
       product_category: [],
       category: '',
       pageShow: true,
+      productValue: '',
     };
   },
   created() {
@@ -74,6 +80,7 @@ export default {
     getProducts(page = 1) {
       this.isLoading = true;
       this.pageShow = true;
+      this.productValue = '';
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
@@ -101,7 +108,17 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
-          this.products = res.data.products.filter((product) => product.category === e);
+          this.products = res.data.products.filter((product) => {
+            if (product.category === e) {
+              this.productValue = e;
+              return product;
+            }
+            if (e === undefined) {
+              this.productValue = 1;
+              return this.products;
+            }
+            return false;
+          });
           this.isLoading = false;
         } else {
           console.log(res.data.message);
