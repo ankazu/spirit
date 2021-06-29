@@ -5,8 +5,8 @@
       <div class="col-2 nav_left">
         <ul>
           <li @click="getProducts()">全部產品</li>
-          <li v-for="item in product_category" :key="item.id" @click="filtercategory(item)">
-            {{ item.category }}
+          <li v-for="item in product_category" :key="item.id" @click="filterCategory(item)">
+            {{ item }}
           </li>
         </ul>
       </div>
@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <div class="page" v-if="products.length <= 10">
+      <div class="page" v-if="products.length <= 10 && pageShow">
         <Pagination :page="pagination" @get-page="getProducts"></Pagination>
       </div>
     </div>
@@ -64,31 +64,29 @@ export default {
       pagination: {},
       product_category: [],
       category: '',
+      pageShow: true,
     };
   },
   created() {
     this.getProducts();
-    this.getCategory();
   },
   methods: {
     getProducts(page = 1) {
       this.isLoading = true;
+      this.pageShow = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.products = res.data.products;
           this.pagination = res.data.pagination;
+          // 篩選種類
+          this.products.filter((item) => {
+            if (this.product_category.indexOf(item.category) === -1) {
+              this.product_category.push(item.category);
+            }
+            return false;
+          });
           this.isLoading = false;
-        } else {
-          console.log(res.data.message);
-        }
-      });
-    },
-    getCategory() {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products`;
-      this.$http.get(api).then((res) => {
-        if (res.data.success) {
-          this.product_category = res.data.products;
         } else {
           console.log(res.data.message);
         }
@@ -97,14 +95,14 @@ export default {
     getProduct(id) {
       this.$router.push(`/product/${id}`);
     },
-    filtercategory(e) {
+    filterCategory(e) {
       this.isLoading = true;
+      this.pageShow = false;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
-          this.products = res.data.products.filter((product) => product.category === e.category);
+          this.products = res.data.products.filter((product) => product.category === e);
           this.isLoading = false;
-          console.log(this.products);
         } else {
           console.log(res.data.message);
         }
