@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
     <div class="container">
       <a class="navbar-brand spirit" href="/">Spirit</a>
       <div class="d-flex">
@@ -22,10 +22,10 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link active" to="/">首頁</router-link>
+            <router-link class="nav_link" to="/">首頁</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/products">產品列表</router-link>
+            <router-link class="nav_link" to="/products">產品列表</router-link>
           </li>
           <li>
             <div class="nav-item position-relative">
@@ -36,12 +36,12 @@
               <div class="megamenu-content megamenu-cart">
                 <div class="cart-body">
                   <ul id="shopping-cart-items">
-                    <li></li>
+                    <li v-for="item in cart.carts" :key="item.id">{{ item.product.title }}</li>
                   </ul>
                 </div>
                 <div class="cart-footer">
                   <div class="total-price">Total: <span>$0</span></div>
-                  <a href="/cart">結帳</a>
+                  <a class="btn btn-primary w-100" href="/cart">結帳</a>
                 </div>
               </div>
             </div>
@@ -93,7 +93,12 @@ export default {
   font-family: 'Pacifico', cursive;
   font-size: 1.4rem;
 }
-
+.nav_link {
+  padding: 0.5rem 1rem;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
 .cart {
   position: relative;
 }
@@ -164,12 +169,7 @@ export default {
   top: -6px;
   margin-left: 3px;
 }
-.cart-header .total-price {
-  float: right;
-}
-.cart-header .total-price span {
-  color: #c19e56;
-}
+
 .cart-body {
   width: 100%;
   max-height: 250px;
@@ -225,17 +225,6 @@ export default {
 .cart-footer {
   border-top: solid 1px #efefef;
   padding: 15px 20px;
-}
-.cart-footer > a {
-  padding: 15px !important;
-  display: block;
-  width: 100%;
-  border-radius: 4px;
-  background: #c19e56;
-  color: #fff !important;
-  box-shadow: 0 0 20px 0 rgba(62, 28, 131, 0.1);
-  text-align: center;
-  text-decoration: none;
 }
 .cart-footer a:hover {
   opacity: 0.8;

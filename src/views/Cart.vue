@@ -27,7 +27,7 @@
             </span>
           </button>
         </div>
-        <div class="cart_product_header">
+        <div class="cart_product_header bg-primary">
           <span class="cart_product_header_name">產品內容</span>
           <span class="cart_product_header_qty">數量</span>
           <span class="cart_product_header_price">售價</span>
@@ -207,7 +207,6 @@ export default {
   display: flex;
   padding: 8px 15px;
   margin-bottom: 10px;
-  background: #f3f8fb;
 }
 .cart_product_header_name {
   display: block;
