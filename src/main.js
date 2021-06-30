@@ -1,19 +1,28 @@
-import axios from 'axios';
 import { createApp } from 'vue';
+// axios
+import axios from 'axios';
 import VueAxios from 'vue-axios';
+// loading特效
 import Loading from 'vue3-loading-overlay';
+import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+// 表單驗證
 import {
   Form, Field, ErrorMessage, defineRule, configure,
 } from 'vee-validate';
 import AllRules from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
-import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 import VueSweetalert2 from 'vue-sweetalert2';
+// tools
 import 'sweetalert2/dist/sweetalert2.min.css';
+// bootstrap
+import 'bootstrap';
+import './assets/all.scss';
+// methods
+import { date, currency } from './methods/filters';
+
 import App from './App.vue';
 import router from './router';
-import { date, currency } from './methods/filters';
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);

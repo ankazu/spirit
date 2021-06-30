@@ -1,3 +1,5 @@
-@import '~bootstrap';
-@import './helpers/variables';
+@import '~bootstrap/scss/functions';
+
 @import './helpers/base';
+@import './helpers/variables';
+@import '~bootstrap/scss/bootstrap';
