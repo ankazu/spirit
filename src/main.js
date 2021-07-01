@@ -3,8 +3,8 @@ import { createApp } from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 // loading特效
-import Loading from 'vue3-loading-overlay';
-import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+import VueLoading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 // 表單驗證
 import {
   Form, Field, ErrorMessage, defineRule, configure,
@@ -43,7 +43,7 @@ app.config.globalProperties.$filters = {
 app.use(router);
 app.use(VueAxios, axios);
 app.use(VueSweetalert2);
-app.component('Loading', Loading);
+app.component('Loading', VueLoading);
 app.component('Form', Form);
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
