@@ -17,33 +17,44 @@
         </ul>
       </div>
       <div class="col-12 col-md-10 row ms-auto">
-        <div class="col-3 mb-4 text-start" v-for="item in products" :key="item.id">
-          <div class="img_box">
-            <div @click.prevent="getProduct(item.id)">
-              <img :src="item.imageUrl" alt="" />
+        <div class="col-3 mb-5 text-start" v-for="item in products" :key="item.id">
+          <div class="product">
+            <div class="product_img">
+              <div @click.prevent="getProduct(item.id)">
+                <img :src="item.imageUrl" alt="" />
+              </div>
             </div>
-          </div>
-          <div class="mt-2 h5">{{ item.title }}</div>
-          <div>
-            <div class="h5" v-if="!item.price">{{ $filters.currency(item.origin_price) }} 元</div>
-            <del class="h6" v-if="item.price"
-              >原價 {{ $filters.currency(item.origin_price) }} 元</del
-            >
-            <div class="h5" v-if="item.price">特價 {{ $filters.currency(item.price) }} 元</div>
-          </div>
-          <div class="d-flex justify-content-center">
-            <button
-              :disabled="loadingStatus.loadingItem === item.id"
-              @click="addToCart(item.id)"
-              type="button"
-              class="btn btn-primary"
-            >
-              <i
-                class="spinner-border spinner-border-sm"
-                v-if="loadingStatus.loadingItem === item.id"
-              ></i>
-              加入購物車
-            </button>
+            <div class="product_baking">{{ item.baking }}</div>
+            <div class="product_title">{{ item.title }}</div>
+            <div class="product_dec">
+              {{ item.decription }}
+            </div>
+            <div class="product_price">
+              <div class="product_price_1" v-if="item.price === item.origin_price">
+                {{ $filters.currency(item.origin_price) }} 元 / {{ item.unit }}
+              </div>
+              <del class="product_price_2" v-if="item.price !== item.origin_price"
+                >原價 {{ $filters.currency(item.origin_price) }} 元</del
+              >
+              <div class="product_price_2" v-if="item.price !== item.origin_price">
+                特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
+              </div>
+            </div>
+
+            <div class="d-flex  mt-2">
+              <button
+                :disabled="loadingStatus.loadingItem === item.id"
+                @click="addToCart(item.id)"
+                type="button"
+                class="btn btn-primary"
+              >
+                <i
+                  class="spinner-border spinner-border-sm"
+                  v-if="loadingStatus.loadingItem === item.id"
+                ></i>
+                加入購物車
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -88,6 +99,7 @@ export default {
         if (res.data.success) {
           this.products = res.data.products;
           this.pagination = res.data.pagination;
+          console.log(this.products);
           // 篩選種類
           this.products.filter((item) => {
             if (this.product_category.indexOf(item.category) === -1) {
@@ -150,18 +162,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-img {
-  max-width: 100%;
-  height: auto;
-  transition: all 0.3s;
-}
 .page {
   display: flex;
   justify-content: center;
 }
-.col-3:hover img {
-  opacity: 0.8;
-}
+
 .nav_left ul {
   padding: 0;
   margin: 0;
@@ -172,6 +177,62 @@ img {
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
+.product {
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+
+  &_img {
+    max-width: 100%;
+    height: auto;
+    transition: all 0.3s;
+    margin-bottom: 2px;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  &_title {
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  &_price {
+  }
+
+  &_price_1 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  &_price_2 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  &_dec {
+    color: #666;
+    margin-bottom: 8px;
+    max-height: 48px;
+    height: 48px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+  }
+  &_baking {
+    color: #777;
+    font-size: 14px;
+  }
+  &:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+}
+del.product_price_2 {
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 14px;
+}
+
 @media only screen and (max-width: 768px) {
 }
 </style>
