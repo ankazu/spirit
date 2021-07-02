@@ -40,6 +40,10 @@
         </div>
       </div>
     </section>
+
+    <section class="section section_bg">
+      <div></div>
+    </section>
   </div>
 </template>
 
@@ -51,6 +55,9 @@
 
 .section {
   padding: 120px 20px;
+}
+.section_bg {
+  background: #fff2bc;
 }
 .section_title {
   max-width: 550px;

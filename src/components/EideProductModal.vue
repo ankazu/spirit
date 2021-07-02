@@ -44,7 +44,7 @@
                   id="customFile"
                   class="form-control"
                   ref="fileInput"
-                  @change="uploadFile"
+                  @change="uploadFile('image', 'fileInput')"
                 />
               </div>
               <img class="img-fluid" :src="tempProduct.imageUrl" />
@@ -52,12 +52,17 @@
               <div class="mt-5" v-if="Array.isArray(tempProduct.imagesUrl)">
                 <div class="mb-1" v-for="(img, index) in tempProduct.imagesUrl" :key="index">
                   <div class="form-group">
-                    <label for="imageUrl">輸入主要圖片網址</label>
+                    <label for="customFile" class="form-label"
+                      >上傳圖片
+                      <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
+                    </label>
                     <input
-                      type="text"
+                      type="file"
+                      id="customFile"
                       class="form-control"
-                      placeholder="請輸入圖片連結"
-                      v-model="tempProduct.imagesUrl[index]"
+                      :ref="index + 'fileInputs'"
+                      :name="index + '-upload'"
+                      @change="uploadFile('images', `${index + 'fileInputs'}`, index)"
                     />
                   </div>
                   <img class="img-fluid" :src="img" alt="" />
@@ -114,6 +119,86 @@
                     class="form-control"
                     placeholder="請輸入單位"
                     v-model="tempProduct.unit"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="baking">烘焙</label>
+                  <input
+                    id="baking"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入烘焙度"
+                    v-model="tempProduct.baking"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="Bitterness">苦度</label>
+                  <input
+                    id="Bitterness"
+                    type="number"
+                    class="form-control"
+                    placeholder="請輸入酸度"
+                    v-model="tempProduct.Bitterness"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="acidity">酸度</label>
+                  <input
+                    id="acidity"
+                    type="number"
+                    class="form-control"
+                    placeholder="請輸入酸度"
+                    v-model="tempProduct.acidity"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="flavor">風味1</label>
+                  <input
+                    id="flavor"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入風味"
+                    v-model="tempProduct.flavor"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="flavor2">風味2</label>
+                  <input
+                    id="flavor2"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入風味"
+                    v-model="tempProduct.flavor_sec"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="origin">國家產地</label>
+                  <input
+                    id="origin"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入產地"
+                    v-model="tempProduct.origin"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="approach">處理方法</label>
+                  <input
+                    id="approach"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入處理方法"
+                    v-model="tempProduct.approach"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="variety">品種</label>
+                  <input
+                    id="variety"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入品種"
+                    v-model="tempProduct.variety"
                   />
                 </div>
               </div>
@@ -207,7 +292,7 @@ export default {
   },
   emits: ['updata'],
   mixins: [modalMixin],
-  inject: ['emitter'],
+  inject: ['emitter', 'pushMessage'],
   watch: {
     product() {
       this.tempProduct = this.product;
@@ -220,8 +305,8 @@ export default {
     },
   },
   methods: {
-    uploadFile() {
-      const uploadedFile = this.$refs.fileInput.files[0];
+    uploadFile(txt, refipt, i) {
+      const uploadedFile = this.$refs[refipt].files[0];
       const formData = new FormData(); // js建構函式
       formData.append('file-to-upload', uploadedFile);
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload`;
@@ -231,20 +316,18 @@ export default {
         .then((res) => {
           this.status.fileUploading = false;
           if (res.data.success) {
-            this.tempProduct.imageUrl = res.data.imageUrl;
-            this.$refs.fileInput.value = '';
-            this.emitter.emit('push-message', {
-              style: 'success',
-              title: '圖片上傳結果',
-              content: res.data.message,
-            });
+            if (txt === 'image') {
+              this.tempProduct.imageUrl = res.data.imageUrl;
+              this.$refs.fileInput.value = '';
+            }
+            if (txt === 'images') {
+              this.tempProduct.imagesUrl[i] = res.data.imageUrl;
+              this.$refs[refipt].value = '';
+            }
+            this.pushMessage(res, '圖片新增');
           } else {
             this.$refs.fileInput.value = '';
-            this.emitter.emit('push-message', {
-              style: 'danger',
-              title: '圖片上傳結果',
-              content: res.data.message,
-            });
+            this.pushMessage(res, '圖片新增');
           }
         });
     },

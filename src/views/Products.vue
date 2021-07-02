@@ -4,6 +4,7 @@
     <div class="row mt-4">
       <div class="col-2 nav_left">
         <ul>
+          <li class="bg-secondary">產品種類</li>
           <li @click="getProducts()">全部產品</li>
           <li
             v-for="item in product_category"
@@ -157,21 +158,6 @@ img {
 .page {
   display: flex;
   justify-content: center;
-}
-.img_box {
-  position: relative;
-  padding-bottom: 70%;
-  overflow: hidden;
-
-  & > div {
-    position: absolute;
-    display: flex;
-    justify-self: start;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
 }
 .col-3:hover img {
   opacity: 0.8;
