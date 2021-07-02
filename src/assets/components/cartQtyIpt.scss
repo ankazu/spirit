@@ -1,0 +1,30 @@
+.cart_product_input {
+  width: 40px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  height: 36px;
+  border-right: 0;
+  border-left: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.cart_remove {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.cart_add {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.cart_btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  display: inline-flex;
+  width: 40px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

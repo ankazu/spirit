@@ -17,7 +17,11 @@
         </ul>
       </div>
       <div class="col-12 col-md-10 row ms-auto">
-        <div class="col-3 mb-5 text-start" v-for="item in products" :key="item.id">
+        <div
+          class="col-6 col-sm-4 col-xl-3 mb-5 text-start"
+          v-for="item in products"
+          :key="item.id"
+        >
           <div class="product">
             <div class="product_img">
               <div @click.prevent="getProduct(item.id)">
@@ -40,7 +44,6 @@
                 特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
               </div>
             </div>
-
             <div class="d-flex  mt-2">
               <button
                 :disabled="loadingStatus.loadingItem === item.id"
