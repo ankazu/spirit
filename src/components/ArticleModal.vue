@@ -57,22 +57,13 @@
               </div>
               <div class="mb-3">
                 <label for="create_at">文章建立日期</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="create_at"
-                  v-model="create_at"
-                />
+                <input type="date" class="form-control" id="create_at" v-model="create_at" />
               </div>
             </div>
             <div class="col-sm-8">
               <label for="tag" class="form-label">標籤</label>
               <div class="row gx-1 mb-3">
-                <div
-                  class="col-md-2 mb-1"
-                  v-for="(label, key) in tempArticle.tag"
-                  :key="key"
-                >
+                <div class="col-md-2 mb-1" v-for="(label, key) in tempArticle.tag" :key="key">
                   <div class="input-group input-group-sm">
                     <input
                       type="text"
@@ -92,10 +83,7 @@
                 </div>
                 <div
                   class="col-md-2 mb-1"
-                  v-if="
-                    tempArticle.tag[tempArticle.tag.length - 1] ||
-                    !tempArticle.tag.length
-                  "
+                  v-if="tempArticle.tag[tempArticle.tag.length - 1] || !tempArticle.tag.length"
                 >
                   <button
                     class="btn btn-outline-primary btn-sm d-block w-100"
@@ -139,11 +127,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
           <button
@@ -163,18 +147,7 @@ import modalMixin from '@/mixins/modalMixin';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default {
-  props: {
-    article: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-    isNew: {
-      type: Boolean,
-      default: true,
-    },
-  },
+  props: ['article', 'isNew'],
   data() {
     return {
       status: {},
@@ -198,16 +171,13 @@ export default {
         tag: this.article.tag || [],
         isPublic: this.article.isPublic || false,
       };
-      [this.create_at] = new Date(this.tempArticle.create_at * 1000)
-        .toISOString()
-        .split('T');
+      [this.create_at] = new Date(this.tempArticle.create_at * 1000).toISOString().split('T');
     },
     create_at() {
       this.tempArticle.create_at = Math.floor(new Date(this.create_at) / 1000);
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
