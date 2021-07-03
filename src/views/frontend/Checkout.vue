@@ -12,7 +12,7 @@
               name="email"
               type="email"
               class="form-control"
-              :class="{ 'is-invalid': errors['email'] }"
+              :class="{ 'is-invalid': errors['email'], 'is-valid': form.user.email }"
               placeholder="請輸入 Email"
               rules="email|required"
               v-model="form.user.email"
@@ -27,7 +27,7 @@
               name="姓名"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors['姓名'] }"
+              :class="{ 'is-invalid': errors['姓名'], 'is-valid': form.user.name }"
               placeholder="請輸入姓名"
               rules="required"
               v-model="form.user.name"
@@ -39,15 +39,15 @@
             <label for="tel" class="form-label">收件人電話<span class="font_req"> *</span></label>
             <Field
               id="tel"
-              name="電話"
+              name="手機號碼"
               type="tel"
               class="form-control"
-              :class="{ 'is-invalid': errors['電話'] }"
-              placeholder="請輸入電話"
-              rules="required"
+              :class="{ 'is-invalid': errors['手機號碼'], 'is-valid': form.user.tel }"
+              placeholder="請輸入手機號碼"
+              :rules="checkTel"
               v-model="form.user.tel"
             ></Field>
-            <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+            <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
           </div>
 
           <div class="mb-3">
@@ -59,7 +59,7 @@
               name="地址"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors['地址'] }"
+              :class="{ 'is-invalid': errors['地址'], 'is-valid': form.user.address }"
               placeholder="請輸入地址"
               rules="required"
               v-model="form.user.address"
@@ -76,7 +76,7 @@
               name="寄送方式"
               id="orderDelivery"
               class="form-control"
-              :class="{ 'is-invalid': errors['寄送方式'] }"
+              :class="{ 'is-invalid': errors['寄送方式'], 'is-valid': form.user.delivery }"
               rules="required"
               v-model="form.user.delivery"
             >
@@ -99,7 +99,7 @@
               name="付款方式"
               id="orderPayment"
               class="form-control"
-              :class="{ 'is-invalid': errors['付款方式'] }"
+              :class="{ 'is-invalid': errors['付款方式'], 'is-valid': form.user.payment }"
               rules="required"
               v-model="form.user.payment"
             >
@@ -255,7 +255,10 @@ export default {
         this.isLoading = false;
       });
     },
-
+    checkTel(value) {
+      const tel = /^(09)[0-9]{8}$/;
+      return tel.test(value) ? true : '請填入正確的"手機"號碼';
+    },
     createOrder() {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
