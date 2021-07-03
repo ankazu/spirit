@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12">
         <div class="row">
-          <div class="col-12 col-lg-5">
+          <div class="col-12 col-lg-6">
             <img class="rounded-2 w-100" :src="productImg" :alt="tempProduct.title" />
             <div class="col-12 flex-nowrap py-1 overflow-auto">
               <div class="row flex-nowrap m-0">
@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-7">
+          <div class="col-12 col-lg-6">
             <div class="text-start description">
               <div class="description_baking">{{ tempProduct.baking }}</div>
               <h2 class="description_title">{{ tempProduct.title }}</h2>

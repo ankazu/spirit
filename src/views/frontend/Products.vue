@@ -4,8 +4,8 @@
     <div class="row mt-4">
       <div class="col-2 nav_left">
         <ul>
-          <li class="bg-secondary">產品種類</li>
-          <li @click="getProducts()">全部產品</li>
+          <li class="bg-primary">產品種類</li>
+          <li @click="getProducts()" :class="{ active: productValue === '' }">全部產品</li>
           <li
             v-for="item in product_category"
             :key="item.id"
@@ -169,7 +169,9 @@ export default {
   display: flex;
   justify-content: center;
 }
-
+.active {
+  background: #f1e2ce;
+}
 .nav_left ul {
   padding: 0;
   margin: 0;
