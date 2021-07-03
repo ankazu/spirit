@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="mt-4">
-      <img src="../assets/images/empty_cart.jpg" alt="" />
+      <img src="../../assets/images/empty_cart.jpg" alt="" />
     </div>
     <h2 class="mt-5 mb-5">感謝您的訂購！</h2>
     <!-- 記得要改 -->

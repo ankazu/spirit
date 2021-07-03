@@ -25,6 +25,9 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/admin/coupons">優惠券</router-link>
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/admin/article">貼文</router-link>
+            </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">

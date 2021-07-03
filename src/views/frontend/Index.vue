@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="banner">
-      <img src="../assets/images/banner01.jpg" alt="" />
+      <img src="../../assets/images/banner01.jpg" alt="" />
       <div class="banner_txtbox">
         <div></div>
       </div>
@@ -15,7 +15,7 @@
       </div>
       <div class="features">
         <div class="features_img">
-          <img src="../assets/images/features-1.jpg" alt="" />
+          <img src="../../assets/images/features-1.jpg" alt="" />
         </div>
         <div class="features_txt">
           <div class="features_icon"></div>
@@ -28,7 +28,7 @@
       </div>
       <div class="features">
         <div class="features_img">
-          <img src="../assets/images/features-2.jpg" alt="" />
+          <img src="../../assets/images/features-2.jpg" alt="" />
         </div>
         <div class="features_txt">
           <div class="features_icon"></div>

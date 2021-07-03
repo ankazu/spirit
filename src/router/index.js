@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+import Home from '../views/frontend/Home.vue';
 
 const routes = [
   {
@@ -8,41 +8,41 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/Index.vue'),
+        component: () => import('../views/frontend/Index.vue'),
       },
       {
         path: 'products',
-        component: () => import('../views/Products.vue'),
+        component: () => import('../views/frontend/Products.vue'),
       },
       {
         path: 'product/:id',
-        component: () => import('../views/Product.vue'),
+        component: () => import('../views/frontend/Product.vue'),
       },
       {
         path: 'cart',
-        component: () => import('../views/Cart.vue'),
+        component: () => import('../views/frontend/Cart.vue'),
       },
       {
         path: 'checkout',
-        component: () => import('../views/Checkout.vue'),
+        component: () => import('../views/frontend/Checkout.vue'),
       },
       {
         path: 'checkoutpaid',
-        component: () => import('../views/Checkoutpaid.vue'),
+        component: () => import('../views/frontend/Checkoutpaid.vue'),
       },
       {
         path: ':patchMatch(.*)*',
-        component: () => import('../views/NotFound.vue'),
+        component: () => import('../views/frontend/NotFound.vue'),
       },
     ],
   },
   {
     path: '/login',
-    component: () => import('../views/Login.vue'),
+    component: () => import('../views/frontend/Login.vue'),
   },
   {
     path: '/admin',
-    component: () => import('../views/Dashboard.vue'),
+    component: () => import('../views/Dashboard/Dashboard.vue'),
     children: [
       {
         path: '',
@@ -59,6 +59,10 @@ const routes = [
       {
         path: 'coupons',
         component: () => import('../views/Dashboard/Coupons.vue'),
+      },
+      {
+        path: 'article',
+        component: () => import('../views/Dashboard/Article.vue'),
       },
     ],
   },
