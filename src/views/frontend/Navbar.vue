@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container">
       <a class="navbar-brand spirit" href="/">Spirit</a>
       <div class="d-flex">
@@ -26,6 +26,12 @@
           </li>
           <li class="nav-item">
             <router-link class="nav_link" to="/products">產品列表</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav_link" to="/about">關於我們</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav_link" to="/about-coffee">關於咖啡</router-link>
           </li>
           <li>
             <div class="nav-item position-relative">
@@ -92,11 +98,55 @@ export default {
   font-family: 'Pacifico', cursive;
   font-size: 1.4rem;
 }
+.nav-item {
+  position: relative;
+}
+.nav-item::after {
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: 13px;
+  background-color: #777;
+  right: 0;
+  top: 46%;
+  transform: translateY(-50%);
+}
+.nav-item:last-child:after {
+  display: none;
+}
 .nav_link {
   padding: 0.5rem 1rem;
   display: block;
   text-decoration: none;
-  color: #fff;
+  color: #666;
+  position: relative;
+  transition: all 0.3s;
+}
+.router-link-exact-active {
+  color: #000;
+}
+.nav_link:hover {
+  color: #000;
+}
+.nav_link:before {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 1px;
+  background-color: #000;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+}
+.nav_link:hover:before {
+  width: 70%;
+}
+@media only screen and (max-width: 992px) {
+  .nav_link:before,
+  .nav-item::after {
+    display: none;
+  }
 }
 .cart {
   position: relative;
