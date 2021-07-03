@@ -2,9 +2,9 @@
   <loading :active="isLoading"></loading>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-2 nav_left">
+      <div class="col-12 col-md-3 col-lg-2 nav_left">
+        <div class="bg-primary">產品種類</div>
         <ul>
-          <li class="bg-primary">產品種類</li>
           <li @click="getProducts()" :class="{ active: productValue === '' }">全部產品</li>
           <li
             v-for="item in product_category"
@@ -16,53 +16,55 @@
           </li>
         </ul>
       </div>
-      <div class="col-12 col-md-10 row ms-auto">
-        <div
-          class="col-6 col-sm-4 col-xl-3 mb-5 text-start"
-          v-for="item in products"
-          :key="item.id"
-        >
-          <div class="product">
-            <div class="product_img">
-              <div @click.prevent="getProduct(item.id)">
-                <img :src="item.imageUrl" alt="" />
+      <div class="col-12 col-md-9 col-lg-10 ms-md-auto">
+        <div class="row">
+          <div
+            class="col-6 col-sm-4 col-xl-3 mb-5 text-start"
+            v-for="item in products"
+            :key="item.id"
+          >
+            <div class="product">
+              <div class="product_img">
+                <div @click.prevent="getProduct(item.id)">
+                  <img :src="item.imageUrl" alt="" />
+                </div>
               </div>
-            </div>
-            <div class="product_baking">{{ item.baking }}</div>
-            <div class="product_title">{{ item.title }}</div>
-            <div class="product_dec">
-              {{ item.decription }}
-            </div>
-            <div class="product_price">
-              <div class="product_price_1" v-if="item.price === item.origin_price">
-                {{ $filters.currency(item.origin_price) }} 元 / {{ item.unit }}
+              <div class="product_baking">{{ item.baking }}</div>
+              <div class="product_title">{{ item.title }}</div>
+              <div class="product_dec">
+                {{ item.decription }}
               </div>
-              <del class="product_price_2" v-if="item.price !== item.origin_price"
-                >原價 {{ $filters.currency(item.origin_price) }} 元</del
-              >
-              <div class="product_price_2" v-if="item.price !== item.origin_price">
-                特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
+              <div class="product_price">
+                <div class="product_price_1" v-if="item.price === item.origin_price">
+                  {{ $filters.currency(item.origin_price) }} 元 / {{ item.unit }}
+                </div>
+                <del class="product_price_2" v-if="item.price !== item.origin_price"
+                  >原價 {{ $filters.currency(item.origin_price) }} 元</del
+                >
+                <div class="product_price_2" v-if="item.price !== item.origin_price">
+                  特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
+                </div>
               </div>
-            </div>
-            <div class="d-flex  mt-2">
-              <button
-                :disabled="loadingStatus.loadingItem === item.id"
-                @click="addToCart(item.id)"
-                type="button"
-                class="btn btn-primary"
-              >
-                <i
-                  class="spinner-border spinner-border-sm"
-                  v-if="loadingStatus.loadingItem === item.id"
-                ></i>
-                加入購物車
-              </button>
+              <div class="d-flex  mt-2">
+                <button
+                  :disabled="loadingStatus.loadingItem === item.id"
+                  @click="addToCart(item.id)"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  <i
+                    class="spinner-border spinner-border-sm"
+                    v-if="loadingStatus.loadingItem === item.id"
+                  ></i>
+                  加入購物車
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="page" v-if="products.length <= 10 && pageShow">
-        <Pagination :page="pagination" @get-page="getProducts"></Pagination>
+        <div class="page" v-if="products.length <= 10 && pageShow">
+          <Pagination :page="pagination" @get-page="getProducts"></Pagination>
+        </div>
       </div>
     </div>
   </div>
@@ -176,7 +178,9 @@ export default {
   padding: 0;
   margin: 0;
 }
-.nav_left ul li {
+
+.nav_left ul li,
+.nav_left div {
   list-style: none;
   cursor: pointer;
   padding: 10px;
