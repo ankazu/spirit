@@ -37,8 +37,26 @@
               <h2 class="description_title">{{ tempProduct.title }}</h2>
               <div class="description_detail">
                 <div class="description_detail_title">產品介紹</div>
+
+                <div class="description_detail_origin">
+                  <span>【 產地 】</span>{{ tempProduct.origin }}
+                </div>
+                <div class="description_detail_variety">
+                  <span>【 品種 】</span>{{ tempProduct.variety }}
+                </div>
+                <div class="description_detail_approach">
+                  <span>【 處理法 】</span>{{ tempProduct.approach }}
+                </div>
+                <div class="description_detail_acidity">
+                  <span>【 酸度 】</span>{{ tempProduct.acidity }}
+                </div>
+                <div class="description_detail_Bitterness">
+                  <span>【 苦度 】</span>
+                  ■
+                  {{ tempProduct.Bitterness }}
+                </div>
                 <div class="description_detail_flavor">
-                  風味 {{ tempProduct.flavor }} {{ tempProduct.flavor_sec }}
+                  <span>【 風味 】</span> {{ tempProduct.flavor }}，{{ tempProduct.flavor_sec }}
                 </div>
 
                 {{ tempProduct.decription }}
@@ -106,6 +124,8 @@ export default {
       tempProduct: {},
       productImg: '',
       qty: 1,
+      acidity: '',
+      Bitterness: '',
     };
   },
   created() {
@@ -120,6 +140,8 @@ export default {
         if (res.data.success) {
           this.tempProduct = res.data.product;
           this.productImg = this.tempProduct.imageUrl;
+          this.Bitterness = res.data.product.Bitterness;
+          this.acidity = res.data.product.acidity;
           this.isLoading = false;
           console.log(this.tempProduct);
         } else {
@@ -166,5 +188,20 @@ export default {
 img {
   max-width: 100%;
   height: auto;
+}
+.description {
+  &_title {
+    margin: 0 0 30px;
+  }
+  &_detail > div:not(:first-child) {
+    margin-bottom: 10px;
+  }
+  &_detail_title {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  &_detail > div span {
+    font-weight: 600;
+  }
 }
 </style>
