@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import swalert from '@/methods/swal';
+
 export default {
   data() {
     return {
@@ -51,15 +53,20 @@ export default {
   methods: {
     login() {
       const api = `${process.env.VUE_APP_API}/admin/signin`;
-      this.$http.post(api, this.user).then((res) => {
-        if (res.data.success) {
-          const { token, expired } = res.data;
-          document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
-          this.$router.push('/admin/products');
-        } else {
-          console.log(res.data.message);
-        }
-      });
+      this.$http
+        .post(api, this.user)
+        .then((res) => {
+          if (res.data.success) {
+            const { token, expired } = res.data;
+            document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
+            this.$router.push('/admin/products');
+          } else {
+            swalert('error', `${res.data.message}`, 'top');
+          }
+        })
+        .catch(() => {
+          swalert('error', '登入失敗');
+        });
     },
   },
 };
