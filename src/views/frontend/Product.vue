@@ -33,7 +33,6 @@
           </div>
           <div class="col-12 col-lg-6">
             <div class="text-start description">
-              <div class="description_baking">{{ tempProduct.baking }}</div>
               <h2 class="description_title">{{ tempProduct.title }}</h2>
               <div class="description_detail">
                 <div class="description_detail_title">產品介紹</div>
@@ -44,16 +43,27 @@
                 <div class="description_detail_variety">
                   <span>【 品種 】</span>{{ tempProduct.variety }}
                 </div>
+                <div class="description_baking">
+                  <span>【 烘焙度 】</span>{{ tempProduct.baking }}
+                </div>
                 <div class="description_detail_approach">
                   <span>【 處理法 】</span>{{ tempProduct.approach }}
                 </div>
                 <div class="description_detail_acidity">
-                  <span>【 酸度 】</span>{{ tempProduct.acidity }}
+                  <span>【 酸度 】</span>
+                  <div class="cube">
+                    <div class="cube_black" v-for="item in acidity_one" :key="item"></div>
+                    {{ tempProduct.acidity }}
+                    <div class="cube_white" v-for="item in acidity_sec" :key="item"></div>
+                  </div>
                 </div>
                 <div class="description_detail_Bitterness">
                   <span>【 苦度 】</span>
-                  ■
-                  {{ tempProduct.Bitterness }}
+                  <div class="cube">
+                    <div class="cube_black" v-for="item in bitterness_one" :key="item"></div>
+                    {{ tempProduct.Bitterness }}
+                    <div class="cube_white" v-for="item in bitterness_sec" :key="item"></div>
+                  </div>
                 </div>
                 <div class="description_detail_flavor">
                   <span>【 風味 】</span> {{ tempProduct.flavor }}，{{ tempProduct.flavor_sec }}
@@ -124,8 +134,10 @@ export default {
       tempProduct: {},
       productImg: '',
       qty: 1,
-      acidity: '',
-      Bitterness: '',
+      acidity_one: 0,
+      acidity_sec: 0,
+      bitterness_one: 0,
+      bitterness_sec: 0,
     };
   },
   created() {
@@ -140,9 +152,8 @@ export default {
         if (res.data.success) {
           this.tempProduct = res.data.product;
           this.productImg = this.tempProduct.imageUrl;
-          this.Bitterness = res.data.product.Bitterness;
-          this.acidity = res.data.product.acidity;
           this.isLoading = false;
+          this.cubeCount();
           console.log(this.tempProduct);
         } else {
           console.log(res.data.message);
@@ -180,6 +191,15 @@ export default {
         this.qty -= 1;
       }
     },
+    cubeCount() {
+      const num1 = JSON.parse(this.tempProduct.acidity);
+      const num2 = JSON.parse(this.tempProduct.Bitterness);
+      this.acidity_one = num1;
+      this.acidity_sec = Math.abs(num1 - 5);
+      this.bitterness_one = num2;
+      this.bitterness_sec = Math.abs(num2 - 5);
+      console.log(this.acidity_sec);
+    },
   },
 };
 </script>
@@ -202,6 +222,24 @@ img {
   }
   &_detail > div span {
     font-weight: 600;
+  }
+}
+.cube {
+  display: inline-block;
+  &_black {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: #000;
+    margin-left: 5px;
+  }
+  &_white {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+    display: inline-block;
+    background: #fff;
+    margin-left: 5px;
   }
 }
 </style>
