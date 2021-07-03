@@ -54,7 +54,7 @@
 }
 
 .section {
-  padding: 120px 20px;
+  padding: 120px 20px 190px;
 }
 .section_bg {
   background: #fff2bc;
