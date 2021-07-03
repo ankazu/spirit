@@ -2,11 +2,53 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container">
       <a class="navbar-brand spirit" href="/">Spirit</a>
-      <div class="d-flex">
-        <router-link class="nav-link cart_mb me-3" to="/cart"
-          ><span class="material-icons">shopping_cart</span>
-          <div class="cart_num">{{ cart?.carts?.length }}</div>
-        </router-link>
+      <div class="d-flex nav">
+        <div class="d-flex order-lg-2 justify-content-around icon-link-wrap">
+          <div class="dropdown cart">
+            <a
+              class="btn"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span class="material-icons cart_icon">shopping_cart</span>
+              <div class="cart_num">{{ cart?.carts?.length }}</div>
+            </a>
+            <div class="dropdown-menu pe-2 ps-2" aria-labelledby="dropdownMenuLink">
+              <table class="w-100">
+                <tbody>
+                  <tr class="border-bottom border-primary">
+                    <th>品名</th>
+                    <th class="text-center">數量</th>
+                    <th class="text-center">單價</th>
+                  </tr>
+                  <tr v-for="item in cart.carts" :key="item.id">
+                    <td>
+                      <div>
+                        {{ item.product.title }}
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      {{ item.qty }}
+                    </td>
+                    <td class="text-center">
+                      {{ item.product.price }}
+                    </td>
+                  </tr>
+                  <tr class="bg-white text-end">
+                    <td colspan="3">
+                      總計:
+                      <span class="price_dlr material-icons">attach_money</span>{{ cart.total }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <router-link class="btn btn-primary w-100" to="/cart">查看購物車</router-link>
+            </div>
+          </div>
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -18,41 +60,25 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link class="nav_link" to="/">首頁</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav_link" to="/products">產品列表</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav_link" to="/about">關於我們</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav_link" to="/about-coffee">關於咖啡</router-link>
-          </li>
-          <li>
-            <div class="nav-item position-relative">
-              <router-link class="nav-link cart" to="/cart"
-                ><span class="material-icons">shopping_cart</span>
-                <div class="cart_num">{{ cart?.carts?.length }}</div>
-              </router-link>
-              <div class="megamenu-content megamenu-cart">
-                <div class="cart-body">
-                  <ul id="shopping-cart-items">
-                    <li v-for="item in cart.carts" :key="item.id">{{ item.product.title }}</li>
-                  </ul>
-                </div>
-                <div class="cart-footer">
-                  <div class="total-price">Total: <span>$0</span></div>
-                  <a class="btn btn-primary w-100" href="/cart">結帳</a>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <div
+          class="collapse navbar-collapse  order-lg-1 justify-content-end text-start"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link class="nav_link" to="/">首頁</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav_link" to="/products">產品列表</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav_link" to="/about">關於我們</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav_link" to="/about-coffee">關於咖啡</router-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
@@ -77,6 +103,7 @@ export default {
         if (res.data.success) {
           this.cart = res.data.data;
           this.isLoading = false;
+          console.log(this.cart);
         } else {
           console.log(res.data.message);
         }
@@ -98,6 +125,11 @@ export default {
   font-family: 'Pacifico', cursive;
   font-size: 1.4rem;
 }
+.nav .navbar-toggler {
+  border: 0;
+  font-size: 1;
+}
+
 .nav-item {
   position: relative;
 }
@@ -142,25 +174,53 @@ export default {
 .nav_link:hover:before {
   width: 70%;
 }
-@media only screen and (max-width: 992px) {
-  .nav_link:before,
-  .nav-item::after {
-    display: none;
-  }
+
+.price_dlr {
+  font-size: 18px;
+  vertical-align: inherit;
 }
 .cart {
   position: relative;
+  &_total_price {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
-.cart .material-icons {
+
+.cart .dropdown-menu {
+  left: auto;
+  min-width: 300px;
+  right: 0;
+}
+.cart .dropdown-menu table th {
+  padding: 0.5rem;
+}
+.cart .dropdown-menu table td div {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  max-height: 40px;
+  max-width: 155px;
+}
+.cart .dropdown-menu table td {
+  padding: 0.5rem;
+}
+.cart .dropdown-menu table tr {
+  border-bottom: 1px solid #dee2e6;
+}
+.cart .dropdown-menu table tr:nth-of-type(even) {
+  background-color: #f4f4f4;
+}
+.cart .cart_icon {
   font-size: 22px;
-}
-.cart_mb {
-  display: none;
 }
 .cart_num {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 6px;
   background: #aaa;
   color: #fff;
   border-radius: 50%;
@@ -168,114 +228,17 @@ export default {
   line-height: 18px;
   width: 18px;
 }
-.cart_mb .cart_num {
-  right: 8px;
-}
 @media only screen and (max-width: 992px) {
-  .cart {
+  .nav_link:before,
+  .nav-item::after {
     display: none;
   }
-  .cart_mb {
-    position: relative;
-    color: #333;
-    display: flex;
-    align-items: center;
+  .nav_link {
+    padding-left: 0;
+    border-bottom: 1px solid #777;
   }
-}
-.megamenu-content {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  background: #fff;
-  text-align: left;
-  border: 1px solid #efefef;
-  display: none;
-  left: -85px;
-}
-
-.megamenu-cart {
-  box-shadow: 0 0 20px 0 rgba(62, 28, 131, 0.1);
-  margin-top: -1px;
-  width: 14rem;
-}
-.cart-header {
-  border-bottom: solid 1px #efefef;
-  padding: 15px 20px;
-}
-.cart-header .feather {
-  width: 16px;
-  height: 16px;
-}
-.cart-header .badge {
-  font-size: 10px;
-  line-height: 6px;
-  display: inline-block;
-  background: #c19e56;
-  color: #fff;
-  border-radius: 4px;
-  padding: 5px;
-  position: relative;
-  top: -6px;
-  margin-left: 3px;
-}
-
-.cart-body {
-  width: 100%;
-  max-height: 250px;
-}
-.cart-body ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: block;
-  font-size: 0.85rem;
-}
-.cart-body ul li {
-  position: relative;
-  display: block;
-  float: none;
-  width: 100%;
-  padding: 10px 20px;
-  border-top: solid 1px #efefef;
-  min-height: 80px;
-  padding-left: 90px;
-}
-.cart-body ul li:first-child {
-  border: 0;
-}
-.cart-body ul li img {
-  width: 50px;
-  top: 10px;
-  left: 20px;
-  position: absolute;
-}
-.cart-body ul li .title {
-  text-transform: none;
-  font-size: 0.75rem;
-  font-weight: 400;
-  margin: 5px 0;
-}
-.cart-body ul li .price {
-  color: #c19e56;
-}
-.cart-body ul li .qty {
-  float: right;
-}
-.cart-body ul li .link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.cart-body ul li .link:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-.cart-footer {
-  border-top: solid 1px #efefef;
-  padding: 15px 20px;
-}
-.cart-footer a:hover {
-  opacity: 0.8;
+  .cart .dropdown-menu {
+    right: -50px;
+  }
 }
 </style>

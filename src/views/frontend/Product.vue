@@ -1,8 +1,8 @@
 <template>
   <loading :active="isLoading"></loading>
-  <div class="container mt-5 justify-content-center">
-    <div class="row">
-      <div class="col-12">
+  <div class="container mt-5 ">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 ">
         <div class="row">
           <div class="col-12 col-lg-6">
             <img class="rounded-2 w-100" :src="productImg" :alt="tempProduct.title" />
@@ -35,8 +35,6 @@
             <div class="text-start description">
               <h2 class="description_title">{{ tempProduct.title }}</h2>
               <div class="description_detail">
-                <div class="description_detail_title">產品介紹</div>
-
                 <div class="description_detail_origin">
                   <span>【 產地 】</span>{{ tempProduct.origin }}
                 </div>
@@ -53,7 +51,6 @@
                   <span>【 酸度 】</span>
                   <div class="cube">
                     <div class="cube_black" v-for="item in acidity_one" :key="item"></div>
-                    {{ tempProduct.acidity }}
                     <div class="cube_white" v-for="item in acidity_sec" :key="item"></div>
                   </div>
                 </div>
@@ -61,7 +58,6 @@
                   <span>【 苦度 】</span>
                   <div class="cube">
                     <div class="cube_black" v-for="item in bitterness_one" :key="item"></div>
-                    {{ tempProduct.Bitterness }}
                     <div class="cube_white" v-for="item in bitterness_sec" :key="item"></div>
                   </div>
                 </div>
@@ -212,6 +208,8 @@ img {
 .description {
   &_title {
     margin: 0 0 30px;
+  }
+  &_detail {
   }
   &_detail > div:not(:first-child) {
     margin-bottom: 10px;

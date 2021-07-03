@@ -12,7 +12,7 @@
           <router-link class="btn btn-primary btn-lg mt-5" to="/products">繼續購物</router-link>
         </div>
       </section>
-      <section v-else class="col-12">
+      <section v-else class="col-12 col-lg-10 justify-content-center">
         <div class="mb-4 mt-4">
           <button
             type="button"
@@ -186,7 +186,7 @@ export default {
 
 <style lang="scss" scoped>
 .material-icons {
-  font-size: 19px;
+  font-size: 26px;
 }
 .section_empty {
   display: flex;
@@ -229,7 +229,7 @@ export default {
   border-bottom: 1px solid #ddd;
 }
 .cart_product_list {
-  padding: 30px 15px;
+  padding: 20px 15px;
 }
 .cart_product_img {
   width: 13%;
@@ -269,13 +269,15 @@ export default {
   align-items: center;
 }
 .price_dlr {
-  font-size: 12px;
+  font-size: 18px;
 }
 .cart_product_price_box del {
   font-size: 12px;
 }
 .cart_product_price_box div {
   color: #debc8c;
+  display: flex;
+  align-items: center;
 }
 .cart_prodcut_del button {
   color: #aaa;

@@ -1,8 +1,8 @@
 <template>
   <loading :active="isLoading"></loading>
   <div class="container">
-    <div class="row order_box">
-      <div class="col-12 col-lg-7">
+    <div class="row order_box justify-content-center">
+      <div class="col-12 col-lg-6">
         <div class="order_inf">訂購人資訊</div>
         <Form ref="form" class="form" v-slot="{ errors }" @submit="createOrder" @change="checkFrom">
           <div class="mb-3">
@@ -131,7 +131,7 @@
           </div>
         </Form>
       </div>
-      <div class="col-12 col-lg-5">
+      <div class="col-12 col-lg-4">
         <div class="order_dtl_box">
           <div class="order_del_title">訂單明細</div>
           <div class="order_dtl_list" v-for="item in cart.carts" :key="item.id">
@@ -330,7 +330,7 @@ export default {
   font-size: 1rem;
 }
 .order_dtl_list_img {
-  max-width: 120px;
+  max-width: 90px;
 }
 .order_dtl_list_title {
   padding: 0 15px;
