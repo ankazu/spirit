@@ -130,6 +130,7 @@
 .mybtn {
   display: flex;
   justify-content: center;
+  margin-top: 25px;
   &_link:link,
   &_link:visited {
     text-decoration: none;

@@ -122,7 +122,7 @@
             ></textarea>
           </div>
           <div class="text-start ms-0 w-50">
-            <router-link class="btn btn-secondary" to="/cart">上一步</router-link>
+            <router-link class="btn btn-outline-primary" to="/cart">上一步</router-link>
           </div>
           <div class="text-end w-50">
             <button type="submit" class="btn btn-primary" :disabled="btnStatus">

@@ -92,8 +92,12 @@
         </div>
 
         <div class="cart_continue">
-          <router-link class="btn btn-secondary btn-lg" to="/products">繼續購物</router-link>
+          <router-link class="btn btn-outline-primary btn-lg" to="/products">繼續購物</router-link>
           <router-link class="btn btn-primary btn-lg" to="/checkout">下一步</router-link>
+        </div>
+        <div class="alike">
+          <div class="alike_title">你可能會歡</div>
+          <ProductAlike></ProductAlike>
         </div>
       </section>
     </div>
@@ -103,6 +107,7 @@
 <script>
 import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
+import ProductAlike from '@/components/ProductAlike.vue';
 
 export default {
   data() {
@@ -112,8 +117,14 @@ export default {
       cart: {},
     };
   },
-  created() {
+  components: {
+    ProductAlike,
+  },
+  mounted() {
     this.getCart();
+    emitter.on('render-cart', () => {
+      this.getCart();
+    });
   },
   methods: {
     getCart() {
@@ -316,6 +327,17 @@ export default {
 }
 .coupon_code:focus {
   outline: none;
+}
+.alike {
+  margin: 80px 0 40px;
+  // border-top: 1px solid #debc8c;
+  padding: 20px 0;
+  &_title {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
 }
 @media only screen and (max-width: 992px) {
   .cart_product_header {

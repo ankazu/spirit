@@ -115,12 +115,14 @@
         </div>
       </div>
     </div>
+    <ProductAlike></ProductAlike>
   </div>
 </template>
 
 <script>
 import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
+import ProductAlike from '@/components/ProductAlike.vue';
 
 export default {
   data() {
@@ -135,6 +137,9 @@ export default {
       bitterness_one: 0,
       bitterness_sec: 0,
     };
+  },
+  components: {
+    ProductAlike,
   },
   created() {
     const { id } = this.$route.params;
@@ -194,7 +199,6 @@ export default {
       this.acidity_sec = Math.abs(num1 - 5);
       this.bitterness_one = num2;
       this.bitterness_sec = Math.abs(num2 - 5);
-      console.log(this.acidity_sec);
     },
   },
 };
@@ -209,9 +213,7 @@ img {
   &_title {
     margin: 0 0 30px;
   }
-  &_detail {
-  }
-  &_detail > div:not(:first-child) {
+  &_detail > div {
     margin-bottom: 10px;
   }
   &_detail_title {
