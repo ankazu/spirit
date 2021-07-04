@@ -1,7 +1,16 @@
 <template>
   <div>
-    <ul class="alike ps-0">
-      <li class="alike_list" v-for="item in randomProducts" :key="item">
+    <Swiper
+      :slidesPerView="2"
+      :spaceBetween="10"
+      :navigation="true"
+      :breakpoints="{
+        '600': { slidesPerView: 3, spaceBetween: 20 },
+        '992': { slidesPerView: 4, spaceBetween: 20 },
+      }"
+      class="alike ps-0"
+    >
+      <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
         <div @click="$emit('go-page', item.id)" class="alike_list_img">
           <img :src="item.imageUrl" alt="" />
         </div>
@@ -39,14 +48,19 @@
             加入購物車
           </button>
         </div>
-      </li>
-    </ul>
+      </SwiperSlide>
+    </Swiper>
   </div>
 </template>
 
 <script>
 import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper.scss';
+import SwiperCore, { Navigation } from 'swiper/core';
+
+SwiperCore.use([Navigation]);
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -61,6 +75,10 @@ export default {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
     };
+  },
+  components: {
+    Swiper,
+    SwiperSlide,
   },
   mounted() {
     const { id } = this.$route.params;
@@ -134,16 +152,14 @@ export default {
 .alike {
   display: flex;
   &_list {
-    background-color: #fff;
     list-style: none;
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     width: 22%;
-    margin: 0 1.5%;
+    // margin: 0 1.5% !important;
+    background-color: #f9f2e8;
     transition: all 0.3s;
     text-align: left;
     &:hover {
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       & img {
         transform: scale(1.1);
       }
@@ -179,6 +195,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      flex-wrap: wrap;
     }
     &_price_1 {
       font-size: 1rem;
@@ -195,5 +212,18 @@ export default {
 del.alike_list_price_2 {
   font-size: 12px;
   display: inline-block;
+}
+@media only screen and (max-width: 992px) {
+  .alike {
+    &_list {
+      &_price_2 {
+        display: block;
+        font-size: 14px;
+      }
+    }
+  }
+}
+del.alike_list_price_2 {
+  display: block;
 }
 </style>

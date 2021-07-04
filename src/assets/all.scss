@@ -1,6 +1,8 @@
 @import '~bootstrap/scss/functions';
 
 @import './helpers/base';
+@import './helpers/swiper-vars';
+@import './components/navigation';
 @import './components/cartQtyIpt';
 @import './helpers/variables';
 @import '~bootstrap/scss/bootstrap';
