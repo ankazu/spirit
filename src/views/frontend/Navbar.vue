@@ -1,87 +1,85 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg navbar-light bg-primary fixed-top"
+    class="navbar navbar-expand-lg navbar-light bg-primary fixed-top align-items-center"
     :class="classList.navbarTop"
   >
     <div class="container" :class="classList.navbarInner">
       <a class="navbar-brand spirit" href="/">Spirit</a>
-      <div class="d-flex nav">
-        <div class="d-flex order-lg-2 justify-content-around icon-link-wrap">
-          <div class="dropdown cart">
-            <a
-              class="btn"
-              href="#"
-              role="button"
-              id="dropdownMenuLink"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span class="material-icons cart_icon">shopping_cart</span>
-              <div class="cart_num">{{ cart?.carts?.length }}</div>
-            </a>
-            <div class="dropdown-menu pe-2 ps-2" aria-labelledby="dropdownMenuLink">
-              <table class="w-100">
-                <tbody>
-                  <tr class="border-bottom border-primary">
-                    <th>品名</th>
-                    <th class="text-center">數量</th>
-                    <th class="text-center">單價</th>
-                  </tr>
-                  <tr v-for="item in cart.carts" :key="item.id">
-                    <td>
-                      <div>
-                        {{ item.product.title }}
-                      </div>
-                    </td>
-                    <td class="text-center">
-                      {{ item.qty }}
-                    </td>
-                    <td class="text-center">
-                      {{ item.product.price }}
-                    </td>
-                  </tr>
-                  <tr class="bg-white text-end">
-                    <td colspan="3">
-                      總計:
-                      <span class="price_dlr material-icons">attach_money</span>{{ cart.total }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <router-link class="btn btn-primary w-100" to="/cart">查看購物車</router-link>
-            </div>
+      <div class=" order-lg-2 justify-content-around icon-link-wrap ms-auto">
+        <div class="dropdown cart">
+          <a
+            class="btn d-flex"
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="material-icons cart_icon">shopping_cart</span>
+            <div class="cart_num">{{ cart?.carts?.length }}</div>
+          </a>
+          <div class="dropdown-menu pe-2 ps-2" aria-labelledby="dropdownMenuLink">
+            <table class="w-100">
+              <tbody>
+                <tr class="border-bottom border-primary">
+                  <th>品名</th>
+                  <th class="text-center">數量</th>
+                  <th class="text-center">單價</th>
+                </tr>
+                <tr v-for="item in cart.carts" :key="item.id">
+                  <td>
+                    <div>
+                      {{ item.product.title }}
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    {{ item.qty }}
+                  </td>
+                  <td class="text-center">
+                    {{ item.product.price }}
+                  </td>
+                </tr>
+                <tr class="bg-white text-end">
+                  <td colspan="3">
+                    總計:
+                    <span class="price_dlr material-icons">attach_money</span>{{ cart.total }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <router-link class="btn btn-primary w-100" to="/cart">查看購物車</router-link>
           </div>
         </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse  order-lg-1 justify-content-end text-start"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <router-link class="nav_link" to="/">首頁</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav_link" to="/products">產品列表</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav_link" to="/about">關於我們</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav_link" to="/about-coffee">關於咖啡</router-link>
-            </li>
-          </ul>
-        </div>
+      </div>
+      <button
+        class="navbar-toggler navbtn"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse  order-lg-1 justify-content-end text-start"
+        id="navbarNav"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link class="nav_link" to="/">首頁</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav_link" to="/products">產品列表</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav_link" to="/about">關於我們</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav_link" to="/about-coffee">關於咖啡</router-link>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -138,14 +136,15 @@ export default {
   font-family: 'Pacifico', cursive;
   font-size: 1.4rem;
 }
-nav {
-  transition: all 0.5s;
-}
-.nav .navbar-toggler {
+.navbtn {
   border: 0;
-  font-size: 1;
+  &:focus {
+    box-shadow: unset;
+  }
+  & span {
+    width: 26px;
+  }
 }
-
 .nav-item {
   position: relative;
 }

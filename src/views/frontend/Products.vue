@@ -2,9 +2,14 @@
   <loading :active="isLoading"></loading>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-12 col-md-3 col-lg-2 nav_left">
-        <div class="bg-primary">產品種類</div>
-        <ul>
+      <div class="col-12 col-md-3 col-lg-2 nav_left" ref="navLeft">
+        <div class="bg-primary nav_tar">
+          產品種類
+          <span class="material-icons">
+            expand_more
+          </span>
+        </div>
+        <ul ref="navLeftUl">
           <li @click="getProducts()" :class="{ active: productValue === '' }">全部產品</li>
           <li
             v-for="item in product_category"
@@ -45,7 +50,7 @@
                   特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
                 </div>
               </div>
-              <div class="d-flex  mt-2">
+              <div class="d-flex pb-2 mt-2">
                 <button
                   :disabled="loadingStatus.loadingItem === item.id"
                   @click="addToCart(item.id)"
@@ -93,6 +98,18 @@ export default {
   },
   mounted() {
     this.getProducts();
+    if (window.innerWidth < 769) {
+      const sideBtn = this.$refs.navLeft;
+      sideBtn.addEventListener('click', (e) => {
+        if (
+          e.target.classList.contains('nav_tar')
+          || e.target.classList.contains('material-icons')
+        ) {
+          const siblings = this.$refs.navLeftUl;
+          siblings.classList.toggle('open');
+        }
+      });
+    }
   },
   methods: {
     getProducts(page = 1) {
@@ -172,8 +189,21 @@ export default {
   justify-content: center;
 }
 .active {
-  background: #f1e2ce;
+  background: #f5eadb;
 }
+.nav_left {
+  position: relative;
+}
+.nav_tar span {
+  display: none;
+}
+.nav_tar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .nav_left ul {
   padding: 0;
   margin: 0;
@@ -187,10 +217,11 @@ export default {
   border-bottom: 1px solid #ccc;
 }
 .product {
-  padding: 10px;
   transition: all 0.3s ease;
   border-radius: 10px;
-
+  & > * {
+    padding: 0 10px;
+  }
   &_img {
     max-width: 100%;
     height: auto;
@@ -199,6 +230,7 @@ export default {
     border-radius: 2px;
     overflow: hidden;
     cursor: pointer;
+    padding: 0;
   }
 
   &_title {
@@ -243,5 +275,26 @@ del.product_price_2 {
 }
 
 @media only screen and (max-width: 768px) {
+  .nav_tar span {
+    display: block;
+    position: absolute;
+    right: 20px;
+  }
+  .nav_left {
+    margin-bottom: 30px;
+  }
+  .nav_left ul {
+    max-height: 0;
+    overflow: hidden;
+  }
+  .nav_left ul.open {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 12px;
+    max-height: 1000px;
+    background-color: #fff;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  }
 }
 </style>
