@@ -57,7 +57,7 @@
   padding: 120px 20px 190px;
 }
 .section_bg {
-  background: #fff2bc;
+  background: #f5eadb;
 }
 .section_title {
   max-width: 550px;

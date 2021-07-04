@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar></Navbar>
-    <main>
+    <main id="main">
       <router-view />
     </main>
     <Footer></Footer>
@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 main {
+  padding-top: 59px;
   min-height: calc(100vh - 100px);
 }
 </style>

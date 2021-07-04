@@ -1,6 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <div class="container">
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-primary fixed-top"
+    :class="classList.navbarTop"
+  >
+    <div class="container" :class="classList.navbarInner">
       <a class="navbar-brand spirit" href="/">Spirit</a>
       <div class="d-flex nav">
         <div class="d-flex order-lg-2 justify-content-around icon-link-wrap">
@@ -93,6 +96,7 @@ export default {
       cart: {
         carts: [],
       },
+      classList: { navbarTop: '', navbarInner: '' },
     };
   },
   methods: {
@@ -115,6 +119,15 @@ export default {
     emitter.on('updata-cart', () => {
       this.getCart();
     });
+    window.addEventListener('scroll', () => {
+      const windowY = window.scrollY;
+      const main = document.querySelector('#main');
+      if (windowY > main.offsetTop) {
+        this.classList = { navbarTop: 'shadow-sm', navbarInner: '' };
+      } else {
+        this.classList = { navbarTop: '', navbarInner: '' };
+      }
+    });
   },
 };
 </script>
@@ -124,6 +137,9 @@ export default {
 .spirit {
   font-family: 'Pacifico', cursive;
   font-size: 1.4rem;
+}
+nav {
+  transition: all 0.5s;
 }
 .nav .navbar-toggler {
   border: 0;
@@ -140,12 +156,10 @@ export default {
   height: 13px;
   background-color: #777;
   right: 0;
-  top: 46%;
+  top: 50%;
   transform: translateY(-50%);
 }
-.nav-item:last-child:after {
-  display: none;
-}
+
 .nav_link {
   padding: 0.5rem 1rem;
   display: block;
