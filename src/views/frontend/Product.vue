@@ -115,7 +115,12 @@
         </div>
       </div>
     </div>
-    <ProductAlike></ProductAlike>
+    <section class="section">
+      <div class="related">
+        <h2>相關產品</h2>
+        <ProductAlike @go-page="getProduct"></ProductAlike>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -240,6 +245,16 @@ img {
     display: inline-block;
     background: #fff;
     margin-left: 5px;
+  }
+}
+.section {
+  padding: 80px 0;
+}
+.related {
+  & h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
   }
 }
 </style>

@@ -8,10 +8,8 @@
     </div>
     <section class="section container">
       <div class="section_title">
-        <p>lorem</p>
-        <h2>
-          喝杯咖啡，讓您平常的一天好過一點。
-        </h2>
+        <p>Spirit Coffee</p>
+        <h2 class="tracking-in-expand"><span>喝杯咖啡，</span>讓您平常的一天好過一點。</h2>
       </div>
       <div class="features">
         <div class="features_img">
@@ -57,11 +55,21 @@
     </section>
 
     <section class="section section_bg">
-      <div></div>
+      <div class="container">
+        <ProductAlike></ProductAlike>
+      </div>
     </section>
   </div>
 </template>
+<script>
+import ProductAlike from '@/components/ProductAlike.vue';
 
+export default {
+  components: {
+    ProductAlike,
+  },
+};
+</script>
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .spirit {
@@ -86,6 +94,9 @@
   font-size: 18px;
   text-align: left;
   padding-left: 5px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-family: 'Pacifico', cursive;
 }
 .features {
   display: flex;
@@ -194,6 +205,49 @@
       width: 40px;
       height: 40px;
     }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .section_title h2 {
+    text-align: left;
+    & span {
+      display: block;
+      text-align: left;
+    }
+  }
+}
+@media only screen and (max-width: 576px) {
+  .section_title h2 {
+    font-size: 26px;
+  }
+}
+// animation
+.tracking-in-expand {
+  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>

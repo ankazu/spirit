@@ -30,12 +30,12 @@
           >
             <div class="product">
               <div class="product_img">
-                <div @click.prevent="getProduct(item.id)">
+                <div @click="getProduct(item.id)">
                   <img :src="item.imageUrl" alt="" />
                 </div>
               </div>
               <div class="product_baking">{{ item.baking }}</div>
-              <div class="product_title">{{ item.title }}</div>
+              <div @click="getProduct(item.id)" class="product_title">{{ item.title }}</div>
               <div class="product_dec">
                 {{ item.decription }}
               </div>
@@ -218,10 +218,16 @@ export default {
 }
 .product {
   transition: all 0.3s ease;
-  border-radius: 10px;
-  & > * {
-    padding: 0 10px;
+  background-color: #f9f2e8;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.4);
+    & img {
+      transform: scale(1.1);
+    }
   }
+
   &_img {
     max-width: 100%;
     height: auto;
@@ -231,14 +237,15 @@ export default {
     overflow: hidden;
     cursor: pointer;
     padding: 0;
+    & img {
+      transition: all 0.3s;
+    }
   }
 
   &_title {
     font-size: 20px;
     margin-bottom: 8px;
     font-weight: 600;
-  }
-  &_price {
   }
 
   &_price_1 {
@@ -263,9 +270,6 @@ export default {
   &_baking {
     color: #777;
     font-size: 14px;
-  }
-  &:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 }
 del.product_price_2 {

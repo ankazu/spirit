@@ -96,8 +96,8 @@
           <router-link class="btn btn-primary btn-lg" to="/checkout">下一步</router-link>
         </div>
         <div class="alike">
-          <div class="alike_title">你可能會歡</div>
-          <ProductAlike></ProductAlike>
+          <h2 class="alike_title">你可能會喜歡</h2>
+          <ProductAlike @go-page="getProduct"></ProductAlike>
         </div>
       </section>
     </div>
@@ -190,6 +190,9 @@ export default {
           console.log(res.data.message);
         }
       });
+    },
+    getProduct(id) {
+      this.$router.push(`/product/${id}`);
     },
   },
 };
@@ -333,10 +336,10 @@ export default {
   // border-top: 1px solid #debc8c;
   padding: 20px 0;
   &_title {
-    font-size: 24px;
+    font-size: 32px;
     text-align: center;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 }
 @media only screen and (max-width: 992px) {
