@@ -67,22 +67,22 @@
             </div>
           </div>
         </div>
-        <div class="page" v-if="products.length <= 10 && pageShow">
+        <!-- <div class="page" v-if="products.length <= 10 && pageShow">
           <Pagination :page="pagination" @get-page="getProducts"></Pagination>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Pagination from '@/components/Pagination.vue';
+// import Pagination from '@/components/Pagination.vue';
 import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
 
 export default {
   components: {
-    Pagination,
+    // Pagination,
   },
   data() {
     return {
@@ -112,11 +112,11 @@ export default {
     }
   },
   methods: {
-    getProducts(page = 1) {
+    getProducts() {
       this.isLoading = true;
       this.pageShow = true;
       this.productValue = '';
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.products = res.data.products;
