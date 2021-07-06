@@ -11,13 +11,13 @@
       class="alike ps-0"
     >
       <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
-        <div @click="$emit('go-page', item.id)" class="alike_list_img">
+        <div @click="goProduct(item.id)" class="alike_list_img">
           <img :src="item.imageUrl" alt="" />
         </div>
         <div class="alike_list_baking">
           {{ item.baking }}
         </div>
-        <div @click="$emit('go-page', item.id)" class="alike_list_title">
+        <div @click="goProduct(item.id)" class="alike_list_title">
           {{ item.title }}
         </div>
         <div class="alike_list_desc">
@@ -99,6 +99,10 @@ export default {
         this.getAlike();
       });
     },
+    goProduct(id) {
+      this.$router.push(`/product/${id}`);
+      this.$emit('go-page', id);
+    },
     addToCart(id, qty = 1) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
@@ -160,6 +164,7 @@ export default {
     transition: all 0.3s;
     text-align: left;
     &:hover {
+      background-color: #f5eadb;
       & img {
         transform: scale(1.1);
       }
@@ -174,6 +179,7 @@ export default {
     &_baking {
       color: #777;
       font-size: 14px;
+      margin-top: 5px;
     }
     &_title {
       font-size: 20px;
@@ -191,27 +197,22 @@ export default {
       overflow: hidden;
       display: -webkit-box;
     }
-    &_price {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-    }
     &_price_1 {
       font-size: 1rem;
       margin-bottom: 8px;
-      margin-left: auto;
+      margin-top: 26px;
     }
     &_price_2 {
       font-size: 1rem;
       margin-bottom: 8px;
-      display: inline-block;
+      display: block;
     }
   }
 }
 del.alike_list_price_2 {
   font-size: 12px;
-  display: inline-block;
+  display: block;
+  margin-bottom: 0;
 }
 @media only screen and (max-width: 992px) {
   .alike {

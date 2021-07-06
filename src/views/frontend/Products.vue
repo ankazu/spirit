@@ -223,6 +223,7 @@ export default {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   &:hover {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.4);
+    background-color: #f5eadb;
     & img {
       transform: scale(1.1);
     }
@@ -251,6 +252,7 @@ export default {
   &_price_1 {
     font-size: 1rem;
     margin-bottom: 8px;
+    margin-top: 34px;
   }
   &_price_2 {
     font-size: 1rem;
@@ -274,8 +276,8 @@ export default {
 }
 del.product_price_2 {
   font-size: 12px;
-  display: inline-block;
-  margin-right: 14px;
+  display: block;
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 768px) {

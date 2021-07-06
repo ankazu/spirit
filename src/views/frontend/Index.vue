@@ -56,6 +56,16 @@
 
     <section class="section section_bg">
       <div class="container">
+        <div class="row">
+          <div class="col-6 col-sm-4"></div>
+          <div class="col-6 col-sm-4"></div>
+          <div class="col-6 col-sm-4"></div>
+          <div class="col-6 col-sm-4"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
         <ProductAlike></ProductAlike>
       </div>
     </section>
