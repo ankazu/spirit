@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="col-12 col-lg-6">
-            <div class="text-start description">
+            <div class="text-start description ps-lg-5">
               <h2 class="description_title">{{ tempProduct.title }}</h2>
               <div class="description_detail">
                 <div class="description_detail_origin">
@@ -64,8 +64,6 @@
                 <div class="description_detail_flavor">
                   <span>【 風味 】</span> {{ tempProduct.flavor }}，{{ tempProduct.flavor_sec }}
                 </div>
-
-                {{ tempProduct.decription }}
               </div>
               <div>
                 <div class="product_price_1" v-if="tempProduct.price === tempProduct.origin_price">
@@ -115,6 +113,16 @@
         </div>
       </div>
     </div>
+    <section class="section border-bottom border-primary">
+      <div class="row">
+        <div class="detail col-6 m-auto">
+          <div class="detail_title">風味特性</div>
+          <div class="detail_txt">{{ tempProduct.decription }}</div>
+          <div class="detail_title">產品敘述</div>
+          <div class="detail_txt">{{ tempProduct.content }}</div>
+        </div>
+      </div>
+    </section>
     <section class="section">
       <div class="related">
         <h2>相關產品</h2>
@@ -217,6 +225,12 @@ img {
 .description {
   &_title {
     margin: 0 0 30px;
+    @media only screen and (max-width: 992px) {
+      margin: 40px 0 20px;
+    }
+    @media only screen and (max-width: 600px) {
+      margin: 30px 0 15px;
+    }
   }
   &_detail > div {
     margin-bottom: 10px;
@@ -245,6 +259,20 @@ img {
     display: inline-block;
     background: #fff;
     margin-left: 5px;
+  }
+}
+.detail {
+  &_title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  &_txt {
+    margin-bottom: 30px;
+    line-height: 1.6;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 .section {
