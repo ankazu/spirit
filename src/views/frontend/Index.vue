@@ -54,17 +54,46 @@
       </div>
     </section>
 
-    <section class="section section_bg">
+    <section class="section_2 section_bg">
       <div class="container">
         <div class="row">
-          <div class="col-6 col-sm-4"></div>
-          <div class="col-6 col-sm-4"></div>
-          <div class="col-6 col-sm-4"></div>
-          <div class="col-6 col-sm-4"></div>
+          <div class="col-6 col-sm-3">
+            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
+              <div>
+                使用公平貿易咖啡豆
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
+              <div>
+                當日訂購、當日烘焙
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
+              <div>
+                24小時新鮮出貨
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
+              <div>
+                滿1500享免運
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
     <section class="section">
+      <div class="section_title">
+        <h2>
+          精選商品
+        </h2>
+      </div>
       <div class="container">
         <ProductAlike></ProductAlike>
       </div>
@@ -88,6 +117,9 @@ export default {
 
 .section {
   padding: 120px 20px 190px;
+}
+.section_2 {
+  padding: 100px 0px;
 }
 .section_bg {
   background: #f5eadb;
@@ -188,6 +220,20 @@ export default {
     height: 42px;
     left: -6%;
     top: 5px;
+  }
+}
+// section_2
+.four_step {
+  & div {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    font-size: 22px;
+    padding: 20px;
+    border-radius: 20px;
   }
 }
 @media only screen and (max-width: 1200px) {
