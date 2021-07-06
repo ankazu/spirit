@@ -15,8 +15,12 @@ const routes = [
         component: () => import('../views/frontend/About.vue'),
       },
       {
-        path: 'about-coffee',
-        component: () => import('../views/frontend/Aboutcoffee.vue'),
+        path: 'coffee',
+        component: () => import('../views/frontend/Coffee.vue'),
+      },
+      {
+        path: 'coffee/:id',
+        component: () => import('../views/frontend/Coffeedetail.vue'),
       },
       {
         path: 'products',

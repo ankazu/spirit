@@ -77,7 +77,7 @@
             <router-link class="nav_link" to="/about">關於我們</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav_link" to="/about-coffee">關於咖啡</router-link>
+            <router-link class="nav_link" to="/coffee">關於咖啡</router-link>
           </li>
         </ul>
       </div>

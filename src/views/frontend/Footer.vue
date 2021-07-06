@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-secondary">
     <div class="container">
-      <div class="">
+      <div class="spirit">
         Spirit coffee
       </div>
     </div>

@@ -9,7 +9,15 @@
     <router-link to="/" class="btn btn-outline-primary mt-4">回首頁</router-link>
   </div>
 </template>
+<script>
+import emitter from '@/methods/eventBus';
 
+export default {
+  mounted() {
+    emitter.emit('updata-cart');
+  },
+};
+</script>
 <style lang="scss" scoped>
 img {
   border-radius: 20px;
