@@ -115,7 +115,7 @@
     </div>
     <section class="section border-bottom border-primary">
       <div class="row">
-        <div class="detail col-6 m-auto">
+        <div class="detail col-12 col-md-6 m-auto">
           <div class="detail_title">風味特性</div>
           <div class="detail_txt">{{ tempProduct.decription }}</div>
           <div class="detail_title">產品敘述</div>
@@ -225,6 +225,7 @@ img {
 .description {
   &_title {
     margin: 0 0 30px;
+    font-size: 2.25rem;
     @media only screen and (max-width: 992px) {
       margin: 40px 0 20px;
     }
@@ -236,7 +237,7 @@ img {
     margin-bottom: 10px;
   }
   &_detail_title {
-    font-size: 22px;
+    font-size: 24px;
     margin-bottom: 5px;
   }
   &_detail > div span {
@@ -263,7 +264,7 @@ img {
 }
 .detail {
   &_title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 15px;
   }
@@ -280,7 +281,7 @@ img {
 }
 .related {
   & h2 {
-    font-size: 32px;
+    font-size: 2.25rem;
     font-weight: 600;
     margin-bottom: 40px;
   }

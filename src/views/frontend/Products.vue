@@ -207,6 +207,11 @@ export default {
 .nav_left ul {
   padding: 0;
   margin: 0;
+  & li {
+    &:hover {
+      background: #f5eadb;
+    }
+  }
 }
 
 .nav_left ul li,

@@ -81,7 +81,7 @@
           <div class="col-6 col-sm-3">
             <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
               <div>
-                滿1500享免運
+                滿1500元享免運
               </div>
             </div>
           </div>
