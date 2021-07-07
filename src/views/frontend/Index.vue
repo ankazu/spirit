@@ -53,8 +53,48 @@
         </div>
       </div>
     </section>
+    <section class="">
+      <div class="container blog">
+        <div class="blog_item">
+          <div class="blog_pic">
+            <a href="#">
+              <img src="../../../public/images/blog-1.jpg" alt="" />
+            </a>
+          </div>
+          <div class="blog_txt">
+            <div class="blog_txt_title">使用公平貿易咖啡豆</div>
+            <div class="blog_txt_des">
+              友善小農、友善環境、友善消費者
+            </div>
+          </div>
+        </div>
+        <div class="blog_item">
+          <div class="blog_pic">
+            <a href="#">
+              <img src="../../../public/images/blog-2.jpg" alt="" />
+            </a>
+          </div>
+          <div class="blog_txt">
+            <div class="blog_txt_title">手沖咖啡教室</div>
+            <div class="blog_txt_des">
+              在家就能做出一杯美味的咖啡
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section ">
+      <div class="section_title">
+        <h2>
+          精選商品
+        </h2>
+      </div>
+      <div class="container pe-0 ps-0">
+        <ProductAlike></ProductAlike>
+      </div>
+    </section>
 
-    <section class="section_2 section_bg">
+    <!-- <section class="section_2 section_bg">
       <div class="container">
         <div class="row">
           <div class="col-6 col-sm-3">
@@ -87,17 +127,7 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="section">
-      <div class="section_title">
-        <h2>
-          精選商品
-        </h2>
-      </div>
-      <div class="container">
-        <ProductAlike></ProductAlike>
-      </div>
-    </section>
+    </section> -->
   </div>
 </template>
 <script>
@@ -117,6 +147,9 @@ export default {
 
 .section {
   padding: 120px 20px 190px;
+  @media only screen and (max-width: 600px) {
+    padding: 60px 20px 100px;
+  }
 }
 .section_2 {
   padding: 100px 0px;
@@ -125,11 +158,11 @@ export default {
   background: #f5eadb;
 }
 .section_title {
-  max-width: 550px;
+  max-width: 620px;
   margin: 0 auto 70px;
 }
 .section_title h2 {
-  font-size: 32px;
+  font-size: 2.25rem;
   font-weight: 600;
 }
 .section_title p {
@@ -146,11 +179,37 @@ export default {
   &:nth-of-type(3) {
     flex-direction: row-reverse;
   }
+  &:hover img {
+    transform: scale(0.9, 0.9);
+    transition: all 0.5s ease 0s;
+  }
+  &:hover &_img::after {
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease 0s;
+  }
   &_img {
     width: 50%;
     line-height: 0;
+    position: relative;
+    &::after {
+      content: '';
+      background-color: #eedbc0;
+      width: 0%;
+      height: 0%;
+      position: absolute;
+      bottom: 50%;
+      right: 50%;
+      z-index: -1;
+      transition: all 0.5s ease 0s;
+      border-radius: 2px;
+    }
+
     & img {
-      border-radius: 20px;
+      border-radius: 2px;
+      transition: all 0.3s;
     }
   }
   &_txt {
@@ -177,6 +236,7 @@ export default {
     content: '';
     margin-bottom: 20px;
     border-radius: 50%;
+    transition: all 2s ease 0s;
   }
 }
 // 按鈕
@@ -234,6 +294,71 @@ export default {
     font-size: 22px;
     padding: 20px;
     border-radius: 20px;
+  }
+}
+// blog
+.blog {
+  display: flex;
+  flex-wrap: wrap;
+  &_item {
+    width: 43.516%;
+    margin: 0 12.968% 0 0;
+    &:last-child {
+      margin: 0;
+    }
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      margin: 0 0 50px 0;
+      &:last-child {
+        margin: 0 0 50px 0;
+      }
+    }
+  }
+  &_pic {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 40px;
+    @media only screen and (max-width: 600px) {
+      margin-bottom: 30px;
+    }
+    & img {
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    &:hover img {
+      transform: scale(0.9, 0.9);
+      transition: all 0.5s ease 0s;
+    }
+    &:after {
+      content: '';
+      background-color: #eedbc0;
+      width: 0%;
+      height: 0%;
+      position: absolute;
+      bottom: 50%;
+      right: 50%;
+      z-index: -1;
+      transition: all 0.5s ease 0s;
+      border-radius: 2px;
+    }
+    &:hover:after {
+      bottom: 0px;
+      right: 0px;
+      width: 100%;
+      height: 100%;
+      transition: all 0.5s ease 0s;
+    }
+  }
+  &_txt {
+    text-align: left;
+    &_title {
+      font-size: 2.25rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      @media only screen and (max-width: 992px) {
+        font-size: 24px;
+      }
+    }
   }
 }
 @media only screen and (max-width: 1200px) {
