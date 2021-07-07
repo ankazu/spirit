@@ -16,11 +16,11 @@ const routes = [
       },
       {
         path: 'coffee',
-        component: () => import('../views/frontend/Coffee.vue'),
+        component: () => import('../views/frontend/AboutCoffee.vue'),
       },
       {
         path: 'coffee/:id',
-        component: () => import('../views/frontend/Coffeedetail.vue'),
+        component: () => import('../views/frontend/AboutCoffeeDetail.vue'),
       },
       {
         path: 'products',
@@ -40,7 +40,7 @@ const routes = [
       },
       {
         path: 'checkoutpaid',
-        component: () => import('../views/frontend/Checkoutpaid.vue'),
+        component: () => import('../views/frontend/CheckoutPaid.vue'),
       },
       {
         path: ':patchMatch(.*)*',

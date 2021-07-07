@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Loading :active="isLoading"></Loading>
+    <loading :active="isLoading"></loading>
     <div class="text-end mt-4">
       <button class="btn btn-primary" type="button" @click="openModal(true)">
-        建立新的頁面
+        建立新的貼文
       </button>
     </div>
     <table class="table mt-4">

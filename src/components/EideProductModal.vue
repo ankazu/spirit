@@ -112,7 +112,7 @@
                   />
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="price">單位</label>
+                  <label for="unit">單位</label>
                   <input
                     id="unit"
                     type="text"

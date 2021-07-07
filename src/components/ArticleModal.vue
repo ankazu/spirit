@@ -17,7 +17,7 @@
           </h5>
           <button
             type="button"
-            class="btn-close"
+            class="btn-close btn-close-white"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
@@ -77,7 +77,9 @@
                       class="btn btn-outline-danger"
                       @click="tempArticle.tag.splice(key, 1)"
                     >
-                      <i class="bi bi-x"></i>
+                      <span class="material-icons close_icon">
+                        close
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -181,8 +183,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .ck-editor__editable_inline {
   min-height: 300px;
+}
+.close_icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 </style>
