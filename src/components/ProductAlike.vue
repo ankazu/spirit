@@ -39,7 +39,7 @@
             :disabled="loadingStatus.loadingItem === item.id"
             @click="addToCart(item.id)"
             type="button"
-            class="btn btn-primary"
+            class="btn btn-primary w-100"
           >
             <i
               class="spinner-border spinner-border-sm"

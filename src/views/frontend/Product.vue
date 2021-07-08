@@ -66,7 +66,7 @@
                   <span>【 風味 】</span> {{ tempProduct.flavor }}，{{ tempProduct.flavor_sec }}
                 </div>
               </div>
-              <div>
+              <div class="mt-5">
                 <div class="product_price_1" v-if="tempProduct.price === tempProduct.origin_price">
                   {{ $filters.currency(tempProduct.origin_price) }} 元 / {{ tempProduct.unit }}
                 </div>
@@ -77,7 +77,7 @@
                   特價 {{ $filters.currency(tempProduct.price) }} 元 / {{ tempProduct.unit }}
                 </div>
               </div>
-              <div class="d-flex align-items-center mt-5">
+              <div class="d-flex align-items-center mt-2">
                 <div class="d-flex me-3">
                   <button
                     type="button"

@@ -95,11 +95,11 @@
           <router-link class="btn btn-outline-primary btn-lg" to="/products">繼續購物</router-link>
           <router-link class="btn btn-primary btn-lg" to="/checkout">下一步</router-link>
         </div>
-        <div class="alike">
-          <h2 class="alike_title">你可能會喜歡</h2>
-          <ProductAlike @go-page="getProduct"></ProductAlike>
-        </div>
       </section>
+      <div class="alike">
+        <h2 class="alike_title">你可能會喜歡</h2>
+        <ProductAlike @go-page="getProduct"></ProductAlike>
+      </div>
     </div>
   </div>
 </template>

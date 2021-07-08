@@ -9,7 +9,7 @@
     <section class="section container">
       <div class="section_title">
         <p>Spirit Coffee</p>
-        <h2 class="tracking-in-expand"><span>喝杯咖啡，</span>讓您平常的一天好過一點。</h2>
+        <h2 class="tracking-in-expand wow"><span>喝杯咖啡，</span>讓您平常的一天好過一點。</h2>
       </div>
       <div class="features">
         <div class="features_img">
@@ -53,9 +53,9 @@
         </div>
       </div>
     </section>
-    <section class="">
+    <section class="section_2">
       <div class="container blog">
-        <div class="blog_item">
+        <div class="blog_item" data-aos="fade-left">
           <div class="blog_pic">
             <a href="#">
               <img src="../../../public/images/blog-1.jpg" alt="" />
@@ -137,6 +137,9 @@ export default {
   components: {
     ProductAlike,
   },
+  mounted() {
+    new this.$wow.WOW({ live: true }).init();
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -152,7 +155,7 @@ export default {
   }
 }
 .section_2 {
-  padding: 100px 0px;
+  padding: 0px 0px 100px;
 }
 .section_bg {
   background: #f5eadb;
