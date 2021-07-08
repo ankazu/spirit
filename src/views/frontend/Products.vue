@@ -1,6 +1,7 @@
 <template>
   <loading :active="isLoading"></loading>
   <div class="container">
+    <Path :path-data="pathData"></Path>
     <div class="row mt-4">
       <div class="col-12 col-md-3 col-lg-2 nav_left" ref="navLeft">
         <div class="bg-primary nav_tar">
@@ -79,10 +80,11 @@
 // import Pagination from '@/components/Pagination.vue';
 import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
+import Path from '@/components/Path.vue';
 
 export default {
   components: {
-    // Pagination,
+    Path,
   },
   data() {
     return {
@@ -94,6 +96,15 @@ export default {
       category: '',
       pageShow: true,
       productValue: '',
+      pathData: {
+        previous: [
+          {
+            title: '首頁',
+            url: '/',
+          },
+        ],
+        purpose: '產品列表',
+      },
     };
   },
   mounted() {

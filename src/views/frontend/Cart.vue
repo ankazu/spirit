@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <section class="section_empty" v-if="cart.carts?.length === 0">
         <div class="empty_cart mt-4">
-          <img src="../../assets/images/empty_cart.jpg" alt="" />
+          <img src="../../../public/images/empty_cart.jpg" alt="" />
           <div class="mt-4">
             您的購物車是空的，<br />
             趕快放入喜歡的商品吧！

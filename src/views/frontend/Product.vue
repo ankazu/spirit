@@ -1,6 +1,7 @@
 <template>
   <loading :active="isLoading"></loading>
   <div class="container mt-5 ">
+    <Path :path-data="pathData"></Path>
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10 ">
         <div class="row">
@@ -136,6 +137,7 @@
 import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
 import ProductAlike from '@/components/ProductAlike.vue';
+import Path from '@/components/Path.vue';
 
 export default {
   data() {
@@ -149,10 +151,18 @@ export default {
       acidity_sec: 0,
       bitterness_one: 0,
       bitterness_sec: 0,
+      pathData: {
+        previous: [
+          { title: '首頁', url: '/home' },
+          { title: '產品列表', url: '/products' },
+        ],
+        purpose: '',
+      },
     };
   },
   components: {
     ProductAlike,
+    Path,
   },
   created() {
     const { id } = this.$route.params;
@@ -166,6 +176,7 @@ export default {
         if (res.data.success) {
           this.tempProduct = res.data.product;
           this.productImg = this.tempProduct.imageUrl;
+          this.pathData.purpose = this.tempProduct.title;
           this.isLoading = false;
           this.cubeCount();
           console.log(this.tempProduct);

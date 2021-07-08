@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="banner">
-      <img src="../../assets/images/banner01.jpg" alt="" />
+      <img src="../../../public/images/banner01.jpg" alt="" />
       <div class="banner_txtbox">
         <div></div>
       </div>
@@ -13,7 +13,7 @@
       </div>
       <div class="features">
         <div class="features_img">
-          <img src="../../assets/images/features-1.jpg" alt="" />
+          <img src="../../../public/images/features-1.jpg" alt="" />
         </div>
         <div class="features_txt">
           <div class="features_icon"></div>
@@ -30,7 +30,7 @@
       </div>
       <div class="features">
         <div class="features_img">
-          <img src="../../assets/images/features-2.jpg" alt="" />
+          <img src="../../../public/images/features-2.jpg" alt="" />
         </div>
         <div class="features_txt">
           <div class="features_icon"></div>
@@ -196,7 +196,7 @@ export default {
     position: relative;
     &::after {
       content: '';
-      background-color: #eedbc0;
+      background-color: #f5eadb;
       width: 0%;
       height: 0%;
       position: absolute;
@@ -331,7 +331,7 @@ export default {
     }
     &:after {
       content: '';
-      background-color: #eedbc0;
+      background-color: #f5eadb;
       width: 0%;
       height: 0%;
       position: absolute;
