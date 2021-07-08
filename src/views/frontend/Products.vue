@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-12 col-md-9 col-lg-10 ms-md-auto">
+      <div class="col-12 col-md-9 col-lg-10 pe-lg-4 ms-md-auto">
         <div class="row">
           <div
             class="col-6 col-sm-4 col-xl-3 mb-5 text-start"

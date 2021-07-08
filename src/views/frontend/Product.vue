@@ -282,6 +282,7 @@ img {
   &_txt {
     margin-bottom: 30px;
     line-height: 1.6;
+    white-space: pre;
     &:last-child {
       margin-bottom: 0;
     }

@@ -8,11 +8,11 @@
     </div>
     <section class="section container">
       <div class="section_title">
-        <p>Spirit Coffee</p>
+        <p class="focus-in-expand wow">Spirit Coffee</p>
         <h2 class="tracking-in-expand wow"><span>喝杯咖啡，</span>讓您平常的一天好過一點。</h2>
       </div>
       <div class="features">
-        <div class="features_img">
+        <div class="features_img fade-in-right wow">
           <img src="../../../public/images/features-1.jpg" alt="" />
         </div>
         <div class="features_txt">
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="features">
-        <div class="features_img">
+        <div class="features_img fade-in-left wow">
           <img src="../../../public/images/features-2.jpg" alt="" />
         </div>
         <div class="features_txt">
@@ -56,7 +56,7 @@
     <section class="section_2">
       <div class="container blog">
         <div class="blog_item" data-aos="fade-left">
-          <div class="blog_pic">
+          <div class="blog_pic fade-in-right wow">
             <a href="#">
               <img src="../../../public/images/blog-1.jpg" alt="" />
             </a>
@@ -69,7 +69,7 @@
           </div>
         </div>
         <div class="blog_item">
-          <div class="blog_pic">
+          <div class="blog_pic fade-in-left wow">
             <a href="#">
               <img src="../../../public/images/blog-2.jpg" alt="" />
             </a>
@@ -406,6 +406,112 @@ export default {
   }
 }
 // animation
+.fade-in-right {
+  -webkit-animation: fade-in-right 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-right 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+@-webkit-keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.fade-in-left {
+  -webkit-animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+@-webkit-keyframes fade-in-left {
+  0% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-left {
+  0% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes swing-in-right-bck {
+  0% {
+    -webkit-transform: rotateY(70deg);
+    transform: rotateY(70deg);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    opacity: 1;
+  }
+}
+
+.focus-in-expand {
+  -webkit-animation: focus-in-expand 0.8s ease-out 0.5s both;
+  animation: focus-in-expand 0.8s ease-out 0.5s both;
+}
+@-webkit-keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
 .tracking-in-expand {
   -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;

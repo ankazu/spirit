@@ -22,7 +22,7 @@ import 'bootstrap';
 import './assets/all.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import wow from 'wowjs';
+import $wow from 'wowjs';
 // methods
 import { date, currency } from './methods/filters';
 
@@ -42,7 +42,7 @@ AOS.init({
   once: true,
 });
 const app = createApp(App);
-app.config.globalProperties.$wow = wow;
+app.config.globalProperties.$wow = $wow;
 
 app.config.globalProperties.$filters = {
   date,
