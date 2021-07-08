@@ -10,7 +10,7 @@
             expand_more
           </span>
         </div>
-        <ul ref="navLeftUl">
+        <ul :class="{ open: sideUl }">
           <li @click="getProducts()" :class="{ active: productValue === '' }">全部產品</li>
           <li
             v-for="item in product_category"
@@ -51,12 +51,12 @@
                   特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
                 </div>
               </div>
-              <div class="d-flex pb-2 mt-2">
+              <div class="d-flex mt-2">
                 <button
                   :disabled="loadingStatus.loadingItem === item.id"
                   @click="addToCart(item.id)"
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-primary w-100"
                 >
                   <i
                     class="spinner-border spinner-border-sm"
@@ -96,6 +96,7 @@ export default {
       category: '',
       pageShow: true,
       productValue: '',
+      sideUl: false,
       pathData: {
         previous: [
           {
@@ -111,13 +112,11 @@ export default {
     this.getProducts();
     if (window.innerWidth < 769) {
       const sideBtn = this.$refs.navLeft;
-      sideBtn.addEventListener('click', (e) => {
-        if (
-          e.target.classList.contains('nav_tar')
-          || e.target.classList.contains('material-icons')
-        ) {
-          const siblings = this.$refs.navLeftUl;
-          siblings.classList.toggle('open');
+      sideBtn.addEventListener('click', () => {
+        if (this.sideUl) {
+          this.sideUl = false;
+        } else {
+          this.sideUl = true;
         }
       });
     }
@@ -132,6 +131,7 @@ export default {
         if (res.data.success) {
           this.products = res.data.products;
           this.pagination = res.data.pagination;
+          this.sideUl = false;
           console.log(this.products);
           // 篩選種類
           this.products.filter((item) => {
@@ -185,6 +185,7 @@ export default {
             emitter.emit('updata-cart');
             swalert('success', '已加入購物車');
             this.isLoading = false;
+            this.sideUl = false;
           } else {
             console.log(res.data.message);
           }
