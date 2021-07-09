@@ -13,7 +13,7 @@
         <ul :class="{ open: sideUl }">
           <li @click="getProducts()" :class="{ active: productValue === '' }">全部產品</li>
           <li
-            v-for="item in product_category"
+            v-for="item in category"
             :key="item.id"
             @click="filterCategory(item)"
             :class="{ active: item === productValue }"
@@ -22,11 +22,11 @@
           </li>
         </ul>
       </div>
-      <div class="col-12 col-md-9 col-lg-10 pe-lg-4 ms-md-auto">
+      <div class="col-12 col-md-9 col-lg-10 ms-md-auto">
         <div class="row">
           <div
             class="col-6 col-sm-4 col-xl-3 mb-5 text-start"
-            v-for="item in products"
+            v-for="item in pageProducts"
             :key="item.id"
           >
             <div class="product">
@@ -68,16 +68,16 @@
             </div>
           </div>
         </div>
-        <!-- <div class="page" v-if="products.length <= 10 && pageShow">
-          <Pagination :page="pagination" @get-page="getProducts"></Pagination>
-        </div> -->
+        <div class="page" v-if="products.length <= 10 && pageShow">
+          <Pagination :page="pages" @get-page="getCurrentPage"></Pagination>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import Pagination from '@/components/Pagination.vue';
+import Pagination from '@/components/Pagination.vue';
 import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
 import Path from '@/components/Path.vue';
@@ -85,15 +85,24 @@ import Path from '@/components/Path.vue';
 export default {
   components: {
     Path,
+    Pagination,
   },
   data() {
     return {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
       products: [],
-      pagination: {},
-      product_category: [],
-      category: '',
+      filterProduct: [],
+      pages: {
+        dataLen: 0, // 全部資料長度
+        total_pages: 1, // 根據產品總筆數算出的總頁數
+        perpage: 12, // 預設每頁顯示幾筆資料
+        current_page: 1, // 當前頁數
+        has_pre: false,
+        has_next: true,
+      },
+      pageProducts: [],
+      category: [],
       pageShow: true,
       productValue: '',
       sideUl: false,
@@ -130,16 +139,15 @@ export default {
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.products = res.data.products;
-          this.pagination = res.data.pagination;
-          this.sideUl = false;
           console.log(this.products);
-          // 篩選種類
-          this.products.filter((item) => {
-            if (this.product_category.indexOf(item.category) === -1) {
-              this.product_category.push(item.category);
-            }
-            return false;
+          // 種類
+          const categories = new Set();
+          this.products.forEach((item) => {
+            categories.add(item.category);
           });
+          this.category = Array.from(categories);
+          this.getProductsList(this.products);
+          console.log(this.category);
           this.isLoading = false;
         } else {
           console.log(res.data.message);
@@ -190,6 +198,37 @@ export default {
             console.log(res.data.message);
           }
         });
+    },
+    getProductsList(productslist) {
+      // 客製化 Pagination
+      this.pages.dataLen = productslist.length; // 取得全部資料長度
+      this.pages.page_total = Math.ceil(this.pages.dataLen / this.pages.perpage);
+      if (this.pages.current_page > this.pages.page_total) {
+        this.pages.current_page = this.pages.page_total;
+      }
+      const minData = this.pages.current_page * this.pages.perpage - this.pages.perpage + 1;
+      const maxData = this.pages.current_page * this.pages.perpage;
+      productslist.forEach((item, index) => {
+        const num = index + 1;
+        if (num >= minData && num <= maxData) {
+          this.pageProducts.push(item);
+        }
+      });
+      console.log(this.pageProducts);
+    },
+    getCurrentPage(getPage) {
+      this.pages.current_page = getPage;
+      if (getPage > 1) {
+        this.pages.has_pre = true;
+      } else if (getPage === this.pages.current_page) {
+        this.pages.has_pre = false;
+      }
+      if (getPage < this.pages.pageTotal) {
+        this.pages.has_next = true;
+      } else if (getPage === this.pages.page_total) {
+        this.pages.has_next = false;
+      }
+      this.getProducts();
     },
   },
 };
