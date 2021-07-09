@@ -39,7 +39,8 @@ configure({
 // 設定預設語系
 setLocale('zh_TW');
 AOS.init({
-  once: true,
+  duration: 1200,
+  easing: 'ease-in-out-back',
 });
 const app = createApp(App);
 app.config.globalProperties.$wow = $wow;

@@ -117,6 +117,7 @@ export default {
       },
     };
   },
+  computed: {},
   mounted() {
     this.getProducts();
     if (window.innerWidth < 769) {
@@ -147,7 +148,6 @@ export default {
           });
           this.category = Array.from(categories);
           this.getProductsList(this.products);
-          console.log(this.category);
           this.isLoading = false;
         } else {
           console.log(res.data.message);
@@ -163,7 +163,7 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
-          this.products = res.data.products.filter((product) => {
+          this.pageProducts = res.data.products.filter((product) => {
             if (product.category === e) {
               this.productValue = e;
               return product;
@@ -174,6 +174,7 @@ export default {
             }
             return false;
           });
+          this.getProductsList(this.pageProducts);
           this.isLoading = false;
         } else {
           console.log(res.data.message);
@@ -202,9 +203,9 @@ export default {
     getProductsList(productslist) {
       // 客製化 Pagination
       this.pages.dataLen = productslist.length; // 取得全部資料長度
-      this.pages.page_total = Math.ceil(this.pages.dataLen / this.pages.perpage);
-      if (this.pages.current_page > this.pages.page_total) {
-        this.pages.current_page = this.pages.page_total;
+      this.pages.total_pages = Math.ceil(this.pages.dataLen / this.pages.perpage);
+      if (this.pages.current_page > this.pages.total_pages) {
+        this.pages.current_page = this.pages.total_pages;
       }
       const minData = this.pages.current_page * this.pages.perpage - this.pages.perpage + 1;
       const maxData = this.pages.current_page * this.pages.perpage;
@@ -223,9 +224,9 @@ export default {
       } else if (getPage === this.pages.current_page) {
         this.pages.has_pre = false;
       }
-      if (getPage < this.pages.pageTotal) {
+      if (getPage < this.pages.total_pages) {
         this.pages.has_next = true;
-      } else if (getPage === this.pages.page_total) {
+      } else if (getPage === this.pages.total_pages) {
         this.pages.has_next = false;
       }
       this.getProducts();
