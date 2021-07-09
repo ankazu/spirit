@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-        <div class="page">
+        <div class="page" v-if="pageShow">
           <Pagination :page="pages" @get-page="getCurrentPage"></Pagination>
         </div>
       </div>
@@ -92,7 +92,6 @@ export default {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
       products: [],
-      filterProduct: [],
       pages: {
         dataLen: 0, // 全部資料長度
         total_pages: 1, // 根據產品總筆數算出的總頁數
@@ -209,12 +208,19 @@ export default {
       }
       const minData = this.pages.current_page * this.pages.perpage - this.pages.perpage + 1;
       const maxData = this.pages.current_page * this.pages.perpage;
+      this.pageProducts = [];
       productslist.forEach((item, index) => {
         const num = index + 1;
         if (num >= minData && num <= maxData) {
           this.pageProducts.push(item);
         }
       });
+      if (this.pages.dataLen <= 12) {
+        this.pageShow = false;
+      } else {
+        this.pageShow = true;
+      }
+      console.log(this.pageProducts.length);
       console.log(this.pageProducts);
     },
     getCurrentPage(getPage) {
