@@ -217,8 +217,8 @@ export default {
       }
     },
     cubeCount() {
-      const num1 = JSON.parse(this.tempProduct.acidity);
-      const num2 = JSON.parse(this.tempProduct.Bitterness);
+      const num1 = parseInt(this.tempProduct.acidity, 10);
+      const num2 = parseInt(this.tempProduct.Bitterness, 10);
       this.acidity_one = num1;
       this.acidity_sec = Math.abs(num1 - 5);
       this.bitterness_one = num2;
