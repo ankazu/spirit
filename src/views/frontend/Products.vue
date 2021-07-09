@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-        <div class="page" v-if="products.length <= 10 && pageShow">
+        <div class="page">
           <Pagination :page="pages" @get-page="getCurrentPage"></Pagination>
         </div>
       </div>
