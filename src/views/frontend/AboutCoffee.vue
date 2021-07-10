@@ -15,10 +15,12 @@
   <!-- content -->
   <div class="container">
     <Path :path-data="pathData"></Path>
-    <div class="mt-4">
+    <div class="mt-4 d-flex flex-wrap">
       <div class="art mb-4" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">
         <div class="art_img">
-          <img :src="item.imageUrl" alt="" />
+          <div>
+            <img :src="item.imageUrl" alt="" />
+          </div>
         </div>
         <div class="art_txt">
           <div class="art_txt_title">
@@ -99,6 +101,21 @@ export default {
   &_img {
     width: 200px;
     transition: all 0.3s;
+    position: relative;
+    padding-bottom: 26%;
+    overflow: hidden;
+    & div {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      line-height: 0;
+      & img {
+        height: 100%;
+      }
+    }
   }
   &_txt {
     width: calc(100% - 200px);

@@ -17,15 +17,17 @@
     <Path :path-data="pathData"></Path>
     <div class="row">
       <div class="col-lg-8 me-auto ms-auto">
-        <div class="blog ">
-          <div class="blog_tag"><span v-html="article.tag"></span></div>
-          <div class="blog_img">
-            <img :src="article.imageUrl" alt="" />
+        <div class="art ">
+          <div class="art_tag"><span v-html="article.tag"></span></div>
+          <div class="art_img">
+            <div>
+              <img :src="article.imageUrl" alt="" />
+            </div>
           </div>
-          <div class="blog_des">
+          <div class="art_des">
             <h2>{{ article.description }}</h2>
           </div>
-          <div class="blog_txt" v-html="article.content"></div>
+          <div class="art_txt" v-html="article.content"></div>
         </div>
       </div>
     </div>
@@ -79,10 +81,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.blog {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
+.art {
   margin: 0 auto;
   max-width: 700px;
   &_tag {
@@ -97,7 +96,21 @@ export default {
     }
   }
   &_img {
-    margin: 0 auto;
+    position: relative;
+    padding-bottom: 67%;
+    overflow: hidden;
+    & div {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      line-height: 0;
+      & img {
+        height: 100%;
+      }
+    }
   }
   &_des {
     text-align: left;
