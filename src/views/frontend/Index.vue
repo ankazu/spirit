@@ -11,8 +11,8 @@
         <p class="focus-in-expand wow">Spirit Coffee</p>
         <h2 class="tracking-in-expand wow"><span>喝杯咖啡，</span>讓您平常的一天好過一點。</h2>
       </div>
-      <div class="features">
-        <div class="features_img fade-in-right wow">
+      <div class="features fade-in-right wow">
+        <div class="features_img ">
           <img src="../../../public/images/features-1.jpg" alt="" />
         </div>
         <div class="features_txt">
@@ -28,8 +28,8 @@
           </p>
         </div>
       </div>
-      <div class="features">
-        <div class="features_img fade-in-left wow">
+      <div class="features fade-in-left wow">
+        <div class="features_img ">
           <img src="../../../public/images/features-2.jpg" alt="" />
         </div>
         <div class="features_txt">
@@ -44,19 +44,19 @@
             </span>
           </p>
           <div class="mybtn">
-            <a class="mybtn_link" href="">
+            <router-link to="/products" class="mybtn_link" href="">
               <span>
-                查看商品
+                選購商品
               </span>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
     </section>
     <section class="section_2">
       <div class="container blog">
-        <div class="blog_item" data-aos="fade-left">
-          <div class="blog_pic fade-in-right wow">
+        <div class="blog_item fade-in-right wow">
+          <div class="blog_pic ">
             <a href="#">
               <img src="../../../public/images/blog-1.jpg" alt="" />
             </a>
@@ -68,8 +68,8 @@
             </div>
           </div>
         </div>
-        <div class="blog_item">
-          <div class="blog_pic fade-in-left wow">
+        <div class="blog_item  fade-in-left wow">
+          <div class="blog_pic">
             <a href="#">
               <img src="../../../public/images/blog-2.jpg" alt="" />
             </a>
