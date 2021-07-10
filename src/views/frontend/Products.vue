@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-12 col-md-9 col-lg-10 ms-md-auto">
+      <div class="col-12 col-md-9 col-lg-10 ms-md-auto ps-md-4">
         <div class="row">
           <div
             class="col-6 col-sm-4 col-xl-3 mb-5 text-start"
@@ -116,7 +116,6 @@ export default {
       },
     };
   },
-  computed: {},
   mounted() {
     this.getProducts();
     if (window.innerWidth < 769) {
@@ -159,26 +158,19 @@ export default {
     filterCategory(e) {
       this.isLoading = true;
       this.pageShow = false;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
-      this.$http.get(api).then((res) => {
-        if (res.data.success) {
-          this.pageProducts = res.data.products.filter((product) => {
-            if (product.category === e) {
-              this.productValue = e;
-              return product;
-            }
-            if (e === undefined) {
-              this.productValue = 1;
-              return this.products;
-            }
-            return false;
-          });
-          this.getProductsList(this.pageProducts);
-          this.isLoading = false;
-        } else {
-          console.log(res.data.message);
+      this.pageProducts = this.products.filter((product) => {
+        if (product.category === e) {
+          this.productValue = e;
+          return product;
         }
+        if (e === undefined) {
+          this.productValue = 1;
+          return this.products;
+        }
+        return false;
       });
+      this.getProductsList(this.pageProducts);
+      this.isLoading = false;
     },
     addToCart(id, qty = 1) {
       this.isLoading = true;
@@ -220,8 +212,6 @@ export default {
       } else {
         this.pageShow = true;
       }
-      console.log(this.pageProducts.length);
-      console.log(this.pageProducts);
     },
     getCurrentPage(getPage) {
       this.pages.current_page = getPage;

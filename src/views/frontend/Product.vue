@@ -1,8 +1,8 @@
 <template>
   <loading :active="isLoading"></loading>
-  <div class="container mt-5 ">
+  <div class="container ">
     <Path :path-data="pathData"></Path>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4">
       <div class="col-12 col-lg-10 ">
         <div class="row">
           <div class="col-12 col-lg-6">
