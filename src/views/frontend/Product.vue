@@ -39,30 +39,33 @@
                 <div class="description_detail_origin">
                   <span>【 產地 】</span>{{ tempProduct.origin }}
                 </div>
-                <div class="description_detail_variety">
+                <div class="description_detail_variety" v-if="tempProduct.variety">
                   <span>【 品種 】</span>{{ tempProduct.variety }}
                 </div>
-                <div class="description_baking">
+                <div class="description_baking" v-if="tempProduct.baking">
                   <span>【 烘焙度 】</span>{{ tempProduct.baking }}
                 </div>
-                <div class="description_detail_approach">
+                <div class="description_detail_approach" v-if="tempProduct.approach">
                   <span>【 處理法 】</span>{{ tempProduct.approach }}
                 </div>
-                <div class="description_detail_acidity">
+                <div class="description_detail_acidity" v-if="tempProduct.acidity">
                   <span>【 酸度 】</span>
                   <div class="cube">
                     <div class="cube_black" v-for="item in acidity_one" :key="item"></div>
                     <div class="cube_white" v-for="item in acidity_sec" :key="item"></div>
                   </div>
                 </div>
-                <div class="description_detail_Bitterness">
+                <div class="description_detail_Bitterness" v-if="tempProduct.Bitterness">
                   <span>【 苦度 】</span>
                   <div class="cube">
                     <div class="cube_black" v-for="item in bitterness_one" :key="item"></div>
                     <div class="cube_white" v-for="item in bitterness_sec" :key="item"></div>
                   </div>
                 </div>
-                <div class="description_detail_flavor">
+                <div
+                  class="description_detail_flavor"
+                  v-if="tempProduct.flavor && tempProduct.flavor_sec"
+                >
                   <span>【 風味 】</span> {{ tempProduct.flavor }}，{{ tempProduct.flavor_sec }}
                 </div>
               </div>
@@ -282,7 +285,7 @@ img {
   &_txt {
     margin-bottom: 30px;
     line-height: 1.6;
-    white-space: pre;
+    // white-space: pre;
     &:last-child {
       margin-bottom: 0;
     }
