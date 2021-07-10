@@ -24,3 +24,9 @@ export default {
   props: ['pathData'],
 };
 </script>
+
+<style lang="scss" scoped>
+nav {
+  padding: 15px 0;
+}
+</style>
