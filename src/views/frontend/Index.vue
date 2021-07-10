@@ -54,34 +54,7 @@
       </div>
     </section>
     <section class="section_2">
-      <div class="container blog">
-        <div class="blog_item fade-in-right wow">
-          <div class="blog_pic ">
-            <a href="#">
-              <img src="../../../public/images/blog-1.jpg" alt="" />
-            </a>
-          </div>
-          <div class="blog_txt">
-            <div class="blog_txt_title">使用公平貿易咖啡豆</div>
-            <div class="blog_txt_des">
-              友善小農、友善環境、友善消費者
-            </div>
-          </div>
-        </div>
-        <div class="blog_item  fade-in-left wow">
-          <div class="blog_pic">
-            <a href="#">
-              <img src="../../../public/images/blog-2.jpg" alt="" />
-            </a>
-          </div>
-          <div class="blog_txt">
-            <div class="blog_txt_title">手沖咖啡教室</div>
-            <div class="blog_txt_des">
-              在家就能做出一杯美味的咖啡
-            </div>
-          </div>
-        </div>
-      </div>
+      <IndexArticle></IndexArticle>
     </section>
     <section class="section ">
       <div class="section_title">
@@ -93,49 +66,16 @@
         <ProductAlike></ProductAlike>
       </div>
     </section>
-
-    <!-- <section class="section_2 section_bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-6 col-sm-3">
-            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
-              <div>
-                使用公平貿易咖啡豆
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-sm-3">
-            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
-              <div>
-                當日訂購、當日烘焙
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-sm-3">
-            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
-              <div>
-                24小時新鮮出貨
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-sm-3">
-            <div class="d-flex justify-content-center align-items-center rounded-3 four_step">
-              <div>
-                滿1500元享免運
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
   </div>
 </template>
 <script>
 import ProductAlike from '@/components/ProductAlike.vue';
+import IndexArticle from '@/components/IndexArticle.vue';
 
 export default {
   components: {
     ProductAlike,
+    IndexArticle,
   },
   mounted() {
     new this.$wow.WOW({ live: true }).init();
@@ -299,71 +239,7 @@ export default {
     border-radius: 20px;
   }
 }
-// blog
-.blog {
-  display: flex;
-  flex-wrap: wrap;
-  &_item {
-    width: 43.516%;
-    margin: 0 12.968% 0 0;
-    &:last-child {
-      margin: 0;
-    }
-    @media only screen and (max-width: 600px) {
-      width: 100%;
-      margin: 0 0 50px 0;
-      &:last-child {
-        margin: 0 0 50px 0;
-      }
-    }
-  }
-  &_pic {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 40px;
-    @media only screen and (max-width: 600px) {
-      margin-bottom: 30px;
-    }
-    & img {
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    &:hover img {
-      transform: scale(0.9, 0.9);
-      transition: all 0.5s ease 0s;
-    }
-    &:after {
-      content: '';
-      background-color: #f5eadb;
-      width: 0%;
-      height: 0%;
-      position: absolute;
-      bottom: 50%;
-      right: 50%;
-      z-index: -1;
-      transition: all 0.5s ease 0s;
-      border-radius: 2px;
-    }
-    &:hover:after {
-      bottom: 0px;
-      right: 0px;
-      width: 100%;
-      height: 100%;
-      transition: all 0.5s ease 0s;
-    }
-  }
-  &_txt {
-    text-align: left;
-    &_title {
-      font-size: 2.25rem;
-      font-weight: 600;
-      margin-bottom: 15px;
-      @media only screen and (max-width: 992px) {
-        font-size: 24px;
-      }
-    }
-  }
-}
+
 @media only screen and (max-width: 1200px) {
   .features {
     &_txt {
@@ -406,138 +282,4 @@ export default {
   }
 }
 // animation
-.fade-in-right {
-  -webkit-animation: fade-in-right 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in-right 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-@-webkit-keyframes fade-in-right {
-  0% {
-    -webkit-transform: translateX(50px);
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-.fade-in-left {
-  -webkit-animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-@-webkit-keyframes fade-in-left {
-  0% {
-    -webkit-transform: translateX(-50px);
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes fade-in-left {
-  0% {
-    -webkit-transform: translateX(-50px);
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-right {
-  0% {
-    -webkit-transform: translateX(50px);
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes swing-in-right-bck {
-  0% {
-    -webkit-transform: rotateY(70deg);
-    transform: rotateY(70deg);
-    -webkit-transform-origin: right;
-    transform-origin: right;
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateY(0);
-    transform: rotateY(0);
-    -webkit-transform-origin: right;
-    transform-origin: right;
-    opacity: 1;
-  }
-}
-
-.focus-in-expand {
-  -webkit-animation: focus-in-expand 0.8s ease-out 0.5s both;
-  animation: focus-in-expand 0.8s ease-out 0.5s both;
-}
-@-webkit-keyframes focus-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-@keyframes focus-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-
-.tracking-in-expand {
-  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-}
-@-webkit-keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 </style>

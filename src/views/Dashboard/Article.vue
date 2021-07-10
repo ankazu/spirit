@@ -9,6 +9,7 @@
     <table class="table mt-4">
       <thead>
         <tr>
+          <th style="width: 80px">首頁顯示</th>
           <th style="width: 200px">標題</th>
           <th style="width: 200px">作者</th>
           <th>描述</th>
@@ -19,6 +20,14 @@
       </thead>
       <tbody>
         <tr v-for="article in articles" :key="article.id">
+          <td>
+            <span class="material-icons fs-6" v-if="article.isShowIndex">
+              done
+            </span>
+            <span class="material-icons fs-6" v-else>
+              clear
+            </span>
+          </td>
           <td>{{ article.title }}</td>
           <td>{{ article.author }}</td>
           <td>{{ article.description }}</td>

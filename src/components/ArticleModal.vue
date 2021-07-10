@@ -46,6 +46,20 @@
                 />
               </div>
               <div class="mb-3">
+                <label for="customFile" class="form-label"
+                  >或 上傳圖片
+                  <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
+                </label>
+                <input
+                  type="file"
+                  id="customFile"
+                  class="form-control"
+                  ref="fileInput"
+                  @change="uploadFile('fileInput')"
+                />
+              </div>
+              <img class="img-fluid" :src="tempArticle.imageUrl" />
+              <div class="mb-3">
                 <label for="author" class="form-label">作者</label>
                 <input
                   type="text"
@@ -96,6 +110,26 @@
                 </div>
               </div>
               <div class="mb-3">
+                <label for="index_title" class="form-label">首頁標題</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="index_title"
+                  v-model="tempArticle.idx_title"
+                  placeholder="請輸入首頁標題"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="index_description" class="form-label">首頁描述</label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="index_description"
+                  v-model="tempArticle.idx_description"
+                  placeholder="請輸入首頁描述"
+                ></textarea>
+              </div>
+              <div class="mb-3">
                 <label for="description" class="form-label">文章描述</label>
                 <textarea
                   type="text"
@@ -122,6 +156,19 @@
                   />
                   <label class="form-check-label" for="isPublic">
                     是否公開
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    v-model="tempArticle.isShowIndex"
+                    id="isShowIndex"
+                  />
+                  <label class="form-check-label" for="isShowIndex">
+                    是否在首頁顯示<span class="text-danger fs-6">(請勿超過2項產品)</span>
                   </label>
                 </div>
               </div>
@@ -179,7 +226,28 @@ export default {
       this.tempArticle.create_at = Math.floor(new Date(this.create_at) / 1000);
     },
   },
-  methods: {},
+  methods: {
+    uploadFile(refipt) {
+      const uploadedFile = this.$refs[refipt].files[0];
+      const formData = new FormData(); // js建構函式
+      formData.append('file-to-upload', uploadedFile);
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload`;
+      this.status.fileUploading = true;
+      this.$http
+        .post(url, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        .then((res) => {
+          this.status.fileUploading = false;
+          if (res.data.success) {
+            this.tempArticle.imageUrl = res.data.imageUrl;
+            this.$refs.fileInput.value = '';
+            this.pushMessage(res, '圖片新增');
+          } else {
+            this.$refs.fileInput.value = '';
+            this.pushMessage(res, '圖片新增');
+          }
+        });
+    },
+  },
 };
 </script>
 
