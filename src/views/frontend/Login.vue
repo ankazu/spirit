@@ -30,7 +30,7 @@
               />
               <label for="password">Password</label>
             </div>
-            <button class="btn btn-lg btn-primary w-100 mt-3" type="submit" @click="login">
+            <button class="btn btn-lg btn-primary w-100 mt-3" type="submit" @click.prevent="login">
               登入
             </button>
           </form>
