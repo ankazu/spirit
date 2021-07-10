@@ -1,5 +1,18 @@
 <template>
   <loading :active="isLoading"></loading>
+  <!-- banner -->
+  <div
+    class="position-relative inn_banner"
+    style="height: 250px; background-size: cover; background-position: center center;
+    background-repeat: no-repeat; background-image: url(../images/inner_banner_3.jpg)"
+  >
+    <div>
+      <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
+        {{ pathData.purpose }}
+      </h1>
+    </div>
+  </div>
+  <!-- content -->
   <div class="container ">
     <Path :path-data="pathData"></Path>
     <div class="row justify-content-center mt-4">

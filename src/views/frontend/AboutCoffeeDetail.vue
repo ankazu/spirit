@@ -1,13 +1,23 @@
 <template>
   <loading :active="isLoading"></loading>
-  <div class="container mt-4">
+  <!-- banner -->
+  <div
+    class="position-relative inn_banner"
+    style="height: 250px; background-size: cover; background-position: center center;
+    background-repeat: no-repeat; background-image: url(../images/inner_banner_3.jpg)"
+  >
+    <div>
+      <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
+        {{ article.title }}
+      </h1>
+    </div>
+  </div>
+  <!-- content -->
+  <div class="container">
     <Path :path-data="pathData"></Path>
     <div class="row">
       <div class="col-lg-8 me-auto ms-auto">
         <div class="blog ">
-          <div class="blog_title">
-            <h1>{{ article.title }}</h1>
-          </div>
           <div class="blog_tag"><span v-html="article.tag"></span></div>
           <div class="blog_img">
             <img :src="article.imageUrl" alt="" />
@@ -75,12 +85,6 @@ export default {
   text-align: center;
   margin: 0 auto;
   max-width: 700px;
-  &_title {
-    width: 100%;
-    & h1 {
-      font-weight: 600;
-    }
-  }
   &_tag {
     width: 100%;
     text-align: right;

@@ -1,19 +1,35 @@
 <template>
   <loading :active="isLoading"></loading>
-  <div class="container mt-4">
-    <div class="art" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">
-      <div class="art_img">
-        <img :src="item.imageUrl" alt="" />
-      </div>
-      <div class="art_txt">
-        <div class="art_txt_title">
-          {{ item.title }}
+  <!-- banner -->
+  <div
+    class="position-relative inn_banner"
+    style="height: 250px; background-size: cover; background-position: center center;
+    background-repeat: no-repeat; background-image: url(../images/inner_banner_3.jpg)"
+  >
+    <div>
+      <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
+        {{ pathData.purpose }}
+      </h1>
+    </div>
+  </div>
+  <!-- content -->
+  <div class="container">
+    <Path :path-data="pathData"></Path>
+    <div class="mt-4">
+      <div class="art mb-4" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">
+        <div class="art_img">
+          <img :src="item.imageUrl" alt="" />
         </div>
-        <div class="art_txt_description">
-          {{ item.description }}
-        </div>
-        <div class="art_txt_author">
-          {{ item.author }}
+        <div class="art_txt">
+          <div class="art_txt_title">
+            {{ item.title }}
+          </div>
+          <div class="art_txt_description">
+            {{ item.description }}
+          </div>
+          <div class="art_txt_author">
+            {{ item.author }}
+          </div>
         </div>
       </div>
     </div>
@@ -21,12 +37,21 @@
 </template>
 
 <script>
+import Path from '@/components/Path.vue';
+
 export default {
   data() {
     return {
       isLoading: false,
       articles: [],
+      pathData: {
+        previous: [{ title: '首頁', url: '/home' }],
+        purpose: '關於咖啡',
+      },
     };
+  },
+  components: {
+    Path,
   },
   mounted() {
     this.getArticles();
