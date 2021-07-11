@@ -15,22 +15,24 @@
   <!-- content -->
   <div class="container">
     <Path :path-data="pathData"></Path>
-    <div class="mt-4 d-flex flex-wrap">
-      <div class="art mb-4" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">
-        <div class="art_img">
-          <div>
-            <img :src="item.imageUrl" alt="" />
+    <div class="row justify-content-center">
+      <div class="mt-4 d-flex flex-wrap col-12 col-lg-8">
+        <div class="art" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">
+          <div class="art_img">
+            <div>
+              <img :src="item.imageUrl" alt="" />
+            </div>
           </div>
-        </div>
-        <div class="art_txt">
-          <div class="art_txt_title">
-            {{ item.title }}
-          </div>
-          <div class="art_txt_description">
-            {{ item.description }}
-          </div>
-          <div class="art_txt_author">
-            {{ item.author }}
+          <div class="art_txt">
+            <div class="art_txt_title">
+              {{ item.title }}
+            </div>
+            <div class="art_txt_description">
+              {{ item.description }}
+            </div>
+            <div class="art_txt_author">
+              {{ item.author }}
+            </div>
           </div>
         </div>
       </div>
@@ -84,8 +86,8 @@ export default {
 
 <style lang="scss" scoped>
 .art {
-  width: 46%;
-  margin: 0 2%;
+  width: 100%;
+  margin: 0 0% 50px;
   display: flex;
   flex-wrap: wrap;
   border: 1px solid #eee;
@@ -94,33 +96,32 @@ export default {
   overflow: hidden;
   &:hover {
     background-color: #f5eadb;
-    & .art_img {
+    & .art_img img {
       transform: scale(1.1);
     }
   }
   &_img {
     width: 200px;
     transition: all 0.3s;
-    position: relative;
-    padding-bottom: 26%;
     overflow: hidden;
-    & div {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      line-height: 0;
-      & img {
-        height: 100%;
-      }
+    & img {
+      transition: all 0.3s;
+    }
+    @media only screen and (max-width: 600px) {
+      width: 120px;
     }
   }
   &_txt {
     width: calc(100% - 200px);
-    padding: 0 30px;
+    padding: 10px 30px;
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    @media only screen and (max-width: 600px) {
+      width: calc(100% - 120px);
+      padding: 5px 20px;
+    }
+
     &_title {
       font-size: 20px;
       font-weight: 600;
@@ -128,17 +129,22 @@ export default {
     }
     &_description {
       font-size: 1rem;
-      max-height: 50px;
-      height: 50px;
-      -webkit-line-clamp: 2;
+      max-height: 80px;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
       display: -webkit-box;
       margin-bottom: 10px;
+      @media only screen and (max-width: 600px) {
+        max-height: 50px;
+        -webkit-line-clamp: 2;
+      }
     }
     &_author {
       text-align: right;
       color: #888;
+      width: 100%;
+      margin-top: auto;
     }
   }
 }
