@@ -14,9 +14,10 @@
         <div @click="goProduct(item.id)" class="alike_list_img">
           <img :src="item.imageUrl" alt="" />
         </div>
-        <div class="alike_list_baking">
+        <div class="alike_list_baking" v-if="item.baking">
           {{ item.baking }}
         </div>
+        <div class="alike_list_baking_1" v-else></div>
         <div @click="goProduct(item.id)" class="alike_list_title">
           {{ item.title }}
         </div>
@@ -180,6 +181,10 @@ export default {
       color: #777;
       font-size: 14px;
       margin-top: 5px;
+      &_1 {
+        height: 21px;
+        margin-top: 5px;
+      }
     }
     &_title {
       font-size: 20px;

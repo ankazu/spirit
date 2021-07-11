@@ -4,15 +4,18 @@
       <div class="row">
         <div class="col-12 col-md-3 ">
           <router-link to="/" class="spirit">
-            Spirit Coffee
+            Spirit
           </router-link>
         </div>
         <div class="col-12 col-md-4 mt-4">
           <div>
             苗栗縣咖啡鄉咖啡村168號
           </div>
-          <div class="mb-md-4">
+          <div>
             037-991234
+          </div>
+          <div class="mb-md-4">
+            <a href="mailto:service@serve.com">service@serve.com</a>
           </div>
           <div>
             營業時間：08：00-20:00

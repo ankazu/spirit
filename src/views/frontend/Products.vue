@@ -48,7 +48,8 @@
                   <img :src="item.imageUrl" alt="" />
                 </div>
               </div>
-              <div class="product_baking">{{ item.baking }}</div>
+              <div class="product_baking" v-if="item.baking">{{ item.baking }}</div>
+              <div class="product_baking_1" v-else></div>
               <div @click="getProduct(item.id)" class="product_title">{{ item.title }}</div>
               <div class="product_dec">
                 {{ item.decription }}
@@ -338,6 +339,9 @@ export default {
   &_baking {
     color: #777;
     font-size: 14px;
+    &_1 {
+      height: 21px;
+    }
   }
 }
 del.product_price_2 {
