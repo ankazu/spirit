@@ -4,7 +4,7 @@
     :class="classList.navbarTop"
   >
     <div class="container" :class="classList.navbarInner">
-      <a class="navbar-brand spirit" href="/">Spirit</a>
+      <router-link class="navbar-brand spirit" to="/">Spirit</router-link>
       <div class=" order-lg-2 justify-content-around icon-link-wrap ms-auto">
         <div class="dropdown cart">
           <a
