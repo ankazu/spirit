@@ -26,7 +26,9 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="mb-3">
-                <label for="title" class="form-label">標題</label>
+                <label for="title" class="form-label"
+                  >標題<span class="text-danger"> *</span></label
+                >
                 <input
                   type="text"
                   class="form-control"
@@ -60,7 +62,9 @@
               </div>
               <img class="img-fluid" :src="tempArticle.imageUrl" />
               <div class="mb-3">
-                <label for="author" class="form-label">作者</label>
+                <label for="author" class="form-label"
+                  >作者<span class="text-danger"> *</span></label
+                >
                 <input
                   type="text"
                   class="form-control"
@@ -70,7 +74,7 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="create_at">文章建立日期</label>
+                <label for="create_at">文章建立日期<span class="text-danger"> *</span></label>
                 <input type="date" class="form-control" id="create_at" v-model="create_at" />
               </div>
             </div>
