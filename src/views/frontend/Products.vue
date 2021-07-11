@@ -4,7 +4,7 @@
   <div
     class="position-relative inn_banner"
     style="height: 250px; background-size: cover; background-position: center center;
-    background-repeat: no-repeat; background-image: url(../images/inner_banner_3.jpg)"
+    background-repeat: no-repeat; background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625982730725.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=eslAxm3bbJCzhRAWvjjSR9odEbr7tJ0vCgQeMIBtlWDm9CNWQZZJdETScXQzcZ80Ozw1KN6pbeWYnr8SRQZFB0W1eqhnrhSmYhVLYCVzBYkYQpdnprZ4E2DEiyRq87o8nBBCObG9DQZ7gXGzsFsy7V5Le3LRZDkp5FDisiZZ50eOJUjqh62Xa61GwJNo0rqNUPgZBh6doKT%2FkPFGcbFlXN050sYnxgu96SNsEawiKSphZK7I4SF1P6FWcDHQErVXKARSOTC5lAdppWv%2BMkZGYxhqlUISugJbzb%2FMKFH5CTPrElk5riVp%2FW70B%2BehMtCbG1OGq9Q1Gy77BI42w96Heg%3D%3D)"
   >
     <div>
       <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">

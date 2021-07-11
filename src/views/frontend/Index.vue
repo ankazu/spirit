@@ -16,7 +16,10 @@
       </div>
       <div class="features fade-in-right wow">
         <div class="features_img ">
-          <img src="../../../public/images/features-1.jpg" alt="" />
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983351370.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=B7B3zbJkpGvIVjeUM9A0iffNZ0Dspof%2BItulmn15038znmp7xE%2Bd8O6MEnUwzBNz7ICmY5hdgledBZkl8V9yTCHoZZETyzB6q%2Fme%2BIIJO2tVgFV2eA0%2B6kXWqqqkUQnuO%2BLXt6FJDPjlR8pjPiEHQKJpfqEhcu7PhG84xhDJ1xnTBnlh%2B62BRzpl2LCbj99xzgztXZSB3AWEqoTQptHfDZAmDrerfCOd2I6%2BJzrceRX8KIFsn33KYdiRKkNT48QJNVly8XUB7Zd2dptFZDBjovXynZENwDdH7RCQ0PS85L1mcdAu6a0BYC7%2FKlvmbs0MUko2jNmkNZqkMz1%2BOqjchw%3D%3D"
+            alt=""
+          />
         </div>
         <div class="features_txt">
           <div class="features_icon"></div>
@@ -33,7 +36,10 @@
       </div>
       <div class="features fade-in-left wow">
         <div class="features_img ">
-          <img src="../../../public/images/features-2.jpg" alt="" />
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983282674.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=RttNZVojk6vVarqvZXuCGQjN%2B2kC7AfvpWGQhnNc04CBqRjhMyqONuMWYrdH3MgIfFfoAeRnawOp5a1RAD1QceBGRkYPqVFsHrPfxAR6wClbLet%2BnkxZn%2B0lpCpYdR3xp8HzD3rbh75yFk4ayHUMJtlq3K2d54sMX23IDM753C8s%2Fnx%2BJkcWI270OJsyETTViigMnTAnjHIEMTnl2IFS11g4DmIcXlXYT585dgKKCd5hF9iqltQZSl%2B%2FRQrD%2FSLunUNFhZGGHXre3XD5uQuGq5fUT%2B%2B4Zifm%2BrDqrByBTaF8qLCyDD%2Fxgdd5c%2BrSY42OBW0K6mS2YgZ5JIdpD%2FXYYw%3D%3D"
+            alt=""
+          />
         </div>
         <div class="features_txt">
           <div class="features_icon"></div>

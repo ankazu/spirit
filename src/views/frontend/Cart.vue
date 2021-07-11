@@ -4,7 +4,10 @@
     <div class="row justify-content-center">
       <section class="section_empty" v-if="cart.carts?.length === 0">
         <div class="empty_cart mt-4">
-          <img src="../../../public/images/empty_cart.jpg" alt="" />
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625982813518.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=UdEdP1TSQtLXmXM0WJufbVe%2FTpN3qYJfO4zLwIC91XlsaRVKHAxw0KfYE1Z9Xi6cFdOD%2FCxU4YJvSg3PmXDo5J4GapYbhJY%2BkvZq6N3dJ85hY208ZgK5N%2Bs9W78YVDQNDWT2BeW%2BfyEFh%2BpudIh4vkppsq5MZBE5voyijg3D%2FyGhBgqglnECWX13IPdHjdjEIUu4emBOVVS1YQSU4pEvPtZSYKo9qRM%2FZLEeBwQRFZ31p50yqiAjU%2Fjz8T3TVXjEfCrTIgrjKqXbQVAyEsIeOy4fVm9WmZQPupPjRUm8D0sncBt%2FXsoQnOog5MawD0wXuerVAp2aTyvEcRAJdxMalg%3D%3D"
+            alt=""
+          />
           <div class="mt-4">
             您的購物車是空的，<br />
             趕快放入喜歡的商品吧！
@@ -63,16 +66,6 @@
           </div>
           <div class="cart_product_price_box">
             <div class="cart_product_price">
-              <!-- <div v-if="!item.product.price">
-                {{ $filters.currency(item.product.origin_price) }}
-              </div>
-              <del v-if="item.product.price">
-                <span class="price_dlr">$ </span
-                >{{ $filters.currency(item.product.origin_price) }}</del
-              >
-              <div v-if="item.product.price">
-                <span class="price_dlr">$ </span>{{ $filters.currency(item.product.price) }}
-              </div> -->
               <span class="price_dlr material-icons">attach_money </span>
               {{ $filters.currency(item.final_total) }}
             </div>
