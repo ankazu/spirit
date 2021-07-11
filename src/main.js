@@ -22,7 +22,6 @@ import 'bootstrap';
 import './assets/all.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import $wow from 'wowjs';
 // methods
 import { date, currency } from './methods/filters';
 
@@ -39,11 +38,10 @@ configure({
 // 設定預設語系
 setLocale('zh_TW');
 AOS.init({
-  duration: 1200,
-  easing: 'ease-in-out-back',
+  duration: 400,
+  offset: 100,
 });
 const app = createApp(App);
-app.config.globalProperties.$wow = $wow;
 
 app.config.globalProperties.$filters = {
   date,

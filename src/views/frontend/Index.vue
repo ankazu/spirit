@@ -1,4 +1,5 @@
 <template>
+  <loading :active="isLoading"></loading>
   <div>
     <div class="banner">
       <img
@@ -11,10 +12,14 @@
     </div>
     <section class="section container">
       <div class="section_title">
-        <p class="focus-in-expand wow">Spirit Coffee</p>
-        <h2 class="tracking-in-expand wow"><span>喝杯咖啡，</span>讓您平常的一天好過一點。</h2>
+        <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="800">
+          Spirit Coffee
+        </p>
+        <h2 data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+          <span>喝杯咖啡，</span>讓您平常的一天好過一點。
+        </h2>
       </div>
-      <div class="features fade-in-right wow">
+      <div class="features" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
         <div class="features_img ">
           <img
             src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983351370.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=B7B3zbJkpGvIVjeUM9A0iffNZ0Dspof%2BItulmn15038znmp7xE%2Bd8O6MEnUwzBNz7ICmY5hdgledBZkl8V9yTCHoZZETyzB6q%2Fme%2BIIJO2tVgFV2eA0%2B6kXWqqqkUQnuO%2BLXt6FJDPjlR8pjPiEHQKJpfqEhcu7PhG84xhDJ1xnTBnlh%2B62BRzpl2LCbj99xzgztXZSB3AWEqoTQptHfDZAmDrerfCOd2I6%2BJzrceRX8KIFsn33KYdiRKkNT48QJNVly8XUB7Zd2dptFZDBjovXynZENwDdH7RCQ0PS85L1mcdAu6a0BYC7%2FKlvmbs0MUko2jNmkNZqkMz1%2BOqjchw%3D%3D"
@@ -34,7 +39,7 @@
           </p>
         </div>
       </div>
-      <div class="features fade-in-left wow">
+      <div class="features" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
         <div class="features_img ">
           <img
             src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983282674.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=RttNZVojk6vVarqvZXuCGQjN%2B2kC7AfvpWGQhnNc04CBqRjhMyqONuMWYrdH3MgIfFfoAeRnawOp5a1RAD1QceBGRkYPqVFsHrPfxAR6wClbLet%2BnkxZn%2B0lpCpYdR3xp8HzD3rbh75yFk4ayHUMJtlq3K2d54sMX23IDM753C8s%2Fnx%2BJkcWI270OJsyETTViigMnTAnjHIEMTnl2IFS11g4DmIcXlXYT585dgKKCd5hF9iqltQZSl%2B%2FRQrD%2FSLunUNFhZGGHXre3XD5uQuGq5fUT%2B%2B4Zifm%2BrDqrByBTaF8qLCyDD%2Fxgdd5c%2BrSY42OBW0K6mS2YgZ5JIdpD%2FXYYw%3D%3D"
@@ -63,7 +68,7 @@
       </div>
     </section>
     <section class="section_2">
-      <div class="container blog fade-in-bck wow">
+      <div class="container blog" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
         <div class="blog_item" v-for="item in tempArticle" :key="item.id">
           <div class="blog_pic ">
             <a href="#" @click.prevent="getArticle(item.id)">
@@ -97,6 +102,7 @@ import ProductAlike from '@/components/ProductAlike.vue';
 export default {
   data() {
     return {
+      isLoading: false,
       articles: [],
       tempArticle: [],
     };
@@ -105,16 +111,17 @@ export default {
     ProductAlike,
   },
   mounted() {
-    new this.$wow.WOW({ live: true }).init();
     this.getArticles();
   },
   methods: {
     getArticles() {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/articles`;
       this.$http
         .get(api)
         .then((res) => {
           if (res.data.success) {
+            this.isLoading = false;
             this.articles = res.data.articles;
             const data = this.articles.filter((article) => article.isShowIndex === true);
             this.tempArticle = data.slice(0, 2);
@@ -140,11 +147,14 @@ export default {
 .section {
   padding: 120px 20px 190px;
   @media only screen and (max-width: 600px) {
-    padding: 60px 20px 100px;
+    padding: 60px 20px 140px;
   }
 }
 .section_2 {
   padding: 0px 0px 100px;
+  @media only screen and (max-width: 600px) {
+    padding: 0px 0px 0px;
+  }
 }
 .section_bg {
   background: #f5eadb;
