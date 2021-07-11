@@ -6,7 +6,7 @@
       alt=""
     />
     <div class="banner_txtbox">
-      <div>準備好享受樂趣吧，<br />讓我們開始喝咖啡時間吧！</div>
+      <div>準備好享受樂趣吧，<br />讓我們開始喝咖啡時光吧！</div>
     </div>
   </div>
   <section class="section container">

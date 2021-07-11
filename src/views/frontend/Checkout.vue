@@ -212,7 +212,7 @@ export default {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
       btnStatus: true,
-      coupon_code: '',
+      coupon_code: 'spirit168',
       cart: {},
       form: {
         user: {
