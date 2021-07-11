@@ -44,7 +44,7 @@ export default {
       article: {},
       pathData: {
         previous: [
-          { title: '首頁', url: '/home' },
+          { title: '首頁', url: '/' },
           { title: '關於咖啡', url: '/coffee' },
         ],
         purpose: '',

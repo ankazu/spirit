@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       pathData: {
-        previous: [{ title: '首頁', url: '/home' }],
+        previous: [{ title: '首頁', url: '/' }],
         purpose: '關於我們',
       },
     };

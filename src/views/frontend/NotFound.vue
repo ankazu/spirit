@@ -7,6 +7,7 @@
           alt=""
         />
         <div>
+          <div class="mt-5 mb-5">404找不到頁面</div>
           <router-link class="btn btn-primary btn-lg mt-5" to="/">返回首頁</router-link>
         </div>
       </div>

@@ -169,7 +169,7 @@ export default {
       bitterness_sec: 0,
       pathData: {
         previous: [
-          { title: '首頁', url: '/home' },
+          { title: '首頁', url: '/' },
           { title: '產品列表', url: '/products' },
         ],
         purpose: '',
