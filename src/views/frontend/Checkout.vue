@@ -1,6 +1,6 @@
 <template>
   <loading :active="isLoading"></loading>
-  <div class="container">
+  <div class="container mb-5 mt-5">
     <div class="row order_box justify-content-center">
       <div class="col-12 col-lg-6">
         <div class="order_inf">訂購人資訊</div>
@@ -135,7 +135,9 @@
         <div class="order_dtl_box">
           <div class="order_del_title">訂單明細</div>
           <div class="order_dtl_list" v-for="item in cart.carts" :key="item.id">
-            <div class="order_dtl_list_img"><img :src="item.product.imageUrl" alt="" /></div>
+            <div class="order_dtl_list_img" @click="getProduct(item.product_id)">
+              <img :src="item.product.imageUrl" alt="" />
+            </div>
             <div class="order_dtl_list_title">
               <div class="title_txt">
                 {{ item.product.title }}
@@ -291,6 +293,9 @@ export default {
         this.btnStatus = false;
       }
     },
+    getProduct(id) {
+      this.$router.push(`/product/${id}`);
+    },
   },
 };
 </script>
@@ -328,6 +333,7 @@ export default {
   display: flex;
   margin-bottom: 15px;
   font-size: 1rem;
+  cursor: pointer;
 }
 .order_dtl_list_img {
   max-width: 90px;

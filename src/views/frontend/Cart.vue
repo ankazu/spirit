@@ -37,7 +37,7 @@
           <span class="cart_product_header_del">刪除</span>
         </div>
         <div class="cart_product_list" v-for="item in cart.carts" :key="item.id">
-          <div class="cart_product_img">
+          <div class="cart_product_img" @click="getProduct(item.product_id)">
             <img :src="item.product.imageUrl" alt="" />
           </div>
           <div class="cart_product_dtl ps-4 pe-2">
@@ -240,6 +240,7 @@ export default {
 }
 .cart_product_img {
   width: 13%;
+  cursor: pointer;
 }
 .cart_product_title {
   font-weight: 600;
