@@ -25,7 +25,7 @@
               </li>
             </ul>
           </td>
-          <td>{{ item.total }}</td>
+          <td>{{ $filters.currency(item.total) }}</td>
           <td>
             <div class="form-check form-switch">
               <input
@@ -96,9 +96,9 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?${page}`;
       this.$http.get(api).then((res) => {
         if (res.data.success) {
-          console.log(res.data);
           this.orders = res.data.orders;
           this.pagination = res.data.pagination;
+          console.log(this.orders);
           this.isLoading = false;
         } else {
           this.pushMessage(res, `${res.data.message}`);

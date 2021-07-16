@@ -43,6 +43,14 @@
                     <th>地址</th>
                     <td>{{ tempOrder.user.address }}</td>
                   </tr>
+                  <tr>
+                    <th>取貨方式</th>
+                    <td>{{ tempOrder.user.delivery }}</td>
+                  </tr>
+                  <tr>
+                    <th>付款方式</th>
+                    <td>{{ tempOrder.user.payment }}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -113,6 +121,13 @@
                     <span v-else>未付款</span>
                   </label>
                 </div>
+              </div>
+            </div>
+            <div class="col-8  text-start">
+              <div class="h3 mb-2 ">顧客留言</div>
+              <div class="px-3 py-2">
+                <div v-if="tempOrder.message">{{ tempOrder.message }}</div>
+                <div v-else>這位顧客沒有留言</div>
               </div>
             </div>
           </div>
