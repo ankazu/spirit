@@ -22,21 +22,22 @@
             <img class="rounded-2 w-100" :src="productImg" :alt="tempProduct.title" />
             <div class="col-12 flex-nowrap py-1 overflow-auto">
               <div class="row flex-nowrap m-0">
-                <div class="col-2 pe-1">
+                <a class="col-2 pe-1" href="javascript:void(0);">
                   <img
-                    class="w-100 rounded pointer"
+                    class="w-100 rounded"
                     :src="tempProduct.imageUrl"
                     :alt="tempProduct.title"
                     @click="changeImg(tempProduct.imageUrl)"
                   />
-                </div>
+                </a>
                 <a
+                  href="javascript:void(0);"
                   class="col-2 pe-1"
                   v-for="(img, key) in tempProduct.imagesUrl"
                   :key="`img_${key}`"
                 >
                   <img
-                    class="w-100 p-0 rounded pointer"
+                    class="w-100 p-0 rounded"
                     :src="img"
                     :alt="`img_${key}`"
                     @click="changeImg(img)"
@@ -133,10 +134,10 @@
     <section class="section border-bottom border-primary">
       <div class="row">
         <div class="detail col-12 col-md-6 m-auto">
-          <div class="detail_title">風味特性</div>
-          <div class="detail_txt">{{ tempProduct.decription }}</div>
-          <div class="detail_title">產品敘述</div>
-          <div class="detail_txt">{{ tempProduct.content }}</div>
+          <h3 class="detail_title">風味特性</h3>
+          <p class="detail_txt">{{ tempProduct.decription }}</p>
+          <h3 class="detail_title">產品敘述</h3>
+          <p class="detail_txt">{{ tempProduct.content }}</p>
         </div>
       </div>
     </section>
@@ -226,6 +227,7 @@ export default {
             this.qty = 1;
             swalert('success', '已加入購物車');
           } else {
+            this.isLoading = false;
             swalert('error', '加入失敗');
           }
         })
