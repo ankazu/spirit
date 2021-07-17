@@ -104,11 +104,7 @@ export default {
           // axios 的錯誤狀態，可參考：https://github.com/axios/axios#handling-errors
           console.log('error', error.res, error.request, error.message);
           this.isLoading = false;
-          this.emitter.emit('push-message', {
-            title: '連線錯誤',
-            style: 'danger',
-            content: error.message,
-          });
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     getArticle(id) {
@@ -127,11 +123,7 @@ export default {
           // axios 的錯誤狀態，可參考：https://github.com/axios/axios#handling-errors
           console.log('error', error.res, error.request, error.message);
           this.isLoading = false;
-          this.emitter.emit('push-message', {
-            title: '連線錯誤',
-            style: 'danger',
-            content: error.message,
-          });
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     openModal(isNew, item) {
