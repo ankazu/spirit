@@ -30,7 +30,7 @@
                     @click="changeImg(tempProduct.imageUrl)"
                   />
                 </div>
-                <div
+                <a
                   class="col-2 pe-1"
                   v-for="(img, key) in tempProduct.imagesUrl"
                   :key="`img_${key}`"
@@ -41,7 +41,7 @@
                     :alt="`img_${key}`"
                     @click="changeImg(img)"
                   />
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -195,15 +195,14 @@ export default {
             this.tempProduct = res.data.product;
             this.productImg = this.tempProduct.imageUrl;
             this.pathData.purpose = this.tempProduct.title;
-            this.isLoading = false;
             this.cubeCount();
-            console.log(this.tempProduct);
+            this.isLoading = false;
           } else {
-            console.log(res.data.message);
+            swalert('error', '發生錯誤，請重新整理此頁面');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     changeImg(img) {
@@ -217,17 +216,22 @@ export default {
         product_id: id,
         qty,
       };
-      this.$http.post(url, { data: cart }).then((res) => {
-        if (res.data.success) {
-          this.loadingStatus.loadingItem = '';
-          emitter.emit('updata-cart');
-          swalert('success', '已加入購物車');
-          this.isLoading = false;
-          this.qty = 1;
-        } else {
-          console.log(res.data.message);
-        }
-      });
+      this.$http
+        .post(url, { data: cart })
+        .then((res) => {
+          if (res.data.success) {
+            this.loadingStatus.loadingItem = '';
+            emitter.emit('updata-cart');
+            this.isLoading = false;
+            this.qty = 1;
+            swalert('success', '已加入購物車');
+          } else {
+            swalert('error', '加入失敗');
+          }
+        })
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
+        });
     },
     changeQty(txt) {
       if (txt === 'add') {

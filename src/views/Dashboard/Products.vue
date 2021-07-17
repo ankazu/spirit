@@ -63,9 +63,9 @@
       ref="ProductModal"
       :product="tempProduct"
       :is-new="isNew"
-      @updateProduct="updata"
+      @updata="updateProduct"
     ></ProductModal>
-    <DeleteModal ref="DeleteModal" :item="tempProduct" @updateProduct="deleteProduct"></DeleteModal>
+    <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct"></DeleteModal>
   </div>
 </template>
 <script>
@@ -108,12 +108,11 @@ export default {
             this.pagination = res.data.pagination;
             this.isLoading = false;
           } else {
-            console.log(res.data.message);
             this.$router.push('/login');
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     openModal(type, item) {
@@ -157,7 +156,7 @@ export default {
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     deleteProduct(item) {
@@ -174,7 +173,7 @@ export default {
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
   },

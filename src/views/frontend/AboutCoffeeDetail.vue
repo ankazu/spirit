@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import swalert from '@/methods/swal';
 import Path from '@/components/Path.vue';
 
 export default {
@@ -69,11 +70,13 @@ export default {
             this.article = res.data.article;
             this.pathData.purpose = this.article.title;
             this.isLoading = false;
-            console.log(this.article);
+          } else {
+            this.isLoading = false;
+            swalert('error', '發生錯誤，請重新整理此頁面');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
   },

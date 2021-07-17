@@ -259,12 +259,17 @@ export default {
       this.$http
         .post(api, { data: coupon })
         .then((res) => {
-          this.pushMessage(res, '加入優惠券');
-          this.getCart();
-          this.isLoading = false;
+          if (res.data.success) {
+            this.getCart();
+            this.isLoading = false;
+            swalert('success', '使用優惠券');
+          } else {
+            this.isLoading = false;
+            swalert('error', '優惠券錯誤');
+          }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     checkTel(value) {
@@ -285,11 +290,12 @@ export default {
             swalert('success', '表單送出');
             this.$router.push('/checkoutpaid');
           } else {
+            this.isLoading = false;
             swalert('success', '表單送出失敗');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     checkFrom() {

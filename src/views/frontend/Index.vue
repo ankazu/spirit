@@ -158,8 +158,8 @@ export default {
             console.log(this.tempArticle);
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     getArticle(id) {

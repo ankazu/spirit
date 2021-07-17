@@ -149,6 +149,7 @@ export default {
       this.$refs.articleModal.openModal();
     },
     updateArticle(item) {
+      this.isLoading = true;
       this.tempArticle = item;
       let api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/article`;
       let httpMethod = 'post';
@@ -163,14 +164,16 @@ export default {
         .then((res) => {
           if (res.data.success) {
             articleComponent.hideModal();
+            this.isLoading = false;
             this.pushMessage(res, status);
             this.getArticles(this.currentPage);
           } else {
+            this.isLoading = false;
             this.pushMessage(res, status);
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     openDelArticleModal(item) {
@@ -187,13 +190,16 @@ export default {
             this.pushMessage(res, '刪除貼文');
             const delComponent = this.$refs.delModal;
             delComponent.hideModal();
+            this.isLoading = false;
             this.getArticles(this.currentPage);
           } else {
+            this.isLoading = false;
             this.pushMessage(res, '刪除貼文');
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.isLoading = false;
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
   },

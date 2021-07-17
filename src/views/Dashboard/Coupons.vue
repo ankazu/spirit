@@ -89,13 +89,19 @@ export default {
     getCoupons(page = 1) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`;
-      this.$http.get(api).then((res) => {
-        if (res.data.success) {
-          this.coupons = res.data.coupons;
-          this.pagination = res.data.pagination;
+      this.$http
+        .get(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.coupons = res.data.coupons;
+            this.pagination = res.data.pagination;
+            this.isLoading = false;
+          }
+        })
+        .catch((res) => {
           this.isLoading = false;
-        }
-      });
+          this.pushMessage(res, `${res.data.message}`);
+        });
     },
     updataCoupon(item) {
       this.isLoading = true;
@@ -115,7 +121,7 @@ export default {
             }
           })
           .catch((res) => {
-            console.log(res.data.message);
+            this.pushMessage(res, `${res.data.message}`);
           });
       } else {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
@@ -133,7 +139,7 @@ export default {
             }
           })
           .catch((res) => {
-            console.log(res.data.message);
+            this.pushMessage(res, `${res.data.message}`);
           });
       }
     },
@@ -153,7 +159,7 @@ export default {
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     openCouponModal(isNew, item) {

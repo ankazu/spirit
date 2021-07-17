@@ -292,7 +292,7 @@ export default {
   },
   emits: ['updata'],
   mixins: [modalMixin],
-  inject: ['emitter', 'pushMessage'],
+  inject: ['pushMessage'],
   watch: {
     product() {
       this.tempProduct = this.product;
@@ -331,7 +331,7 @@ export default {
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
   },

@@ -88,17 +88,27 @@ export default {
   methods: {
     getProduct(id) {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`;
-      this.$http.get(api).then((res) => {
-        this.product = res.data.product;
-        this.getProducts();
-      });
+      this.$http
+        .get(api)
+        .then((res) => {
+          this.product = res.data.product;
+          this.getProducts();
+        })
+        .catch((res) => {
+          this.pushMessage(res, `${res.data.message}`);
+        });
     },
     getProducts() {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
-      this.$http.get(api).then((res) => {
-        this.products = res.data.products;
-        this.getAlike();
-      });
+      this.$http
+        .get(api)
+        .then((res) => {
+          this.products = res.data.products;
+          this.getAlike();
+        })
+        .catch((res) => {
+          this.pushMessage(res, `${res.data.message}`);
+        });
     },
     goProduct(id) {
       this.$router.push(`/product/${id}`);
@@ -114,14 +124,15 @@ export default {
           if (res.data.success) {
             emitter.emit('updata-cart');
             emitter.emit('render-cart');
-            swalert('success', '已加入購物車');
             this.isLoading = false;
+            swalert('success', '已加入購物車');
           } else {
-            console.log(res.data.message);
+            this.isLoading = false;
+            swalert('error', '加入失敗');
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     getAlike() {

@@ -19,6 +19,7 @@
 .empty_cart {
   font-size: 28px;
   width: 100%;
+  text-align: center;
   & img {
     border-radius: 20px;
   }

@@ -88,7 +88,7 @@ export default {
             }
           })
           .catch((res) => {
-            console.log(res.data.message);
+            this.pushMessage(res, `${res.data.message}`);
           });
       } else {
         this.$router.push('/login');

@@ -130,11 +130,12 @@ export default {
             this.cart = res.data.data;
             this.isLoading = false;
           } else {
-            console.log(res.data.message);
+            this.isLoading = false;
+            swalert('error', '發生錯誤，請重新整理此頁面');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     addToCart(item, action) {
@@ -159,11 +160,12 @@ export default {
             this.getCart();
             this.isLoading = false;
           } else {
-            console.log(res.data.message);
+            this.isLoading = false;
+            swalert('error', '修改失敗');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     clearCart() {
@@ -174,13 +176,16 @@ export default {
         .then((res) => {
           if (res.data.success) {
             emitter.emit('updata-cart');
+            this.getCart();
             this.isLoading = false;
             swalert('success', '已清空購物車');
-            this.getCart();
+          } else {
+            this.isLoading = false;
+            swalert('success', '清除失敗');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     removeCartItem(id) {
@@ -192,16 +197,17 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.loadingStatus.loadingItem = '';
-            this.isLoading = false;
-            emitter.emit('updata-cart');
-            swalert('success', '已刪除商品');
             this.getCart();
+            emitter.emit('updata-cart');
+            this.isLoading = false;
+            swalert('success', '已刪除商品');
           } else {
-            console.log(res.data.message);
+            this.isLoading = false;
+            swalert('success', '刪除商品失敗');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     getProduct(id) {
@@ -222,6 +228,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 500px;
+  text-align: center;
 }
 
 .empty_cart {

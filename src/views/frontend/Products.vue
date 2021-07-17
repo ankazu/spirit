@@ -154,7 +154,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.products = res.data.products;
-            console.log(this.products);
             // 種類
             const categories = new Set();
             this.products.forEach((item) => {
@@ -201,16 +200,16 @@ export default {
         })
         .then((res) => {
           if (res.data.success) {
+            this.isLoading = false;
             emitter.emit('updata-cart');
             swalert('success', '已加入購物車');
-            this.isLoading = false;
             this.sideUl = false;
           } else {
-            console.log(res.data.message);
+            swalert('error', '加入失敗');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     getProductsList(productslist) {

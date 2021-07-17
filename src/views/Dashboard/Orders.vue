@@ -100,14 +100,13 @@ export default {
           if (res.data.success) {
             this.orders = res.data.orders;
             this.pagination = res.data.pagination;
-            console.log(this.orders);
             this.isLoading = false;
           } else {
             this.pushMessage(res, `${res.data.message}`);
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     updatePaid(item) {
@@ -129,7 +128,7 @@ export default {
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
     openModal(item) {
@@ -155,7 +154,7 @@ export default {
           }
         })
         .catch((res) => {
-          console.log(res.data.message);
+          this.pushMessage(res, `${res.data.message}`);
         });
     },
   },
