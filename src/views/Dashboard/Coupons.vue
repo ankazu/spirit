@@ -98,8 +98,8 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
     updataCoupon(item) {
@@ -119,8 +119,8 @@ export default {
               this.pushMessage(res, '新增優惠券');
             }
           })
-          .catch((res) => {
-            this.pushMessage(res, `${res.data.message}`);
+          .catch((error) => {
+            this.pushMessage(error, `${error.message}`);
           });
       } else {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
@@ -137,8 +137,8 @@ export default {
               this.pushMessage(res, '更新優惠券');
             }
           })
-          .catch((res) => {
-            this.pushMessage(res, `${res.data.message}`);
+          .catch((error) => {
+            this.pushMessage(error, `${error.message}`);
           });
       }
     },
@@ -157,8 +157,8 @@ export default {
             this.pushMessage(res, '刪除優惠券');
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
     openCouponModal(isNew, item) {

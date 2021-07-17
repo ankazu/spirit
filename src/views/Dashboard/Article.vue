@@ -104,7 +104,7 @@ export default {
           // axios 的錯誤狀態，可參考：https://github.com/axios/axios#handling-errors
           console.log('error', error.res, error.request, error.message);
           this.isLoading = false;
-          this.pushMessage(res, `${res.data.message}`);
+          this.pushMessage(error, `${error.message}`);
         });
     },
     getArticle(id) {
@@ -123,7 +123,7 @@ export default {
           // axios 的錯誤狀態，可參考：https://github.com/axios/axios#handling-errors
           console.log('error', error.res, error.request, error.message);
           this.isLoading = false;
-          this.pushMessage(res, `${res.data.message}`);
+          this.pushMessage(error, `${error.message}`);
         });
     },
     openModal(isNew, item) {
@@ -164,8 +164,8 @@ export default {
             this.pushMessage(res, status);
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
     openDelArticleModal(item) {
@@ -189,9 +189,8 @@ export default {
             this.pushMessage(res, '刪除貼文');
           }
         })
-        .catch((res) => {
-          this.isLoading = false;
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
   },

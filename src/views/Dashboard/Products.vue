@@ -111,8 +111,8 @@ export default {
             this.$router.push('/login');
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
     openModal(type, item) {
@@ -155,8 +155,8 @@ export default {
             this.pushMessage(res, `${res.data.message}`);
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
     deleteProduct(item) {
@@ -172,8 +172,8 @@ export default {
             this.pushMessage(res, `${res.data.message}`);
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
   },

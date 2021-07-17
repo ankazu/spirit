@@ -87,8 +87,8 @@ export default {
               this.$router.push('/login');
             }
           })
-          .catch((res) => {
-            this.pushMessage(res, `${res.data.message}`);
+          .catch((error) => {
+            this.pushMessage(error, `${error.message}`);
           });
       } else {
         this.$router.push('/login');

@@ -105,8 +105,8 @@ export default {
             this.pushMessage(res, `${res.data.message}`);
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
     updatePaid(item) {
@@ -127,8 +127,8 @@ export default {
             this.pushMessage(res, `${res.data.message}`);
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
     openModal(item) {
@@ -153,8 +153,8 @@ export default {
             this.pushMessage(res, `${res.data.message}`);
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch((error) => {
+          this.pushMessage(error, `${error.message}`);
         });
     },
   },
