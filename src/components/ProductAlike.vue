@@ -216,25 +216,17 @@ export default {
       font-size: 1rem;
       margin-bottom: 8px;
       display: block;
-    }
-  }
-}
-del.alike_list_price_2 {
-  font-size: 12px;
-  display: block;
-  margin-bottom: 0;
-}
-@media only screen and (max-width: 992px) {
-  .alike {
-    &_list {
-      &_price_2 {
+      @media only screen and (max-width: 992px) {
         display: block;
         font-size: 14px;
       }
     }
   }
 }
+
 del.alike_list_price_2 {
+  font-size: 12px;
   display: block;
+  margin-bottom: 0;
 }
 </style>

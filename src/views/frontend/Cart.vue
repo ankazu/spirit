@@ -215,6 +215,7 @@ export default {
 .material-icons {
   font-size: 26px;
 }
+
 .section_empty {
   display: flex;
   flex-wrap: wrap;
@@ -222,6 +223,7 @@ export default {
   align-items: center;
   min-height: 500px;
 }
+
 .empty_cart {
   font-size: 28px;
   width: 100%;
@@ -229,6 +231,7 @@ export default {
     border-radius: 20px;
   }
 }
+
 .cart_product_header {
   width: 100%;
   display: flex;
@@ -253,6 +256,7 @@ export default {
     flex: 2 0 0;
   }
 }
+
 .cart_product {
   display: flex;
   width: 100%;
@@ -356,14 +360,17 @@ export default {
     }
   }
 }
+
 .price_dlr {
   font-size: 18px;
 }
+
 .cart_continue {
   margin: 30px 0;
   display: flex;
   justify-content: space-between;
 }
+
 .alike {
   margin: 80px 0 40px;
   padding: 20px 0;

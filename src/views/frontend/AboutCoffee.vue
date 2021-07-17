@@ -20,7 +20,7 @@
         <div class="art" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">
           <div class="art_img">
             <div>
-              <img :src="item.imageUrl" alt="" />
+              <img :src="item.imageUrl" :alt="item.title" />
             </div>
           </div>
           <div class="art_txt">
