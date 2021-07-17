@@ -205,6 +205,7 @@ export default {
             swalert('success', '已加入購物車');
             this.sideUl = false;
           } else {
+            this.sideUl = false;
             swalert('error', '加入失敗');
           }
         })
