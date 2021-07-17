@@ -16,7 +16,7 @@
   <div class="container">
     <Path :path-data="pathData"></Path>
     <div class="row mt-4">
-      <div class="col-12 col-md-3 col-lg-2 nav_left" ref="navLeft">
+      <div class="col-12 col-lg-3 col-xl-2 nav_left" ref="navLeft">
         <div class="bg-primary nav_tar">
           產品種類
           <span class="material-icons">
@@ -35,7 +35,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-12 col-md-9 col-lg-10 ms-md-auto ps-md-4">
+      <div class="col-12 col-lg-9 col-xl-10 ms-md-auto ps-md-4">
         <div class="row">
           <div
             class="col-6 col-sm-4 col-xl-3 mb-5 text-start"
@@ -132,7 +132,7 @@ export default {
   },
   mounted() {
     this.getProducts();
-    if (window.innerWidth < 769) {
+    if (window.innerWidth < 993) {
       const sideBtn = this.$refs.navLeft;
       sideBtn.addEventListener('click', () => {
         if (this.sideUl) {
@@ -263,34 +263,58 @@ export default {
 }
 .nav_left {
   position: relative;
-}
-.nav_tar span {
-  display: none;
+  @media only screen and (max-width: 992px) {
+    margin-bottom: 30px;
+  }
+  & ul {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    @media only screen and (max-width: 992px) {
+      max-height: 0;
+      overflow: hidden;
+      &.open {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 12px;
+        max-height: 1000px;
+        background-color: #fff;
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+    & li {
+      list-style: none;
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      &:hover {
+        background: #f5eadb;
+      }
+    }
+  }
+  & div {
+    list-style: none;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
 }
 .nav_tar {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-.nav_left ul {
-  padding: 0;
-  margin: 0;
-  & li {
-    &:hover {
-      background: #f5eadb;
+  & span {
+    display: none;
+    @media only screen and (max-width: 992px) {
+      display: block;
+      position: absolute;
+      right: 20px;
     }
   }
 }
 
-.nav_left ul li,
-.nav_left div {
-  list-style: none;
-  cursor: pointer;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
 .product {
   transition: all 0.3s ease;
   background-color: #f9f2e8;
@@ -356,29 +380,5 @@ del.product_price_2 {
   font-size: 12px;
   display: block;
   margin-bottom: 0;
-}
-
-@media only screen and (max-width: 768px) {
-  .nav_tar span {
-    display: block;
-    position: absolute;
-    right: 20px;
-  }
-  .nav_left {
-    margin-bottom: 30px;
-  }
-  .nav_left ul {
-    max-height: 0;
-    overflow: hidden;
-  }
-  .nav_left ul.open {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 12px;
-    max-height: 1000px;
-    background-color: #fff;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-  }
 }
 </style>
