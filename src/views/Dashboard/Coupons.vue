@@ -99,7 +99,6 @@ export default {
           }
         })
         .catch((res) => {
-          this.isLoading = false;
           this.pushMessage(res, `${res.data.message}`);
         });
     },
