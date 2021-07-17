@@ -6,7 +6,7 @@
       alt=""
     />
     <div class="banner_txtbox">
-      <div>準備好享受樂趣吧，<br />讓我們開始喝咖啡時光吧！</div>
+      <h2>準備好享受樂趣吧，<br />讓我們開始喝咖啡時光吧！</h2>
     </div>
   </div>
   <section class="section container">
@@ -182,20 +182,24 @@ export default {
   position: relative;
   &_txtbox {
     position: absolute;
-    font-size: 48px;
     left: 10%;
     top: 50%;
     transform: translateY(-50%);
     color: #fff;
-    text-align: left;
-    line-height: 1.7;
-    @media only screen and(max-width:992px) {
-      font-size: 36px;
-      text-shadow: 1px 1px 5px rgb(0, 0, 0);
+    & h2 {
+      text-align: left;
+      line-height: 1.7;
+      font-size: 48px;
+      @media only screen and(max-width:992px) {
+        font-size: 36px;
+        text-shadow: 1px 1px 5px rgb(0, 0, 0);
+      }
+      @media only screen and(max-width:600px) {
+        font-size: 24px;
+        left: 2.5%;
+      }
     }
     @media only screen and(max-width:600px) {
-      font-size: 24px;
-
       left: 2.5%;
     }
   }

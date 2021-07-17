@@ -4,7 +4,9 @@
     :class="classList.navbarTop"
   >
     <div class="container" :class="classList.navbarInner">
-      <router-link class="navbar-brand spirit" to="/">Spirit</router-link>
+      <h1 class="d-flex align-items-center mb-1 mt-1">
+        <router-link class="navbar-brand logo" to="/">Spirit</router-link>
+      </h1>
       <div class=" order-lg-2 justify-content-around icon-link-wrap ms-auto">
         <div class="dropdown cart">
           <a
@@ -136,10 +138,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-.spirit {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.4rem;
+.logo {
+  display: block;
+  background: url(../../../public/images/logo.png) no-repeat;
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 76px;
+  height: 40px;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.6;
+  }
 }
 .navbtn {
   border: 0;

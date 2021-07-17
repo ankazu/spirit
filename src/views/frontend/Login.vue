@@ -64,8 +64,9 @@ export default {
             swalert('error', `${res.data.message}`, 'top');
           }
         })
-        .catch(() => {
+        .catch((res) => {
           swalert('error', '登入失敗');
+          console.log(res.data.message);
         });
     },
   },

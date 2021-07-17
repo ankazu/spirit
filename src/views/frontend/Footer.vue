@@ -3,7 +3,7 @@
     <div class="container text-md-start pt-3 pb-3">
       <div class="row">
         <div class="col-12 col-md-3 ">
-          <router-link to="/" class="spirit">
+          <router-link to="/" class="footer_logo">
             Spirit
           </router-link>
         </div>
@@ -12,7 +12,7 @@
             苗栗縣咖啡鄉咖啡村168號
           </div>
           <div>
-            037-991234
+            <a href="tel:037-991234">037-991234</a>
           </div>
           <div class="mb-md-4">
             <a href="mailto:service@serve.com">service@serve.com</a>
@@ -61,11 +61,20 @@ footer {
 .material-icons {
   font-size: 35px;
 }
-.spirit {
-  font-family: 'Pacifico', cursive;
-  font-size: 36px;
-  color: #000;
+.footer_logo {
+  display: block;
+  background: url(../../../public/images/logo.png) no-repeat;
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 76px;
+  height: 40px;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.6;
+  }
 }
+
 .nav {
   display: flex;
   flex-direction: column;
