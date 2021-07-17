@@ -127,6 +127,7 @@ export default {
     window.addEventListener('scroll', () => {
       const windowY = window.scrollY;
       const main = document.querySelector('#main');
+      if (!main) return;
       if (windowY > main.offsetTop) {
         this.classList = { navbarTop: 'shadow-sm', navbarInner: '' };
       } else {

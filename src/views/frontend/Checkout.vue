@@ -253,9 +253,9 @@ export default {
         });
     },
     addCouponCode() {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
       const coupon = { code: this.coupon_code };
-      this.isLoading = true;
       this.$http
         .post(api, { data: coupon })
         .then((res) => {
@@ -272,6 +272,7 @@ export default {
       return tel.test(value) ? true : '請填入正確的"手機"號碼';
     },
     createOrder() {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
       this.$http
@@ -280,6 +281,7 @@ export default {
           if (res.data.success) {
             this.$refs.form.resetForm();
             this.form.message = '';
+            this.isLoading = false;
             swalert('success', '表單送出');
             this.$router.push('/checkoutpaid');
           } else {

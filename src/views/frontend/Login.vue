@@ -2,7 +2,7 @@
   <div class="login">
     <div class="login_container">
       <div class="row justify-content-center w-100 mea-0">
-        <h1 class="h3 mb-3 font-weight-normal">
+        <h1 class="h3 mb-3 font-weight-normal text-center">
           請先登入
         </h1>
         <div class="col-10 col-sm-7">
