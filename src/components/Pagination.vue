@@ -38,5 +38,3 @@ export default {
   props: ['page'],
 };
 </script>
-
-<style scoped lang="scss"></style>

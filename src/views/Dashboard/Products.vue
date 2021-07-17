@@ -59,25 +59,25 @@
     <div class="d-flex justify-content-center">
       <Pagination :page="pagination" @get-page="getProducts"></Pagination>
     </div>
-    <EideProductModal
-      ref="EideProductModal"
+    <ProductModal
+      ref="ProductModal"
       :product="tempProduct"
       :is-new="isNew"
       @updata="updata"
-    ></EideProductModal>
+    ></ProductModal>
     <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct"></DeleteModal>
   </div>
 </template>
 <script>
 import Pagination from '@/components/Pagination.vue';
-import EideProductModal from '@/components/EideProductModal.vue';
+import ProductModal from '@/components/ProductModal.vue';
 import DeleteModal from '@/components/DeleteModal.vue';
 
 export default {
   props: ['token'],
   components: {
     Pagination,
-    EideProductModal,
+    ProductModal,
     DeleteModal,
   },
   data() {
@@ -122,13 +122,13 @@ export default {
           imagesUrl: [],
         };
         this.isNew = true;
-        this.$refs.EideProductModal.openModal();
+        this.$refs.ProductModal.openModal();
       }
 
       if (type === 'edit') {
         this.tempProduct = { ...item };
         this.isNew = false;
-        this.$refs.EideProductModal.openModal();
+        this.$refs.ProductModal.openModal();
       }
       if (type === 'delete') {
         this.tempProduct = { ...item };
@@ -149,7 +149,7 @@ export default {
       this.$http[path](api, { data: item })
         .then((res) => {
           if (res.data.success) {
-            this.$refs.EideProductModal.hideModal();
+            this.$refs.ProductModal.hideModal();
             this.getProducts();
             this.pushMessage(res, `${res.data.message}`);
           } else {
@@ -183,5 +183,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss"></style>
