@@ -18,7 +18,7 @@
             aria-expanded="false"
           >
             <span class="material-icons cart_icon">shopping_cart</span>
-            <div class="cart_num">{{ cart?.carts?.length }}</div>
+            <div class="cart_num" v-if="cart?.carts?.length !== 0">{{ cart?.carts?.length }}</div>
           </a>
           <div class="dropdown-menu pe-2 ps-2" aria-labelledby="dropdownMenuLink">
             <table class="w-100">
