@@ -42,11 +42,11 @@ const routes = [
         path: 'checkoutpaid',
         component: () => import('../views/frontend/CheckoutPaid.vue'),
       },
-      {
-        path: ':patchMatch(.*)*',
-        component: () => import('../views/frontend/NotFound.vue'),
-      },
     ],
+  },
+  {
+    path: '/:patchMatch(.*)*',
+    component: () => import('../views/frontend/NotFound.vue'),
   },
   {
     path: '/login',
@@ -54,27 +54,27 @@ const routes = [
   },
   {
     path: '/admin',
-    component: () => import('../views/Dashboard/Dashboard.vue'),
+    component: () => import('../views/dashboard/Dashboard.vue'),
     children: [
       {
         path: '',
-        component: () => import('../views/Dashboard/Index.vue'),
+        component: () => import('../views/dashboard/Index.vue'),
       },
       {
         path: 'products',
-        component: () => import('../views/Dashboard/Products.vue'),
+        component: () => import('../views/dashboard/Products.vue'),
       },
       {
         path: 'orders',
-        component: () => import('../views/Dashboard/Orders.vue'),
+        component: () => import('../views/dashboard/Orders.vue'),
       },
       {
         path: 'coupons',
-        component: () => import('../views/Dashboard/Coupons.vue'),
+        component: () => import('../views/dashboard/Coupons.vue'),
       },
       {
         path: 'article',
-        component: () => import('../views/Dashboard/Article.vue'),
+        component: () => import('../views/dashboard/Article.vue'),
       },
     ],
   },
