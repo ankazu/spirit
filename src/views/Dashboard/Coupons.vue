@@ -161,6 +161,7 @@ export default {
       if (this.isNew) {
         this.tempCoupon = {
           due_date: Math.floor(Date.now() / 1000),
+          is_enabled: 0,
         };
       } else {
         this.tempCoupon = { ...item };
