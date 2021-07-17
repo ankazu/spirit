@@ -250,10 +250,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-img {
-  max-width: 100%;
-  height: auto;
-}
 .description {
   &_title {
     margin: 0 0 30px;
@@ -276,6 +272,7 @@ img {
     font-weight: 600;
   }
 }
+
 .cube {
   display: inline-block;
   &_black {
@@ -294,6 +291,7 @@ img {
     margin-left: 5px;
   }
 }
+
 .detail {
   &_title {
     font-size: 24px;
@@ -309,9 +307,11 @@ img {
     }
   }
 }
+
 .section {
   padding: 80px 0;
 }
+
 .related {
   & h2 {
     font-size: 2.25rem;

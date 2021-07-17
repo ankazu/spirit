@@ -21,7 +21,7 @@
           <div class="art_tag"><span v-html="article.tag"></span></div>
           <div class="art_img">
             <div>
-              <img :src="article.imageUrl" alt="" />
+              <img :src="article.imageUrl" :alt="article.title" />
             </div>
           </div>
           <div class="art_des">

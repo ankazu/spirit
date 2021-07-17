@@ -36,12 +36,12 @@
           <span class="cart_product_header_price">售價</span>
           <span class="cart_product_header_del">刪除</span>
         </div>
-        <div class="cart_product_list" v-for="item in cart.carts" :key="item.id">
+        <div class="cart_product" v-for="item in cart.carts" :key="item.id">
           <div class="cart_product_img" @click="getProduct(item.product_id)">
-            <img :src="item.product.imageUrl" alt="" />
+            <img :src="item.product.imageUrl" :alt="item.product.title" />
           </div>
           <div class="cart_product_dtl ps-4 pe-2">
-            <div class="cart_product_title">
+            <div class="cart_product_title" @click="getProduct(item.product_id)">
               {{ item.product.title }}
             </div>
             <div class="cart_product_unit">單位 : {{ item.product.unit }}</div>
@@ -64,13 +64,13 @@
               </span>
             </button>
           </div>
-          <div class="cart_product_price_box">
+          <div class="cart_product_pricebox">
             <div class="cart_product_price">
               <span class="price_dlr material-icons">attach_money </span>
               {{ $filters.currency(item.final_total) }}
             </div>
           </div>
-          <div class="cart_prodcut_del">
+          <div class="cart_product_del">
             <button
               type="button"
               class="btn btn-sm d-flex cart_close"
@@ -225,198 +225,153 @@ export default {
 .empty_cart {
   font-size: 28px;
   width: 100%;
-}
-.empty_cart img {
-  border-radius: 20px;
+  & img {
+    border-radius: 20px;
+  }
 }
 .cart_product_header {
   width: 100%;
   display: flex;
   padding: 8px 15px;
   margin-bottom: 10px;
+  @media only screen and (max-width: 992px) {
+    display: none;
+  }
+  &_name {
+    display: block;
+    flex: 12 0 0;
+    text-align: left;
+  }
+  &_qty {
+    flex: 3 0 0;
+    text-align: left;
+  }
+  &_price {
+    flex: 2 0 0;
+  }
+  &_del {
+    flex: 2 0 0;
+  }
 }
-.cart_product_header_name {
-  display: block;
-  flex: 12 0 0;
-  text-align: left;
-}
-.cart_product_header_qty {
-  flex: 3 0 0;
-  text-align: left;
-}
-.cart_product_header_price {
-  flex: 2 0 0;
-}
-.cart_product_header_del {
-  flex: 2 0 0;
-}
-.cart_product_list {
+.cart_product {
   display: flex;
   width: 100%;
   border-bottom: 1px solid #ddd;
-}
-.cart_product_list {
   padding: 20px 15px;
-}
-.cart_product_img {
-  width: 13%;
-  cursor: pointer;
-}
-.cart_product_title {
-  font-weight: 600;
-  word-break: break-all;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  display: -webkit-box;
-}
-.cart_product_unit {
-  font-size: 14px;
-  color: #999;
-}
-.cart_product_dtl {
-  width: 42%;
-  text-align: left;
-}
-.cart_product_quantity {
-  width: 20%;
-  min-width: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cart_product_price_box {
-  width: 18%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cart_prodcut_del {
-  width: 7%;
-  display: flex;
-  align-items: center;
+  @media only screen and (max-width: 992px) {
+    flex-wrap: wrap;
+    position: relative;
+  }
+  &_img {
+    width: 13%;
+    cursor: pointer;
+    @media only screen and (max-width: 992px) {
+      width: 70px;
+    }
+  }
+  &_title {
+    font-weight: 600;
+    cursor: pointer;
+    word-break: break-all;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+  }
+  &_unit {
+    font-size: 14px;
+    color: #999;
+  }
+  &_dtl {
+    width: 42%;
+    text-align: left;
+    @media only screen and (max-width: 992px) {
+      width: calc(100% - 70px);
+    }
+  }
+  &_quantity {
+    width: 20%;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media only screen and (max-width: 992px) {
+      width: 96px;
+      min-width: unset;
+      display: flex;
+      align-items: flex-end;
+      order: 2;
+    }
+  }
+  &_pricebox {
+    width: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media only screen and (max-width: 992px) {
+      width: calc(100% - 96px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+    & del {
+      font-size: 12px;
+    }
+    & div {
+      color: #debc8c;
+      display: flex;
+      align-items: center;
+    }
+  }
+  &_del {
+    width: 7%;
+    display: flex;
+    align-items: center;
+    @media only screen and (max-width: 992px) {
+      width: 30px;
+      position: absolute;
+      right: 0;
+      top: 0px;
+    }
+    & button {
+      color: #aaa;
+    }
+  }
+  @media only screen and (max-width: 992px) {
+    &_input {
+      width: 40px;
+      height: 29px;
+    }
+    &_price {
+      display: flex;
+      align-items: center;
+      margin: 0 0 0 96px;
+      & del {
+        margin-right: 10px;
+      }
+    }
+    .cart_btn {
+      width: 26px;
+      height: 29px;
+    }
+  }
 }
 .price_dlr {
   font-size: 18px;
-}
-.cart_product_price_box del {
-  font-size: 12px;
-}
-.cart_product_price_box div {
-  color: #debc8c;
-  display: flex;
-  align-items: center;
-}
-.cart_prodcut_del button {
-  color: #aaa;
-}
-// shop_total
-.shop_total {
-  padding: 30px 0;
-}
-.shop_dtl_total_title {
-  display: inline-block;
-  text-align: right;
-  margin-right: 20px;
-}
-.shop_dtl_total {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 54px;
-  text-align: right;
-}
-
-.total_price {
-  color: #debc8c;
 }
 .cart_continue {
   margin: 30px 0;
   display: flex;
   justify-content: space-between;
 }
-.coupon_code {
-  border: 0;
-  border-bottom: 1px solid #ddd;
-  margin-right: 10px;
-  padding: 6px;
-}
-.coupon_code:focus {
-  outline: none;
-}
 .alike {
   margin: 80px 0 40px;
-  // border-top: 1px solid #debc8c;
   padding: 20px 0;
   &_title {
     font-size: 32px;
     text-align: center;
     font-weight: 600;
     margin-bottom: 40px;
-  }
-}
-@media only screen and (max-width: 992px) {
-  .cart_product_header {
-    display: none;
-  }
-  .cart_product_list {
-    flex-wrap: wrap;
-    position: relative;
-  }
-  .cart_product_input {
-    width: 40px;
-    height: 29px;
-  }
-  .cart_btn {
-    width: 26px;
-    height: 29px;
-  }
-
-  .cart_product_img {
-    width: 70px;
-  }
-  .cart_product_dtl {
-    width: calc(100% - 70px);
-  }
-  .cart_product_quantity {
-    width: 96px;
-    min-width: unset;
-    display: flex;
-    align-items: flex-end;
-    order: 2;
-  }
-  .cart_product_price_box {
-    width: calc(100% - 96px);
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-  }
-  .cart_product_price {
-    display: flex;
-    align-items: center;
-    margin: 0 0 0 96px;
-  }
-  .cart_product_price del {
-    margin-right: 10px;
-  }
-
-  .cart_prodcut_del {
-    width: 30px;
-    position: absolute;
-    right: 0;
-    top: 0px;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .shop_total_dtl {
-    margin-top: 30px;
-  }
-  .coupon_code_box {
-    align-items: flex-end;
-  }
-  .coupon_code {
-    width: 180px;
   }
 }
 </style>

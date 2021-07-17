@@ -223,19 +223,31 @@ export default {
 .section_title {
   max-width: 620px;
   margin: 0 auto 70px;
+  text-align: center;
+  & h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    @media only screen and (max-width: 768px) {
+      text-align: left;
+      & span {
+        display: block;
+        text-align: left;
+      }
+    }
+    @media only screen and (max-width: 576px) {
+      font-size: 26px;
+    }
+  }
+  & p {
+    font-size: 18px;
+    text-align: left;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-family: 'Pacifico', cursive;
+  }
 }
-.section_title h2 {
-  font-size: 2.25rem;
-  font-weight: 600;
-}
-.section_title p {
-  font-size: 18px;
-  text-align: left;
-  padding-left: 5px;
-  margin-bottom: 5px;
-  font-weight: 600;
-  font-family: 'Pacifico', cursive;
-}
+
 .features {
   display: flex;
   flex-wrap: wrap;
@@ -257,6 +269,10 @@ export default {
     width: 50%;
     line-height: 0;
     position: relative;
+    @media only screen and (max-width: 1024px) {
+      width: 100%;
+      text-align: center;
+    }
     &::after {
       content: '';
       background-color: #f5eadb;
@@ -278,7 +294,16 @@ export default {
   &_txt {
     width: 50%;
     padding: 5% 6%;
-    text-align: left;
+    @media only screen and (max-width: 1200px) {
+      width: 50%;
+      padding: 3%;
+    }
+    @media only screen and (max-width: 1024px) {
+      width: 100%;
+      padding: 3%;
+      max-width: 640px;
+      margin: 0 auto;
+    }
     & h3 {
       margin-bottom: 15px;
       font-weight: 600;
@@ -300,6 +325,10 @@ export default {
     margin-bottom: 20px;
     border-radius: 50%;
     transition: all 2s ease 0s;
+    @media only screen and (max-width: 1024px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 // 按鈕
@@ -444,46 +473,6 @@ export default {
     text-align: left;
   }
 }
-@media only screen and (max-width: 1200px) {
-  .features {
-    &_txt {
-      width: 50%;
-      padding: 3%;
-      text-align: left;
-    }
-  }
-}
-@media only screen and (max-width: 1024px) {
-  .features {
-    &_img {
-      width: 100%;
-    }
-    &_txt {
-      width: 100%;
-      padding: 3%;
-      text-align: left;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    &_icon::before {
-      width: 40px;
-      height: 40px;
-    }
-  }
-}
-@media only screen and (max-width: 768px) {
-  .section_title h2 {
-    text-align: left;
-    & span {
-      display: block;
-      text-align: left;
-    }
-  }
-}
-@media only screen and (max-width: 576px) {
-  .section_title h2 {
-    font-size: 26px;
-  }
-}
+
 // animation
 </style>

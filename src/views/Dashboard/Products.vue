@@ -29,8 +29,8 @@
         <tr v-for="item in products" :key="item.id">
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
-          <td class="">{{ item.origin_price }}</td>
-          <td class="">{{ item.price }}</td>
+          <td>{{ item.origin_price }}</td>
+          <td>{{ item.price }}</td>
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
             <span v-else>未啟用</span>
@@ -63,9 +63,9 @@
       ref="ProductModal"
       :product="tempProduct"
       :is-new="isNew"
-      @updata="updata"
+      @updateProduct="updata"
     ></ProductModal>
-    <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct"></DeleteModal>
+    <DeleteModal ref="DeleteModal" :item="tempProduct" @updateProduct="deleteProduct"></DeleteModal>
   </div>
 </template>
 <script>
@@ -136,7 +136,7 @@ export default {
         this.$refs.DeleteModal.openModal();
       }
     },
-    updata(item) {
+    updateProduct(item) {
       let api = '';
       let path = '';
       if (this.isNew) {

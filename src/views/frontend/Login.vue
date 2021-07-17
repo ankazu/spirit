@@ -82,14 +82,14 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #424242;
-}
-.login h1 {
-  color: #fff;
-}
-.login_container {
-  max-width: 680px;
-  padding: 0 15px;
-  width: 100%;
+  & h1 {
+    color: #fff;
+  }
+  &_container {
+    max-width: 680px;
+    padding: 0 15px;
+    width: 100%;
+  }
 }
 .form-signin {
   width: 100%;

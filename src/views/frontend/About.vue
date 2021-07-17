@@ -31,7 +31,7 @@
           <div class="about_img">
             <img
               src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625978982019.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=XSybiUnRqxGzBZRM9kgokcW1Ce%2BT9qa1AYzIORz2%2B75vXyd9Q3z%2B68o%2Fa4QyrHR4H3zrdNov3dLKlHXJSuvXv5oZvtOLJCPrRsJ8YoDoKcIx%2BkG4iJD6gK5Mrg5gc%2FE8vLkxMUU%2FK3s%2FIa2v9y%2B1HGM5Y1%2Bl%2BTTE0f%2BZ4f4Bgl%2BbB%2BHNlFLR8ERLc2twK9xIYqToFJaTHN7EXqAn3FU2f6uFD5Muyjn%2FKNsJHgZ2RMgfiY1ndVzu62KPj1bcKme2BbGT6RRF1ylJtWsiBFmGfYdNDKDSQeWp1de%2FVwP7SGt6p84XwpMtqhbIh6zFwa2va%2Fl%2BtSh5w52VffpAdA9Mug%3D%3D"
-              alt=""
+              alt="Coffee Lover"
             />
           </div>
         </div>
@@ -39,7 +39,7 @@
           <div class="about_img">
             <img
               src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625981996199.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Iqkd2xDzbhlj%2FD0q572zBXndYbEtWTd3eCPthSq3iaLxlWM6kG2vydc%2FSDD6dtWFSw3T%2Bc4kbbCVfoZ3YovOzI3gNwe6f38O3oW623PSI4N5Sn4Qt7ASFOdWVNciK8thjLsLdh5ELIZMIdf1rAxaaz%2BbHtzfWrKOOd4X1BJUETRc65xwKdiitIJinrf9Mclo2OSUy%2BzkheVEj4tL2Mvbk2SYbxidhaGaDG%2BiJv6qCrc03fs01zzLSAUZjlRIKt%2FEubMv%2BKlnRLrvPiwLyoRShh%2BRsQ58KgC7uMLCE78h6qa74iwrhd%2BX73iB7z2pgpZgy4P%2FBShvjLYA165jO0LexA%3D%3D"
-              alt=""
+              alt="讓我們開始喝咖啡時光吧！"
             />
           </div>
           <div class="about_txt about_txt_2">

@@ -19,8 +19,8 @@
 .empty_cart {
   font-size: 28px;
   width: 100%;
-}
-.empty_cart img {
-  border-radius: 20px;
+  & img {
+    border-radius: 20px;
+  }
 }
 </style>

@@ -132,11 +132,11 @@
         </Form>
       </div>
       <div class="col-12 col-lg-4">
-        <div class="order_dtl_box">
+        <div class="order_dtl">
           <div class="order_del_title">訂單明細</div>
           <div class="order_dtl_list" v-for="item in cart.carts" :key="item.id">
             <div class="order_dtl_list_img" @click="getProduct(item.product_id)">
-              <img :src="item.product.imageUrl" alt="" />
+              <img :src="item.product.imageUrl" :alt="item.product.title" />
             </div>
             <div class="order_dtl_list_title">
               <div class="title_txt">
@@ -322,19 +322,20 @@ export default {
   text-align: left;
   display: flex;
   flex-wrap: wrap;
+  & > div {
+    width: 48%;
+  }
+  & > div:nth-of-type(even) {
+    margin-left: 4%;
+  }
+  &_req {
+    color: #dc3545;
+  }
+  & .form_message {
+    width: 100%;
+  }
 }
-.form > div {
-  width: 48%;
-}
-.form > div:nth-of-type(even) {
-  margin-left: 4%;
-}
-.form .form_message {
-  width: 100%;
-}
-.font_req {
-  color: #dc3545;
-}
+
 .order_inf,
 .order_del_title {
   font-size: 1.5rem;
@@ -343,23 +344,38 @@ export default {
   border-bottom: 1px solid #ccc;
   margin-bottom: 15px;
 }
-.order_dtl_box {
+.order_dtl {
   padding: 0 30px;
+  &_list {
+    display: flex;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    &_img {
+      max-width: 90px;
+    }
+    &_title {
+      padding: 0 15px;
+      text-align: left;
+      width: calc(100% - 160px);
+    }
+    &_unit {
+      display: flex;
+      align-items: center;
+      color: #999;
+      & > div {
+        display: flex;
+        align-items: center;
+        margin-right: 8px;
+      }
+    }
+    &_qty {
+      margin-left: auto;
+      width: 30px;
+    }
+  }
 }
-.order_dtl_list {
-  display: flex;
-  margin-bottom: 15px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.order_dtl_list_img {
-  max-width: 90px;
-}
-.order_dtl_list_title {
-  padding: 0 15px;
-  text-align: left;
-  width: calc(100% - 160px);
-}
+
 .title_txt {
   font-weight: 600;
   word-break: break-all;
@@ -368,42 +384,30 @@ export default {
   overflow: hidden;
   display: -webkit-box;
 }
-.order_dtl_list_unit {
-  display: flex;
-  align-items: center;
-  color: #999;
-}
-.order_dtl_list_unit > div {
-  display: flex;
-  align-items: center;
-  margin-right: 8px;
-}
+
 .price_dlr {
   font-size: 1rem;
 }
-.order_dtl_list_qty {
-  margin-left: auto;
-  width: 30px;
-}
-.shop_total_dtl {
-  margin-top: 30px;
-}
 .shop_total {
   padding: 30px;
+  &_dtl {
+    margin-top: 30px;
+    &_title {
+      display: inline-block;
+      text-align: right;
+      margin-right: 20px;
+    }
+    &_total {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 54px;
+      text-align: right;
+    }
+  }
 }
-.shop_dtl_total_title {
-  display: inline-block;
-  text-align: right;
-  margin-right: 20px;
-}
-.shop_dtl_total {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 54px;
-  text-align: right;
-}
+
 .total_price {
   color: #debc8c;
 }
@@ -418,9 +422,9 @@ export default {
   margin-right: 10px;
   padding: 6px;
   width: 180px;
-}
-.coupon_code:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 @media only screen and (max-width: 992px) {

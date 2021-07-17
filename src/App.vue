@@ -19,7 +19,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #000;
 }
-
 #nav {
   padding: 30px;
 
