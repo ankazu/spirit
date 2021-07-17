@@ -149,22 +149,27 @@ export default {
       this.pageShow = true;
       this.productValue = '';
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
-      this.$http.get(api).then((res) => {
-        if (res.data.success) {
-          this.products = res.data.products;
-          console.log(this.products);
-          // 種類
-          const categories = new Set();
-          this.products.forEach((item) => {
-            categories.add(item.category);
-          });
-          this.category = Array.from(categories);
-          this.getProductsList(this.products);
-          this.isLoading = false;
-        } else {
+      this.$http
+        .get(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.products = res.data.products;
+            console.log(this.products);
+            // 種類
+            const categories = new Set();
+            this.products.forEach((item) => {
+              categories.add(item.category);
+            });
+            this.category = Array.from(categories);
+            this.getProductsList(this.products);
+            this.isLoading = false;
+          } else {
+            console.log(res.data.message);
+          }
+        })
+        .catch((res) => {
           console.log(res.data.message);
-        }
-      });
+        });
     },
     getProduct(id) {
       this.$router.push(`/product/${id}`);
@@ -203,6 +208,9 @@ export default {
           } else {
             console.log(res.data.message);
           }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
         });
     },
     getProductsList(productslist) {

@@ -249,6 +249,9 @@ export default {
             this.$refs.fileInput.value = '';
             this.pushMessage(res, '圖片新增');
           }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
         });
     },
   },

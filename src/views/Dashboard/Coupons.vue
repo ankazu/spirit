@@ -101,45 +101,60 @@ export default {
       this.isLoading = true;
       if (this.isNew) {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`;
-        this.$http.post(api, { data: item }).then((res) => {
-          if (res.data.success) {
-            this.isLoading = false;
-            this.getCoupons();
-            this.pushMessage(res, '新增優惠券');
-            this.$refs.couponModal.hideModal();
-          } else {
-            this.isLoading = false;
-            this.pushMessage(res, '欄位皆需為必填');
-          }
-        });
+        this.$http
+          .post(api, { data: item })
+          .then((res) => {
+            if (res.data.success) {
+              this.isLoading = false;
+              this.getCoupons();
+              this.pushMessage(res, '新增優惠券');
+              this.$refs.couponModal.hideModal();
+            } else {
+              this.isLoading = false;
+              this.pushMessage(res, '新增優惠券');
+            }
+          })
+          .catch((res) => {
+            console.log(res.data.message);
+          });
       } else {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
-        this.$http.put(api, { data: item }).then((res) => {
-          if (res.data.success) {
-            this.isLoading = false;
-            this.getCoupons();
-            this.pushMessage(res, '更新優惠券');
-            this.$refs.couponModal.hideModal();
-          } else {
-            this.isLoading = false;
-            this.pushMessage(res, '更新優惠券');
-          }
-        });
+        this.$http
+          .put(api, { data: item })
+          .then((res) => {
+            if (res.data.success) {
+              this.isLoading = false;
+              this.getCoupons();
+              this.pushMessage(res, '更新優惠券');
+              this.$refs.couponModal.hideModal();
+            } else {
+              this.isLoading = false;
+              this.pushMessage(res, '更新優惠券');
+            }
+          })
+          .catch((res) => {
+            console.log(res.data.message);
+          });
       }
     },
     deleteCoupon(item) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
-      this.$http.delete(api).then((res) => {
-        if (res.data.success) {
-          this.$refs.deleteModal.hideModal();
-          this.isLoading = false;
-          this.getCoupons();
-          this.pushMessage(res, '刪除優惠券');
-        } else {
-          this.pushMessage(res, '刪除優惠券');
-        }
-      });
+      this.$http
+        .delete(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.$refs.deleteModal.hideModal();
+            this.isLoading = false;
+            this.getCoupons();
+            this.pushMessage(res, '刪除優惠券');
+          } else {
+            this.pushMessage(res, '刪除優惠券');
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     openCouponModal(isNew, item) {
       this.isNew = isNew;

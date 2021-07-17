@@ -108,16 +108,21 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       const cart = { product_id: id, qty };
-      this.$http.post(api, { data: cart }).then((res) => {
-        if (res.data.success) {
-          emitter.emit('updata-cart');
-          emitter.emit('render-cart');
-          swalert('success', '已加入購物車');
-          this.isLoading = false;
-        } else {
+      this.$http
+        .post(api, { data: cart })
+        .then((res) => {
+          if (res.data.success) {
+            emitter.emit('updata-cart');
+            emitter.emit('render-cart');
+            swalert('success', '已加入購物車');
+            this.isLoading = false;
+          } else {
+            console.log(res.data.message);
+          }
+        })
+        .catch((res) => {
           console.log(res.data.message);
-        }
-      });
+        });
     },
     getAlike() {
       let category;

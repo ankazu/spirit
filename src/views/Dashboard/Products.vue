@@ -100,16 +100,21 @@ export default {
     getProducts(page = 1) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
-      this.$http.get(api).then((res) => {
-        if (res.data.success) {
-          this.products = res.data.products;
-          this.pagination = res.data.pagination;
-          this.isLoading = false;
-        } else {
+      this.$http
+        .get(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.products = res.data.products;
+            this.pagination = res.data.pagination;
+            this.isLoading = false;
+          } else {
+            console.log(res.data.message);
+            this.$router.push('/login');
+          }
+        })
+        .catch((res) => {
           console.log(res.data.message);
-          this.$router.push('/login');
-        }
-      });
+        });
     },
     openModal(type, item) {
       if (type === 'creat') {
@@ -141,27 +146,36 @@ export default {
         api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
         path = 'put';
       }
-      this.$http[path](api, { data: item }).then((res) => {
-        if (res.data.success) {
-          this.$refs.EideProductModal.hideModal();
-          this.getProducts();
-          this.pushMessage(res, `${res.data.message}`);
-        } else {
-          this.pushMessage(res, `${res.data.message}`);
-        }
-      });
+      this.$http[path](api, { data: item })
+        .then((res) => {
+          if (res.data.success) {
+            this.$refs.EideProductModal.hideModal();
+            this.getProducts();
+            this.pushMessage(res, `${res.data.message}`);
+          } else {
+            this.pushMessage(res, `${res.data.message}`);
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     deleteProduct(item) {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
-      this.$http.delete(api).then((res) => {
-        if (res.data.success) {
-          this.$refs.DeleteModal.hideModal();
-          this.getProducts();
-          this.pushMessage(res, `${res.data.message}`);
-        } else {
-          this.pushMessage(res, `${res.data.message}`);
-        }
-      });
+      this.$http
+        .delete(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.$refs.DeleteModal.hideModal();
+            this.getProducts();
+            this.pushMessage(res, `${res.data.message}`);
+          } else {
+            this.pushMessage(res, `${res.data.message}`);
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
   },
   created() {

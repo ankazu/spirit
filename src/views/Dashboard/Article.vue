@@ -159,15 +159,19 @@ export default {
         status = '更新貼文';
       }
       const articleComponent = this.$refs.articleModal;
-      this.$http[httpMethod](api, { data: this.tempArticle }).then((res) => {
-        if (res.data.success) {
-          articleComponent.hideModal();
-          this.pushMessage(res, status);
-          this.getArticles(this.currentPage);
-        } else {
-          this.pushMessage(res, status);
-        }
-      });
+      this.$http[httpMethod](api, { data: this.tempArticle })
+        .then((res) => {
+          if (res.data.success) {
+            articleComponent.hideModal();
+            this.pushMessage(res, status);
+            this.getArticles(this.currentPage);
+          } else {
+            this.pushMessage(res, status);
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     openDelArticleModal(item) {
       this.tempArticle = { ...item };
@@ -176,16 +180,21 @@ export default {
     delArticle() {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/article/${this.tempArticle.id}`;
       this.isLoading = true;
-      this.$http.delete(url).then((res) => {
-        if (res.data.success) {
-          this.pushMessage(res, '刪除貼文');
-          const delComponent = this.$refs.delModal;
-          delComponent.hideModal();
-          this.getArticles(this.currentPage);
-        } else {
-          this.pushMessage(res, '刪除貼文');
-        }
-      });
+      this.$http
+        .delete(url)
+        .then((res) => {
+          if (res.data.success) {
+            this.pushMessage(res, '刪除貼文');
+            const delComponent = this.$refs.delModal;
+            delComponent.hideModal();
+            this.getArticles(this.currentPage);
+          } else {
+            this.pushMessage(res, '刪除貼文');
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
   },
   created() {

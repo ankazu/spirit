@@ -75,14 +75,19 @@ export default {
       if (token) {
         this.$http.defaults.headers.common.Authorization = `${token}`;
         const api = `${process.env.VUE_APP_API}/api/user/check`;
-        this.$http.post(api, { api_token: this.token }).then((res) => {
-          if (res.data.success) {
-            this.checkSuccess = true;
-            this.pushMessage(res, '登入');
-          } else {
-            this.$router.push('/login');
-          }
-        });
+        this.$http
+          .post(api, { api_token: this.token })
+          .then((res) => {
+            if (res.data.success) {
+              this.checkSuccess = true;
+              this.pushMessage(res, '登入');
+            } else {
+              this.$router.push('/login');
+            }
+          })
+          .catch((res) => {
+            console.log(res.data.message);
+          });
       } else {
         this.$router.push('/login');
       }

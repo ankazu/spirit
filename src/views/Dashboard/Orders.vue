@@ -94,16 +94,21 @@ export default {
       this.currentPage = page;
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?${page}`;
-      this.$http.get(api).then((res) => {
-        if (res.data.success) {
-          this.orders = res.data.orders;
-          this.pagination = res.data.pagination;
-          console.log(this.orders);
-          this.isLoading = false;
-        } else {
-          this.pushMessage(res, `${res.data.message}`);
-        }
-      });
+      this.$http
+        .get(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.orders = res.data.orders;
+            this.pagination = res.data.pagination;
+            console.log(this.orders);
+            this.isLoading = false;
+          } else {
+            this.pushMessage(res, `${res.data.message}`);
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     updatePaid(item) {
       this.isLoading = true;
@@ -111,16 +116,21 @@ export default {
       const paid = {
         is_paid: item.is_paid,
       };
-      this.$http.put(api, { data: paid }).then((res) => {
-        if (res.data.success) {
-          this.isLoading = false;
-          this.$refs.orderModal.hideModal();
-          this.getOrders(this.currentPage);
-          this.pushMessage(res, `${res.data.message}`);
-        } else {
-          this.pushMessage(res, `${res.data.message}`);
-        }
-      });
+      this.$http
+        .put(api, { data: paid })
+        .then((res) => {
+          if (res.data.success) {
+            this.isLoading = false;
+            this.$refs.orderModal.hideModal();
+            this.getOrders(this.currentPage);
+            this.pushMessage(res, `${res.data.message}`);
+          } else {
+            this.pushMessage(res, `${res.data.message}`);
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     openModal(item) {
       this.tempOrder = { ...item };
@@ -133,15 +143,20 @@ export default {
     deleteOrder(item) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
-      this.$http.delete(api).then((res) => {
-        if (res.data.success) {
-          this.$refs.DeleteModal.hideModal();
-          this.getOrders(this.currentPage);
-          this.pushMessage(res, `${res.data.message}`);
-        } else {
-          this.pushMessage(res, `${res.data.message}`);
-        }
-      });
+      this.$http
+        .delete(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.$refs.DeleteModal.hideModal();
+            this.getOrders(this.currentPage);
+            this.pushMessage(res, `${res.data.message}`);
+          } else {
+            this.pushMessage(res, `${res.data.message}`);
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
   },
 };

@@ -123,14 +123,19 @@ export default {
     getCart() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-      this.$http.get(url).then((res) => {
-        if (res.data.success) {
-          this.cart = res.data.data;
-          this.isLoading = false;
-        } else {
+      this.$http
+        .get(url)
+        .then((res) => {
+          if (res.data.success) {
+            this.cart = res.data.data;
+            this.isLoading = false;
+          } else {
+            console.log(res.data.message);
+          }
+        })
+        .catch((res) => {
           console.log(res.data.message);
-        }
-      });
+        });
     },
     addToCart(item, action) {
       this.isLoading = true;
@@ -156,33 +161,48 @@ export default {
           } else {
             console.log(res.data.message);
           }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
         });
     },
     clearCart() {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`;
-      this.$http.delete(api).then((res) => {
-        if (res.data.success) {
-          emitter.emit('updata-cart');
-          this.isLoading = false;
-          swalert('success', '已清空購物車');
-          this.getCart();
-        }
-      });
+      this.$http
+        .delete(api)
+        .then((res) => {
+          if (res.data.success) {
+            emitter.emit('updata-cart');
+            this.isLoading = false;
+            swalert('success', '已清空購物車');
+            this.getCart();
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     removeCartItem(id) {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.loadingStatus.loadingItem = id;
-      this.$http.delete(api).then((res) => {
-        if (res.data.success) {
-          this.loadingStatus.loadingItem = '';
-          emitter.emit('updata-cart');
-          swalert('success', '已刪除商品');
-          this.getCart();
-        } else {
+      this.$http
+        .delete(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.loadingStatus.loadingItem = '';
+            this.isLoading = false;
+            emitter.emit('updata-cart');
+            swalert('success', '已刪除商品');
+            this.getCart();
+          } else {
+            console.log(res.data.message);
+          }
+        })
+        .catch((res) => {
           console.log(res.data.message);
-        }
-      });
+        });
     },
     getProduct(id) {
       this.$router.push(`/product/${id}`);

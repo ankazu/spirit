@@ -188,18 +188,23 @@ export default {
     getProduct(id) {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`;
-      this.$http.get(url).then((res) => {
-        if (res.data.success) {
-          this.tempProduct = res.data.product;
-          this.productImg = this.tempProduct.imageUrl;
-          this.pathData.purpose = this.tempProduct.title;
-          this.isLoading = false;
-          this.cubeCount();
-          console.log(this.tempProduct);
-        } else {
+      this.$http
+        .get(url)
+        .then((res) => {
+          if (res.data.success) {
+            this.tempProduct = res.data.product;
+            this.productImg = this.tempProduct.imageUrl;
+            this.pathData.purpose = this.tempProduct.title;
+            this.isLoading = false;
+            this.cubeCount();
+            console.log(this.tempProduct);
+          } else {
+            console.log(res.data.message);
+          }
+        })
+        .catch((res) => {
           console.log(res.data.message);
-        }
-      });
+        });
     },
     changeImg(img) {
       this.productImg = img;

@@ -237,25 +237,35 @@ export default {
     getCart() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-      this.$http.get(url).then((res) => {
-        if (res.data.success) {
-          this.cart = res.data.data;
-          this.isLoading = false;
-          console.log(this.cart);
-        } else {
+      this.$http
+        .get(url)
+        .then((res) => {
+          if (res.data.success) {
+            this.cart = res.data.data;
+            this.isLoading = false;
+            console.log(this.cart);
+          } else {
+            console.log(res.data.message);
+          }
+        })
+        .catch((res) => {
           console.log(res.data.message);
-        }
-      });
+        });
     },
     addCouponCode() {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
       const coupon = { code: this.coupon_code };
       this.isLoading = true;
-      this.$http.post(api, { data: coupon }).then((res) => {
-        this.pushMessage(res, '加入優惠券');
-        this.getCart();
-        this.isLoading = false;
-      });
+      this.$http
+        .post(api, { data: coupon })
+        .then((res) => {
+          this.pushMessage(res, '加入優惠券');
+          this.getCart();
+          this.isLoading = false;
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     checkTel(value) {
       const tel = /^(09)[0-9]{8}$/;
@@ -264,16 +274,21 @@ export default {
     createOrder() {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
-      this.$http.post(url, { data: order }).then((res) => {
-        if (res.data.success) {
-          this.$refs.form.resetForm();
-          this.form.message = '';
-          swalert('success', '表單送出');
-          this.$router.push('/checkoutpaid');
-        } else {
-          swalert('success', '表單送出失敗');
-        }
-      });
+      this.$http
+        .post(url, { data: order })
+        .then((res) => {
+          if (res.data.success) {
+            this.$refs.form.resetForm();
+            this.form.message = '';
+            swalert('success', '表單送出');
+            this.$router.push('/checkoutpaid');
+          } else {
+            swalert('success', '表單送出失敗');
+          }
+        })
+        .catch((res) => {
+          console.log(res.data.message);
+        });
     },
     checkFrom() {
       // 驗證表單是否填寫
