@@ -1,5 +1,5 @@
 <template>
-  <loading :active="isLoading"></loading>
+  <Loading :active="isLoading"></Loading>
   <div class="container mb-5 mt-5">
     <div class="row order_box justify-content-center">
       <div class="col-12 col-lg-6">

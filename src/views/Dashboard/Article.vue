@@ -1,6 +1,6 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div>
-    <loading :active="isLoading"></loading>
     <div class="text-end mt-4">
       <button class="btn btn-primary" type="button" @click="openModal(true)">
         建立新的貼文

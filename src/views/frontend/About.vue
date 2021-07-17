@@ -17,7 +17,7 @@
       <div class="about">
         <div class="about_box">
           <div class="about_txt">
-            <div class="about_h2">Coffee Lover</div>
+            <div class="about_h2 text-center">Coffee Lover</div>
             <div class="about_text">
               <p>
                 源⾃於對精品咖啡的熱愛，SPIRIT 品牌誕⽣於2021年。 創辦⼈ John
@@ -43,7 +43,7 @@
             />
           </div>
           <div class="about_txt about_txt_2">
-            <div class="about_h2">每天都可以喝的味道</div>
+            <div class="about_h2 text-center">每天都可以喝的味道</div>
             <div class="about_text ">
               <p>
                 SPIRIT

@@ -1,5 +1,5 @@
 <template>
-  <loading :active="isLoading"></loading>
+  <Loading :active="isLoading"></Loading>
   <div class="container">
     <div class="row justify-content-center">
       <section class="section_empty" v-if="cart.carts?.length === 0">

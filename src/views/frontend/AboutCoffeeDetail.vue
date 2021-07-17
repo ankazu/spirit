@@ -1,5 +1,5 @@
 <template>
-  <loading :active="isLoading"></loading>
+  <Loading :active="isLoading"></Loading>
   <!-- banner -->
   <div
     class="position-relative inn_banner"
