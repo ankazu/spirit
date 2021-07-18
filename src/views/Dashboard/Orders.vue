@@ -112,9 +112,17 @@ export default {
     updatePaid(item) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
+      let paidDate = 0;
+      if (item.is_paid) {
+        paidDate = Date.parse(new Date()) / 1000;
+      } else {
+        paidDate = null;
+      }
       const paid = {
         is_paid: item.is_paid,
+        paid_date: paidDate,
       };
+
       this.$http
         .put(api, { data: paid })
         .then((res) => {
@@ -132,7 +140,7 @@ export default {
         });
     },
     openModal(item) {
-      this.tempOrder = { ...item };
+      this.tempOrder = JSON.parse(JSON.stringify(item));
       this.$refs.orderModal.openModal();
     },
     openDelOrderModal(item) {

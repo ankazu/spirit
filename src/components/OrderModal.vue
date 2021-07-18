@@ -72,7 +72,7 @@
                       <span v-if="tempOrder.paid_date">
                         {{ $filters.date(tempOrder.paid_date) }}
                       </span>
-                      <span v-else>時間不正確</span>
+                      <span v-else>尚未付款</span>
                     </td>
                   </tr>
                   <tr>
@@ -115,6 +115,7 @@
                     value=""
                     id="flexCheckDefault"
                     v-model="tempOrder.is_paid"
+                    @click="getDate(tempOrder.is_paid)"
                   />
                   <label class="form-check-label" for="flexCheckDefault">
                     <span v-if="tempOrder.is_paid">已付款</span>
@@ -162,6 +163,14 @@ export default {
       this.tempOrder = this.order;
     },
   },
-  methods: {},
+  methods: {
+    getDate(paid) {
+      if (paid) {
+        this.tempOrder.paid_date = false;
+      } else {
+        this.tempOrder.paid_date = Date.parse(new Date()) / 1000;
+      }
+    },
+  },
 };
 </script>
