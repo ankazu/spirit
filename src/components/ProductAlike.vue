@@ -85,6 +85,7 @@ export default {
     const { id } = this.$route.params;
     this.getProduct(id);
   },
+  emits: ['go-page'],
   methods: {
     getProduct(id) {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`;
@@ -151,9 +152,18 @@ export default {
         });
         return;
       }
-
       category = this.product.category;
-      const filterProducts = this.products.filter((item) => item.category === category);
+      // 過濾同名產品
+      const { title } = this.product;
+      const filterProducts = this.products.filter((item) => {
+        if (item.title === title) {
+          return false;
+        }
+        return item.category === category;
+      });
+
+      // 會出現與產品詳細頁相同名稱產品
+      // const filterProducts = this.products.filter((item) => item.category === category);
       const maxSize = filterProducts.length < 4 ? filterProducts.length : 4;
       const arrSet = new Set([]);
       getRandomInt();
