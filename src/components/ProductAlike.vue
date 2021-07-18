@@ -11,14 +11,14 @@
       class="alike ps-0"
     >
       <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
-        <div @click="goProduct(item.id)" class="alike_list_img">
+        <div @click="goProduct(item.id)" class="alike_list_img stretched-link">
           <img :src="item.imageUrl" alt="" />
         </div>
         <div class="alike_list_baking" v-if="item.baking">
           {{ item.baking }}
         </div>
         <div class="alike_list_baking_1" v-else></div>
-        <div @click="goProduct(item.id)" class="alike_list_title">
+        <div class="alike_list_title">
           {{ item.title }}
         </div>
         <div class="alike_list_desc">
@@ -55,7 +55,6 @@
 </template>
 
 <script>
-import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper.scss';
@@ -68,6 +67,7 @@ function getRandomInt(max) {
 }
 
 export default {
+  inject: ['swalert'],
   data() {
     return {
       product: {},
@@ -95,8 +95,8 @@ export default {
           this.product = res.data.product;
           this.getProducts();
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch(() => {
+          this.swalert('error', '取得產品時發生錯誤，請重新整理此頁面');
         });
     },
     getProducts() {
@@ -107,8 +107,8 @@ export default {
           this.products = res.data.products;
           this.getAlike();
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch(() => {
+          this.swalert('error', '取得全部產品時發生錯誤，請重新整理此頁面');
         });
     },
     goProduct(id) {
@@ -123,17 +123,17 @@ export default {
         .post(api, { data: cart })
         .then((res) => {
           if (res.data.success) {
+            this.isLoading = false;
             emitter.emit('updata-cart');
             emitter.emit('render-cart');
-            this.isLoading = false;
-            swalert('success', '已加入購物車');
+            this.swalert('success', '已加入購物車');
           } else {
             this.isLoading = false;
-            swalert('error', '加入失敗');
+            this.swalert('error', '加入失敗');
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch(() => {
+          this.swalert('error', '加入購物車時發生錯誤，請重新整理此頁面');
         });
     },
     getAlike() {
@@ -242,6 +242,9 @@ export default {
         font-size: 14px;
       }
     }
+  }
+  & .btn {
+    z-index: 2;
   }
 }
 

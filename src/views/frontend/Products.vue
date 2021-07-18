@@ -44,13 +44,13 @@
           >
             <div class="product">
               <div class="product_img">
-                <div @click="getProduct(item.id)">
+                <div class="stretched-link" @click="getProduct(item.id)">
                   <img :src="item.imageUrl" alt="" />
                 </div>
               </div>
               <div class="product_baking" v-if="item.baking">{{ item.baking }}</div>
               <div class="product_baking_1" v-else></div>
-              <div @click="getProduct(item.id)" class="product_title">{{ item.title }}</div>
+              <div class="product_title">{{ item.title }}</div>
               <div class="product_dec">
                 {{ item.decription }}
               </div>
@@ -320,6 +320,7 @@ export default {
   background-color: #f9f2e8;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
   &:hover {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.4);
     background-color: #f5eadb;
@@ -374,6 +375,9 @@ export default {
     &_1 {
       height: 21px;
     }
+  }
+  & .btn {
+    z-index: 2;
   }
 }
 del.product_price_2 {

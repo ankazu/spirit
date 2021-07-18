@@ -157,8 +157,8 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.loadingStatus.loadingItem = '';
-            this.getCart();
             this.isLoading = false;
+            this.getCart();
           } else {
             this.isLoading = false;
             this.swalert('error', '修改失敗');
@@ -176,8 +176,8 @@ export default {
         .then((res) => {
           if (res.data.success) {
             emitter.emit('updata-cart');
-            this.getCart();
             this.isLoading = false;
+            this.getCart();
             this.swalert('success', '已清空購物車');
           } else {
             this.isLoading = false;
@@ -197,9 +197,9 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.loadingStatus.loadingItem = '';
-            this.getCart();
-            emitter.emit('updata-cart');
             this.isLoading = false;
+            emitter.emit('updata-cart');
+            this.getCart();
             this.swalert('success', '已刪除商品');
           } else {
             this.isLoading = false;
