@@ -281,6 +281,7 @@ export default {
         max-height: 1000px;
         background-color: #fff;
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+        z-index: 9;
       }
     }
     & li {

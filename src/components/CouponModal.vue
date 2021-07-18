@@ -83,6 +83,7 @@
       </div>
     </div>
   </div>
+  {{ due_date }}
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin';
@@ -99,6 +100,7 @@ export default {
     coupon() {
       this.tempCoupon = this.coupon;
       const dateAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T');
+      // 解構賦值，從陣列中取出值，預設會取第一個["YYYY-MM-DD", "HH:mm:ss.sssZ"]
       [this.due_date] = dateAndTime;
     },
     due_date() {

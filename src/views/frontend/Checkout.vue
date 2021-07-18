@@ -262,7 +262,7 @@ export default {
             this.swalert('success', '使用優惠券');
           } else {
             this.isLoading = false;
-            this.swalert('error', '優惠券錯誤');
+            this.swalert('error', '優惠券已經過期');
           }
         })
         .catch(() => {

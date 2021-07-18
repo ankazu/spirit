@@ -67,34 +67,41 @@
     </div>
   </section>
   <section class="section_2">
-    <div class="section_title" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
-      <h2>
-        精選好文
-      </h2>
-    </div>
-    <div class="container blog" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
-      <div class="blog_item" v-for="item in tempArticle" :key="item.id">
-        <div class="blog_pic ">
-          <a href="#" @click.prevent="getArticle(item.id)">
-            <img :src="item.imageUrl" :alt="item.idx_title" />
-          </a>
-        </div>
-        <div class="blog_txt">
-          <div class="blog_txt_title">{{ item.idx_title }}</div>
-          <div class="blog_txt_des">
-            {{ item.idx_description }}
+    <div class="container ">
+      <div class="section_title" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
+        <h2>
+          精選好文
+        </h2>
+      </div>
+      <div class="blog" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
+        <div class="blog_item" v-for="item in tempArticle" :key="item.id">
+          <div class="blog_pic ">
+            <a href="#" @click.prevent="getArticle(item.id)">
+              <img :src="item.imageUrl" :alt="item.idx_title" />
+            </a>
+          </div>
+          <div class="blog_txt">
+            <h3 class="blog_txt_title">{{ item.idx_title }}</h3>
+            <p class="blog_txt_des">
+              {{ item.idx_description }}
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
   <section class="section">
-    <div class="section_title" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
+    <div class="section_title" data-aos="zoom-in" data-aos-duration="1300" data-aos-delay="200">
       <h2>
         精選商品
       </h2>
     </div>
-    <div class="container pe-0 ps-0">
+    <div
+      class="container pe-0 ps-0"
+      data-aos="fade-up"
+      data-aos-duration="1300"
+      data-aos-delay="200"
+    >
       <ProductAlike></ProductAlike>
     </div>
   </section>
@@ -210,45 +217,45 @@ export default {
 }
 
 .section {
-  padding: 120px 20px 190px;
+  padding: 90px 20px 140px;
   @media only screen and (max-width: 600px) {
-    padding: 60px 20px 140px;
+    padding: 40px 12px 100px;
   }
-}
-.section_2 {
-  padding: 0px 0px 100px;
-  @media only screen and (max-width: 600px) {
-    padding: 0px 0px 0px;
+  &_2 {
+    padding: 0px 0px 100px;
+    @media only screen and (max-width: 600px) {
+      padding: 0px 0px 0px;
+    }
   }
-}
-.section_bg {
-  background: #f5eadb;
-}
-.section_title {
-  max-width: 620px;
-  margin: 0 auto 70px;
-  text-align: center;
-  & h2 {
-    font-size: 2.25rem;
-    font-weight: 600;
-    @media only screen and (max-width: 768px) {
-      text-align: left;
-      & span {
-        display: block;
+  &_title {
+    max-width: 620px;
+    margin: 0 auto 70px;
+    text-align: center;
+    @media only screen and (max-width: 600px) {
+      margin: 0 auto 30px;
+    }
+    & h2 {
+      font-size: 2.25rem;
+      font-weight: 600;
+      @media only screen and (max-width: 768px) {
         text-align: left;
+        & span {
+          display: block;
+          text-align: left;
+        }
+      }
+      @media only screen and (max-width: 576px) {
+        font-size: 26px;
       }
     }
-    @media only screen and (max-width: 576px) {
-      font-size: 26px;
+    & p {
+      font-size: 18px;
+      text-align: left;
+      padding-left: 5px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-family: 'Pacifico', cursive;
     }
-  }
-  & p {
-    font-size: 18px;
-    text-align: left;
-    padding-left: 5px;
-    margin-bottom: 5px;
-    font-weight: 600;
-    font-family: 'Pacifico', cursive;
   }
 }
 
@@ -406,7 +413,7 @@ export default {
       width: 100%;
       margin: 0 0 50px 0;
       &:last-child {
-        margin: 0 0 50px 0;
+        margin: 0 0 20px 0;
       }
     }
   }
@@ -415,7 +422,7 @@ export default {
     z-index: 1;
     margin-bottom: 40px;
     @media only screen and (max-width: 600px) {
-      margin-bottom: 30px;
+      margin-bottom: 15px;
     }
     & img {
       border-radius: 2px;
@@ -446,13 +453,16 @@ export default {
     }
   }
   &_txt {
-    text-align: left;
     &_title {
       font-size: 2.25rem;
       font-weight: 600;
       margin-bottom: 15px;
       @media only screen and (max-width: 992px) {
         font-size: 24px;
+      }
+      @media only screen and (max-width: 600px) {
+        font-size: 22px;
+        margin-bottom: 10px;
       }
     }
   }
