@@ -169,7 +169,7 @@ export default {
           is_enabled: 0,
         };
       } else {
-        this.tempCoupon = { ...item };
+        this.tempCoupon = JSON.parse(JSON.stringify(item));
       }
       this.$refs.couponModal.openModal();
     },

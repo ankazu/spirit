@@ -157,7 +157,7 @@
             <div class="order_dtl_list_qty">X {{ item.qty }}</div>
           </div>
         </div>
-        <div class="shop_total">
+        <div class="shop_pirce">
           <div class="d-flex align-items-end justify-content-end">
             <input
               type="text"
@@ -171,10 +171,10 @@
               </button>
             </div>
           </div>
-          <div class="shop_total_dtl">
+          <div class="shop_pirce_dtl">
             <div class="d-flex justify-content-end align-items-end">
-              <span class="shop_dtl_total_title">商品金額</span>
-              <span class="shop_dtl_total"
+              <span class="shop_pirce_title">商品金額</span>
+              <span class="shop_pirce_total"
                 ><span class="material-icons"> attach_money </span
                 >{{ $filters.currency(cart.total) }}</span
               >
@@ -183,8 +183,8 @@
               class="d-flex justify-content-end align-items-end"
               v-if="cart.final_total !== cart.total"
             >
-              <span class="shop_dtl_total_title">折扣代碼</span>
-              <span class="shop_dtl_total text-success"
+              <span class="shop_pirce_title">折扣代碼</span>
+              <span class="shop_pirce_total text-success"
                 ><span class="material-icons"> attach_money </span
                 >{{ $filters.currency(cart.final_total - cart.total) }}</span
               >
@@ -193,8 +193,8 @@
               class="d-flex justify-content-end align-items-end"
               v-if="cart.final_total !== cart.total"
             >
-              <span class="shop_dtl_total_title">總計</span>
-              <span class="shop_dtl_total total_price"
+              <span class="shop_pirce_title">總計</span>
+              <span class="shop_pirce_total total_price"
                 ><span class="material-icons"> attach_money </span
                 >{{ $filters.currency(cart.final_total) }}</span
               >
@@ -393,23 +393,23 @@ export default {
 .price_dlr {
   font-size: 1rem;
 }
-.shop_total {
+.shop_pirce {
   padding: 30px;
   &_dtl {
     margin-top: 30px;
-    &_title {
-      display: inline-block;
-      text-align: right;
-      margin-right: 20px;
-    }
-    &_total {
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-width: 54px;
-      text-align: right;
-    }
+  }
+  &_title {
+    display: inline-block;
+    text-align: right;
+    margin-right: 20px;
+  }
+  &_total {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 72px;
+    text-align: right;
   }
 }
 

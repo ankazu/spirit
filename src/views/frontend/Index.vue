@@ -22,40 +22,40 @@
       <div class="features_img ">
         <img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983351370.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=B7B3zbJkpGvIVjeUM9A0iffNZ0Dspof%2BItulmn15038znmp7xE%2Bd8O6MEnUwzBNz7ICmY5hdgledBZkl8V9yTCHoZZETyzB6q%2Fme%2BIIJO2tVgFV2eA0%2B6kXWqqqkUQnuO%2BLXt6FJDPjlR8pjPiEHQKJpfqEhcu7PhG84xhDJ1xnTBnlh%2B62BRzpl2LCbj99xzgztXZSB3AWEqoTQptHfDZAmDrerfCOd2I6%2BJzrceRX8KIFsn33KYdiRKkNT48QJNVly8XUB7Zd2dptFZDBjovXynZENwDdH7RCQ0PS85L1mcdAu6a0BYC7%2FKlvmbs0MUko2jNmkNZqkMz1%2BOqjchw%3D%3D"
-          alt=""
+          alt="每天都可以喝的味道"
         />
       </div>
       <div class="features_txt">
         <div class="features_icon"></div>
         <h3>每天都可以喝的味道</h3>
-        <p>
-          <span>
+        <div>
+          <p>
             選用優質的生豆，用小火慢慢煮，以促進美味成分的化學變化。
-          </span>
-          <span>
+          </p>
+          <p>
             每天都可以喝的咖啡不需要第一口就很香。它並不華麗，如果您注意到它，將永遠不會厭倦它。這就是味道。
-          </span>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
     <div class="features" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
       <div class="features_img ">
         <img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983282674.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=RttNZVojk6vVarqvZXuCGQjN%2B2kC7AfvpWGQhnNc04CBqRjhMyqONuMWYrdH3MgIfFfoAeRnawOp5a1RAD1QceBGRkYPqVFsHrPfxAR6wClbLet%2BnkxZn%2B0lpCpYdR3xp8HzD3rbh75yFk4ayHUMJtlq3K2d54sMX23IDM753C8s%2Fnx%2BJkcWI270OJsyETTViigMnTAnjHIEMTnl2IFS11g4DmIcXlXYT585dgKKCd5hF9iqltQZSl%2B%2FRQrD%2FSLunUNFhZGGHXre3XD5uQuGq5fUT%2B%2B4Zifm%2BrDqrByBTaF8qLCyDD%2Fxgdd5c%2BrSY42OBW0K6mS2YgZ5JIdpD%2FXYYw%3D%3D"
-          alt=""
+          alt="每天喝得起的價格"
         />
       </div>
       <div class="features_txt">
         <div class="features_icon"></div>
         <h3>每天喝得起的價格</h3>
-        <p>
-          <span>
+        <div>
+          <p>
             生咖啡豆的市場價格由供求關係決定。稀缺豆價值高、品質好的生豆價格也會相應上漲。
-          </span>
-          <span>
+          </p>
+          <p>
             採購標準是質量好、產量穩定的生豆。我們實現了既滿足顧客可以飲用的價格又滿足保持商店營業的利潤的平衡。
-          </span>
-        </p>
+          </p>
+        </div>
         <div class="mybtn">
           <router-link to="/products" class="mybtn_link" href="">
             <span>
@@ -67,11 +67,16 @@
     </div>
   </section>
   <section class="section_2">
+    <div class="section_title" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
+      <h2>
+        精選好文
+      </h2>
+    </div>
     <div class="container blog" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
       <div class="blog_item" v-for="item in tempArticle" :key="item.id">
         <div class="blog_pic ">
           <a href="#" @click.prevent="getArticle(item.id)">
-            <img :src="item.imageUrl" alt="" />
+            <img :src="item.imageUrl" :alt="item.idx_title" />
           </a>
         </div>
         <div class="blog_txt">
@@ -83,8 +88,8 @@
       </div>
     </div>
   </section>
-  <section class="section ">
-    <div class="section_title">
+  <section class="section">
+    <div class="section_title" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
       <h2>
         精選商品
       </h2>
@@ -308,7 +313,7 @@ export default {
       font-weight: 600;
       width: 100%;
     }
-    & p span {
+    & div p {
       display: block;
       margin-top: 10px;
     }
