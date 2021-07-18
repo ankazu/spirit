@@ -125,7 +125,7 @@ export default {
       }
 
       if (type === 'edit') {
-        this.tempProduct = { ...item };
+        this.tempProduct = JSON.parse(JSON.stringify(item));
         this.isNew = false;
         this.$refs.ProductModal.openModal();
       }
