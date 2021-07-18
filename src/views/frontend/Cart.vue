@@ -98,11 +98,11 @@
 </template>
 
 <script>
-import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
 import ProductAlike from '@/components/ProductAlike.vue';
 
 export default {
+  inject: ['swalert'],
   data() {
     return {
       loadingStatus: { loadingItem: '' },
@@ -131,11 +131,11 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            swalert('error', '發生錯誤，請重新整理此頁面');
+            this.swalert('error', '取得購物清單時發生錯誤');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', '取得購物車時發生錯誤，請重新整理此頁面');
         });
     },
     addToCart(item, action) {
@@ -161,11 +161,11 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            swalert('error', '修改失敗');
+            this.swalert('error', '修改失敗');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', '修改時發生錯誤，請重新整理此頁面');
         });
     },
     clearCart() {
@@ -178,14 +178,14 @@ export default {
             emitter.emit('updata-cart');
             this.getCart();
             this.isLoading = false;
-            swalert('success', '已清空購物車');
+            this.swalert('success', '已清空購物車');
           } else {
             this.isLoading = false;
-            swalert('success', '清除失敗');
+            this.swalert('success', '清除失敗');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', '清除購物車時發生錯誤，請重新整理此頁面');
         });
     },
     removeCartItem(id) {
@@ -200,14 +200,14 @@ export default {
             this.getCart();
             emitter.emit('updata-cart');
             this.isLoading = false;
-            swalert('success', '已刪除商品');
+            this.swalert('success', '已刪除商品');
           } else {
             this.isLoading = false;
-            swalert('success', '刪除商品失敗');
+            this.swalert('success', '刪除商品失敗');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', '刪除商品時發生錯誤，請重新整理此頁面');
         });
     },
     getProduct(id) {

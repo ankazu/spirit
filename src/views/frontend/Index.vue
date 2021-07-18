@@ -126,9 +126,9 @@
 </template>
 <script>
 import ProductAlike from '@/components/ProductAlike.vue';
-import swalert from '@/methods/swal';
 
 export default {
+  inject: ['swalert'],
   data() {
     return {
       isLoading: false,
@@ -155,11 +155,10 @@ export default {
             this.articles = res.data.articles;
             const data = this.articles.filter((article) => article.isShowIndex === true);
             this.tempArticle = data.slice(0, 2);
-            console.log(this.tempArticle);
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     getArticle(id) {
@@ -168,7 +167,7 @@ export default {
     subscription() {
       this.email = '';
       this.$refs.subForm.resetForm();
-      swalert('success', '訂閱成功');
+      this.swalert('success', '訂閱成功');
     },
   },
 };

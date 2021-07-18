@@ -3,10 +3,11 @@
 </template>
 <script>
 import pushMessage from '@/methods/pushMessageState';
+import swalert from '@/methods/swal';
 
 export default {
   provide() {
-    return { pushMessage };
+    return { pushMessage, swalert };
   },
 };
 </script>

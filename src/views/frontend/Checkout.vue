@@ -206,8 +206,6 @@
   </div>
 </template>
 <script>
-import swalert from '@/methods/swal';
-
 export default {
   data() {
     return {
@@ -232,7 +230,7 @@ export default {
   created() {
     this.getCart();
   },
-  inject: ['pushMessage'],
+  inject: ['swalert'],
   methods: {
     getCart() {
       this.isLoading = true;
@@ -243,13 +241,12 @@ export default {
           if (res.data.success) {
             this.cart = res.data.data;
             this.isLoading = false;
-            console.log(this.cart);
           } else {
-            console.log(res.data.message);
+            this.swalert('error', '取得購物車資料時發生錯誤');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          this.swalert('error', '取得購物車時發生錯誤，請重新整理此頁面');
         });
     },
     addCouponCode() {
@@ -262,14 +259,15 @@ export default {
           if (res.data.success) {
             this.getCart();
             this.isLoading = false;
-            swalert('success', '使用優惠券');
+            this.swalert('success', '使用優惠券');
           } else {
             this.isLoading = false;
-            swalert('error', '優惠券錯誤');
+            this.swalert('error', '優惠券錯誤');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.isLoading = false;
+          this.swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     checkTel(value) {
@@ -287,15 +285,16 @@ export default {
             this.$refs.form.resetForm();
             this.form.message = '';
             this.isLoading = false;
-            swalert('success', '表單送出');
+            this.swalert('success', '表單送出');
             this.$router.push('/checkoutpaid');
           } else {
             this.isLoading = false;
-            swalert('success', '表單送出失敗');
+            this.swalert('success', '表單送出失敗');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.isLoading = false;
+          this.swalert('error', '表單送出時發生錯誤，請重新整理此頁面');
         });
     },
     checkFrom() {

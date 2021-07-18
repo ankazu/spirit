@@ -41,15 +41,13 @@
 </template>
 
 <script>
-import swalert from '@/methods/swal';
-
 export default {
+  inject: ['swalert'],
   data() {
     return {
       user: {},
     };
   },
-  inject: ['pushMessage'],
   methods: {
     login() {
       const api = `${process.env.VUE_APP_API}/admin/signin`;
@@ -61,12 +59,11 @@ export default {
             document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
             this.$router.push('/admin/products');
           } else {
-            swalert('error', `${res.data.message}`, 'top');
+            this.swalert('error', `${res.data.message}`, 'top');
           }
         })
-        .catch((res) => {
-          swalert('error', '登入失敗');
-          console.log(res.data.message);
+        .catch(() => {
+          this.swalert('error', '登入失敗');
         });
     },
   },

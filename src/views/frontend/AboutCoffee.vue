@@ -41,10 +41,10 @@
 </template>
 
 <script>
-import swalert from '@/methods/swal';
 import Path from '@/components/Path.vue';
 
 export default {
+  inject: ['swalert'],
   data() {
     return {
       isLoading: false,
@@ -73,11 +73,11 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            swalert('error', '發生錯誤，請重新整理此頁面');
+            this.swalert('error', '發生錯誤，請重新整理此頁面');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', '發生錯誤，請重新整理此頁面');
         });
     },
     getArticle(id) {

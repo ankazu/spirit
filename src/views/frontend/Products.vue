@@ -92,11 +92,11 @@
 
 <script>
 import Pagination from '@/components/Pagination.vue';
-import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
 import Path from '@/components/Path.vue';
 
 export default {
+  inject: ['swalert'],
   components: {
     Path,
     Pagination,
@@ -163,11 +163,11 @@ export default {
             this.getProductsList(this.products);
             this.isLoading = false;
           } else {
-            console.log(res.data.message);
+            this.swalert('error', '取得產品列表時發生錯誤');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          this.swalert('error', '取得產品發生錯誤，請重新整理此頁面');
         });
     },
     getProduct(id) {
@@ -202,15 +202,15 @@ export default {
           if (res.data.success) {
             this.isLoading = false;
             emitter.emit('updata-cart');
-            swalert('success', '已加入購物車');
+            this.swalert('success', '已加入購物車');
             this.sideUl = false;
           } else {
             this.sideUl = false;
-            swalert('error', '加入失敗');
+            this.swalert('error', '加入失敗');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', '加入購物車時發生錯誤，請重新整理此頁面');
         });
     },
     getProductsList(productslist) {

@@ -151,12 +151,12 @@
 </template>
 
 <script>
-import swalert from '@/methods/swal';
 import emitter from '@/methods/eventBus';
 import ProductAlike from '@/components/ProductAlike.vue';
 import Path from '@/components/Path.vue';
 
 export default {
+  inject: ['swalert'],
   data() {
     return {
       loadingStatus: { loadingItem: '' },
@@ -199,11 +199,13 @@ export default {
             this.cubeCount();
             this.isLoading = false;
           } else {
-            swalert('error', '發生錯誤，請重新整理此頁面');
+            this.isLoading = false;
+            this.swalert('error', '取得產品發生錯誤');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.isLoading = false;
+          this.swalert('error', '取得產品時發生錯誤，請重新整理此頁面');
         });
     },
     changeImg(img) {
@@ -225,14 +227,15 @@ export default {
             emitter.emit('updata-cart');
             this.isLoading = false;
             this.qty = 1;
-            swalert('success', '已加入購物車');
+            this.swalert('success', '已加入購物車');
           } else {
             this.isLoading = false;
-            swalert('error', '加入失敗');
+            this.swalert('error', '加入失敗');
           }
         })
         .catch(() => {
-          swalert('error', '發生錯誤，請重新整理此頁面');
+          this.isLoading = false;
+          this.swalert('error', '加入購物車時發生錯誤，請重新整理此頁面');
         });
     },
     changeQty(txt) {

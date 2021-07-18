@@ -91,6 +91,7 @@
 import emitter from '@/methods/eventBus';
 
 export default {
+  inject: ['swalert'],
   data() {
     return {
       cart: {
@@ -109,13 +110,12 @@ export default {
           if (res.data.success) {
             this.cart = res.data.data;
             this.isLoading = false;
-            console.log(this.cart);
           } else {
-            console.log(res.data.message);
+            this.swalert('error', '取得購物清單時發生錯誤');
           }
         })
-        .catch((res) => {
-          console.log(res.data.message);
+        .catch(() => {
+          this.swalert('error', '取得購物車時發生錯誤，請重新整理此頁面');
         });
     },
   },
