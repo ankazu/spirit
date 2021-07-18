@@ -100,6 +100,12 @@ export default {
       classList: { navbarTop: '', navbarInner: '' },
     };
   },
+  watch: {
+    // 轉址時nav選單隱藏
+    $route() {
+      document.querySelector('#navbarNav').classList.remove('show');
+    },
+  },
   methods: {
     getCart() {
       this.isLoading = true;
