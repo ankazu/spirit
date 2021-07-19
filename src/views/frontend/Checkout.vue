@@ -1,8 +1,20 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <div class="container mb-5 mt-5">
-    <div class="row order_box justify-content-center">
-      <div class="col-12 col-lg-6">
+  <div
+    class="position-relative inn_banner"
+    style="height: 250px; background-size: cover; background-position: center center;
+    background-repeat: no-repeat; background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1626702787982.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=CrNQrW8cLRifH7Tcj0el7SaRzWl2AGL0xqWxFf9LkwIt4mKUh9lxR1am9qeksJ0KhJJO%2BnLyk5cN1tDVEJb8c2bl6KFQIAJjZEEZlgubyY%2FY0BewH0FRdYnH90q%2FKkovmhb9SdHF%2B73lymDFCMsimSKW57%2BqxPOPqCha0W8CYvYEWkE17%2BNdKJlNAwnk84jyBW098QOXftCAOY3YjRF8DsvEzlOcBHPgrKsqBzEQi1M6dX0GO68oBChWl8w5%2F7A6VQVipaL3m7l9mOBjlraa%2BIArzwkv6KUDSkgdey1VChhnFxMDe%2BKllroKgpqTGL8dseTvxiHe%2B%2BVo8UQCXedUbg%3D%3D)"
+  >
+    <div>
+      <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
+        {{ pathData.purpose }}
+      </h1>
+    </div>
+  </div>
+  <div class="container mb-5">
+    <Path :path-data="pathData"></Path>
+    <div class="row order justify-content-center">
+      <div class="col-12 col-lg-7">
         <div class="order_inf">訂購人資訊</div>
         <Form ref="form" class="form" v-slot="{ errors }" @submit="createOrder" @change="checkFrom">
           <div class="mb-3">
@@ -131,7 +143,7 @@
           </div>
         </Form>
       </div>
-      <div class="col-12 col-lg-4">
+      <div class="col-12 col-lg-5">
         <div class="order_dtl">
           <div class="order_del_title">訂單明細</div>
           <div class="order_dtl_list" v-for="item in cart.carts" :key="item.id">
@@ -139,7 +151,7 @@
               <img :src="item.product.imageUrl" :alt="item.product.title" />
             </div>
             <div class="order_dtl_list_title">
-              <div class="title_txt">
+              <div class="order_dtl_list_title_txt" @click="getProduct(item.product_id)">
                 {{ item.product.title }}
               </div>
               <div class="order_dtl_list_unit">
@@ -206,6 +218,8 @@
   </div>
 </template>
 <script>
+import Path from '@/components/Path.vue';
+
 export default {
   data() {
     return {
@@ -225,7 +239,14 @@ export default {
         },
         message: '',
       },
+      pathData: {
+        previous: [{ title: '首頁', url: '/' }],
+        purpose: '購物車',
+      },
     };
+  },
+  components: {
+    Path,
   },
   created() {
     this.getCart();
@@ -340,54 +361,65 @@ export default {
     width: 100%;
   }
 }
-
-.order_inf,
-.order_del_title {
-  font-size: 1.5rem;
-  line-height: 2.5rem;
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 15px;
-}
-.order_dtl {
-  padding: 0 30px;
-  &_list {
-    display: flex;
+.order {
+  @media only screen and (max-width: 992px) {
+    flex-direction: column-reverse;
+  }
+  &_inf,
+  &_del_title {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
     margin-bottom: 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    &_img {
-      max-width: 90px;
-    }
-    &_title {
-      padding: 0 15px;
-      text-align: left;
-      width: calc(100% - 160px);
-    }
-    &_unit {
-      display: flex;
-      align-items: center;
-      color: #999;
-      & > div {
-        display: flex;
-        align-items: center;
-        margin-right: 8px;
+  }
+  &_dtl {
+    padding: 0 30px;
+    @media only screen and (max-width: 992px) {
+      padding: 0;
+      margin-bottom: 30px;
+      &_box {
+        padding: 0;
       }
     }
-    &_qty {
-      margin-left: auto;
-      width: 30px;
+    &_list {
+      display: flex;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      &_img {
+        max-width: 90px;
+        cursor: pointer;
+      }
+      &_title {
+        padding: 0 15px;
+        text-align: left;
+        width: calc(100% - 160px);
+        &_txt {
+          cursor: pointer;
+          font-weight: 600;
+          word-break: break-all;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          display: -webkit-box;
+        }
+      }
+      &_unit {
+        display: flex;
+        align-items: center;
+        color: #999;
+        & > div {
+          display: flex;
+          align-items: center;
+          margin-right: 8px;
+        }
+      }
+      &_qty {
+        margin-left: auto;
+        width: 30px;
+      }
     }
   }
-}
-
-.title_txt {
-  font-weight: 600;
-  word-break: break-all;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  display: -webkit-box;
 }
 
 .price_dlr {
@@ -395,6 +427,10 @@ export default {
 }
 .shop_pirce {
   padding: 30px;
+  @media only screen and (max-width: 992px) {
+    padding: 0;
+    margin-bottom: 30px;
+  }
   &_dtl {
     margin-top: 30px;
   }
@@ -410,6 +446,11 @@ export default {
     justify-content: flex-end;
     min-width: 72px;
     text-align: right;
+    @media only screen and (max-width: 992px) {
+      .shop_total {
+        padding: 0;
+      }
+    }
   }
 }
 
@@ -429,16 +470,6 @@ export default {
   width: 180px;
   &:focus {
     outline: none;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  .order_dtl_box,
-  .shop_total {
-    padding: 0;
-  }
-  .order_box {
-    flex-direction: column-reverse;
   }
 }
 </style>

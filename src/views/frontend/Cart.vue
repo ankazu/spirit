@@ -1,6 +1,18 @@
 <template>
   <Loading :active="isLoading"></Loading>
+  <div
+    class="position-relative inn_banner"
+    style="height: 250px; background-size: cover; background-position: center center;
+    background-repeat: no-repeat; background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1626702787982.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=CrNQrW8cLRifH7Tcj0el7SaRzWl2AGL0xqWxFf9LkwIt4mKUh9lxR1am9qeksJ0KhJJO%2BnLyk5cN1tDVEJb8c2bl6KFQIAJjZEEZlgubyY%2FY0BewH0FRdYnH90q%2FKkovmhb9SdHF%2B73lymDFCMsimSKW57%2BqxPOPqCha0W8CYvYEWkE17%2BNdKJlNAwnk84jyBW098QOXftCAOY3YjRF8DsvEzlOcBHPgrKsqBzEQi1M6dX0GO68oBChWl8w5%2F7A6VQVipaL3m7l9mOBjlraa%2BIArzwkv6KUDSkgdey1VChhnFxMDe%2BKllroKgpqTGL8dseTvxiHe%2B%2BVo8UQCXedUbg%3D%3D)"
+  >
+    <div>
+      <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
+        {{ pathData.purpose }}
+      </h1>
+    </div>
+  </div>
   <div class="container">
+    <Path :path-data="pathData"></Path>
     <div class="row justify-content-center">
       <section class="section_empty" v-if="cart.carts?.length === 0">
         <div class="empty_cart mt-4">
@@ -15,7 +27,7 @@
           <router-link class="btn btn-primary btn-lg mt-5" to="/products">繼續購物</router-link>
         </div>
       </section>
-      <section v-else class="col-12 col-lg-10 justify-content-center">
+      <section v-else class="col-12 justify-content-center">
         <div class="mb-4 mt-4">
           <button
             type="button"
@@ -100,6 +112,7 @@
 <script>
 import emitter from '@/methods/eventBus';
 import ProductAlike from '@/components/ProductAlike.vue';
+import Path from '@/components/Path.vue';
 
 export default {
   inject: ['swalert'],
@@ -108,10 +121,15 @@ export default {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
       cart: {},
+      pathData: {
+        previous: [{ title: '首頁', url: '/' }],
+        purpose: '購物車',
+      },
     };
   },
   components: {
     ProductAlike,
+    Path,
   },
   mounted() {
     this.getCart();

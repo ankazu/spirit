@@ -3,8 +3,7 @@
   <!-- banner -->
   <div
     class="position-relative inn_banner"
-    style="height: 250px; background-size: cover; background-position: center center;
-    background-repeat: no-repeat; background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625982762272.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=T%2FMS4OrIcJ%2Ftl7DWhBg4qR47VVvwTl6CFVjRfTCoU5%2BydNIkfF1EyRDcjXrSDfOBKNQzpiwsUodLdhURyqbnD9IhXFrBN1kQ06USu4gA%2FA666JKlIhPlBnL3%2BxieqSfItfR0Eg8ID4oSakY93jBmIM0jMTesDjiK2U%2BctUwkv4K9DIcyPOTHmNHcqSzTZguSYQIgyOH9YETXQeul0Ur2fT%2FODNd9XcMO3krqHTmQkov%2BCOlF3uSEevQyBeuuqr4nZZIaKEksaKaD8fxbGndHAqKCDPYjp86mgBnMTQ9FXI8HO972lZfLHwaddN%2FrMHS5jLEdlvv%2FIZ%2Bl52sS9PEJbg%3D%3D)"
+    style="background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1626702470408.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=ZuqNZWkgZBvbuQu3515xnP5l%2Bh5x1jGih70wSKtxcdMTQgNWxM0WF5AdK11nyRG3Qe02U8a4Ijyphjm6xIKzs17C5O6pXl7zt0yGU8pPyIC%2Fouy7kCDPE9bOmNx8NnD64mY4zdcBq7g7aR54DvMcaLMdPXKdzgPiy1NPjhantn6uEVmk%2Frf%2FQTDiWwjkGK8rU19hO6qLK44Li8MD%2FaPS0dnZMOOSN9C%2BBHBzCrn6G4xlfEQnpzBGLh3%2Fcj9%2BIjwpMrPcj%2FELpzOZpGLOmvcIcFaM5yzbrFcS4zM4WHNj42BqI1n2f72s5zJ%2FfkOFSXld697HdYuhORB0eop%2F0C9npg%3D%3D)"
   >
     <div>
       <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
@@ -259,6 +258,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.inn_banner {
+  height: 250px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  @media only screen and (max-width: 600px) {
+    background-position: 63% center;
+  }
+}
 .description {
   &_title {
     margin: 0 0 30px;
