@@ -63,7 +63,7 @@
       ref="ProductModal"
       :product="tempProduct"
       :is-new="isNew"
-      @updata="updateProduct"
+      @update-product="updata"
     ></ProductModal>
     <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct"></DeleteModal>
   </div>
@@ -135,7 +135,7 @@ export default {
         this.$refs.DeleteModal.openModal();
       }
     },
-    updateProduct(item) {
+    updata(item) {
       let api = '';
       let path = '';
       if (this.isNew) {

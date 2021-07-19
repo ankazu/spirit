@@ -20,7 +20,7 @@
         <tr v-for="(item, key) in coupons" :key="key">
           <td>{{ item.title }}</td>
           <td>{{ item.percent }}</td>
-          <td>{{ $filters.date(item.due_date) }}</td>
+          <td>{{ $filters.date(item.showDate) }}</td>
           <td>
             <span class="text-success" v-if="item.is_enabled === 1">啟用</span>
             <span class="text-muted" v-else>未啟用</span>
@@ -68,12 +68,15 @@ export default {
   data() {
     return {
       isLoading: false,
-      coupons: {},
+      coupons: {
+        showDate: 0,
+      },
       tempCoupon: {
         title: '',
         is_enabled: 0,
         percent: 100,
         code: '',
+        showDate: 0,
       },
       isNew: false,
       pagination: {},
@@ -104,6 +107,9 @@ export default {
     },
     updataCoupon(item) {
       this.isLoading = true;
+      console.log(item);
+      console.log(item.showDate);
+      console.log(item.due_date);
       if (this.isNew) {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`;
         this.$http
@@ -167,9 +173,13 @@ export default {
         this.tempCoupon = {
           due_date: Math.floor(Date.now() / 1000),
           is_enabled: 0,
+          showDate: 0,
         };
       } else {
-        this.tempCoupon = JSON.parse(JSON.stringify(item));
+        this.tempCoupon = {
+          ...item,
+          showDate: 0,
+        };
       }
       this.$refs.couponModal.openModal();
     },

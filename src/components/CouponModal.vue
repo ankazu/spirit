@@ -45,7 +45,8 @@
           </div>
           <div class="mb-3">
             <label for="due_date">到期日</label>
-            <input type="date" class="form-control" id="due_date" v-model="due_date" />
+            <input type="date" class="form-control" id="due_date" v-model="showDate" />
+            <!-- <input type="date" class="form-control" id="due_date" v-model="due_date" /> -->
           </div>
           <div class="mb-3">
             <label for="price">折扣百分比</label>
@@ -84,6 +85,7 @@
     </div>
   </div>
   {{ due_date }}
+  {{ showDate }}
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin';
@@ -94,17 +96,27 @@ export default {
     return {
       tempCoupon: {},
       due_date: '',
+      showDate: '',
     };
   },
+  emits: ['update-coupon'],
   watch: {
     coupon() {
       this.tempCoupon = this.coupon;
-      const dateAndTime = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T');
-      // 解構賦值，從陣列中取出值，預設會取第一個["YYYY-MM-DD", "HH:mm:ss.sssZ"]
+      this.tempCoupon.showDate = this.coupon.due_date;
+      const dateAndTime = new Date(this.tempCoupon.showDate * 1000).toISOString().split('T');
+      // const expiryDate = new Date(this.tempCoupon.showDate * 1000).toISOString().split('T');
       [this.due_date] = dateAndTime;
+      [this.showDate] = dateAndTime;
+      // 解構賦值，從陣列中取出值，預設會取第一個["YYYY-MM-DD", "HH:mm:ss.sssZ"]
+      // [this.due_date] = dateAndTime;
     },
     due_date() {
+      // this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000 + 86400);
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000);
+    },
+    showDate() {
+      this.tempCoupon.showDate = Math.floor(new Date(this.showDate) / 1000);
     },
   },
   mixins: [modalMixin],
