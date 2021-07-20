@@ -13,10 +13,10 @@
   <div class="container">
     <Path :path-data="pathData"></Path>
     <div class="process">
-      <div class="process_step" data-num="01">
+      <div class="process_step current" data-num="01">
         確認商品
       </div>
-      <div class="process_step" data-num="02">
+      <div class="process_step current" data-num="02">
         填寫資料
       </div>
       <div class="process_step current" data-num="03">
@@ -60,5 +60,15 @@ export default {
 }
 h2 {
   font-size: 32px;
+}
+.process {
+  &::after {
+    position: absolute;
+    width: 50%;
+    z-index: 1;
+    content: '';
+    height: 3px;
+    background-color: #debc8c;
+  }
 }
 </style>

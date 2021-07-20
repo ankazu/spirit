@@ -53,8 +53,10 @@
     text-align: center;
     border-radius: 50px;
     z-index: 2;
+    color: #777;
     &.current {
       background: #debc8c;
+      color: #000;
       &:before {
         text-shadow: -1px -1px 0 #debc8c, 1px -1px 0 #debc8c, -1px 1px 0 #debc8c, 1px 1px 0 #debc8c;
       }

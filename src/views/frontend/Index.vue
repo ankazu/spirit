@@ -128,6 +128,7 @@
                 value="送出"
                 type="submit"
                 :disabled="Object.keys(errors).length !== 0 || email === ''"
+                :class="{ 'not-send': Object.keys(errors).length !== 0 || email === '' }"
               />
             </div>
           </Form>
@@ -188,6 +189,9 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .spirit {
   font-family: 'Pacifico', cursive;
+}
+.not-send {
+  cursor: not-allowed;
 }
 .banner {
   position: relative;

@@ -14,7 +14,7 @@
   <div class="container mb-5">
     <Path :path-data="pathData"></Path>
     <div class="process">
-      <div class="process_step" data-num="01">
+      <div class="process_step current" data-num="01">
         確認商品
       </div>
       <div class="process_step current" data-num="02">
@@ -148,7 +148,12 @@
             <router-link class="btn btn-outline-primary" to="/cart">上一步</router-link>
           </div>
           <div class="text-end w-50">
-            <button type="submit" class="btn btn-primary" :disabled="btnStatus">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              :disabled="btnStatus"
+              :class="{ 'not-send': btnStatus }"
+            >
               送出訂單
             </button>
           </div>
@@ -355,6 +360,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.not-send {
+  cursor: not-allowed;
+}
 .form {
   text-align: left;
   display: flex;
@@ -481,6 +489,16 @@ export default {
   width: 180px;
   &:focus {
     outline: none;
+  }
+}
+.process {
+  &::after {
+    position: absolute;
+    width: 50%;
+    z-index: 1;
+    content: '';
+    height: 3px;
+    background-color: #debc8c;
   }
 }
 </style>
