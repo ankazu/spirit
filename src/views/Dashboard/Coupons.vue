@@ -108,8 +108,8 @@ export default {
     updataCoupon(item) {
       this.isLoading = true;
       console.log(item);
-      console.log(item.showDate);
-      console.log(item.due_date);
+      console.log('showDate', item.showDate);
+      console.log('due_date', item.due_date);
       if (this.isNew) {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`;
         this.$http
@@ -173,12 +173,12 @@ export default {
         this.tempCoupon = {
           due_date: Math.floor(Date.now() / 1000),
           is_enabled: 0,
-          showDate: 0,
+          showDate: Math.floor(Date.now() / 1000),
         };
       } else {
         this.tempCoupon = {
           ...item,
-          showDate: 0,
+          showDate: item.showDate,
         };
       }
       this.$refs.couponModal.openModal();
