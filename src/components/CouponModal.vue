@@ -24,7 +24,7 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="title">標題</label>
+            <label for="title">標題<span class="text-danger"> *</span></label>
             <input
               type="text"
               class="form-control"
@@ -34,7 +34,7 @@
             />
           </div>
           <div class="mb-3">
-            <label for="coupon_code">優惠碼</label>
+            <label for="coupon_code">優惠碼<span class="text-danger"> *</span></label>
             <input
               type="text"
               class="form-control"
@@ -44,7 +44,7 @@
             />
           </div>
           <div class="mb-3">
-            <label for="due_date">到期日</label>
+            <label for="due_date">到期日<span class="text-danger"> *</span></label>
             <input
               type="date"
               class="form-control"
@@ -55,7 +55,7 @@
             <!-- <input type="date" class="form-control" id="due_date" v-model="due_date" /> -->
           </div>
           <div class="mb-3">
-            <label for="price">折扣百分比</label>
+            <label for="price">折扣百分比<span class="text-danger"> *</span></label>
             <input
               type="number"
               class="form-control"
