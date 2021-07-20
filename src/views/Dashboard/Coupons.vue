@@ -107,9 +107,6 @@ export default {
     },
     updataCoupon(item) {
       this.isLoading = true;
-      console.log(item);
-      console.log('showDate', item.showDate);
-      console.log('due_date', item.due_date);
       if (this.isNew) {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`;
         this.$http
