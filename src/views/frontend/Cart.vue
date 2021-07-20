@@ -27,72 +27,94 @@
           <router-link class="btn btn-primary btn-lg mt-5" to="/products">繼續購物</router-link>
         </div>
       </section>
-      <section v-else class="col-12 justify-content-center">
-        <div class="mb-4 mt-4">
-          <button
-            type="button"
-            class="btn btn-outline-danger btn-sm d-flex align-items-center ms-auto"
-            @click="clearCart()"
-          >
-            <span class="material-icons">
-              close
-            </span>
-            <span>
-              清除購物車
-            </span>
-          </button>
-        </div>
-        <div class="cart_product_header bg-primary">
-          <span class="cart_product_header_name">產品內容</span>
-          <span class="cart_product_header_qty">數量</span>
-          <span class="cart_product_header_price">售價</span>
-          <span class="cart_product_header_del">刪除</span>
-        </div>
-        <div class="cart_product" v-for="item in cart.carts" :key="item.id">
-          <div class="cart_product_img" @click="getProduct(item.product_id)">
-            <img :src="item.product.imageUrl" :alt="item.product.title" />
+      <section v-else>
+        <div class="process">
+          <div class="process_step current" data-num="01">
+            確認商品
           </div>
-          <div class="cart_product_dtl ps-4 pe-2">
-            <div class="cart_product_title" @click="getProduct(item.product_id)">
-              {{ item.product.title }}
-            </div>
-            <div class="cart_product_unit">單位 : {{ item.product.unit }}</div>
+          <div class="process_step" data-num="02">
+            填寫資料
           </div>
-          <div class="cart_product_quantity">
+          <div class="process_step" data-num="03">
+            訂購完成
+          </div>
+        </div>
+        <div class="col-12 justify-content-center">
+          <div class="mb-4 mt-4">
             <button
               type="button"
-              class="cart_remove cart_btn"
-              :disabled="item.qty === 1"
-              @click.prevent="addToCart(item, 'reduce')"
-            >
-              <span class="material-icons">
-                remove
-              </span>
-            </button>
-            <input class="cart_product_input" type="text" disabled="disabled" v-model="item.qty" />
-            <button type="button" class="cart_add cart_btn" @click.prevent="addToCart(item, 'add')">
-              <span class="material-icons">
-                add
-              </span>
-            </button>
-          </div>
-          <div class="cart_product_pricebox">
-            <div class="cart_product_price">
-              <span class="price_dlr material-icons">attach_money </span>
-              {{ $filters.currency(item.final_total) }}
-            </div>
-          </div>
-          <div class="cart_product_del">
-            <button
-              type="button"
-              class="btn btn-sm d-flex cart_close"
-              @click="removeCartItem(item.id)"
-              :disabled="loadingStatus.loadingItem === item.id"
+              class="btn btn-outline-danger btn-sm d-flex align-items-center ms-auto"
+              @click="clearCart()"
             >
               <span class="material-icons">
                 close
               </span>
+              <span>
+                清除購物車
+              </span>
             </button>
+          </div>
+          <div class="cart_product_header bg-primary">
+            <span class="cart_product_header_name">產品內容</span>
+            <span class="cart_product_header_qty">數量</span>
+            <span class="cart_product_header_price">售價</span>
+            <span class="cart_product_header_del">刪除</span>
+          </div>
+          <div class="cart_product" v-for="item in cart.carts" :key="item.id">
+            <div class="cart_product_img" @click="getProduct(item.product_id)">
+              <img :src="item.product.imageUrl" :alt="item.product.title" />
+            </div>
+            <div class="cart_product_dtl ps-4 pe-2">
+              <div class="cart_product_title" @click="getProduct(item.product_id)">
+                {{ item.product.title }}
+              </div>
+              <div class="cart_product_unit">單位 : {{ item.product.unit }}</div>
+            </div>
+            <div class="cart_product_quantity">
+              <button
+                type="button"
+                class="cart_remove cart_btn"
+                :disabled="item.qty === 1"
+                @click.prevent="addToCart(item, 'reduce')"
+              >
+                <span class="material-icons">
+                  remove
+                </span>
+              </button>
+              <input
+                class="cart_product_input"
+                type="text"
+                disabled="disabled"
+                v-model="item.qty"
+              />
+              <button
+                type="button"
+                class="cart_add cart_btn"
+                @click.prevent="addToCart(item, 'add')"
+              >
+                <span class="material-icons">
+                  add
+                </span>
+              </button>
+            </div>
+            <div class="cart_product_pricebox">
+              <div class="cart_product_price">
+                <span class="price_dlr material-icons">attach_money </span>
+                {{ $filters.currency(item.final_total) }}
+              </div>
+            </div>
+            <div class="cart_product_del">
+              <button
+                type="button"
+                class="btn btn-sm d-flex cart_close"
+                @click="removeCartItem(item.id)"
+                :disabled="loadingStatus.loadingItem === item.id"
+              >
+                <span class="material-icons">
+                  close
+                </span>
+              </button>
+            </div>
           </div>
         </div>
 

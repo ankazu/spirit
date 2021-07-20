@@ -13,6 +13,17 @@
   </div>
   <div class="container mb-5">
     <Path :path-data="pathData"></Path>
+    <div class="process">
+      <div class="process_step" data-num="01">
+        確認商品
+      </div>
+      <div class="process_step current" data-num="02">
+        填寫資料
+      </div>
+      <div class="process_step" data-num="03">
+        訂購完成
+      </div>
+    </div>
     <div class="row order justify-content-center">
       <div class="col-12 col-lg-7">
         <div class="order_inf">訂購人資訊</div>
@@ -241,7 +252,7 @@ export default {
       },
       pathData: {
         previous: [{ title: '首頁', url: '/' }],
-        purpose: '購物車',
+        purpose: '填寫資料',
       },
     };
   },
