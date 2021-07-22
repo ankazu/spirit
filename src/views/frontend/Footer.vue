@@ -83,6 +83,17 @@ footer {
       background-color: #fff;
       z-index: 1;
     }
+    &::after {
+      position: absolute;
+      content: '';
+      width: 130px;
+      height: 40px;
+      background-color: #debc8c;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
   }
   &_logo {
     display: block;
@@ -96,7 +107,7 @@ footer {
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    // padding: 0 15px;
+
     &:hover {
       opacity: 0.6;
     }
@@ -126,13 +137,16 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 18px;
-    @media only screen and (max-width: 768px) {
-    }
+
     &_link {
       line-height: 1.5;
       color: #000;
       transition: all 0.3s;
       margin-right: 30px;
+      @media only screen and (max-width: 600px) {
+        margin-right: 20px;
+        font-size: 15px;
+      }
       &:last-child {
         margin-right: 0;
       }
