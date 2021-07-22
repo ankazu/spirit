@@ -323,10 +323,10 @@ export default {
             this.form.message = '';
             this.isLoading = false;
             this.swalert('success', '表單送出');
-            this.$router.push('/checkoutpaid');
+            this.$router.replace(`/checkoutpaid/${res.data.orderId}`);
           } else {
             this.isLoading = false;
-            this.swalert('success', '表單送出失敗');
+            this.swalert('error', '表單送出失敗');
           }
         })
         .catch(() => {

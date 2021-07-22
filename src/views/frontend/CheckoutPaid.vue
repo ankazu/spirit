@@ -31,6 +31,11 @@
     <div class="text-center">
       <h2 class="my-4">感謝您的訂購！</h2>
       <p>您訂購的商品將在近期安排出貨，請留意簡訊通知或配送人員的電話。</p>
+      <table>
+        <tbody>
+          <tr></tr>
+        </tbody>
+      </table>
       <router-link to="/products" class="btn btn-outline-primary mt-4 mb-5">繼續購物</router-link>
     </div>
   </div>
@@ -42,14 +47,41 @@ import Path from '@/components/Path.vue';
 export default {
   data() {
     return {
+      isLoading: false,
       pathData: { previous: [{ title: '首頁', url: '/' }], purpose: '訂購完成' },
+      order: {},
     };
   },
+  inject: ['swalert'],
   components: {
     Path,
   },
   mounted() {
     emitter.emit('updata-cart');
+    const { id } = this.$route.params;
+    this.getOrder(id);
+  },
+  methods: {
+    getOrder(id) {
+      this.isLoading = true;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order/${id}?`;
+      this.$http
+        .get(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.order = res.data.order;
+            this.isLoading = false;
+            console.log(this.order);
+          } else {
+            this.isLoading = false;
+            this.swalert('error', '取得訂單發生錯誤');
+          }
+        })
+        .catch(() => {
+          this.isLoading = false;
+          this.swalert('error', '取得訂單時發生錯誤，請重新整理此頁面');
+        });
+    },
   },
 };
 </script>
@@ -64,7 +96,7 @@ h2 {
 .process {
   &::after {
     position: absolute;
-    width: 50%;
+    width: 100%;
     z-index: 1;
     content: '';
     height: 3px;
