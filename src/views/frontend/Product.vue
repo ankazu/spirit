@@ -142,7 +142,7 @@
     </section>
     <section class="section">
       <div class="related">
-        <h2>相關產品</h2>
+        <h2 class="text-center">相關產品</h2>
         <ProductAlike @go-page="getProduct"></ProductAlike>
       </div>
     </section>

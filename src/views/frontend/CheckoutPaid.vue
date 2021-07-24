@@ -31,6 +31,8 @@
     <div class="text-center">
       <h2 class="my-4">感謝您的訂購！</h2>
       <p>您訂購的商品將在近期安排出貨，請留意簡訊通知或配送人員的電話。</p>
+
+      <div class="mt-4"><h4>訂購人資訊</h4></div>
       <table class="checkout_table">
         <tbody>
           <tr>
@@ -74,8 +76,8 @@
           <tr>
             <th>付款狀態</th>
             <td>
-              <span v-if="!order.is_paid">未付款</span>
-              <span v-else>已付款</span>
+              <span v-if="!order.is_paid" class="text-danger">未付款</span>
+              <span v-else class="text-success">已付款</span>
             </td>
           </tr>
           <tr>
@@ -83,7 +85,7 @@
             <td>
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-outline-primary"
                 @click="goToPay(order.id)"
                 :disabled="order.is_paid"
                 :class="{ 'not-allowed': order.is_paid }"
@@ -94,7 +96,7 @@
           </tr>
         </tbody>
       </table>
-      <router-link to="/products" class="btn btn-outline-primary mt-4 mb-5">繼續購物</router-link>
+      <router-link to="/products" class="btn btn-primary mt-4 mb-5">繼續購物</router-link>
     </div>
   </div>
 </template>
@@ -170,6 +172,7 @@ export default {
 <style lang="scss" scoped>
 .not-allowed {
   cursor: not-allowed;
+  pointer-events: unset;
 }
 .shop_cart_icon {
   font-size: 180px;

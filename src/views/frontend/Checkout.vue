@@ -194,7 +194,7 @@
               placeholder="請輸入優惠碼"
             />
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+              <button class="btn btn-primary" type="button" @click="addCouponCode">
                 使用優惠碼
               </button>
             </div>
@@ -362,6 +362,7 @@ export default {
 <style lang="scss" scoped>
 .not-allowed {
   cursor: not-allowed;
+  pointer-events: unset;
 }
 .form {
   text-align: left;

@@ -128,7 +128,7 @@
                 value="送出"
                 type="submit"
                 :disabled="Object.keys(errors).length !== 0 || email === ''"
-                :class="{ 'not-send': Object.keys(errors).length !== 0 || email === '' }"
+                :class="{ 'not-allowed': Object.keys(errors).length !== 0 || email === '' }"
               />
             </div>
           </Form>
@@ -190,8 +190,9 @@ export default {
 .spirit {
   font-family: 'Pacifico', cursive;
 }
-.not-send {
+.not-allowed {
   cursor: not-allowed;
+  pointer-events: unset;
 }
 .banner {
   position: relative;
