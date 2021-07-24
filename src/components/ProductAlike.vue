@@ -12,7 +12,7 @@
     >
       <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
         <div @click="goProduct(item.id)" class="alike_list_img stretched-link">
-          <img :src="item.imageUrl" alt="" />
+          <img :src="item.imageUrl" :alt="item.title" />
         </div>
         <div class="alike_list_baking" v-if="item.baking">
           {{ item.baking }}

@@ -44,7 +44,7 @@
             <div class="product">
               <div class="product_img">
                 <div class="stretched-link" @click="getProduct(item.id)">
-                  <img :src="item.imageUrl" alt="" />
+                  <img :src="item.imageUrl" :alt="item.title" />
                 </div>
               </div>
               <div class="product_baking" v-if="item.baking">{{ item.baking }}</div>

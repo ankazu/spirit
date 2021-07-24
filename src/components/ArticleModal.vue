@@ -172,7 +172,7 @@
                     id="isShowIndex"
                   />
                   <label class="form-check-label" for="isShowIndex">
-                    是否在首頁顯示<span class="text-danger fs-6">(請勿超過2項產品)</span>
+                    是否在首頁顯示<span class="text-danger fs-6">(首頁最多只會顯示3篇文章)</span>
                   </label>
                 </div>
               </div>

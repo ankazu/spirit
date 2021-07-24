@@ -32,7 +32,9 @@
       <h2 class="my-4">感謝您的訂購！</h2>
       <p>您訂購的商品將在近期安排出貨，請留意簡訊通知或配送人員的電話。</p>
 
-      <div class="mt-4"><h4>訂購人資訊</h4></div>
+      <div class="mt-4">
+        <h4>訂購人資訊</h4>
+      </div>
       <table class="checkout_table">
         <tbody>
           <tr>
@@ -85,7 +87,7 @@
             <td>
               <button
                 type="button"
-                class="btn btn-outline-primary"
+                class="btn btn-outline-primary btn-sm"
                 @click="goToPay(order.id)"
                 :disabled="order.is_paid"
                 :class="{ 'not-allowed': order.is_paid }"
@@ -197,13 +199,13 @@ h2 {
     width: 100%;
     margin: 0 auto;
     & th {
-      border: 1px solid #000;
-      width: 100px;
-      padding: 5px 8px;
+      border-bottom: 1px solid #ccc;
+      width: 120px;
+      padding: 13px 10px;
     }
     & td {
-      border: 1px solid #000;
-      padding: 5px 8px;
+      border-bottom: 1px solid #ccc;
+      padding: 13px 10px;
     }
   }
 }
