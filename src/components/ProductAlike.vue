@@ -240,6 +240,7 @@ export default {
       @media only screen and (max-width: 992px) {
         display: block;
         font-size: 14px;
+        line-height: 1.65;
       }
     }
   }

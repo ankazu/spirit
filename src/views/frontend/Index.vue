@@ -10,7 +10,7 @@
     </div>
   </div>
   <section class="section container">
-    <div class="section_title">
+    <div class="section_title_spirit">
       <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="800">
         Spirit Coffee
       </p>
@@ -21,7 +21,7 @@
     <div class="features" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
       <div class="features_img ">
         <img
-          src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983351370.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=B7B3zbJkpGvIVjeUM9A0iffNZ0Dspof%2BItulmn15038znmp7xE%2Bd8O6MEnUwzBNz7ICmY5hdgledBZkl8V9yTCHoZZETyzB6q%2Fme%2BIIJO2tVgFV2eA0%2B6kXWqqqkUQnuO%2BLXt6FJDPjlR8pjPiEHQKJpfqEhcu7PhG84xhDJ1xnTBnlh%2B62BRzpl2LCbj99xzgztXZSB3AWEqoTQptHfDZAmDrerfCOd2I6%2BJzrceRX8KIFsn33KYdiRKkNT48QJNVly8XUB7Zd2dptFZDBjovXynZENwDdH7RCQ0PS85L1mcdAu6a0BYC7%2FKlvmbs0MUko2jNmkNZqkMz1%2BOqjchw%3D%3D"
+          src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1627135416844.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=i9i59VVaXs78p1zbiDINYv2xuOMmehv9i9dWzLTt5nsOdpJUHBeTjf8kgbDK1OiiWJltDif5iGM8GpEUJhSaS4De8i%2Ba2SCu0%2By1HFynRiR4XPpdcICxhcI4B7zC2gotr8enLTfjVi3bqW7hldS3P54Yosz4knx7OyyMyNQtluzxr8zc5ekzwu%2B0sQgK5KMtHFY2TEEOJEtCNaxLDJKQ5LoikF105E9JdCdY%2FrWLUch6%2FtVaMI2nAtS%2BB%2BdV7h%2BfY7o1ZKiGOacTATEjj5mMMLTofGigTLNI9DJMfRQrriNQRanXFojAmwE%2B5HAphHsCGANyPQBOIOq1qluAgBmgAw%3D%3D"
           alt="每天都可以喝的味道"
         />
       </div>
@@ -41,7 +41,7 @@
     <div class="features" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
       <div class="features_img ">
         <img
-          src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625983282674.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=RttNZVojk6vVarqvZXuCGQjN%2B2kC7AfvpWGQhnNc04CBqRjhMyqONuMWYrdH3MgIfFfoAeRnawOp5a1RAD1QceBGRkYPqVFsHrPfxAR6wClbLet%2BnkxZn%2B0lpCpYdR3xp8HzD3rbh75yFk4ayHUMJtlq3K2d54sMX23IDM753C8s%2Fnx%2BJkcWI270OJsyETTViigMnTAnjHIEMTnl2IFS11g4DmIcXlXYT585dgKKCd5hF9iqltQZSl%2B%2FRQrD%2FSLunUNFhZGGHXre3XD5uQuGq5fUT%2B%2B4Zifm%2BrDqrByBTaF8qLCyDD%2Fxgdd5c%2BrSY42OBW0K6mS2YgZ5JIdpD%2FXYYw%3D%3D"
+          src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1627135436438.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Rcr896AUOI02s8%2FKYM1VPcvPCv23sDSw%2FkAGECSg0PV31smNiso4CBmqFIrC7wzzM8amufgpZXHQqJ6oosJY4yAp5RbD6qsmrp9mp%2FxsEwMzqOSQRUrUMLRs8Bw7Jv9LJ%2FFNL51UdviUS6bfy1qBDFwN%2FNCGNFW7ES4HJ9NGhFLzIvWD%2Blgz%2FjgnjIehx3Cy92nn5GtuctaSewGPq%2FgOP2iGQTz2LzIZwe5QBHUVBHkZ0ujWTKqBWntWvu442mBbgEeDRw7td6Y6NsvhJUEeg3YzoJMhq78X%2FAhZLe4XjBZiJAicKuJ8oVcZnmJ2CaCalWrIgg%2FIRfk8tKNjZ84aIg%3D%3D"
           alt="每天喝得起的價格"
         />
       </div>
@@ -67,7 +67,28 @@
     </div>
   </section>
   <section class="section_2">
-    <div class="container ">
+    <div
+      class="section_title container"
+      data-aos="zoom-in"
+      data-aos-duration="1300"
+      data-aos-delay="200"
+    >
+      <h2>
+        精選商品
+      </h2>
+    </div>
+    <div
+      class="container pe-0 ps-0"
+      data-aos="fade-up"
+      data-aos-duration="1300"
+      data-aos-delay="200"
+    >
+      <ProductAlike></ProductAlike>
+    </div>
+  </section>
+
+  <section class="section_2">
+    <div class="container">
       <div class="section_title" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
         <h2>
           精選好文
@@ -90,21 +111,7 @@
       </div>
     </div>
   </section>
-  <section class="section">
-    <div class="section_title" data-aos="zoom-in" data-aos-duration="1300" data-aos-delay="200">
-      <h2>
-        精選商品
-      </h2>
-    </div>
-    <div
-      class="container pe-0 ps-0"
-      data-aos="fade-up"
-      data-aos-duration="1300"
-      data-aos-delay="200"
-    >
-      <ProductAlike></ProductAlike>
-    </div>
-  </section>
+
   <section class="subscription">
     <div class="container">
       <div class="row">
@@ -167,7 +174,7 @@ export default {
             this.isLoading = false;
             this.articles = res.data.articles;
             const data = this.articles.filter((article) => article.isShowIndex === true);
-            this.tempArticle = data.slice(0, 2);
+            this.tempArticle = data.slice(0, 3);
           }
         })
         .catch(() => {
@@ -227,18 +234,31 @@ export default {
     padding: 40px 12px 100px;
   }
   &_2 {
-    padding: 0px 0px 100px;
+    padding: 0px 0px 120px;
     @media only screen and (max-width: 600px) {
-      padding: 0px 0px 0px;
+      padding: 20px 0px 60px;
     }
   }
   &_title {
-    max-width: 620px;
-    margin: 0 auto 70px;
+    margin: 0 auto 40px;
     text-align: center;
     @media only screen and (max-width: 600px) {
       margin: 0 auto 30px;
     }
+    &_spirit {
+      max-width: 620px;
+      margin: 0 auto;
+      margin: 0 auto 40px;
+      & p {
+        font-size: 18px;
+        text-align: left;
+        padding-left: 5px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-family: 'Pacifico', cursive;
+      }
+    }
+
     & h2 {
       font-size: 2.25rem;
       font-weight: 600;
@@ -252,14 +272,6 @@ export default {
       @media only screen and (max-width: 576px) {
         font-size: 26px;
       }
-    }
-    & p {
-      font-size: 18px;
-      text-align: left;
-      padding-left: 5px;
-      margin-bottom: 5px;
-      font-weight: 600;
-      font-family: 'Pacifico', cursive;
     }
   }
 }
@@ -409,8 +421,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   &_item {
-    width: 43.516%;
-    margin: 0 12.968% 0 0;
+    width: 30%;
+    margin: 0 5% 0 0;
     &:last-child {
       margin: 0;
     }
