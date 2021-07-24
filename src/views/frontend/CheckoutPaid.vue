@@ -31,9 +31,67 @@
     <div class="text-center">
       <h2 class="my-4">感謝您的訂購！</h2>
       <p>您訂購的商品將在近期安排出貨，請留意簡訊通知或配送人員的電話。</p>
-      <table>
+      <table class="checkout_table">
         <tbody>
-          <tr></tr>
+          <tr>
+            <th>姓名</th>
+            <td>{{ order.user.name }}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{ order.user.email }}</td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td>{{ order.user.tel }}</td>
+          </tr>
+          <tr>
+            <th>地址</th>
+            <td>{{ order.user.address }}</td>
+          </tr>
+          <tr>
+            <th>購買產品</th>
+            <td>
+              <ul class="list-unstyled ps-0 mb-0">
+                <li v-for="item in order.products" :key="item.id">
+                  {{ item.product.title }} * {{ item.qty }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>付款金額</th>
+            <td>{{ order.total }} 元</td>
+          </tr>
+          <tr>
+            <th>取貨方式</th>
+            <td>{{ order.user.delivery }}</td>
+          </tr>
+          <tr>
+            <th>付款方式</th>
+            <td>{{ order.user.payment }}</td>
+          </tr>
+          <tr>
+            <th>付款狀態</th>
+            <td>
+              <span v-if="!order.is_paid">未付款</span>
+              <span v-else>已付款</span>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                @click="goToPay(order.id)"
+                :disabled="order.is_paid"
+                :class="{ 'not-allowed': order.is_paid }"
+              >
+                點擊付款
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
       <router-link to="/products" class="btn btn-outline-primary mt-4 mb-5">繼續購物</router-link>
@@ -49,7 +107,14 @@ export default {
     return {
       isLoading: false,
       pathData: { previous: [{ title: '首頁', url: '/' }], purpose: '訂購完成' },
-      order: {},
+      order: {
+        user: {
+          name: '',
+          address: '',
+          emali: '',
+          tel: '',
+        },
+      },
     };
   },
   inject: ['swalert'],
@@ -71,7 +136,6 @@ export default {
           if (res.data.success) {
             this.order = res.data.order;
             this.isLoading = false;
-            console.log(this.order);
           } else {
             this.isLoading = false;
             this.swalert('error', '取得訂單發生錯誤');
@@ -82,10 +146,31 @@ export default {
           this.swalert('error', '取得訂單時發生錯誤，請重新整理此頁面');
         });
     },
+    goToPay(id) {
+      this.isLoading = true;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${id}?`;
+      this.$http
+        .post(api, id)
+        .then((res) => {
+          if (res.data.success) {
+            this.isLoading = false;
+            this.swalert('success', '付款成功');
+            this.getOrder(id);
+          } else {
+            this.swalert('error', '付款失敗');
+          }
+        })
+        .catch(() => {
+          this.swalert('error', '發生錯誤請重新整理');
+        });
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
+.not-allowed {
+  cursor: not-allowed;
+}
 .shop_cart_icon {
   font-size: 180px;
   color: #debc8c;
@@ -101,6 +186,22 @@ h2 {
     content: '';
     height: 3px;
     background-color: #debc8c;
+  }
+}
+.checkout {
+  &_table {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    & th {
+      border: 1px solid #000;
+      width: 100px;
+      padding: 5px 8px;
+    }
+    & td {
+      border: 1px solid #000;
+      padding: 5px 8px;
+    }
   }
 }
 </style>

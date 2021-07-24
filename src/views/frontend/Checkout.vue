@@ -152,7 +152,7 @@
               type="submit"
               class="btn btn-primary"
               :disabled="btnStatus"
-              :class="{ 'not-send': btnStatus }"
+              :class="{ 'not-allowed': btnStatus }"
             >
               送出訂單
             </button>
@@ -360,7 +360,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.not-send {
+.not-allowed {
   cursor: not-allowed;
 }
 .form {
