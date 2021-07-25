@@ -38,13 +38,14 @@
                     {{ item.qty }}
                   </td>
                   <td class="text-center">
-                    {{ item.product.price }}
+                    {{ $filters.currency(item.product.price) }}
                   </td>
                 </tr>
                 <tr class="bg-white text-end">
                   <td colspan="3">
                     總計:
-                    <span class="price_dlr material-icons">attach_money</span>{{ cart.total }}
+                    <span class="price_dlr material-icons">attach_money</span
+                    >{{ $filters.currency(cart.total) }}
                   </td>
                 </tr>
               </tbody>
