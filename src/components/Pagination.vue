@@ -63,7 +63,7 @@ export default {
     border-radius: 50% !important;
     padding: 6px 12px;
     &:focus {
-      box-shadow: 0;
+      box-shadow: unset;
     }
   }
 }

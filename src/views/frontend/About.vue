@@ -11,9 +11,9 @@
       </h1>
     </div>
   </div>
-  <div class="container  mb-5">
+  <div class="container mb-5">
     <Path :path-data="pathData"></Path>
-    <section class="mt-5">
+    <section class="mt-lg-5">
       <div class="about">
         <div class="about_box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
           <div class="about_txt">
@@ -99,18 +99,19 @@ export default {
     @media only screen and (max-width: 1024px) {
       width: 100%;
       order: 1;
+      padding: 40px 60px 0px;
     }
     @media only screen and (max-width: 600px) {
-      padding: 40px 0px 30px;
+      padding: 20px 0px 0px;
     }
   }
   &_txt_2 {
     padding: 100px 60px 30px;
     @media only screen and (max-width: 1024px) {
-      padding: 80px 60px 30px;
+      padding: 60px 60px 0px;
     }
     @media only screen and (max-width: 600px) {
-      padding: 80px 0px 30px;
+      padding: 50px 0px 0px;
     }
   }
   &_img {
@@ -123,6 +124,10 @@ export default {
   &_h2 {
     font-size: 36px;
     margin-bottom: 30px;
+    @media only screen and (max-width: 1024px) {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
   }
   &_text {
     line-height: 1.8;

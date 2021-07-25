@@ -356,6 +356,9 @@ export default {
     font-size: 20px;
     margin-bottom: 8px;
     font-weight: 600;
+    @media only screen and (max-width: 600px) {
+      font-size: 18px;
+    }
   }
 
   &_price_1 {
