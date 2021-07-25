@@ -65,7 +65,7 @@
           </tr>
           <tr>
             <th>付款金額</th>
-            <td>{{ order.total }} 元</td>
+            <td>{{ $filters.currency(order.total) }} 元</td>
           </tr>
           <tr>
             <th>取貨方式</th>
