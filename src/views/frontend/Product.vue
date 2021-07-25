@@ -132,7 +132,7 @@
     </div>
     <section class="section border-bottom border-primary">
       <div class="row">
-        <div class="detail col-12 col-lg-6 m-auto">
+        <div class="detail col-12 col-lg-10 m-auto">
           <h3 class="detail_title">風味特性</h3>
           <p class="detail_txt">{{ tempProduct.decription }}</p>
           <h3 class="detail_title">產品敘述</h3>
