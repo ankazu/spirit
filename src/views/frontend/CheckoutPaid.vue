@@ -82,7 +82,7 @@
               <span v-else class="text-success">已付款</span>
             </td>
           </tr>
-          <tr>
+          <tr v-if="order.user.payment !== '貨到付款'">
             <th></th>
             <td>
               <button
