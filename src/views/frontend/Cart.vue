@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="col-12 justify-content-center">
-          <div class="mb-4 mt-4">
+          <div class="mb-4 mt-4 del_btn">
             <button
               type="button"
               class="btn btn-outline-danger btn-sm d-flex align-items-center ms-auto"
@@ -110,7 +110,7 @@
                 @click="removeCartItem(item.id)"
                 :disabled="loadingStatus.loadingItem === item.id"
               >
-                <span class="material-icons">
+                <span class="del_btn material-icons">
                   close
                 </span>
               </button>
@@ -258,8 +258,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.material-icons {
+.del_btn {
   font-size: 26px;
+  opacity: 0.4;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .section_empty {
@@ -298,9 +303,11 @@ export default {
   }
   &_price {
     flex: 2 0 0;
+    text-align: center;
   }
   &_del {
     flex: 2 0 0;
+    text-align: center;
   }
 }
 
