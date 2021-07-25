@@ -296,7 +296,7 @@ export default {
   },
   emits: ['update-product'],
   mixins: [modalMixin],
-  inject: ['pushMessage'],
+  inject: ['swalert'],
   watch: {
     product() {
       this.tempProduct = this.product;
@@ -328,14 +328,14 @@ export default {
               this.tempProduct.imagesUrl[i] = res.data.imageUrl;
               this.$refs[refipt].value = '';
             }
-            this.pushMessage(res, '圖片新增');
+            this.swalert('success', '新增圖片成功', 'top-end');
           } else {
             this.$refs.fileInput.value = '';
-            this.pushMessage(res, '圖片新增');
+            this.swalert('error', '新增圖片失敗', 'top-end');
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch(() => {
+          this.swalert('error', '新增圖片時發生錯誤');
         });
     },
   },

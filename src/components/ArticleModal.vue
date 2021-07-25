@@ -212,7 +212,7 @@ export default {
       // 參考：https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/vuejs-v3.html#editor
       editor: ClassicEditor,
       editorConfig: {
-        toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link'],
+        toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link', 'name'],
       },
     };
   },
@@ -230,6 +230,7 @@ export default {
       this.tempArticle.create_at = Math.floor(new Date(this.create_at) / 1000);
     },
   },
+  inject: ['swalert'],
   methods: {
     uploadFile(refipt) {
       const uploadedFile = this.$refs[refipt].files[0];
@@ -244,14 +245,14 @@ export default {
           if (res.data.success) {
             this.tempArticle.imageUrl = res.data.imageUrl;
             this.$refs.fileInput.value = '';
-            this.pushMessage(res, '圖片新增');
+            this.swalert('success', '圖片新增成功', 'top-end');
           } else {
             this.$refs.fileInput.value = '';
-            this.pushMessage(res, '圖片新增');
+            this.swalert('error', '圖片新增失敗', 'top-end');
           }
         })
-        .catch((res) => {
-          this.pushMessage(res, `${res.data.message}`);
+        .catch(() => {
+          this.swalert('error', '圖片上傳時發生錯誤');
         });
     },
   },

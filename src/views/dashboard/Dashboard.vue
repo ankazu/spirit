@@ -43,12 +43,10 @@
   <div class="mt-5 container">
     <router-view v-if="checkSuccess"></router-view>
   </div>
-  <ToastMessages></ToastMessages>
 </template>
 
 <script>
 import emitter from '@/methods/eventBus';
-import ToastMessages from '@/components/ToastMessages.vue';
 
 export default {
   provide() {
@@ -56,10 +54,7 @@ export default {
       emitter,
     };
   },
-  components: {
-    ToastMessages,
-  },
-  inject: ['pushMessage'],
+  inject: ['swalert'],
   data() {
     return {
       isLoading: false,
@@ -82,13 +77,13 @@ export default {
             if (res.data.success) {
               this.checkSuccess = true;
               this.isLoading = false;
-              this.pushMessage(res, '登入');
+              this.swalert('success', '登入成功', 'top-end');
             } else {
               this.$router.push('/login');
             }
           })
           .catch((error) => {
-            this.pushMessage(error, `${error.message}`);
+            this.swalert('error', `${error}`);
           });
       } else {
         this.$router.push('/login');

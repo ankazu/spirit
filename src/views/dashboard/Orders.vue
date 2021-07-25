@@ -88,7 +88,7 @@ export default {
   created() {
     this.getOrders();
   },
-  inject: ['pushMessage'],
+  inject: ['swalert'],
   methods: {
     getOrders(page = 1) {
       this.currentPage = page;
@@ -102,11 +102,11 @@ export default {
             this.pagination = res.data.pagination;
             this.isLoading = false;
           } else {
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('error', '取得訂單失敗', 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '取得訂單時發生錯誤');
         });
     },
     updatePaid(item) {
@@ -130,13 +130,13 @@ export default {
             this.isLoading = false;
             this.$refs.orderModal.hideModal();
             this.getOrders(this.currentPage);
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('success', '已更新付款時間', 'top-end');
           } else {
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('error', '更新付款時間失敗', 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '更新付款時間發生錯誤');
         });
     },
     openModal(item) {
@@ -156,13 +156,13 @@ export default {
           if (res.data.success) {
             this.$refs.DeleteModal.hideModal();
             this.getOrders(this.currentPage);
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('success', '刪除訂單成功', 'top-end');
           } else {
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('error', '刪除訂單失敗', 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '刪除訂單時發生錯誤');
         });
     },
   },

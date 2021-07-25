@@ -87,7 +87,7 @@ export default {
     CouponModal,
     Pagination,
   },
-  inject: ['pushMessage'],
+  inject: ['swalert'],
   methods: {
     getCoupons(page = 1) {
       this.isLoading = true;
@@ -101,8 +101,8 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '取得優惠券時發生錯誤');
         });
     },
     updataCoupon(item) {
@@ -115,15 +115,15 @@ export default {
             if (res.data.success) {
               this.isLoading = false;
               this.getCoupons();
-              this.pushMessage(res, '新增優惠券');
+              this.swalert('success', '新增優惠券成功', 'top-end');
               this.$refs.couponModal.hideModal();
             } else {
               this.isLoading = false;
-              this.pushMessage(res, '新增優惠券');
+              this.swalert('error', '新增優惠券失敗', 'top-end');
             }
           })
-          .catch((error) => {
-            this.pushMessage(error, `${error.message}`);
+          .catch(() => {
+            this.swalert('error', '新增優惠券時發生錯誤');
           });
       } else {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
@@ -133,11 +133,11 @@ export default {
             if (res.data.success) {
               this.isLoading = false;
               this.getCoupons();
-              this.pushMessage(res, '更新優惠券');
+              this.swalert('success', '更新優惠券成功', 'top-end');
               this.$refs.couponModal.hideModal();
             } else {
               this.isLoading = false;
-              this.pushMessage(res, '更新優惠券');
+              this.swalert('error', '新增優惠券失敗', 'top-end');
             }
           })
           .catch((error) => {
@@ -155,13 +155,13 @@ export default {
             this.$refs.deleteModal.hideModal();
             this.isLoading = false;
             this.getCoupons();
-            this.pushMessage(res, '刪除優惠券');
+            this.swalert('success', '刪除優惠券成功', 'top-end');
           } else {
-            this.pushMessage(res, '刪除優惠券');
+            this.swalert('error', '刪除優惠券失敗', 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('success', '刪除優惠券時發生錯誤');
         });
     },
     openCouponModal(isNew, item) {

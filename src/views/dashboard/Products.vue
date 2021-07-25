@@ -95,7 +95,7 @@ export default {
       status: { fileUploading: false },
     };
   },
-  inject: ['emitter', 'pushMessage'],
+  inject: ['emitter', 'swalert'],
   methods: {
     getProducts(page = 1) {
       this.isLoading = true;
@@ -111,8 +111,8 @@ export default {
             this.$router.push('/login');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '取得商品列表出現錯誤');
         });
     },
     openModal(type, item) {
@@ -150,13 +150,13 @@ export default {
           if (res.data.success) {
             this.$refs.ProductModal.hideModal();
             this.getProducts();
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('success', '更新產品成功', 'top-end');
           } else {
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('error', '更新產品失敗', 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '更新產品時出現錯誤');
         });
     },
     deleteProduct(item) {
@@ -167,13 +167,13 @@ export default {
           if (res.data.success) {
             this.$refs.DeleteModal.hideModal();
             this.getProducts();
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('success', '刪除產品成功', 'top-end');
           } else {
-            this.pushMessage(res, `${res.data.message}`);
+            this.swalert('erroe', '刪除產品失敗', 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '刪除產品時出現錯誤');
         });
     },
   },

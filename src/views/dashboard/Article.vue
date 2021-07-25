@@ -81,7 +81,7 @@ export default {
       currentPage: 1,
     };
   },
-  inject: ['pushMessage'],
+  inject: ['swalert'],
   components: {
     ArticleModal,
     DeleteModal,
@@ -100,11 +100,9 @@ export default {
             this.pagination = res.data.pagination;
           }
         })
-        .catch((error) => {
-          // axios 的錯誤狀態，可參考：https://github.com/axios/axios#handling-errors
-          console.log('error', error.res, error.request, error.message);
+        .catch(() => {
           this.isLoading = false;
-          this.pushMessage(error, `${error.message}`);
+          this.swalert('error', '取得貼文列表時發生錯誤');
         });
     },
     getArticle(id) {
@@ -119,11 +117,9 @@ export default {
             this.isNew = false;
           }
         })
-        .catch((error) => {
-          // axios 的錯誤狀態，可參考：https://github.com/axios/axios#handling-errors
-          console.log('error', error.res, error.request, error.message);
+        .catch(() => {
           this.isLoading = false;
-          this.pushMessage(error, `${error.message}`);
+          this.swalert('error', '取得貼文時發生錯誤');
         });
     },
     openModal(isNew, item) {
@@ -157,15 +153,15 @@ export default {
           if (res.data.success) {
             articleComponent.hideModal();
             this.isLoading = false;
-            this.pushMessage(res, status);
+            this.swalert('success', `${status}`, 'top-end');
             this.getArticles(this.currentPage);
           } else {
             this.isLoading = false;
-            this.pushMessage(res, status);
+            this.swalert('error', `${status}`, 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '編輯貼文時發生錯誤');
         });
     },
     openDelArticleModal(item) {
@@ -179,18 +175,18 @@ export default {
         .delete(url)
         .then((res) => {
           if (res.data.success) {
-            this.pushMessage(res, '刪除貼文');
             const delComponent = this.$refs.delModal;
             delComponent.hideModal();
             this.isLoading = false;
+            this.swalert('success', '刪除貼文成功', 'top-end');
             this.getArticles(this.currentPage);
           } else {
             this.isLoading = false;
-            this.pushMessage(res, '刪除貼文');
+            this.swalert('error', '刪除貼文失敗', 'top-end');
           }
         })
-        .catch((error) => {
-          this.pushMessage(error, `${error.message}`);
+        .catch(() => {
+          this.swalert('error', '刪除貼文時發生錯誤');
         });
     },
   },
