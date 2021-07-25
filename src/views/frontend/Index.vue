@@ -262,9 +262,8 @@ export default {
     & h2 {
       font-size: 2.25rem;
       font-weight: 600;
-      @media only screen and (max-width: 768px) {
-        text-align: left;
-        & span {
+      & span {
+        @media only screen and (max-width: 768px) {
           display: block;
           text-align: left;
         }
