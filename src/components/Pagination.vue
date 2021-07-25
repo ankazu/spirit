@@ -1,6 +1,6 @@
 <template>
   <nav aria-label="Page navigation example">
-    <ul class="pagination">
+    <ul class="pagination mb-4">
       <li class="page-item" :class="{ disabled: !page.has_pre }">
         <a
           class="page-link"
@@ -8,7 +8,9 @@
           aria-label="Previous"
           @click.prevent="$emit('get-page', page.current_page - 1)"
         >
-          <span aria-hidden="true">&laquo;</span>
+          <span class="material-icons">
+            chevron_left
+          </span>
         </a>
       </li>
       <li
@@ -26,7 +28,9 @@
           aria-label="Next"
           @click.prevent="$emit('get-page', page.current_page + 1)"
         >
-          <span aria-hidden="true">&raquo;</span>
+          <span class="material-icons">
+            chevron_right
+          </span>
         </a>
       </li>
     </ul>
@@ -38,3 +42,29 @@ export default {
   props: ['page'],
 };
 </script>
+<style lang="scss" scoped>
+.page {
+  &-item {
+    height: 36px;
+    width: 40px;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &:first-of-type a,
+    &:last-of-type a {
+      padding: 6px;
+    }
+  }
+  &-link {
+    border: 0;
+    border-radius: 50% !important;
+    padding: 6px 12px;
+    &:focus {
+      box-shadow: 0;
+    }
+  }
+}
+</style>
