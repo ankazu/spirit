@@ -18,7 +18,7 @@
         <span>喝杯咖啡，</span>讓您平常的一天好過一點。
       </h2>
     </div>
-    <div class="features" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+    <div class="features" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
       <div class="features_img ">
         <img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1627135416844.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=i9i59VVaXs78p1zbiDINYv2xuOMmehv9i9dWzLTt5nsOdpJUHBeTjf8kgbDK1OiiWJltDif5iGM8GpEUJhSaS4De8i%2Ba2SCu0%2By1HFynRiR4XPpdcICxhcI4B7zC2gotr8enLTfjVi3bqW7hldS3P54Yosz4knx7OyyMyNQtluzxr8zc5ekzwu%2B0sQgK5KMtHFY2TEEOJEtCNaxLDJKQ5LoikF105E9JdCdY%2FrWLUch6%2FtVaMI2nAtS%2BB%2BdV7h%2BfY7o1ZKiGOacTATEjj5mMMLTofGigTLNI9DJMfRQrriNQRanXFojAmwE%2B5HAphHsCGANyPQBOIOq1qluAgBmgAw%3D%3D"
@@ -66,35 +66,25 @@
       </div>
     </div>
   </section>
-  <section class="section_2">
-    <div
-      class="section_title container"
-      data-aos="zoom-in"
-      data-aos-duration="1300"
-      data-aos-delay="200"
-    >
+  <section class="section_2" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
+    <div class="section_title container">
       <h2>
         精選商品
       </h2>
     </div>
-    <div
-      class="container pe-0 ps-0"
-      data-aos="fade-up"
-      data-aos-duration="1300"
-      data-aos-delay="200"
-    >
+    <div class="container pe-0 ps-0">
       <ProductAlike></ProductAlike>
     </div>
   </section>
 
-  <section class="section_2">
+  <section class="section_2" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
     <div class="container">
-      <div class="section_title" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
+      <div class="section_title">
         <h2>
           精選好文
         </h2>
       </div>
-      <div class="blog" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
+      <div class="blog">
         <div class="blog_item" v-for="item in tempArticle" :key="item.id">
           <div class="blog_pic ">
             <a href="#" @click.prevent="getArticle(item.id)">
@@ -112,7 +102,7 @@
     </div>
   </section>
 
-  <section class="subscription">
+  <section class="subscription" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
     <div class="container">
       <div class="row">
         <div class="subscription_box  col-md-5">
@@ -281,17 +271,6 @@ export default {
   &:nth-of-type(3) {
     flex-direction: row-reverse;
   }
-  &:hover img {
-    transform: scale(0.9, 0.9);
-    transition: all 0.5s ease 0s;
-  }
-  &:hover &_img::after {
-    bottom: 0px;
-    right: 0px;
-    width: 100%;
-    height: 100%;
-    transition: all 0.5s ease 0s;
-  }
   &_img {
     width: 50%;
     line-height: 0;
@@ -300,19 +279,6 @@ export default {
       width: 100%;
       text-align: center;
     }
-    &::after {
-      content: '';
-      background-color: #f5eadb;
-      width: 0%;
-      height: 0%;
-      position: absolute;
-      bottom: 50%;
-      right: 50%;
-      z-index: -1;
-      transition: all 0.5s ease 0s;
-      border-radius: 2px;
-    }
-
     & img {
       border-radius: 2px;
       transition: all 0.3s;
@@ -347,7 +313,7 @@ export default {
     align-items: center;
     width: 60px;
     height: 60px;
-    background-color: #f5eadb;
+    background-color: #debc8c;
     content: '';
     margin-bottom: 20px;
     border-radius: 50%;
@@ -450,7 +416,7 @@ export default {
     }
     &:after {
       content: '';
-      background-color: #f5eadb;
+      background-color: #debc8c;
       width: 0%;
       height: 0%;
       position: absolute;

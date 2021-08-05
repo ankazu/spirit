@@ -2,7 +2,7 @@
   width: 100px;
   text-align: center;
   background: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid $tertiary;
   height: 36px;
   border-right: 0;
   border-left: 0;
@@ -19,7 +19,7 @@
   border-bottom-right-radius: 5px;
 }
 .cart_btn {
-  border: 1px solid #ddd;
+  border: 1px solid $tertiary;
   background: #fff;
   display: inline-flex;
   width: 40px;
@@ -43,22 +43,22 @@
     z-index: 1;
     content: '';
     height: 3px;
-    background-color: #f9f2e8;
+    background-color: $tertiary;
   }
   &_step {
     position: relative;
     font-size: 16px;
     padding: 10px 15px;
-    background: #f1e2ce;
+    background: $tertiary;
     text-align: center;
     border-radius: 50px;
     z-index: 2;
     color: #777;
     &.current {
-      background: #debc8c;
+      background: $secondary;
       color: #000;
       &:before {
-        text-shadow: -1px -1px 0 #debc8c, 1px -1px 0 #debc8c, -1px 1px 0 #debc8c, 1px 1px 0 #debc8c;
+        text-shadow: -1px -1px 0 $secondary, 1px -1px 0 $secondary, -1px 1px 0 $secondary, 1px 1px 0 $secondary;
       }
     }
     &:before {

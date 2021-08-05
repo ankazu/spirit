@@ -150,7 +150,7 @@
           <div class="text-end w-50">
             <button
               type="submit"
-              class="btn btn-primary"
+              class="btn btn-secondary"
               :disabled="btnStatus"
               :class="{ 'not-allowed': btnStatus }"
             >
@@ -194,7 +194,7 @@
               placeholder="請輸入優惠碼"
             />
             <div class="input-group-append">
-              <button class="btn btn-primary" type="button" @click="addCouponCode">
+              <button class="btn btn-secondary" type="button" @click="addCouponCode">
                 使用優惠碼
               </button>
             </div>
@@ -211,7 +211,7 @@
               class="d-flex justify-content-end align-items-end"
               v-if="cart.final_total !== cart.total"
             >
-              <span class="shop_pirce_title">折扣代碼</span>
+              <span class="shop_pirce_title">折扣</span>
               <span class="shop_pirce_total text-success"
                 ><span class="material-icons"> attach_money </span
                 >{{ $filters.currency(cart.final_total - cart.total) }}</span

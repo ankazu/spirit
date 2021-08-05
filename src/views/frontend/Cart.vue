@@ -54,7 +54,7 @@
               </span>
             </button>
           </div>
-          <div class="cart_product_header bg-primary">
+          <div class="cart_product_header bg-secondary">
             <span class="cart_product_header_name">產品內容</span>
             <span class="cart_product_header_qty">數量</span>
             <span class="cart_product_header_price">售價</span>
@@ -120,7 +120,7 @@
 
         <div class="cart_continue">
           <router-link class="btn btn-outline-primary btn-lg" to="/products">繼續購物</router-link>
-          <router-link class="btn btn-primary btn-lg" to="/checkout">下一步</router-link>
+          <router-link class="btn bg-secondary btn-lg" to="/checkout">下一步</router-link>
         </div>
       </section>
       <div class="alike">
@@ -314,7 +314,7 @@ export default {
 .cart_product {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dbd0be;
   padding: 20px 15px;
   @media only screen and (max-width: 992px) {
     flex-wrap: wrap;

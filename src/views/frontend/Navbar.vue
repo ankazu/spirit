@@ -50,7 +50,7 @@
                 </tr>
               </tbody>
             </table>
-            <router-link class="btn btn-primary w-100" to="/cart">查看購物車</router-link>
+            <router-link class="btn btn-secondary w-100" to="/cart">查看購物車</router-link>
           </div>
         </div>
       </div>
@@ -63,7 +63,9 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="material-icons">
+          menu
+        </span>
       </button>
       <div
         class="collapse navbar-collapse  order-lg-1 justify-content-end text-start"
@@ -169,57 +171,54 @@ export default {
   }
 }
 .nav-item {
-  position: relative;
-  &::after {
-    position: absolute;
-    content: '';
-    width: 1px;
-    height: 13px;
-    background-color: #777;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    @media only screen and (max-width: 992px) {
-      display: none;
-    }
-  }
+  margin-right: 5px;
 }
-
 .nav_link {
   padding: 0.5rem 1rem;
   display: block;
   text-decoration: none;
-  color: #666;
+  color: #ebe1d4;
   position: relative;
   transition: all 0.3s;
   @media only screen and (max-width: 992px) {
     padding-left: 0;
-    border-bottom: 1px solid #777;
+    border-bottom: 1px solid #ebe1d4;
   }
   &:hover {
-    color: #000;
+    color: #222;
   }
   &:before {
     position: absolute;
     content: '';
     width: 0;
     height: 0px;
-    background-color: #000;
-    bottom: 0;
+    background-color: #dbd0be;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     transition: all 0.3s;
     @media only screen and (max-width: 992px) {
       display: none;
     }
   }
   &:hover:before {
-    width: 70%;
-    height: 1px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: translate(-50%, -50%) rotate(-3deg);
+  }
+  &.router-link-exact-active {
+    color: #222;
+  }
+  &.router-link-exact-active:before {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: translate(-50%, -50%) rotate(-3deg);
   }
 }
 .router-link-exact-active {
-  color: #000;
+  color: #fff;
 }
 
 .price_dlr {
@@ -237,6 +236,11 @@ export default {
   }
   &_icon {
     font-size: 22px;
+    color: #ebe1d4;
+    transition: all 0.3s;
+    &:hover {
+      color: #fff;
+    }
   }
   &_num {
     position: absolute;

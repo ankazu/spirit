@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="bg-primary">
     <div class="container text-md-start py-4 footer">
       <div class="row">
         <div class="col-12">
@@ -36,11 +36,11 @@
         </div>
         <div class="col-12">
           <div class="footer_social">
-            <a href="#">
-              <img src="../../../public/images/facebook.png" alt="facebook" />
+            <a href="javascript:;">
+              <img src="../../../public/images/facebook.svg" alt="facebook" />
             </a>
             <a href="https://github.com/ankazu/spirit" target="_blank">
-              <img src="../../../public/images/github.png" alt="github" />
+              <img src="../../../public/images/github.svg" alt="github" />
             </a>
           </div>
         </div>
@@ -56,7 +56,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 footer {
   min-height: 150px;
-  background-color: #debc8c;
   & a {
     color: #000;
     text-decoration: none;
@@ -80,7 +79,7 @@ footer {
       right: 0;
       transform: translateY(-50%);
       height: 1px;
-      background-color: #fff;
+      background-color: #dbd0be;
       z-index: 1;
     }
     &::after {
@@ -88,7 +87,7 @@ footer {
       content: '';
       width: 130px;
       height: 40px;
-      background-color: #debc8c;
+      background-color: #b18a53;
       left: 50%;
       top: 0;
       transform: translateX(-50%);
@@ -97,7 +96,7 @@ footer {
   }
   &_logo {
     display: block;
-    background: url(../../../public/images/logo.png) no-repeat center #debc8c;
+    background: url(../../../public/images/logo.png) no-repeat center #b18a53;
     text-indent: 101%;
     overflow: hidden;
     white-space: nowrap;
@@ -131,7 +130,7 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    color: #555;
+    color: #ddd;
   }
   &_nav {
     display: flex;
@@ -140,7 +139,7 @@ footer {
 
     &_link {
       line-height: 1.5;
-      color: #000;
+      color: #fff;
       transition: all 0.3s;
       margin-right: 30px;
       @media only screen and (max-width: 600px) {

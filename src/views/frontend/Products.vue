@@ -69,7 +69,7 @@
                   :disabled="loadingStatus.loadingItem === item.id"
                   @click="addToCart(item.id)"
                   type="button"
-                  class="btn btn-primary w-100"
+                  class="btn btn-secondary w-100"
                 >
                   <i
                     class="spinner-border spinner-border-sm"
@@ -131,16 +131,16 @@ export default {
   },
   mounted() {
     this.getProducts();
-    if (window.innerWidth < 993) {
-      const sideBtn = this.$refs.navLeft;
-      sideBtn.addEventListener('click', () => {
+    const sideBtn = this.$refs.navLeft;
+    sideBtn.addEventListener('click', () => {
+      if (window.innerWidth < 993) {
         if (this.sideUl) {
           this.sideUl = false;
         } else {
           this.sideUl = true;
         }
-      });
-    }
+      }
+    });
   },
   methods: {
     getProducts() {
@@ -326,13 +326,13 @@ export default {
 
 .product {
   transition: all 0.3s ease;
-  background-color: #f9f2e8;
+  // background-color: #f9f2e8;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   position: relative;
   &:hover {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.4);
-    background-color: #f5eadb;
+    // background-color: #f5eadb;
     & img {
       transform: scale(1.1);
     }

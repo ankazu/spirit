@@ -116,7 +116,7 @@
                   :disabled="loadingStatus.loadingItem === tempProduct.id"
                   @click.prevent="addToCart(tempProduct.id, qty)"
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-secondary"
                 >
                   <i
                     class="spinner-border spinner-border-sm"

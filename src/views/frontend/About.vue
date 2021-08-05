@@ -15,7 +15,7 @@
     <Path :path-data="pathData"></Path>
     <section class="mt-lg-5">
       <div class="about">
-        <div class="about_box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+        <div class="about_box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
           <div class="about_txt">
             <div class="about_h2 text-center">Coffee Lover</div>
             <div class="about_text">
@@ -35,7 +35,7 @@
             />
           </div>
         </div>
-        <div class="about_box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+        <div class="about_box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           <div class="about_img">
             <img
               src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625981996199.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Iqkd2xDzbhlj%2FD0q572zBXndYbEtWTd3eCPthSq3iaLxlWM6kG2vydc%2FSDD6dtWFSw3T%2Bc4kbbCVfoZ3YovOzI3gNwe6f38O3oW623PSI4N5Sn4Qt7ASFOdWVNciK8thjLsLdh5ELIZMIdf1rAxaaz%2BbHtzfWrKOOd4X1BJUETRc65xwKdiitIJinrf9Mclo2OSUy%2BzkheVEj4tL2Mvbk2SYbxidhaGaDG%2BiJv6qCrc03fs01zzLSAUZjlRIKt%2FEubMv%2BKlnRLrvPiwLyoRShh%2BRsQ58KgC7uMLCE78h6qa74iwrhd%2BX73iB7z2pgpZgy4P%2FBShvjLYA165jO0LexA%3D%3D"

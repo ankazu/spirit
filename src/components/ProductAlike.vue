@@ -8,6 +8,7 @@
         '600': { slidesPerView: 3, spaceBetween: 20 },
         '992': { slidesPerView: 4, spaceBetween: 20 },
       }"
+      :autoplay="{ delay: 2500, disableOnInteraction: false }"
       class="alike ps-0"
     >
       <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
@@ -40,7 +41,7 @@
             :disabled="loadingStatus.loadingItem === item.id"
             @click="addToCart(item.id)"
             type="button"
-            class="btn btn-primary w-100"
+            class="btn btn-secondary w-100"
           >
             <i
               class="spinner-border spinner-border-sm"
@@ -58,9 +59,9 @@
 import emitter from '@/methods/eventBus';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper.scss';
-import SwiperCore, { Navigation } from 'swiper/core';
+import SwiperCore, { Autoplay, Navigation } from 'swiper/core';
 
-SwiperCore.use([Navigation]);
+SwiperCore.use([Navigation, Autoplay]);
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -74,7 +75,6 @@ export default {
       products: [],
       randomProducts: [],
       loadingStatus: { loadingItem: '' },
-      isLoading: false,
     };
   },
   components: {
@@ -128,7 +128,6 @@ export default {
             emitter.emit('render-cart');
             this.swalert('success', '已加入購物車');
           } else {
-            this.isLoading = false;
             this.swalert('error', '加入失敗');
           }
         })
@@ -138,10 +137,12 @@ export default {
     },
     getAlike() {
       let category;
+
+      // 首頁、購物車頁
       if (this.product === undefined) {
         category = '';
         const filterProducts = this.products.map((item) => item);
-        const maxSize = filterProducts.length < 4 ? filterProducts.length : 4;
+        const maxSize = filterProducts.length < 6 ? filterProducts.length : 6;
         const arrSet = new Set([]);
         for (let index = 0; arrSet.size < maxSize; index + 1) {
           const num = getRandomInt(filterProducts.length);
@@ -152,6 +153,8 @@ export default {
         });
         return;
       }
+
+      // 產品詳細頁
       category = this.product.category;
       // 過濾同名產品
       const { title } = this.product;

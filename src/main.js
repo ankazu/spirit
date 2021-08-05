@@ -42,7 +42,7 @@ configure({
 setLocale('zh_TW');
 AOS.init({
   duration: 400,
-  offset: 100,
+  offset: 150,
 });
 const app = createApp(App);
 
