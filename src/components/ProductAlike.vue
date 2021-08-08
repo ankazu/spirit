@@ -8,7 +8,7 @@
         '600': { slidesPerView: 3, spaceBetween: 20 },
         '992': { slidesPerView: 4, spaceBetween: 20 },
       }"
-      :autoplay="{ delay: 2500, disableOnInteraction: false }"
+      :autoplay="{ delay: 4000, disableOnInteraction: false }"
       class="alike ps-0"
     >
       <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
