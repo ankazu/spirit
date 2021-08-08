@@ -1,6 +1,10 @@
 export function currency(num) {
-  const n = parseInt(num, 10);
-  return `${n.toFixed(0).replace(/./g, (c, i, a) => (i && c !== '.' && ((a.length - i) % 3 === 0) ? `, ${c}`.replace(/\s/g, '') : c))}`;
+  let number = 0;
+  if (num) {
+    const n = num.toString().split('.');
+    number = n[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  return number;
 }
 
 export function date(time) {
