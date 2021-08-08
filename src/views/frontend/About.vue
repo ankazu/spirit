@@ -20,7 +20,7 @@
             <div class="about_h2 text-center">Coffee Lover</div>
             <div class="about_text">
               <p>
-                源⾃於對精品咖啡的熱愛，SPIRIT 品牌誕⽣於2021年。 創辦⼈ John
+                源⾃於對精品咖啡的熱愛，SPIRIT 誕⽣於2021年。 創辦⼈ John
                 相信，咖啡應不只是單純提神工具，更應是在日常生活中的放鬆與休息。
               </p>
               <p>
