@@ -63,7 +63,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="material-icons">
+        <span class="material-icons menu_icon">
           menu
         </span>
       </button>
@@ -161,6 +161,11 @@ export default {
     opacity: 0.6;
   }
 }
+.menu_icon {
+  color: #ebe1d4;
+  font-size: 30px;
+  vertical-align: bottom;
+}
 .navbtn {
   border: 0;
   &:focus {
@@ -177,7 +182,7 @@ export default {
   padding: 0.5rem 1rem;
   display: block;
   text-decoration: none;
-  color: #ebe1d4;
+  color: #fff;
   position: relative;
   transition: all 0.3s;
   @media only screen and (max-width: 992px) {
@@ -185,7 +190,7 @@ export default {
     border-bottom: 1px solid #ebe1d4;
   }
   &:hover {
-    color: #222;
+    color: #6d3215;
   }
   &:before {
     position: absolute;
@@ -208,7 +213,7 @@ export default {
     transform: translate(-50%, -50%) rotate(-3deg);
   }
   &.router-link-exact-active {
-    color: #222;
+    color: #6d3215;
   }
   &.router-link-exact-active:before {
     width: 100%;
