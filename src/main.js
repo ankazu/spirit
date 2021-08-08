@@ -3,8 +3,8 @@ import { createApp } from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 // loading特效
-import VueLoading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import Loading from 'vue3-loading-overlay';
+import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 // 後台編輯器
 import CKEditor from '@ckeditor/ckeditor5-vue';
 // 表單驗證
@@ -54,7 +54,7 @@ app.use(router);
 app.use(VueAxios, axios);
 app.use(VueSweetalert2);
 app.use(CKEditor);
-app.component('Loading', VueLoading);
+app.component('Loading', Loading);
 app.component('Form', Form);
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
