@@ -177,6 +177,9 @@ export default {
 }
 .nav-item {
   margin-right: 5px;
+  @media only screen and (max-width: 992px) {
+    margin: 0;
+  }
 }
 .nav_link {
   padding: 0.5rem 1rem;
@@ -212,9 +215,7 @@ export default {
     z-index: -1;
     transform: translate(-50%, -50%) rotate(-3deg);
   }
-  &.router-link-exact-active {
-    color: #6d3215;
-  }
+
   &.router-link-exact-active:before {
     width: 100%;
     height: 100%;
@@ -223,7 +224,7 @@ export default {
   }
 }
 .router-link-exact-active {
-  color: #fff;
+  color: #6d3215;
 }
 
 .price_dlr {

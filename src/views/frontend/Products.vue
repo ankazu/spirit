@@ -372,7 +372,6 @@ export default {
   &_price_2 {
     font-size: 1rem;
     margin-bottom: 8px;
-    display: inline-block;
   }
   &_dec {
     color: #666;
@@ -398,6 +397,6 @@ export default {
 del.product_price_2 {
   font-size: 12px;
   display: block;
-  margin-bottom: 0;
+  margin: 16px 0 0;
 }
 </style>
