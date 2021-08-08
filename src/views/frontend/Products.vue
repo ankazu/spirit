@@ -307,6 +307,9 @@ export default {
     cursor: pointer;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    @media only screen and (max-width: 992px) {
+      color: #fff;
+    }
   }
 }
 .nav_tar {
