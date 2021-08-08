@@ -62,8 +62,8 @@ export default {
             this.swalert('error', `${res.data.message}`, 'top');
           }
         })
-        .catch(() => {
-          this.swalert('error', '登入失敗');
+        .catch((err) => {
+          this.swalert('error', `登入失敗。 ${err.message}`);
         });
     },
   },

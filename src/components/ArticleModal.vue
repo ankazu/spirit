@@ -248,11 +248,11 @@ export default {
             this.swalert('success', '圖片新增成功', 'top-end');
           } else {
             this.$refs.fileInput.value = '';
-            this.swalert('error', '圖片新增失敗', 'top-end');
+            this.swalert('error', `圖片新增失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '圖片上傳時發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `圖片上傳時發生錯誤。 ${err.message}`);
         });
     },
   },

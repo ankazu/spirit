@@ -72,11 +72,11 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            this.swalert('error', '發生錯誤，請重新整理此頁面');
+            this.swalert('error', `發生錯誤，請重新整理此頁面。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
   },

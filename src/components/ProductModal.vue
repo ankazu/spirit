@@ -313,7 +313,7 @@ export default {
       const uploadedFile = this.$refs[refipt].files[0];
       const formData = new FormData(); // js建構函式
       formData.append('file-to-upload', uploadedFile);
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload`;
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload1`;
       this.status.fileUploading = true;
       this.$http
         .post(url, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
@@ -331,11 +331,11 @@ export default {
             this.swalert('success', '新增圖片成功', 'top-end');
           } else {
             this.$refs.fileInput.value = '';
-            this.swalert('error', '新增圖片失敗', 'top-end');
+            this.swalert('error', `新增圖片失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '新增圖片時發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `新增圖片時發生錯誤。 ${err.message}`);
         });
     },
   },

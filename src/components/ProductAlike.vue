@@ -95,8 +95,8 @@ export default {
           this.product = res.data.product;
           this.getProducts();
         })
-        .catch(() => {
-          this.swalert('error', '取得產品時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `取得產品時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     getProducts() {
@@ -107,8 +107,8 @@ export default {
           this.products = res.data.products;
           this.getAlike();
         })
-        .catch(() => {
-          this.swalert('error', '取得全部產品時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `取得全部產品時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     goProduct(id) {
@@ -128,11 +128,12 @@ export default {
             emitter.emit('render-cart');
             this.swalert('success', '已加入購物車');
           } else {
-            this.swalert('error', '加入失敗');
+            this.isLoading = false;
+            this.swalert('error', `加入失敗。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '加入購物車時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `加入購物車時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     getAlike() {

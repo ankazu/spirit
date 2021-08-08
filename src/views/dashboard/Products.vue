@@ -152,11 +152,11 @@ export default {
             this.getProducts();
             this.swalert('success', '更新產品成功', 'top-end');
           } else {
-            this.swalert('error', '更新產品失敗', 'top-end');
+            this.swalert('error', `更新產品失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '更新產品時出現錯誤');
+        .catch((err) => {
+          this.swalert('error', `更新產品時出現錯誤。 ${err.message}`);
         });
     },
     deleteProduct(item) {
@@ -169,11 +169,11 @@ export default {
             this.getProducts();
             this.swalert('success', '刪除產品成功', 'top-end');
           } else {
-            this.swalert('erroe', '刪除產品失敗', 'top-end');
+            this.swalert('erroe', `刪除產品失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '刪除產品時出現錯誤');
+        .catch((err) => {
+          this.swalert('error', `刪除產品時出現錯誤。 ${err.message}`);
         });
     },
   },

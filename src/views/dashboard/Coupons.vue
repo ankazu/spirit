@@ -101,8 +101,8 @@ export default {
             this.isLoading = false;
           }
         })
-        .catch(() => {
-          this.swalert('error', '取得優惠券時發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `取得優惠券時發生錯誤。 ${err.message}`);
         });
     },
     updataCoupon(item) {
@@ -119,11 +119,11 @@ export default {
               this.$refs.couponModal.hideModal();
             } else {
               this.isLoading = false;
-              this.swalert('error', '新增優惠券失敗', 'top-end');
+              this.swalert('error', `新增優惠券失敗。 ${res.data.message}`, 'top-end');
             }
           })
-          .catch(() => {
-            this.swalert('error', '新增優惠券時發生錯誤');
+          .catch((err) => {
+            this.swalert('error', `新增優惠券時發生錯誤。 ${err.message}`);
           });
       } else {
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
@@ -137,11 +137,11 @@ export default {
               this.$refs.couponModal.hideModal();
             } else {
               this.isLoading = false;
-              this.swalert('error', '新增優惠券失敗', 'top-end');
+              this.swalert('error', `新增優惠券失敗。 ${res.data.message}`, 'top-end');
             }
           })
-          .catch((error) => {
-            this.pushMessage(error, `${error.message}`);
+          .catch((err) => {
+            this.swalert('error', `更新優惠券時發生錯誤。 ${err.message}`);
           });
       }
     },
@@ -157,11 +157,11 @@ export default {
             this.getCoupons();
             this.swalert('success', '刪除優惠券成功', 'top-end');
           } else {
-            this.swalert('error', '刪除優惠券失敗', 'top-end');
+            this.swalert('error', `刪除優惠券失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('success', '刪除優惠券時發生錯誤');
+        .catch((err) => {
+          this.swalert('success', `刪除優惠券時發生錯誤。 ${err.message}`);
         });
     },
     openCouponModal(isNew, item) {

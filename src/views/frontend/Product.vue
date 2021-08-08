@@ -199,12 +199,11 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            this.swalert('error', '取得產品發生錯誤');
+            this.swalert('error', `取得產品發生錯誤。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.isLoading = false;
-          this.swalert('error', '取得產品時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `取得產品時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     changeImg(img) {
@@ -229,12 +228,11 @@ export default {
             this.swalert('success', '已加入購物車');
           } else {
             this.isLoading = false;
-            this.swalert('error', '加入失敗');
+            this.swalert('error', `加入失敗。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.isLoading = false;
-          this.swalert('error', '加入購物車時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `加入購物車時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     changeQty(txt) {

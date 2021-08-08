@@ -1,5 +1,4 @@
 <template>
-  <Loading :active="isLoading"></Loading>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <router-link class="navbar-brand spirit" to="/">Spirit</router-link>

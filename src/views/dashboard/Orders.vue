@@ -102,11 +102,11 @@ export default {
             this.pagination = res.data.pagination;
             this.isLoading = false;
           } else {
-            this.swalert('error', '取得訂單失敗', 'top-end');
+            this.swalert('error', `取得訂單失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '取得訂單時發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `取得訂單時發生錯誤。 ${err.message}`);
         });
     },
     updatePaid(item) {
@@ -132,11 +132,11 @@ export default {
             this.getOrders(this.currentPage);
             this.swalert('success', '已更新付款時間', 'top-end');
           } else {
-            this.swalert('error', '更新付款時間失敗', 'top-end');
+            this.swalert('error', `更新付款時間失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '更新付款時間發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `更新付款時間發生錯誤。 ${err.message}`);
         });
     },
     openModal(item) {
@@ -158,11 +158,11 @@ export default {
             this.getOrders(this.currentPage);
             this.swalert('success', '刪除訂單成功', 'top-end');
           } else {
-            this.swalert('error', '刪除訂單失敗', 'top-end');
+            this.swalert('error', `刪除訂單失敗。 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '刪除訂單時發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `刪除訂單時發生錯誤。 ${err.message}`);
         });
     },
   },

@@ -9,23 +9,6 @@
             </router-link>
           </div>
         </div>
-        <!-- <div class="col-12 col-md-4 footer_info">
-          <div>
-            苗栗縣咖啡鄉咖啡村168號
-          </div>
-          <div>
-            <a href="tel:037-991234">037-991234</a>
-          </div>
-          <div>
-            <a href="mailto:service@serve.com">service@serve.com</a>
-          </div>
-          <div>
-            營業時間：08：00-20:00
-          </div>
-          <div>
-            營業日：每週一 ~ 每週日
-          </div>
-        </div> -->
         <div class="col-12">
           <div class="footer_nav">
             <router-link class="footer_nav_link" to="/products">產品列表</router-link>

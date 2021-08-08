@@ -279,11 +279,12 @@ export default {
             this.cart = res.data.data;
             this.isLoading = false;
           } else {
-            this.swalert('error', '取得購物車資料時發生錯誤');
+            this.isLoading = false;
+            this.swalert('error', `取得購物車資料時發生錯誤。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '取得購物車時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `取得購物車時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     addCouponCode() {
@@ -299,12 +300,12 @@ export default {
             this.swalert('success', '使用優惠券');
           } else {
             this.isLoading = false;
-            this.swalert('error', '優惠券已經過期');
+            this.swalert('error', `${res.data.message}`);
           }
         })
-        .catch(() => {
+        .catch((err) => {
           this.isLoading = false;
-          this.swalert('error', '發生錯誤，請重新整理此頁面');
+          this.swalert('error', `發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     checkTel(value) {
@@ -326,12 +327,12 @@ export default {
             this.$router.replace(`/checkoutpaid/${res.data.orderId}`);
           } else {
             this.isLoading = false;
-            this.swalert('error', '表單送出失敗');
+            this.swalert('error', `表單送出失敗。 ${res.data.message}`);
           }
         })
-        .catch(() => {
+        .catch((err) => {
           this.isLoading = false;
-          this.swalert('error', '表單送出時發生錯誤，請重新整理此頁面');
+          this.swalert('error', `表單送出時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     checkFrom() {

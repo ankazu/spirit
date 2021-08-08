@@ -120,11 +120,12 @@ export default {
             this.cart = res.data.data;
             this.isLoading = false;
           } else {
-            this.swalert('error', '取得購物清單時發生錯誤');
+            this.isLoading = false;
+            this.swalert('error', `取得購物清單時發生錯誤。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '取得購物車時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `取得購物車時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
   },

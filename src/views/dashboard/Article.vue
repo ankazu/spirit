@@ -100,9 +100,9 @@ export default {
             this.pagination = res.data.pagination;
           }
         })
-        .catch(() => {
+        .catch((err) => {
           this.isLoading = false;
-          this.swalert('error', '取得貼文列表時發生錯誤');
+          this.swalert('error', `取得貼文列表時發生錯誤。 ${err.message}`);
         });
     },
     getArticle(id) {
@@ -117,9 +117,9 @@ export default {
             this.isNew = false;
           }
         })
-        .catch(() => {
+        .catch((err) => {
           this.isLoading = false;
-          this.swalert('error', '取得貼文時發生錯誤');
+          this.swalert('error', `取得貼文時發生錯誤。 ${err.message}`);
         });
     },
     openModal(isNew, item) {
@@ -153,15 +153,15 @@ export default {
           if (res.data.success) {
             articleComponent.hideModal();
             this.isLoading = false;
-            this.swalert('success', `${status}`, 'top-end');
+            this.swalert('success', `${status} ${res.data.success}`, 'top-end');
             this.getArticles(this.currentPage);
           } else {
             this.isLoading = false;
-            this.swalert('error', `${status}`, 'top-end');
+            this.swalert('error', `${status} ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '編輯貼文時發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `編輯貼文時發生錯誤。 ${err.message}`);
         });
     },
     openDelArticleModal(item) {
@@ -182,11 +182,11 @@ export default {
             this.getArticles(this.currentPage);
           } else {
             this.isLoading = false;
-            this.swalert('error', '刪除貼文失敗', 'top-end');
+            this.swalert('error', `刪除貼文失敗 ${res.data.message}`, 'top-end');
           }
         })
-        .catch(() => {
-          this.swalert('error', '刪除貼文時發生錯誤');
+        .catch((err) => {
+          this.swalert('error', `刪除貼文時發生錯誤。 ${err.message}`);
         });
     },
   },

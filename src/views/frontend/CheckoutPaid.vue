@@ -142,12 +142,11 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            this.swalert('error', '取得訂單發生錯誤');
+            this.swalert('error', `取得訂單發生錯誤。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.isLoading = false;
-          this.swalert('error', '取得訂單時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `取得訂單時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     goToPay(id) {
@@ -161,11 +160,11 @@ export default {
             this.swalert('success', '付款成功');
             this.getOrder(id);
           } else {
-            this.swalert('error', '付款失敗');
+            this.swalert('error', `付款失敗。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '發生錯誤請重新整理');
+        .catch((err) => {
+          this.swalert('error', `發生錯誤請重新整理。 ${err.message}`);
         });
     },
   },

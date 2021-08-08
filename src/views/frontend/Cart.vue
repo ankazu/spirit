@@ -172,11 +172,11 @@ export default {
             this.isLoading = false;
           } else {
             this.isLoading = false;
-            this.swalert('error', '取得購物清單時發生錯誤');
+            this.swalert('error', `取得購物清單時發生錯誤。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '取得購物車時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `取得購物車時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     addToCart(item, action) {
@@ -202,11 +202,11 @@ export default {
             this.getCart();
           } else {
             this.isLoading = false;
-            this.swalert('error', '修改失敗');
+            this.swalert('error', `修改失敗。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '修改時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `修改時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     clearCart() {
@@ -222,11 +222,11 @@ export default {
             this.swalert('success', '已清空購物車');
           } else {
             this.isLoading = false;
-            this.swalert('success', '清除失敗');
+            this.swalert('success', `清除失敗。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '清除購物車時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `清除購物車時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     removeCartItem(id) {
@@ -244,11 +244,11 @@ export default {
             this.swalert('success', '已刪除商品');
           } else {
             this.isLoading = false;
-            this.swalert('success', '刪除商品失敗');
+            this.swalert('success', `刪除商品失敗。 ${res.data.message}`);
           }
         })
-        .catch(() => {
-          this.swalert('error', '刪除商品時發生錯誤，請重新整理此頁面');
+        .catch((err) => {
+          this.swalert('error', `刪除商品時發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
     },
     getProduct(id) {
