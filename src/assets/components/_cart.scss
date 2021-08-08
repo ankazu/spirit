@@ -27,6 +27,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all .3s;
+  &:hover {
+    background: #debc8c;
+  }
 }
 
 

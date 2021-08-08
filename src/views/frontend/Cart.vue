@@ -74,6 +74,7 @@
               <button
                 type="button"
                 class="cart_remove cart_btn"
+                :class="{ 'not-allowed': item.qty === 1 }"
                 :disabled="item.qty === 1"
                 @click.prevent="addToCart(item, 'reduce')"
               >
@@ -258,6 +259,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.not-allowed {
+  cursor: not-allowed;
+  pointer-events: unset;
+}
+
 .del_btn {
   font-size: 26px;
   opacity: 0.4;
