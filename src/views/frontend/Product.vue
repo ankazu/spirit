@@ -98,6 +98,7 @@
                   <button
                     type="button"
                     class="cart_remove cart_btn"
+                    :class="{'not-allowed':qty === 1}"
                     :disabled="qty === 1"
                     @click.prevent="changeQty('reduce')"
                   >

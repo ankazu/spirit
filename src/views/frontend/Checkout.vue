@@ -361,10 +361,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.not-allowed {
-  cursor: not-allowed;
-  pointer-events: unset;
-}
 .form {
   text-align: left;
   display: flex;

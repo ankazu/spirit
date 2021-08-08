@@ -187,10 +187,6 @@ export default {
 .spirit {
   font-family: 'Pacifico', cursive;
 }
-.not-allowed {
-  cursor: not-allowed;
-  pointer-events: unset;
-}
 .banner {
   position: relative;
   &_txtbox {

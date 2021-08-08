@@ -259,11 +259,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.not-allowed {
-  cursor: not-allowed;
-  pointer-events: unset;
-}
-
 .del_btn {
   font-size: 26px;
   opacity: 0.4;

@@ -171,10 +171,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.not-allowed {
-  cursor: not-allowed;
-  pointer-events: unset;
-}
 .shop_cart_icon {
   font-size: 180px;
   color: #debc8c;
