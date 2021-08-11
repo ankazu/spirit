@@ -1,15 +1,15 @@
 <template>
   <footer class="bg-primary">
     <div class="container text-md-start py-4 footer">
-      <div class="row">
-        <div class="col-12">
+      <div>
+        <div>
           <div class="footer_dec">
             <router-link to="/" class="footer_logo">
               Spirit
             </router-link>
           </div>
         </div>
-        <div class="col-12">
+        <div>
           <div class="footer_nav">
             <router-link class="footer_nav_link" to="/products">產品列表</router-link>
             <router-link class="footer_nav_link" to="/about">關於我們</router-link>
@@ -17,7 +17,7 @@
             <router-link class="footer_nav_link" to="/admin">後台登入</router-link>
           </div>
         </div>
-        <div class="col-12">
+        <div>
           <div class="footer_social">
             <a href="javascript:;">
               <img src="../../../public/images/facebook.svg" alt="facebook" />
@@ -27,8 +27,8 @@
             </a>
           </div>
         </div>
-        <div class="col-12 footer_copyright">
-          <div class="text-end ">© 2021 Spirit All Rights Reserved.</div>
+        <div class="footer_copyright">
+          <div>© 2021 Spirit All Rights Reserved.</div>
         </div>
       </div>
     </div>
