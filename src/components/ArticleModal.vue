@@ -195,6 +195,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import modalMixin from '@/mixins/modalMixin';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';

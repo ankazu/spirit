@@ -86,9 +86,9 @@
                 <div class="product_price_1" v-if="tempProduct.price === tempProduct.origin_price">
                   {{ $filters.currency(tempProduct.origin_price) }} 元 / {{ tempProduct.unit }}
                 </div>
-                <del class="product_price_2" v-if="tempProduct.price !== tempProduct.origin_price"
-                  >原價 {{ $filters.currency(tempProduct.origin_price) }} 元</del
-                >
+                <del class="product_price_2" v-if="tempProduct.price !== tempProduct.origin_price">
+                  原價 {{ $filters.currency(tempProduct.origin_price) }} 元
+                </del>
                 <div class="product_price_2" v-if="tempProduct.price !== tempProduct.origin_price">
                   特價 {{ $filters.currency(tempProduct.price) }} 元 / {{ tempProduct.unit }}
                 </div>

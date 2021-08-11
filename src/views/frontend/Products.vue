@@ -23,7 +23,9 @@
           </span>
         </p>
         <ul :class="{ open: sideUl }">
-          <li @click="getProducts()" :class="{ active: productValue === '' }">全部產品</li>
+          <li @click="getProducts()" :class="{ active: productValue === '' }">
+            全部產品
+          </li>
           <li
             v-for="item in category"
             :key="item.id"
@@ -58,8 +60,8 @@
                   {{ $filters.currency(item.origin_price) }} 元 / {{ item.unit }}
                 </div>
                 <del class="product_price_2" v-if="item.price !== item.origin_price"
-                  >原價 {{ $filters.currency(item.origin_price) }} 元</del
-                >
+                  >原價 {{ $filters.currency(item.origin_price) }} 元
+                </del>
                 <div class="product_price_2" v-if="item.price !== item.origin_price">
                   特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
                 </div>

@@ -1,5 +1,6 @@
 <template>
   <Loading :active="isLoading" />
+
   <div
     class="position-relative inn_banner"
     style="height: 250px; background-size: cover; background-position: center center;
@@ -11,6 +12,7 @@
       </h2>
     </div>
   </div>
+
   <div class="container">
     <Path :path-data="pathData" />
     <div class="row justify-content-center">

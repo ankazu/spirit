@@ -1,5 +1,6 @@
 <template>
   <Loading :active="isLoading" />
+
   <div
     class="position-relative inn_banner"
     style="height: 250px; background-size: cover; background-position: center center;
@@ -11,8 +12,9 @@
       </h2>
     </div>
   </div>
+
   <div class="container mb-5">
-    <Path :path-data="pathData"/>
+    <Path :path-data="pathData" />
     <div class="process">
       <div class="process_step current" data-num="01">
         確認商品
@@ -44,9 +46,9 @@
           </div>
 
           <div class="mb-3">
-            <label for="name" class="form-label"
-              >收件人姓名<span class="text-danger"> *</span></label
-            >
+            <label for="name" class="form-label">
+              收件人姓名<span class="text-danger"> *</span>
+            </label>
             <Field
               id="name"
               name="姓名"
@@ -61,9 +63,9 @@
           </div>
 
           <div class="mb-3">
-            <label for="tel" class="form-label"
-              >收件人電話<span class="text-danger"> *</span></label
-            >
+            <label for="tel" class="form-label">
+              收件人電話<span class="text-danger"> *</span>
+            </label>
             <Field
               id="tel"
               name="手機號碼"
@@ -78,9 +80,9 @@
           </div>
 
           <div class="mb-3">
-            <label for="address" class="form-label"
-              >收件人地址<span class="text-danger"> *</span></label
-            >
+            <label for="address" class="form-label">
+              收件人地址<span class="text-danger"> *</span>
+            </label>
             <Field
               id="address"
               name="地址"
@@ -140,7 +142,6 @@
           <div class="mb-3 form_message">
             <label for="message" class="form-label">留言</label>
             <textarea
-              name=""
               id="message"
               class="form-control"
               cols="30"
@@ -180,8 +181,8 @@
                   {{ $filters.currency(item.product.origin_price) }}
                 </div>
                 <div v-else>
-                  <span class="price_dlr material-icons">attach_money </span
-                  >{{ $filters.currency(item.product.price) }}
+                  <span class="price_dlr material-icons">attach_money </span>
+                  {{ $filters.currency(item.product.price) }}
                 </div>
                 / {{ item.product.unit }}
               </div>
@@ -206,30 +207,30 @@
           <div class="shop_pirce_dtl">
             <div class="d-flex justify-content-end align-items-end">
               <span class="shop_pirce_title">商品金額</span>
-              <span class="shop_pirce_total"
-                ><span class="material-icons"> attach_money </span
-                >{{ $filters.currency(cart.total) }}</span
-              >
+              <span class="shop_pirce_total">
+                <span class="material-icons"> attach_money </span>
+                {{ $filters.currency(cart.total) }}
+              </span>
             </div>
             <div
               class="d-flex justify-content-end align-items-end"
               v-if="cart.final_total !== cart.total"
             >
               <span class="shop_pirce_title">折扣</span>
-              <span class="shop_pirce_total text-success"
-                ><span class="material-icons"> attach_money </span
-                >{{ $filters.currency(cart.final_total - cart.total) }}</span
-              >
+              <span class="shop_pirce_total text-success">
+                <span class="material-icons"> attach_money </span>
+                {{ $filters.currency(cart.final_total - cart.total) }}
+              </span>
             </div>
             <div
               class="d-flex justify-content-end align-items-end"
               v-if="cart.final_total !== cart.total"
             >
               <span class="shop_pirce_title">總計</span>
-              <span class="shop_pirce_total total_price"
-                ><span class="material-icons"> attach_money </span
-                >{{ $filters.currency(cart.final_total) }}</span
-              >
+              <span class="shop_pirce_total total_price">
+                <span class="material-icons"> attach_money </span>
+                {{ $filters.currency(cart.final_total) }}
+              </span>
             </div>
           </div>
         </div>
@@ -237,6 +238,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import Path from '@/components/Path.vue';
 

@@ -68,6 +68,7 @@
     <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct" />
   </div>
 </template>
+
 <script>
 import Pagination from '@/components/Pagination.vue';
 import ProductModal from '@/components/ProductModal.vue';

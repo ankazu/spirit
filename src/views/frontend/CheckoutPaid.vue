@@ -10,6 +10,7 @@
       </h2>
     </div>
   </div>
+
   <div class="container">
     <Path :path-data="pathData" />
     <div class="process">
@@ -102,6 +103,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import emitter from '@/methods/eventBus';
 import Path from '@/components/Path.vue';
@@ -170,6 +172,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .shop_cart_icon {
   font-size: 180px;

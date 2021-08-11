@@ -64,6 +64,7 @@
     <Pagination :page="pagination" />
   </div>
 </template>
+
 <script>
 import OrderModal from '@/components/OrderModal.vue';
 import Pagination from '@/components/Pagination.vue';

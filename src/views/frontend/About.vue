@@ -11,6 +11,7 @@
       </h2>
     </div>
   </div>
+
   <div class="container mb-5">
     <Path :path-data="pathData" />
     <section class="mt-lg-5">

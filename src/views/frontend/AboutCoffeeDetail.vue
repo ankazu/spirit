@@ -12,6 +12,7 @@
       </h2>
     </div>
   </div>
+
   <!-- content -->
   <div class="container">
     <Path :path-data="pathData" />
