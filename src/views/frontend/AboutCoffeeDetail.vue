@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <!-- banner -->
   <div
     class="position-relative inn_banner"
@@ -14,10 +14,10 @@
   </div>
   <!-- content -->
   <div class="container">
-    <Path :path-data="pathData"></Path>
+    <Path :path-data="pathData" />
     <div class="row">
       <div class="col-lg-8 me-auto ms-auto">
-        <div class="art ">
+        <div class="art">
           <div class="art_tag"><span v-html="article.tag"></span></div>
           <div class="art_img">
             <div>

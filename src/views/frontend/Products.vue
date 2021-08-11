@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <!-- banner -->
   <div
     class="position-relative inn_banner"
@@ -13,15 +13,15 @@
   </div>
   <!-- content -->
   <div class="container">
-    <Path :path-data="pathData"></Path>
+    <Path :path-data="pathData" />
     <div class="row mt-4">
       <div class="col-12 col-lg-3 col-xl-2 nav_left" ref="navLeft">
-        <div class="bg-primary nav_tar">
+        <p class="bg-primary nav_tar">
           產品種類
           <span class="material-icons">
             expand_more
           </span>
-        </div>
+        </p>
         <ul :class="{ open: sideUl }">
           <li @click="getProducts()" :class="{ active: productValue === '' }">全部產品</li>
           <li
@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="page" v-if="pageShow">
-          <Pagination :page="pages" @get-page="getCurrentPage"></Pagination>
+          <Pagination :page="pages" @get-page="getCurrentPage" />
         </div>
       </div>
     </div>
@@ -318,6 +318,13 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+  @media only screen and (max-width: 992px) {
+    border-bottom: 0;
+    color: #fff;
+  }
   & span {
     display: none;
     @media only screen and (max-width: 992px) {

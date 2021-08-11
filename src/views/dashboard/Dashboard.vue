@@ -68,7 +68,7 @@ export default {
       this.isLoading = true;
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       if (token) {
-        this.$http.defaults.headers.common.Authorization = `${token}`;
+        this.$http.defaults.headers.common.Authorization = token;
         const api = `${process.env.VUE_APP_API}/api/user/check`;
         this.$http
           .post(api, { api_token: this.token })

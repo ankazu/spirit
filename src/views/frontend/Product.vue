@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <!-- banner -->
   <div
     class="position-relative inn_banner"
@@ -12,10 +12,10 @@
     </div>
   </div>
   <!-- content -->
-  <div class="container ">
-    <Path :path-data="pathData"></Path>
+  <div class="container">
+    <Path :path-data="pathData" />
     <div class="row justify-content-center mt-4">
-      <div class="col-12 col-lg-10 ">
+      <div class="col-12 col-lg-10">
         <div class="row">
           <div class="col-12 col-lg-6">
             <img class="rounded-2 w-100" :src="productImg" :alt="tempProduct.title" />
@@ -144,7 +144,7 @@
     <section class="section">
       <div class="related">
         <h2 class="text-center">相關產品</h2>
-        <ProductAlike @go-page="getProduct"></ProductAlike>
+        <ProductAlike @go-page="getProduct" />
       </div>
     </section>
   </div>

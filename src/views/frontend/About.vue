@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="container mb-5">
-    <Path :path-data="pathData"></Path>
+    <Path :path-data="pathData" />
     <section class="mt-lg-5">
       <div class="about">
         <div class="about_box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">

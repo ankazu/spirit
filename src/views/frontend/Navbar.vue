@@ -68,7 +68,7 @@
         </span>
       </button>
       <div
-        class="collapse navbar-collapse  order-lg-1 justify-content-end text-start"
+        class="collapse navbar-collapse order-lg-1 justify-content-end text-start"
         id="navbarNav"
       >
         <ul class="navbar-nav">

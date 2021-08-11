@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <table class="table mt-4">
     <thead>
       <tr>
@@ -15,8 +15,7 @@
       <template v-for="(item, key) in orders" :key="key">
         <tr>
           <td>{{ $filters.date(item.create_at) }}</td>
-          <!-- 為什麼下面span要加v-if做判斷 -->
-          <td><span v-text="item.user.email" v-if="item.user"></span></td>
+          <td><span v-text="item.user.email"></span></td>
           <td>
             <ul class="list-unstyled">
               <li v-for="(product, i) in item.products" :key="i">
@@ -59,10 +58,10 @@
       </template>
     </tbody>
   </table>
-  <OrderModal ref="orderModal" :order="tempOrder" @update-paid="updatePaid"></OrderModal>
-  <DeleteModal ref="DeleteModal" :item="tempOrder" @updata="deleteOrder"></DeleteModal>
+  <OrderModal ref="orderModal" :order="tempOrder" @update-paid="updatePaid" />
+  <DeleteModal ref="DeleteModal" :item="tempOrder" @updata="deleteOrder" />
   <div class="d-flex justify-content-center">
-    <Pagination :page="pagination"></Pagination>
+    <Pagination :page="pagination" />
   </div>
 </template>
 <script>

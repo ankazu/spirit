@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div>
     <div class="text-end mt-4">
       <button class="btn btn-primary" type="button" @click="openCouponModal(true)">
@@ -47,15 +47,15 @@
       </tbody>
     </table>
     <div class="d-flex justify-content-center">
-      <Pagination :page="pagination" @get-page="getCoupons"></Pagination>
+      <Pagination :page="pagination" @get-page="getCoupons" />
     </div>
-    <DeleteModal ref="deleteModal" :item="tempCoupon" @updata="deleteCoupon"></DeleteModal>
+    <DeleteModal ref="deleteModal" :item="tempCoupon" @updata="deleteCoupon" />
     <CouponModal
       ref="couponModal"
       :is-new="isNew"
       :coupon="tempCoupon"
       @update-coupon="updataCoupon"
-    ></CouponModal>
+    />
   </div>
 </template>
 

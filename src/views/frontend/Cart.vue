@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div
     class="position-relative inn_banner"
     style="height: 250px; background-size: cover; background-position: center center;
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="container">
-    <Path :path-data="pathData"></Path>
+    <Path :path-data="pathData" />
     <div class="row justify-content-center">
       <section class="section_empty" v-if="cart.carts?.length === 0">
         <div class="empty_cart mt-4">
@@ -126,7 +126,7 @@
       </section>
       <div class="alike">
         <h2 class="alike_title">你可能會喜歡</h2>
-        <ProductAlike @go-page="getProduct"></ProductAlike>
+        <ProductAlike @go-page="getProduct" />
       </div>
     </div>
   </div>

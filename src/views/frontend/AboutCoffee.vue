@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <!-- banner -->
   <div
     class="position-relative inn_banner"
@@ -14,7 +14,7 @@
   </div>
   <!-- content -->
   <div class="container">
-    <Path :path-data="pathData"></Path>
+    <Path :path-data="pathData" />
     <div class="row justify-content-center">
       <div class="mt-4 d-flex flex-wrap col-12 col-lg-8">
         <div class="art" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">

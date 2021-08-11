@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div>
     <div class="text-end mt-4">
       <button class="btn btn-primary" type="button" @click="openModal(true)">
@@ -62,7 +62,7 @@
       :article="tempArticle"
       :is-new="isNew"
       @update-article="updateArticle"
-    ></ArticleModal>
+    />
     <DeleteModal :item="tempArticle" ref="delModal" @updata="delArticle" />
   </div>
 </template>

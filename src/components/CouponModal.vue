@@ -52,7 +52,6 @@
               v-model="showDate"
               @change="changeTime"
             />
-            <!-- <input type="date" class="form-control" id="due_date" v-model="due_date" /> -->
           </div>
           <div class="mb-3">
             <label for="price">折扣百分比<span class="text-danger"> *</span></label>

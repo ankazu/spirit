@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div class="banner">
     <img
       src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625982418674.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=G0ewUGhrOUDv9VKpC7bK6H8SO%2BgcpuOAw3%2BX%2FflY0n%2BbwImv61TOxchSLqdYQkABZQ%2FOeDG%2BVoD5rdS3rafU0rEM%2FVyxQgNaih4IZTihNJ%2BVGaX%2Bmgua3p1VahDPfPBgViBI85j0N9qKkh9YHxfQDCg93GPVGQChy1bE4%2FNdLyMPG9Hd4e3fQb8g5fQtyo%2Fa6j2%2FxUlIWLrxOi%2BEeXrdLvRkM5Zzn%2BqbSo9HOCqfCoXD%2B9RNpPHS%2FuGYeiYziXpAxheNA5PXPaePriCjbIQADzFm%2FtsKguihRQotI8FX%2FVU2gYN3X1vhWLLWBSdViP0WldLetcm3teaMigDnrGS5Yw%3D%3D"
@@ -19,7 +19,7 @@
       </h2>
     </div>
     <div class="features" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
-      <div class="features_img ">
+      <div class="features_img">
         <img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1627135416844.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=i9i59VVaXs78p1zbiDINYv2xuOMmehv9i9dWzLTt5nsOdpJUHBeTjf8kgbDK1OiiWJltDif5iGM8GpEUJhSaS4De8i%2Ba2SCu0%2By1HFynRiR4XPpdcICxhcI4B7zC2gotr8enLTfjVi3bqW7hldS3P54Yosz4knx7OyyMyNQtluzxr8zc5ekzwu%2B0sQgK5KMtHFY2TEEOJEtCNaxLDJKQ5LoikF105E9JdCdY%2FrWLUch6%2FtVaMI2nAtS%2BB%2BdV7h%2BfY7o1ZKiGOacTATEjj5mMMLTofGigTLNI9DJMfRQrriNQRanXFojAmwE%2B5HAphHsCGANyPQBOIOq1qluAgBmgAw%3D%3D"
           alt="每天都可以喝的味道"
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="features" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-      <div class="features_img ">
+      <div class="features_img">
         <img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1627135436438.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Rcr896AUOI02s8%2FKYM1VPcvPCv23sDSw%2FkAGECSg0PV31smNiso4CBmqFIrC7wzzM8amufgpZXHQqJ6oosJY4yAp5RbD6qsmrp9mp%2FxsEwMzqOSQRUrUMLRs8Bw7Jv9LJ%2FFNL51UdviUS6bfy1qBDFwN%2FNCGNFW7ES4HJ9NGhFLzIvWD%2Blgz%2FjgnjIehx3Cy92nn5GtuctaSewGPq%2FgOP2iGQTz2LzIZwe5QBHUVBHkZ0ujWTKqBWntWvu442mBbgEeDRw7td6Y6NsvhJUEeg3YzoJMhq78X%2FAhZLe4XjBZiJAicKuJ8oVcZnmJ2CaCalWrIgg%2FIRfk8tKNjZ84aIg%3D%3D"
           alt="每天喝得起的價格"
@@ -73,7 +73,7 @@
       </h2>
     </div>
     <div class="container pe-0 ps-0">
-      <ProductAlike></ProductAlike>
+      <ProductAlike />
     </div>
   </section>
 
@@ -86,7 +86,7 @@
       </div>
       <div class="blog">
         <div class="blog_item" v-for="item in tempArticle" :key="item.id">
-          <div class="blog_pic ">
+          <div class="blog_pic">
             <a href="#" @click.prevent="getArticle(item.id)">
               <img :src="item.imageUrl" :alt="item.idx_title" />
             </a>
@@ -105,10 +105,10 @@
   <section class="subscription" data-aos="fade-up" data-aos-duration="1300" data-aos-delay="200">
     <div class="container">
       <div class="row">
-        <div class="subscription_box  col-md-5">
-          <div class="subscription_title">
+        <div class="subscription_box col-md-5">
+          <p class="subscription_title">
             訂閱我們
-          </div>
+          </p>
           <Form action="" v-slot="{ errors }" ref="subForm" @submit="subscription">
             <div class="input-group">
               <Field

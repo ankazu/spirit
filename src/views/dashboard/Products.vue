@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div>
     <div class="d-flex justify-content-end">
       <button type="button" class="btn btn-primary" @click="openModal('creat')">新增產品</button>
@@ -57,15 +57,15 @@
       </tbody>
     </table>
     <div class="d-flex justify-content-center">
-      <Pagination :page="pagination" @get-page="getProducts"></Pagination>
+      <Pagination :page="pagination" @get-page="getProducts" />
     </div>
     <ProductModal
       ref="ProductModal"
       :product="tempProduct"
       :is-new="isNew"
       @update-product="updata"
-    ></ProductModal>
-    <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct"></DeleteModal>
+    />
+    <DeleteModal ref="DeleteModal" :item="tempProduct" @updata="deleteProduct" />
   </div>
 </template>
 <script>

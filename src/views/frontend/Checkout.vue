@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" />
   <div
     class="position-relative inn_banner"
     style="height: 250px; background-size: cover; background-position: center center;
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="container mb-5">
-    <Path :path-data="pathData"></Path>
+    <Path :path-data="pathData"/>
     <div class="process">
       <div class="process_step current" data-num="01">
         確認商品
@@ -29,7 +29,7 @@
         <div class="order_inf">訂購人資訊</div>
         <Form ref="form" class="form" v-slot="{ errors }" @submit="createOrder" @change="checkFrom">
           <div class="mb-3">
-            <label for="email" class="form-label">Email<span class="font_req"> *</span></label>
+            <label for="email" class="form-label">Email<span class="text-danger"> *</span></label>
             <Field
               id="email"
               name="email"
@@ -44,7 +44,9 @@
           </div>
 
           <div class="mb-3">
-            <label for="name" class="form-label">收件人姓名<span class="font_req"> *</span></label>
+            <label for="name" class="form-label"
+              >收件人姓名<span class="text-danger"> *</span></label
+            >
             <Field
               id="name"
               name="姓名"
@@ -59,7 +61,9 @@
           </div>
 
           <div class="mb-3">
-            <label for="tel" class="form-label">收件人電話<span class="font_req"> *</span></label>
+            <label for="tel" class="form-label"
+              >收件人電話<span class="text-danger"> *</span></label
+            >
             <Field
               id="tel"
               name="手機號碼"
@@ -75,7 +79,7 @@
 
           <div class="mb-3">
             <label for="address" class="form-label"
-              >收件人地址<span class="font_req"> *</span></label
+              >收件人地址<span class="text-danger"> *</span></label
             >
             <Field
               id="address"

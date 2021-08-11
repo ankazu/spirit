@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="container">
-    <Path :path-data="pathData"></Path>
+    <Path :path-data="pathData" />
     <div class="process">
       <div class="process_step current" data-num="01">
         確認商品
