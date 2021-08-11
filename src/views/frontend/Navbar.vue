@@ -45,14 +45,26 @@
                 </tr>
                 <tr class="bg-white text-end">
                   <td colspan="3">
-                    總計:
-                    <span class="price_dlr material-icons"> attach_money </span>
-                    {{ $filters.currency(cart.total) }}
+                    <span class="text-center w-100 d-block" v-if="cart?.carts?.length === 0">
+                      趕快放入喜歡的商品吧!
+                    </span>
+                    <span class="d-flex jusity-content-end align-items-center" v-else>
+                      總計:
+                      <span class="price_dlr material-icons"> attach_money </span>
+                      {{ $filters.currency(cart.total) }}
+                    </span>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <router-link class="btn btn-secondary w-100" to="/cart">
+            <router-link
+              class="btn btn-secondary w-100"
+              to="/products"
+              v-if="cart?.carts?.length === 0"
+            >
+              購物去
+            </router-link>
+            <router-link class="btn btn-secondary w-100" to="/cart" v-else>
               查看購物車
             </router-link>
           </div>
