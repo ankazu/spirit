@@ -6,9 +6,9 @@
     style="background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1626702470408.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=ZuqNZWkgZBvbuQu3515xnP5l%2Bh5x1jGih70wSKtxcdMTQgNWxM0WF5AdK11nyRG3Qe02U8a4Ijyphjm6xIKzs17C5O6pXl7zt0yGU8pPyIC%2Fouy7kCDPE9bOmNx8NnD64mY4zdcBq7g7aR54DvMcaLMdPXKdzgPiy1NPjhantn6uEVmk%2Frf%2FQTDiWwjkGK8rU19hO6qLK44Li8MD%2FaPS0dnZMOOSN9C%2BBHBzCrn6G4xlfEQnpzBGLh3%2Fcj9%2BIjwpMrPcj%2FELpzOZpGLOmvcIcFaM5yzbrFcS4zM4WHNj42BqI1n2f72s5zJ%2FfkOFSXld697HdYuhORB0eop%2F0C9npg%3D%3D)"
   >
     <div>
-      <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
+      <h2 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
         {{ pathData.purpose }}
-      </h1>
+      </h2>
     </div>
   </div>
   <!-- content -->
@@ -98,7 +98,7 @@
                   <button
                     type="button"
                     class="cart_remove cart_btn"
-                    :class="{'not-allowed':qty === 1}"
+                    :class="{ 'not-allowed': qty === 1 }"
                     :disabled="qty === 1"
                     @click.prevent="changeQty('reduce')"
                   >

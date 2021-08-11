@@ -6,9 +6,9 @@
     background-repeat: no-repeat; background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625982677472.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=m9QW9KxsRFls3h31tArN2y632onqSZIp93dQeiU7DRN%2FFW9kXj7AAv2KH6k89jumLOM5FM7TClvtfIdDr7ZYFI%2FG%2FndI9LQybaDuXtn6v1jsJi5xKznxq3awi1T0gki8p%2F1wPzrMpOZ%2FYHrVCIsK5pQZswHfvjkfYNvZsImOsKSx%2FjU3KFicuOGi6FE8x3H0t6WUXjBrW56W15V8Hm%2BQhMANmuSX0FTPaeBp%2B7oSDO3dwg9BryrYOh7fXXUc05hls4%2BieJ21guqDkSSfoKxVY8j5sXLwvyU1zx7dML63dfqdPjXfk3FgeV2ehcdd1yrRxWfYeepyjBYX5Bef8vmIEA%3D%3D)"
   >
     <div>
-      <h1 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
+      <h2 class="position-absolute start-50 top-50 translate-middle fw-bold text-white">
         {{ pathData.purpose }}
-      </h1>
+      </h2>
     </div>
   </div>
   <div class="container mb-5">
