@@ -149,6 +149,11 @@ export default {
       }
     });
   },
+  unmounted() {
+    emitter.off('updata-cart', () => {
+      this.getCart();
+    });
+  },
 };
 </script>
 
