@@ -78,7 +78,7 @@
                 class="cart_remove cart_btn"
                 :class="{ 'not-allowed': item.qty === 1 }"
                 :disabled="item.qty === 1"
-                @click.prevent="addToCart(item, 'reduce')"
+                @click="addToCart(item, 'reduce')"
               >
                 <span class="material-icons">
                   remove
@@ -90,11 +90,7 @@
                 disabled="disabled"
                 v-model="item.qty"
               />
-              <button
-                type="button"
-                class="cart_add cart_btn"
-                @click.prevent="addToCart(item, 'add')"
-              >
+              <button type="button" class="cart_add cart_btn" @click="addToCart(item, 'add')">
                 <span class="material-icons">
                   add
                 </span>
@@ -162,6 +158,11 @@ export default {
       this.getCart();
     });
   },
+  unmounted() {
+    emitter.off('render-cart', () => {
+      this.getCart();
+    });
+  },
   methods: {
     getCart() {
       this.isLoading = true;
@@ -201,6 +202,7 @@ export default {
           if (res.data.success) {
             this.loadingStatus.loadingItem = '';
             this.isLoading = false;
+            emitter.emit('updata-cart');
             this.getCart();
           } else {
             this.isLoading = false;

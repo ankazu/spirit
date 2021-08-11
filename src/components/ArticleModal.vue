@@ -218,6 +218,7 @@ export default {
     };
   },
   mixins: [modalMixin],
+  emits: ['update-article'],
   watch: {
     article() {
       this.tempArticle = {

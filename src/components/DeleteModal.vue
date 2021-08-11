@@ -56,6 +56,7 @@ export default {
     };
   },
   mixins: [modalMixin],
+  emits: ['updata'],
 };
 </script>
 <style lang="scss" scoped>

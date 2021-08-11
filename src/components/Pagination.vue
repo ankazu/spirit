@@ -40,6 +40,7 @@
 <script>
 export default {
   props: ['page'],
+  emits: ['get-page'],
 };
 </script>
 
