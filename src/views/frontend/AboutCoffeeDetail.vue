@@ -30,6 +30,28 @@
           </div>
           <div class="art_txt" v-html="article.content"></div>
         </div>
+        <div class="d-flex justify-content-between m-4">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            :title="prev.title"
+            :class="{ 'not-allowed': prev === false }"
+            :disabled="prev === false"
+            @click="goArticle(prev.id)"
+          >
+            上一則
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            :title="next.title"
+            :class="{ 'not-allowed': next === false }"
+            :disabled="next === false"
+            @click="goArticle(next.id)"
+          >
+            下一則
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +66,10 @@ export default {
     return {
       isLoading: false,
       article: {},
+      articles: [],
+      prev: {},
+      next: {},
+      id: '',
       pathData: {
         previous: [
           { title: '首頁', url: '/' },
@@ -57,8 +83,13 @@ export default {
     Path,
   },
   mounted() {
-    const { id } = this.$route.params;
-    this.getArticle(id);
+    this.id = this.$route.params.id;
+    this.getArticle(this.id);
+  },
+  watch: {
+    $route() {
+      this.getArticle(this.id);
+    },
   },
   methods: {
     getArticle(id) {
@@ -68,6 +99,7 @@ export default {
         .get(api)
         .then((res) => {
           if (res.data.success) {
+            this.getArticles();
             this.article = res.data.article;
             this.pathData.purpose = this.article.title;
             this.isLoading = false;
@@ -79,6 +111,41 @@ export default {
         .catch((err) => {
           this.swalert('error', `發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
+    },
+    getArticles() {
+      this.isLoading = true;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/articles`;
+      this.$http
+        .get(api)
+        .then((res) => {
+          if (res.data.success) {
+            this.articles = res.data.articles;
+            this.getSibling(this.articles);
+            this.isLoading = false;
+          } else {
+            this.isLoading = false;
+            this.swalert('error', `發生錯誤，請重新整理此頁面。${res.data.message}`);
+          }
+        })
+        .catch((err) => {
+          this.swalert('error', `發生錯誤，請重新整理此頁面。${err.message}`);
+        });
+    },
+    goArticle(id) {
+      this.id = id;
+      this.$router.push(`/coffee/${id}`);
+    },
+    // 取得前後一筆商品
+    getSibling(datas) {
+      datas.forEach((item, idx) => {
+        const { id } = item;
+        if (id === this.id) {
+          const prev = datas[idx - 1] || '';
+          const next = datas[idx + 1] || '';
+          this.prev = prev ? { id: prev.id, title: prev.title } : false;
+          this.next = next ? { id: next.id, title: next.title } : false;
+        }
+      });
     },
   },
 };
