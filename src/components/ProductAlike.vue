@@ -190,12 +190,14 @@ export default {
   display: flex;
   &_list {
     list-style: none;
-    padding: 10px;
+    padding: 15px;
     width: 22%;
-    // margin: 0 1.5% !important;
     background-color: #f9f2e8;
     transition: all 0.3s;
     text-align: left;
+    @media only screen and (max-width: 600px) {
+      padding: 10px;
+    }
     &:hover {
       background-color: #f5eadb;
       & img {

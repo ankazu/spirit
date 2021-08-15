@@ -75,7 +75,7 @@
         精選商品
       </h2>
     </div>
-    <div class="container pe-0 ps-0">
+    <div class="container pe-sm-0 ps-sm-0">
       <ProductAlike />
     </div>
   </section>
