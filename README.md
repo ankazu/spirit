@@ -1,4 +1,4 @@
-# week6
+# Spirit
 
 ## Project setup
 ```
