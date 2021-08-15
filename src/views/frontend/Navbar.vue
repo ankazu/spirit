@@ -1,9 +1,6 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-light bg-primary fixed-top align-items-center"
-    :class="classList.navbarTop"
-  >
-    <div class="container" :class="classList.navbarInner">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top align-items-center">
+    <div class="container">
       <h1 class="d-flex align-items-center mb-1 mt-1">
         <router-link class="navbar-brand logo" to="/">Spirit</router-link>
       </h1>
@@ -48,7 +45,7 @@
                     <span class="text-center w-100 d-block" v-if="cart?.carts?.length === 0">
                       趕快放入喜歡的商品吧!
                     </span>
-                    <span class="d-flex jusity-content-end align-items-center" v-else>
+                    <span class="d-flex justify-content-end align-items-center" v-else>
                       總計:
                       <span class="price_dlr material-icons"> attach_money </span>
                       {{ $filters.currency(cart.total) }}
@@ -116,7 +113,6 @@ export default {
       cart: {
         carts: [],
       },
-      classList: { navbarTop: '', navbarInner: '' },
     };
   },
   watch: {
@@ -149,16 +145,6 @@ export default {
     this.getCart();
     emitter.on('updata-cart', () => {
       this.getCart();
-    });
-    window.addEventListener('scroll', () => {
-      const windowY = window.scrollY;
-      const main = document.querySelector('#main');
-      if (!main) return;
-      if (windowY > main.offsetTop) {
-        this.classList = { navbarTop: 'shadow-sm', navbarInner: '' };
-      } else {
-        this.classList = { navbarTop: '', navbarInner: '' };
-      }
     });
   },
   unmounted() {
@@ -203,46 +189,47 @@ export default {
     margin: 0;
   }
 }
-.nav_link {
-  padding: 0.5rem 1rem;
-  display: block;
-  text-decoration: none;
-  color: #fff;
-  position: relative;
-  transition: all 0.3s;
-  @media only screen and (max-width: 992px) {
-    padding-left: 0;
-    border-bottom: 1px solid #ebe1d4;
-  }
-  &:hover {
-    color: #6d3215;
-  }
-  &:before {
-    position: absolute;
-    content: '';
-    width: 0;
-    height: 0px;
-    background-color: #dbd0be;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.nav {
+  &_link {
+    padding: 0.5rem 1rem;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
     transition: all 0.3s;
     @media only screen and (max-width: 992px) {
-      display: none;
+      padding-left: 0;
+      border-bottom: 1px solid #ebe1d4;
     }
-  }
-  &:hover:before {
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    transform: translate(-50%, -50%) rotate(-3deg);
-  }
-
-  &.router-link-exact-active:before {
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    transform: translate(-50%, -50%) rotate(-3deg);
+    &:hover {
+      color: #6d3215;
+    }
+    &:before {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0px;
+      background-color: #dbd0be;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s;
+      @media only screen and (max-width: 992px) {
+        display: none;
+      }
+    }
+    &:hover:before {
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      transform: translate(-50%, -50%) rotate(-3deg);
+    }
+    &.router-link-exact-active:before {
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      transform: translate(-50%, -50%) rotate(-3deg);
+    }
   }
 }
 .router-link-exact-active {

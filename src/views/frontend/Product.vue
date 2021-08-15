@@ -100,7 +100,7 @@
                     class="cart_remove cart_btn"
                     :class="{ 'not-allowed': qty === 1 }"
                     :disabled="qty === 1"
-                    @click.prevent="changeQty('reduce')"
+                    @click="changeQty('reduce')"
                   >
                     <span class="material-icons">
                       remove
@@ -115,7 +115,7 @@
                 </div>
                 <button
                   :disabled="loadingStatus.loadingItem === tempProduct.id"
-                  @click.prevent="addToCart(tempProduct.id, qty)"
+                  @click="addToCart(tempProduct.id, qty)"
                   type="button"
                   class="btn btn-secondary"
                 >

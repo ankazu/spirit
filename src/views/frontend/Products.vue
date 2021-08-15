@@ -272,71 +272,73 @@ export default {
 .active {
   background: #f5eadb;
 }
-.nav_left {
-  position: relative;
-  @media only screen and (max-width: 992px) {
-    margin-bottom: 30px;
-  }
-  & ul {
-    padding: 0;
-    margin: 0;
-    text-align: center;
+.nav {
+  &_left {
+    position: relative;
     @media only screen and (max-width: 992px) {
-      max-height: 0;
-      overflow: hidden;
-      &.open {
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: 0 12px;
-        max-height: 1000px;
-        background-color: #fff;
-        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-        z-index: 9;
+      margin-bottom: 30px;
+    }
+    & ul {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      @media only screen and (max-width: 992px) {
+        max-height: 0;
+        overflow: hidden;
+        &.open {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: 0 12px;
+          max-height: 1000px;
+          background-color: #fff;
+          box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+          z-index: 9;
+        }
+      }
+      & li {
+        list-style: none;
+        cursor: pointer;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        &:hover {
+          background: #f5eadb;
+        }
       }
     }
-    & li {
+    & div {
       list-style: none;
       cursor: pointer;
       padding: 10px;
       border-bottom: 1px solid #ccc;
-      &:hover {
-        background: #f5eadb;
+      @media only screen and (max-width: 992px) {
+        color: #fff;
       }
     }
   }
-  & div {
-    list-style: none;
-    cursor: pointer;
+
+  &_tar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     padding: 10px;
+    margin: 0;
     border-bottom: 1px solid #ccc;
     @media only screen and (max-width: 992px) {
+      border-bottom: 0;
       color: #fff;
     }
-  }
-}
-.nav_tar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 10px;
-  margin: 0;
-  border-bottom: 1px solid #ccc;
-  @media only screen and (max-width: 992px) {
-    border-bottom: 0;
-    color: #fff;
-  }
-  & span {
-    display: none;
-    @media only screen and (max-width: 992px) {
-      display: block;
-      position: absolute;
-      right: 20px;
+    & span {
+      display: none;
+      @media only screen and (max-width: 992px) {
+        display: block;
+        position: absolute;
+        right: 20px;
+      }
     }
   }
 }
-
 .product {
   transition: all 0.3s ease;
   // background-color: #f9f2e8;
