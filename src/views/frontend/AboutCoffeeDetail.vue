@@ -33,7 +33,7 @@
         <div class="d-flex justify-content-between m-4">
           <button
             type="button"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-secondary"
             :title="prev.title"
             :class="{ 'not-allowed': prev === false }"
             :disabled="prev === false"
@@ -43,7 +43,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-secondary"
             :title="next.title"
             :class="{ 'not-allowed': next === false }"
             :disabled="next === false"
