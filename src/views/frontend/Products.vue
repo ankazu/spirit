@@ -37,9 +37,9 @@
         </ul>
       </div>
       <div class="col-12 col-lg-9 col-xl-10 ms-md-auto ps-md-4">
-        <div class="row">
-          <div
-            class="col-6 col-sm-4 col-xl-3 mb-5 text-start"
+        <ul class="row p-0">
+          <li
+            class="col-6 col-sm-4 col-xl-3 mb-5 text-start list-none"
             v-for="item in pageProducts"
             :key="item.id"
           >
@@ -81,8 +81,8 @@
                 </button>
               </div>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
         <div class="page" v-if="pageShow">
           <Pagination :page="pages" @get-page="getCurrentPage" />
         </div>
@@ -256,6 +256,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+li {
+  list-style: none;
+}
 .inn_banner {
   height: 250px;
   background-size: cover;

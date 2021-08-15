@@ -17,8 +17,16 @@
   <div class="container">
     <Path :path-data="pathData" />
     <div class="row justify-content-center">
-      <div class="mt-4 d-flex flex-wrap col-12 col-lg-8">
-        <div class="art" v-for="item in articles" :key="item.id" @click="getArticle(item.id)">
+      <ul class="mt-4 d-flex flex-wrap col-12 col-lg-8">
+        <li
+          class="art"
+          v-for="item in articles"
+          :key="item.id"
+          @click="getArticle(item.id)"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="100"
+        >
           <div class="art_img">
             <div>
               <img :src="item.imageUrl" :alt="item.title" />
@@ -35,8 +43,8 @@
               {{ item.author }}
             </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
