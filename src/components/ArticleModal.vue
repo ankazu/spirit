@@ -107,6 +107,7 @@
                 >
                   <button
                     class="btn btn-outline-primary btn-sm d-block w-100"
+                    type="button"
                     @click="tempArticle.tag.push('')"
                   >
                     新增標籤

@@ -75,7 +75,6 @@ import ProductModal from '@/components/ProductModal.vue';
 import DeleteModal from '@/components/DeleteModal.vue';
 
 export default {
-  props: ['token'],
   components: {
     Pagination,
     ProductModal,

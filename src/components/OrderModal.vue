@@ -92,9 +92,6 @@
               </table>
               <h3>選購商品</h3>
               <table class="table">
-                <thead>
-                  <tr></tr>
-                </thead>
                 <tbody>
                   <tr v-for="item in tempOrder.products" :key="item.id">
                     <th>
