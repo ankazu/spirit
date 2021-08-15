@@ -63,11 +63,11 @@
             <span class="cart_product_header_del">刪除</span>
           </div>
           <div class="cart_product" v-for="item in cart.carts" :key="item.id">
-            <div class="cart_product_img" @click="getProduct(item.product_id)">
+            <div class="cart_product_img" @click="getProduct(item.product.id)">
               <img :src="item.product.imageUrl" :alt="item.product.title" />
             </div>
             <div class="cart_product_dtl ps-4 pe-2">
-              <div class="cart_product_title" @click="getProduct(item.product_id)">
+              <div class="cart_product_title" @click="getProduct(item.product.id)">
                 {{ item.product.title }}
               </div>
               <div class="cart_product_unit">單位 : {{ item.product.unit }}</div>

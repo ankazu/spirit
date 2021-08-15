@@ -168,11 +168,11 @@
         <div class="order_dtl">
           <div class="order_del_title">訂單明細</div>
           <div class="order_dtl_list" v-for="item in cart.carts" :key="item.id">
-            <div class="order_dtl_list_img" @click="getProduct(item.product_id)">
+            <div class="order_dtl_list_img" @click="getProduct(item.product.id)">
               <img :src="item.product.imageUrl" :alt="item.product.title" />
             </div>
             <div class="order_dtl_list_title">
-              <div class="order_dtl_list_title_txt" @click="getProduct(item.product_id)">
+              <div class="order_dtl_list_title_txt" @click="getProduct(item.product.id)">
                 {{ item.product.title }}
               </div>
               <div class="order_dtl_list_unit">
