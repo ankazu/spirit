@@ -24,7 +24,7 @@
       <div class="features_img">
         <img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1627135416844.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=i9i59VVaXs78p1zbiDINYv2xuOMmehv9i9dWzLTt5nsOdpJUHBeTjf8kgbDK1OiiWJltDif5iGM8GpEUJhSaS4De8i%2Ba2SCu0%2By1HFynRiR4XPpdcICxhcI4B7zC2gotr8enLTfjVi3bqW7hldS3P54Yosz4knx7OyyMyNQtluzxr8zc5ekzwu%2B0sQgK5KMtHFY2TEEOJEtCNaxLDJKQ5LoikF105E9JdCdY%2FrWLUch6%2FtVaMI2nAtS%2BB%2BdV7h%2BfY7o1ZKiGOacTATEjj5mMMLTofGigTLNI9DJMfRQrriNQRanXFojAmwE%2B5HAphHsCGANyPQBOIOq1qluAgBmgAw%3D%3D"
-          alt="每天都可以喝的味道"
+          alt="每天都可以喝的味道，選用優質的生豆，用小火慢慢煮，以促進美味成分的化學變化。"
         />
       </div>
       <div class="features_txt">
@@ -44,7 +44,7 @@
       <div class="features_img">
         <img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1627135436438.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Rcr896AUOI02s8%2FKYM1VPcvPCv23sDSw%2FkAGECSg0PV31smNiso4CBmqFIrC7wzzM8amufgpZXHQqJ6oosJY4yAp5RbD6qsmrp9mp%2FxsEwMzqOSQRUrUMLRs8Bw7Jv9LJ%2FFNL51UdviUS6bfy1qBDFwN%2FNCGNFW7ES4HJ9NGhFLzIvWD%2Blgz%2FjgnjIehx3Cy92nn5GtuctaSewGPq%2FgOP2iGQTz2LzIZwe5QBHUVBHkZ0ujWTKqBWntWvu442mBbgEeDRw7td6Y6NsvhJUEeg3YzoJMhq78X%2FAhZLe4XjBZiJAicKuJ8oVcZnmJ2CaCalWrIgg%2FIRfk8tKNjZ84aIg%3D%3D"
-          alt="每天喝得起的價格"
+          alt="每天喝得起的價格，生咖啡豆的市場價格由供求關係決定。稀缺豆價值高、品質好的生豆價格也會相應上漲。"
         />
       </div>
       <div class="features_txt">

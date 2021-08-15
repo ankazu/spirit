@@ -38,7 +38,7 @@
                   <img
                     class="w-100 p-0 rounded"
                     :src="img"
-                    :alt="`img_${key}`"
+                    :alt="tempProduct.title"
                     @click="changeImg(img)"
                   />
                 </a>

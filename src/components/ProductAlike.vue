@@ -1,4 +1,5 @@
 <template>
+  <Loading :active="isLoading" />
   <div>
     <Swiper
       :slidesPerView="2"
@@ -75,6 +76,7 @@ export default {
       products: [],
       randomProducts: [],
       loadingStatus: { loadingItem: '' },
+      isLoading: false,
     };
   },
   components: {
