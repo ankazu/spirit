@@ -45,11 +45,18 @@ export default {
   inject: ['swalert'],
   data() {
     return {
-      user: {},
+      user: {
+        username: '',
+        password: '',
+      },
     };
   },
   methods: {
     login() {
+      if (this.user.username === '' || this.user.password === '') {
+        this.swalert('error', '請輸入帳號密碼', 'top');
+        return;
+      }
       const api = `${process.env.VUE_APP_API}/admin/signin`;
       this.$http
         .post(api, this.user)
@@ -59,7 +66,7 @@ export default {
             document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
             this.$router.push('/admin/products');
           } else {
-            this.swalert('error', `${res.data.message}`, 'top');
+            this.swalert('error', `帳號密碼有誤，${res.data.message}。`, 'top');
           }
         })
         .catch((err) => {
