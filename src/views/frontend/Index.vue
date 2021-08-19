@@ -4,7 +4,7 @@
   <div class="banner">
     <img
       src="https://storage.googleapis.com/vue-course-api.appspot.com/johnming/1625982418674.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=G0ewUGhrOUDv9VKpC7bK6H8SO%2BgcpuOAw3%2BX%2FflY0n%2BbwImv61TOxchSLqdYQkABZQ%2FOeDG%2BVoD5rdS3rafU0rEM%2FVyxQgNaih4IZTihNJ%2BVGaX%2Bmgua3p1VahDPfPBgViBI85j0N9qKkh9YHxfQDCg93GPVGQChy1bE4%2FNdLyMPG9Hd4e3fQb8g5fQtyo%2Fa6j2%2FxUlIWLrxOi%2BEeXrdLvRkM5Zzn%2BqbSo9HOCqfCoXD%2B9RNpPHS%2FuGYeiYziXpAxheNA5PXPaePriCjbIQADzFm%2FtsKguihRQotI8FX%2FVU2gYN3X1vhWLLWBSdViP0WldLetcm3teaMigDnrGS5Yw%3D%3D"
-      alt=""
+      alt="享受喝咖啡帶來的樂趣吧"
     />
     <div class="banner_txtbox">
       <h2>準備好享受樂趣吧，<br />讓我們開始喝咖啡時光吧！</h2>

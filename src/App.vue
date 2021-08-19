@@ -1,6 +1,7 @@
 <template>
   <router-view />
 </template>
+
 <script>
 import swalert from '@/methods/swal';
 
@@ -10,6 +11,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 @import './assets/all';
 

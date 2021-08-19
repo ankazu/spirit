@@ -1,59 +1,47 @@
 <template>
   <Loading :active="isLoading" />
-  <div>
-    <Swiper
-      :slidesPerView="2"
-      :spaceBetween="10"
-      :navigation="true"
-      :breakpoints="{
-        '600': { slidesPerView: 3, spaceBetween: 20 },
-        '992': { slidesPerView: 4, spaceBetween: 20 },
-      }"
-      :autoplay="{ delay: 4000, disableOnInteraction: false }"
-      class="alike ps-0"
-    >
-      <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
-        <div @click="goProduct(item.id)" class="alike_list_img stretched-link">
-          <img :src="item.imageUrl" :alt="item.title" />
+  <Swiper :="swiperOption" class="alike ps-0">
+    <SwiperSlide class="alike_list" v-for="item in randomProducts" :key="item">
+      <div @click="goProduct(item.id)" class="alike_list_img stretched-link">
+        <img :src="item.imageUrl" :alt="item.title" />
+      </div>
+      <div class="alike_list_baking" v-if="item.baking">
+        {{ item.baking }}
+      </div>
+      <div class="alike_list_baking_1" v-else></div>
+      <div class="alike_list_title">
+        {{ item.title }}
+      </div>
+      <div class="alike_list_desc">
+        {{ item.decription }}
+      </div>
+      <div class="alike_list_price">
+        <div class="alike_list_price_1" v-if="item.price === item.origin_price">
+          {{ $filters.currency(item.origin_price) }} 元 / {{ item.unit }}
         </div>
-        <div class="alike_list_baking" v-if="item.baking">
-          {{ item.baking }}
+        <del class="alike_list_price_2" v-if="item.price !== item.origin_price"
+          >原價 {{ $filters.currency(item.origin_price) }} 元</del
+        >
+        <div class="alike_list_price_2" v-if="item.price !== item.origin_price">
+          特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
         </div>
-        <div class="alike_list_baking_1" v-else></div>
-        <div class="alike_list_title">
-          {{ item.title }}
-        </div>
-        <div class="alike_list_desc">
-          {{ item.decription }}
-        </div>
-        <div class="alike_list_price">
-          <div class="alike_list_price_1" v-if="item.price === item.origin_price">
-            {{ $filters.currency(item.origin_price) }} 元 / {{ item.unit }}
-          </div>
-          <del class="alike_list_price_2" v-if="item.price !== item.origin_price"
-            >原價 {{ $filters.currency(item.origin_price) }} 元</del
-          >
-          <div class="alike_list_price_2" v-if="item.price !== item.origin_price">
-            特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
-          </div>
-        </div>
-        <div class="d-flex  mt-2">
-          <button
-            :disabled="loadingStatus.loadingItem === item.id"
-            @click="addToCart(item.id)"
-            type="button"
-            class="btn btn-secondary w-100"
-          >
-            <i
-              class="spinner-border spinner-border-sm"
-              v-if="loadingStatus.loadingItem === item.id"
-            ></i>
-            加入購物車
-          </button>
-        </div>
-      </SwiperSlide>
-    </Swiper>
-  </div>
+      </div>
+      <div class="d-flex  mt-2">
+        <button
+          :disabled="loadingStatus.loadingItem === item.id"
+          @click="addToCart(item.id)"
+          type="button"
+          class="btn btn-secondary w-100"
+        >
+          <i
+            class="spinner-border spinner-border-sm"
+            v-if="loadingStatus.loadingItem === item.id"
+          ></i>
+          加入購物車
+        </button>
+      </div>
+    </SwiperSlide>
+  </Swiper>
 </template>
 
 <script>
@@ -70,6 +58,10 @@ function getRandomInt(max) {
 
 export default {
   inject: ['swalert'],
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
   data() {
     return {
       product: {},
@@ -78,11 +70,26 @@ export default {
       loadingStatus: { loadingItem: '' },
       isLoading: false,
       id: '',
+      swiperOption: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        navigation: true,
+        breakpoints: {
+          992: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          600: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        },
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+      },
     };
-  },
-  components: {
-    Swiper,
-    SwiperSlide,
   },
   mounted() {
     this.id = this.$route.params.id;

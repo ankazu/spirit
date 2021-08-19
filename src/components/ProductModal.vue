@@ -65,7 +65,7 @@
                       @change="uploadFile('images', `${index + 'fileInputs'}`, index)"
                     />
                   </div>
-                  <img class="img-fluid" :src="img" alt="" />
+                  <img class="img-fluid" :src="img" :alt="tempProduct.title" />
                   <button
                     type="button"
                     class="btn btn-outline-danger"

@@ -158,7 +158,7 @@ export default {
 <style lang="scss" scoped>
 .logo {
   display: block;
-  background: url(../../../public/images/logo.png) no-repeat;
+  background: url(../../public/images/logo.png) no-repeat;
   text-indent: 101%;
   overflow: hidden;
   white-space: nowrap;

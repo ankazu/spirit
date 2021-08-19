@@ -331,6 +331,7 @@ li {
     @media only screen and (max-width: 992px) {
       border-bottom: 0;
       color: #fff;
+      cursor: pointer;
     }
     & span {
       display: none;
@@ -344,13 +345,11 @@ li {
 }
 .product {
   transition: all 0.3s ease;
-  // background-color: #f9f2e8;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   position: relative;
   &:hover {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.4);
-    // background-color: #f5eadb;
     & img {
       transform: scale(1.1);
     }

@@ -1,35 +1,35 @@
 <template>
   <footer class="bg-primary">
     <div class="container text-md-start py-4 footer">
-      <div>
-        <div>
-          <div class="footer_dec">
-            <router-link to="/" class="footer_logo">
-              Spirit
-            </router-link>
-          </div>
-        </div>
-        <div>
-          <div class="footer_nav">
-            <router-link class="footer_nav_link" to="/products">產品列表</router-link>
-            <router-link class="footer_nav_link" to="/about">關於我們</router-link>
-            <router-link class="footer_nav_link" to="/coffee">關於咖啡</router-link>
-            <router-link class="footer_nav_link" to="/admin">後台登入</router-link>
-          </div>
-        </div>
-        <div>
-          <div class="footer_social">
-            <a href="javascript:;">
-              <img src="../../../public/images/facebook.svg" alt="facebook" />
-            </a>
-            <a href="https://github.com/ankazu/spirit" target="_blank">
-              <img src="../../../public/images/github.svg" alt="github" />
-            </a>
-          </div>
-        </div>
-        <div class="footer_copyright">
-          <div>© 2021 Spirit All Rights Reserved.</div>
-        </div>
+      <div class="footer_dec">
+        <router-link to="/" class="footer_logo">
+          Spirit
+        </router-link>
+      </div>
+      <ul class="footer_nav">
+        <li>
+          <router-link class="footer_nav_link" to="/products">產品列表</router-link>
+        </li>
+        <li>
+          <router-link class="footer_nav_link" to="/about">關於我們</router-link>
+        </li>
+        <li>
+          <router-link class="footer_nav_link" to="/coffee">關於咖啡</router-link>
+        </li>
+        <li>
+          <router-link class="footer_nav_link" to="/admin">後台登入</router-link>
+        </li>
+      </ul>
+      <div class="footer_social">
+        <a href="javascript:void(0);">
+          <img src="../../public/images/facebook.svg" alt="facebook" />
+        </a>
+        <a href="https://github.com/ankazu/spirit" target="_blank">
+          <img src="../../public/images/github.svg" alt="github" />
+        </a>
+      </div>
+      <div class="footer_copyright">
+        <p>© 2021 Spirit All Rights Reserved.</p>
       </div>
     </div>
   </footer>
@@ -79,7 +79,7 @@ footer {
   }
   &_logo {
     display: block;
-    background: url(../../../public/images/logo.png) no-repeat center #b18a53;
+    background: url(../../public/images/logo.png) no-repeat center #b18a53;
     text-indent: 101%;
     overflow: hidden;
     white-space: nowrap;
@@ -119,18 +119,23 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 18px;
-
+    padding-left: 0;
+    list-style: none;
+    & li {
+      margin-right: 30px;
+      @media only screen and (max-width: 600px) {
+        margin-right: 20px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
     &_link {
       line-height: 1.5;
       color: #fff;
       transition: all 0.3s;
-      margin-right: 30px;
       @media only screen and (max-width: 600px) {
-        margin-right: 20px;
         font-size: 15px;
-      }
-      &:last-child {
-        margin-right: 0;
       }
     }
   }

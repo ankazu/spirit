@@ -74,7 +74,10 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="create_at"> 文章建立日期<span class="text-danger"> *</span> </label>
+                <label for="create_at">
+                  文章建立日期
+                  <span class="text-danger"> *</span>
+                </label>
                 <input type="date" class="form-control" id="create_at" v-model="create_at" />
               </div>
             </div>
@@ -211,7 +214,7 @@ export default {
       // 參考：https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/vuejs-v3.html#editor
       editor: ClassicEditor,
       editorConfig: {
-        toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link'],
+        toolbar: ['heading', 'bold', 'italic', '|', 'link'],
       },
     };
   },

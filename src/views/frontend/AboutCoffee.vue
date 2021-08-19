@@ -33,15 +33,15 @@
             </div>
           </div>
           <div class="art_txt">
-            <div class="art_txt_title">
+            <h3 class="art_txt_title">
               {{ item.title }}
-            </div>
-            <div class="art_txt_description">
+            </h3>
+            <p class="art_txt_description">
               {{ item.description }}
-            </div>
-            <div class="art_txt_author">
+            </p>
+            <p class="art_txt_author">
               {{ item.author }}
-            </div>
+            </p>
           </div>
         </li>
       </ul>
