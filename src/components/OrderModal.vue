@@ -154,7 +154,7 @@ export default {
     };
   },
   mixins: [modalMixin],
-  emit: ['update-paid'],
+  emits: ['update-paid'],
   watch: {
     order() {
       this.tempOrder = this.order;
