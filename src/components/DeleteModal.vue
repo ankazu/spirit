@@ -11,11 +11,9 @@
       <div class="modal-content border-0">
         <div class="modal-header bg-danger text-white">
           <h5 id="delProductModalLabel" class="modal-title">
-            <div>
-              刪除
-              <span v-if="item.title">{{ item.title }}</span>
-              <span v-else>訂單</span>
-            </div>
+            刪除
+            <span v-if="item.title">{{ item.title }}</span>
+            <span v-else>訂單</span>
           </h5>
           <button
             type="button"
