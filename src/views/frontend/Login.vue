@@ -6,7 +6,7 @@
           請先登入
         </h2>
         <div class="col-10 col-sm-7">
-          <form id="form" class="form-signin">
+          <form id="form" class="form-signin" @submit="login">
             <div class="form-floating mb-3">
               <input
                 type="email"
@@ -30,7 +30,7 @@
               />
               <label for="password">Password</label>
             </div>
-            <button class="btn btn-lg btn-primary w-100 mt-3" type="submit" @click.prevent="login">
+            <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
               登入
             </button>
           </form>
