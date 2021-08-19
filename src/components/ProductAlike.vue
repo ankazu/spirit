@@ -77,6 +77,7 @@ export default {
       randomProducts: [],
       loadingStatus: { loadingItem: '' },
       isLoading: false,
+      id: '',
     };
   },
   components: {
@@ -84,8 +85,15 @@ export default {
     SwiperSlide,
   },
   mounted() {
-    const { id } = this.$route.params;
-    this.getProduct(id);
+    this.id = this.$route.params.id;
+    this.getProduct(this.id);
+  },
+  watch: {
+    $route() {
+      this.randomProducts = [];
+      this.id = this.$route.params.id;
+      this.getProduct(this.id);
+    },
   },
   emits: ['go-page'],
   methods: {
