@@ -26,9 +26,9 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="mb-3">
-                <label for="title" class="form-label"
-                  >標題<span class="text-danger"> *</span></label
-                >
+                <label for="title" class="form-label">
+                  標題<span class="text-danger"> *</span>
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -48,8 +48,8 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="customFile" class="form-label"
-                  >或 上傳圖片
+                <label for="customFile" class="form-label">
+                  或 上傳圖片
                   <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
                 </label>
                 <input
@@ -62,9 +62,9 @@
               </div>
               <img class="img-fluid" :src="tempArticle.imageUrl" />
               <div class="mb-3">
-                <label for="author" class="form-label"
-                  >作者<span class="text-danger"> *</span></label
-                >
+                <label for="author" class="form-label">
+                  作者<span class="text-danger"> *</span>
+                </label>
                 <input
                   type="text"
                   class="form-control"
@@ -74,7 +74,7 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="create_at">文章建立日期<span class="text-danger"> *</span></label>
+                <label for="create_at"> 文章建立日期<span class="text-danger"> *</span> </label>
                 <input type="date" class="form-control" id="create_at" v-model="create_at" />
               </div>
             </div>
@@ -145,11 +145,7 @@
                 ></textarea>
               </div>
               <div class="mb-3">
-                <ckeditor
-                  :editor="editor"
-                  :config="editorConfig"
-                  v-model="tempArticle.content"
-                ></ckeditor>
+                <ckeditor :editor="editor" :config="editorConfig" v-model="tempArticle.content" />
               </div>
               <div class="mb-3">
                 <div class="form-check">
@@ -173,7 +169,8 @@
                     id="isShowIndex"
                   />
                   <label class="form-check-label" for="isShowIndex">
-                    是否在首頁顯示<span class="text-danger fs-6">(首頁最多只會顯示3篇文章)</span>
+                    是否在首頁顯示
+                    <span class="text-danger fs-6">(首頁最多只會顯示3篇文章)</span>
                   </label>
                 </div>
               </div>
@@ -214,7 +211,7 @@ export default {
       // 參考：https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/vuejs-v3.html#editor
       editor: ClassicEditor,
       editorConfig: {
-        toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link', 'name'],
+        toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link'],
       },
     };
   },

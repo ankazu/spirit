@@ -42,7 +42,7 @@
     </div>
   </nav>
   <div class="mt-5 container">
-    <router-view v-if="checkSuccess"></router-view>
+    <router-view v-if="checkSuccess" />
   </div>
 </template>
 
