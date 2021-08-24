@@ -50,8 +50,6 @@
 </template>
 
 <script>
-import Path from '@/components/Path.vue';
-
 export default {
   inject: ['swalert'],
   data() {
@@ -63,9 +61,6 @@ export default {
         purpose: '關於咖啡',
       },
     };
-  },
-  components: {
-    Path,
   },
   mounted() {
     this.getArticles();

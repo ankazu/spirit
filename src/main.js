@@ -22,6 +22,9 @@ import 'bootstrap';
 import './assets/all.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+import Path from '@/components/frontend/Path.vue';
+
 // methods
 import { date, currency } from './methods/filters';
 
@@ -58,4 +61,5 @@ app.component('Loading', Loading);
 app.component('Form', Form);
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
+app.component('Path', Path);
 app.mount('#app');

@@ -60,9 +60,9 @@
 </template>
 
 <script>
-import DeleteModal from '@/components/DeleteModal.vue';
-import CouponModal from '@/components/CouponModal.vue';
-import Pagination from '@/components/Pagination.vue';
+import DeleteModal from '@/components/backend/DeleteModal.vue';
+import CouponModal from '@/components/backend/CouponModal.vue';
+import Pagination from '@/components/frontend/Pagination.vue';
 
 export default {
   data() {

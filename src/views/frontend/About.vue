@@ -62,8 +62,6 @@
 </template>
 
 <script>
-import Path from '@/components/Path.vue';
-
 export default {
   data() {
     return {
@@ -72,9 +70,6 @@ export default {
         purpose: '關於我們',
       },
     };
-  },
-  components: {
-    Path,
   },
 };
 </script>

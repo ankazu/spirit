@@ -132,8 +132,7 @@
 
 <script>
 import emitter from '@/methods/eventBus';
-import ProductAlike from '@/components/ProductAlike.vue';
-import Path from '@/components/Path.vue';
+import ProductAlike from '@/components/frontend/ProductAlike.vue';
 
 export default {
   inject: ['swalert'],
@@ -150,7 +149,6 @@ export default {
   },
   components: {
     ProductAlike,
-    Path,
   },
   mounted() {
     this.getCart();

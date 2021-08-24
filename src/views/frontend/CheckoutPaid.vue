@@ -106,7 +106,6 @@
 
 <script>
 import emitter from '@/methods/eventBus';
-import Path from '@/components/Path.vue';
 
 export default {
   data() {
@@ -124,9 +123,6 @@ export default {
     };
   },
   inject: ['swalert'],
-  components: {
-    Path,
-  },
   mounted() {
     emitter.emit('updata-cart');
     const { id } = this.$route.params;

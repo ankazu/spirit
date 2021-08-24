@@ -22,10 +22,10 @@
       </ul>
       <div class="footer_social">
         <a href="javascript:void(0);">
-          <img src="../../public/images/facebook.svg" alt="facebook" />
+          <img src="../../../public/images/facebook.svg" alt="facebook" />
         </a>
         <a href="https://github.com/ankazu/spirit" target="_blank">
-          <img src="../../public/images/github.svg" alt="github" />
+          <img src="../../../public/images/github.svg" alt="github" />
         </a>
       </div>
       <div class="footer_copyright">
@@ -79,7 +79,7 @@ footer {
   }
   &_logo {
     display: block;
-    background: url(../../public/images/logo.png) no-repeat center #b18a53;
+    background: url(../../../public/images/logo.png) no-repeat center #b18a53;
     text-indent: 101%;
     overflow: hidden;
     white-space: nowrap;

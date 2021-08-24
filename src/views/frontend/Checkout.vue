@@ -240,8 +240,6 @@
 </template>
 
 <script>
-import Path from '@/components/Path.vue';
-
 export default {
   data() {
     return {
@@ -266,9 +264,6 @@ export default {
         purpose: '填寫資料',
       },
     };
-  },
-  components: {
-    Path,
   },
   created() {
     this.getCart();

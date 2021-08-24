@@ -58,8 +58,6 @@
 </template>
 
 <script>
-import Path from '@/components/Path.vue';
-
 export default {
   inject: ['swalert'],
   data() {
@@ -78,9 +76,6 @@ export default {
         purpose: '',
       },
     };
-  },
-  components: {
-    Path,
   },
   mounted() {
     this.id = this.$route.params.id;

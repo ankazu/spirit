@@ -139,7 +139,7 @@
 </template>
 
 <script>
-import ProductAlike from '@/components/ProductAlike.vue';
+import ProductAlike from '@/components/frontend/ProductAlike.vue';
 
 export default {
   inject: ['swalert'],

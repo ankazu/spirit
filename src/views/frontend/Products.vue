@@ -92,14 +92,12 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination.vue';
+import Pagination from '@/components/frontend/Pagination.vue';
 import emitter from '@/methods/eventBus';
-import Path from '@/components/Path.vue';
 
 export default {
   inject: ['swalert'],
   components: {
-    Path,
     Pagination,
   },
   data() {

@@ -70,9 +70,9 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination.vue';
-import ProductModal from '@/components/ProductModal.vue';
-import DeleteModal from '@/components/DeleteModal.vue';
+import Pagination from '@/components/frontend/Pagination.vue';
+import DeleteModal from '@/components/backend/DeleteModal.vue';
+import ProductModal from '@/components/backend/ProductModal.vue';
 
 export default {
   components: {
