@@ -19,9 +19,9 @@
         <div class="alike_list_price_1" v-if="item.price === item.origin_price">
           {{ $filters.currency(item.origin_price) }} 元 / {{ item.unit }}
         </div>
-        <del class="alike_list_price_2" v-if="item.price !== item.origin_price"
-          >原價 {{ $filters.currency(item.origin_price) }} 元</del
-        >
+        <del class="alike_list_price_2" v-if="item.price !== item.origin_price">
+          原價 {{ $filters.currency(item.origin_price) }} 元
+        </del>
         <div class="alike_list_price_2" v-if="item.price !== item.origin_price">
           特價 {{ $filters.currency(item.price) }} 元 / {{ item.unit }}
         </div>

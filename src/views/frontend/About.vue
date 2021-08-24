@@ -18,7 +18,7 @@
       <div class="about">
         <div class="about_box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
           <div class="about_txt">
-            <div class="about_h2 text-center">Coffee Lover</div>
+            <h3 class="about_h2 text-center">Coffee Lover</h3>
             <div class="about_text">
               <p>
                 源⾃於對精品咖啡的熱愛，SPIRIT 誕⽣於2021年。 創辦⼈ John
@@ -44,7 +44,7 @@
             />
           </div>
           <div class="about_txt about_txt_2">
-            <div class="about_h2 text-center">每天都可以喝的味道</div>
+            <h3 class="about_h2 text-center">每天都可以喝的味道</h3>
             <div class="about_text ">
               <p>
                 SPIRIT

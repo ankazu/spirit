@@ -41,7 +41,7 @@
               placeholder="請輸入 Email"
               rules="email|required"
               v-model="form.user.email"
-            ></Field>
+            />
             <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
           </div>
 
@@ -58,8 +58,8 @@
               placeholder="請輸入姓名"
               rules="required"
               v-model="form.user.name"
-            ></Field>
-            <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+            />
+            <ErrorMessage name="姓名" class="invalid-feedback" />
           </div>
 
           <div class="mb-3">
@@ -75,8 +75,8 @@
               placeholder="請輸入手機號碼"
               :rules="checkTel"
               v-model="form.user.tel"
-            ></Field>
-            <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
+            />
+            <ErrorMessage name="手機號碼" class="invalid-feedback" />
           </div>
 
           <div class="mb-3">
@@ -92,8 +92,8 @@
               placeholder="請輸入地址"
               rules="required"
               v-model="form.user.address"
-            ></Field>
-            <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
+            />
+            <ErrorMessage name="地址" class="invalid-feedback" />
           </div>
 
           <div class="mb-3">
@@ -116,7 +116,7 @@
               <option value="萊爾富超取">萊爾富</option>
               <option value="OK 超取">OK 超取</option>
             </Field>
-            <error-message name="寄送方式" class="invalid-feedback mb-1"></error-message>
+            <Error-message name="寄送方式" class="invalid-feedback mb-1" />
           </div>
 
           <div class="mb-3">
@@ -137,7 +137,7 @@
               <option value="貨到付款">貨到付款</option>
               <option value="ATM 匯款">ATM 匯款</option>
             </Field>
-            <error-message name="付款方式" class="invalid-feedback mb-1"></error-message>
+            <Error-message name="付款方式" class="invalid-feedback mb-1" />
           </div>
           <div class="mb-3 form_message">
             <label for="message" class="form-label">留言</label>

@@ -122,7 +122,7 @@
                 placeholder="請輸入電子信箱"
                 rules="email"
                 v-model="email"
-              ></Field>
+              />
               <input
                 class="btn btn-primary text-white"
                 value="送出"
