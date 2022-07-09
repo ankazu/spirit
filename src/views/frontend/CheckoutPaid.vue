@@ -105,6 +105,7 @@
 </template>
 
 <script>
+import { apiGetOrder, apiPayOrder } from '@/methods/api';
 import emitter from '@/methods/eventBus';
 
 export default {
@@ -131,9 +132,7 @@ export default {
   methods: {
     getOrder(id) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order/${id}?`;
-      this.$http
-        .get(api)
+      apiGetOrder(id)
         .then((res) => {
           if (res.data.success) {
             this.order = res.data.order;
@@ -149,9 +148,7 @@ export default {
     },
     goToPay(id) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${id}?`;
-      this.$http
-        .post(api, id)
+      apiPayOrder(id)
         .then((res) => {
           if (res.data.success) {
             this.isLoading = false;

@@ -240,6 +240,7 @@
 </template>
 
 <script>
+import { apiGetCart, apiPostCoupon, apiCheckout } from '@/methods/api';
 import emitter from '@/methods/eventBus';
 
 export default {
@@ -274,9 +275,7 @@ export default {
   methods: {
     getCart() {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-      this.$http
-        .get(url)
+      apiGetCart()
         .then((res) => {
           if (res.data.success) {
             this.cart = res.data.data;
@@ -292,10 +291,8 @@ export default {
     },
     addCouponCode() {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
       const coupon = { code: this.coupon_code };
-      this.$http
-        .post(api, { data: coupon })
+      apiPostCoupon({ data: coupon })
         .then((res) => {
           if (res.data.success) {
             this.getCart();
@@ -318,10 +315,8 @@ export default {
     },
     createOrder() {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
-      this.$http
-        .post(url, { data: order })
+      apiCheckout({ data: order })
         .then((res) => {
           if (res.data.success) {
             this.$refs.form.resetForm();

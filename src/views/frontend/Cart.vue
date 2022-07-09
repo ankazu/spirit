@@ -131,6 +131,9 @@
 </template>
 
 <script>
+import {
+  apiGetCart, apiUpdateCart, apiClearCart, apiDeleteCart,
+} from '@/methods/api';
 import emitter from '@/methods/eventBus';
 import ProductAlike from '@/components/frontend/ProductAlike.vue';
 
@@ -164,9 +167,7 @@ export default {
   methods: {
     getCart() {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-      this.$http
-        .get(url)
+      apiGetCart()
         .then((res) => {
           if (res.data.success) {
             this.cart = res.data.data;
@@ -182,7 +183,6 @@ export default {
     },
     addToCart(item, action) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${item.id}`;
       let num = item.qty;
       if (action === 'reduce') {
         num -= 1;
@@ -192,10 +192,7 @@ export default {
       }
       this.loadingStatus.loadingItem = item.id;
       const cart = { product_id: item.id, qty: num };
-      this.$http
-        .put(api, {
-          data: cart,
-        })
+      apiUpdateCart(item.id, { data: cart })
         .then((res) => {
           if (res.data.success) {
             this.loadingStatus.loadingItem = '';
@@ -213,9 +210,7 @@ export default {
     },
     clearCart() {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`;
-      this.$http
-        .delete(api)
+      apiClearCart()
         .then((res) => {
           if (res.data.success) {
             emitter.emit('updata-cart');
@@ -233,10 +228,8 @@ export default {
     },
     removeCartItem(id) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.loadingStatus.loadingItem = id;
-      this.$http
-        .delete(api)
+      apiDeleteCart(id)
         .then((res) => {
           if (res.data.success) {
             this.loadingStatus.loadingItem = '';

@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import { apiGetAllArticles, apiGetArticleContent } from '@/methods/api';
+
 export default {
   inject: ['swalert'],
   data() {
@@ -89,9 +91,7 @@ export default {
   methods: {
     getArticle(id) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/article/${id}`;
-      this.$http
-        .get(api)
+      apiGetArticleContent(id)
         .then((res) => {
           if (res.data.success) {
             this.getArticles();
@@ -109,9 +109,7 @@ export default {
     },
     getArticles() {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/articles`;
-      this.$http
-        .get(api)
+      apiGetAllArticles()
         .then((res) => {
           if (res.data.success) {
             this.articles = res.data.articles;

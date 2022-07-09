@@ -151,6 +151,7 @@
 </template>
 
 <script>
+import { apiAddCart, apiGetProduct } from '@/methods/api';
 import emitter from '@/methods/eventBus';
 import ProductAlike from '@/components/frontend/ProductAlike.vue';
 
@@ -186,9 +187,7 @@ export default {
   methods: {
     getProduct(id) {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`;
-      this.$http
-        .get(url)
+      apiGetProduct(id)
         .then((res) => {
           if (res.data.success) {
             this.tempProduct = res.data.product;
@@ -210,14 +209,12 @@ export default {
     },
     addToCart(id, qty) {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       this.loadingStatus.loadingItem = id;
       const cart = {
         product_id: id,
         qty,
       };
-      this.$http
-        .post(url, { data: cart })
+      apiAddCart({ data: cart })
         .then((res) => {
           if (res.data.success) {
             this.loadingStatus.loadingItem = '';

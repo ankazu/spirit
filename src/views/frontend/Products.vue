@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import { apiAddCart, apiAllProducts } from '@/methods/api';
 import Pagination from '@/components/frontend/Pagination.vue';
 import emitter from '@/methods/eventBus';
 
@@ -147,9 +148,7 @@ export default {
       this.isLoading = true;
       this.pageShow = true;
       this.productValue = '';
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
-      this.$http
-        .get(api)
+      apiAllProducts()
         .then((res) => {
           if (res.data.success) {
             this.products = res.data.products;
@@ -192,12 +191,8 @@ export default {
     },
     addToCart(id, qty = 1) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       const cart = { product_id: id, qty };
-      this.$http
-        .post(api, {
-          data: cart,
-        })
+      apiAddCart({ data: cart })
         .then((res) => {
           if (res.data.success) {
             this.isLoading = false;

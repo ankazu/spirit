@@ -139,6 +139,7 @@
 </template>
 
 <script>
+import { apiGetAllArticles } from '@/methods/api';
 import ProductAlike from '@/components/frontend/ProductAlike.vue';
 
 export default {
@@ -160,9 +161,7 @@ export default {
   methods: {
     getArticles() {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/articles`;
-      this.$http
-        .get(api)
+      apiGetAllArticles()
         .then((res) => {
           if (res.data.success) {
             this.isLoading = false;
