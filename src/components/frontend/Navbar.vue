@@ -42,13 +42,18 @@
                 </tr>
                 <tr class="bg-white text-end">
                   <td colspan="3">
-                    <span class="text-center w-100 d-block" v-if="cart?.carts?.length === 0">
+                    <div class="text-center w-100 d-block" v-if="cart?.carts?.length === 0">
                       趕快放入喜歡的商品吧!
-                    </span>
+                    </div>
                     <span class="d-flex justify-content-end align-items-center" v-else>
-                      總計:
-                      <span class="price_dlr material-icons"> attach_money </span>
-                      {{ $filters.currency(cart.total) }}
+                      <span v-if="cart.final_total === cart.total" class="cart_pirce_text">
+                        總計：<span class="price_dlr material-icons"> attach_money </span>
+                        {{ $filters.currency(cart.total) }}
+                      </span>
+                      <span v-else class="cart_pirce_text">
+                        折扣價：<span class="price_dlr material-icons"> attach_money </span>
+                        {{ $filters.currency(cart.final_total) }}
+                        </span>
                     </span>
                   </td>
                 </tr>
@@ -298,5 +303,9 @@ export default {
       }
     }
   }
+}
+.cart_pirce_text {
+  display: flex;
+  align-items: center;
 }
 </style>
