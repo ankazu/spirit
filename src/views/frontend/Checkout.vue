@@ -240,6 +240,8 @@
 </template>
 
 <script>
+import emitter from '@/methods/eventBus';
+
 export default {
   data() {
     return {
@@ -265,7 +267,7 @@ export default {
       },
     };
   },
-  created() {
+  mounted() {
     this.getCart();
   },
   inject: ['swalert'],
@@ -297,6 +299,7 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.getCart();
+            emitter.emit('updata-cart');
             this.isLoading = false;
             this.swalert('success', '使用優惠券');
           } else {
