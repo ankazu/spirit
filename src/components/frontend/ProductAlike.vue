@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { apiGetProduct, apiAddCart } from '@/methods/api';
 import emitter from '@/methods/eventBus';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper.scss';
@@ -105,9 +106,7 @@ export default {
   emits: ['go-page'],
   methods: {
     getProduct(id) {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`;
-      this.$http
-        .get(api)
+      apiGetProduct(id)
         .then((res) => {
           this.product = res.data.product;
           this.getProducts();
@@ -134,10 +133,8 @@ export default {
     },
     addToCart(id, qty = 1) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       const cart = { product_id: id, qty };
-      this.$http
-        .post(api, { data: cart })
+      apiAddCart({ data: cart })
         .then((res) => {
           if (res.data.success) {
             this.isLoading = false;

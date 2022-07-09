@@ -6,7 +6,7 @@ const path = process.env.VUE_APP_PATH;
 // 後台相關 (需驗證)
 export const apiUserLogin = (data) => axios.post(`${api}/admin/signin`, data);
 export const apiUserLogout = () => axios.post(`${api}/logout`);
-export const apiUserCheck = () => axios.post(`${api}/api/user/check`);
+export const apiUserCheck = (data) => axios.post(`${api}/api/user/check`, data);
 
 // 商品管理
 export const apiGetAllProducts = () => axios.get(
@@ -15,9 +15,15 @@ export const apiGetAllProducts = () => axios.get(
 export const apiGetProducts = (page = 1) => axios.get(
   `${api}/api/${path}/admin/products?page=${page}`,
 );
-export const apiUpdateProducts = (method, data, id) => axios[method](
-  `${api}/api/${path}/admin/product/${id}`, data,
-);
+export const apiUpdateProducts = (method, data, id) => {
+  let url = '';
+  if (id) {
+    url = `${api}/api/${path}/admin/product/${id}`;
+  } else {
+    url = `${api}/api/${path}/admin/product`;
+  }
+  return axios[method](url, data);
+};
 export const apiDeleteProducts = (id) => axios.delete(
   `${api}/api/${path}/admin/product/${id}`,
 );
@@ -45,9 +51,6 @@ export const apiUpdateOrder = (id, data) => axios.put(
 );
 export const apiDeleteOrder = (id) => axios.delete(
   `${api}/api/${path}/admin/order/${id}`,
-);
-export const apiDeleteOrders = () => axios.delete(
-  `${api}/api/${path}/admin/orders/all`,
 );
 
 // 文章管理

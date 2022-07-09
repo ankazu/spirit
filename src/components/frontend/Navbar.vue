@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import { apiGetCart } from '@/methods/api';
 import emitter from '@/methods/eventBus';
 
 export default {
@@ -129,9 +130,7 @@ export default {
   methods: {
     getCart() {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-      this.$http
-        .get(url)
+      apiGetCart()
         .then((res) => {
           if (res.data.success) {
             this.cart = res.data.data;

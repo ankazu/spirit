@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { apiGetCoupons, apiUpdateCoupon, apiDeleteCoupon } from '@/methods/api';
 import DeleteModal from '@/components/backend/DeleteModal.vue';
 import CouponModal from '@/components/backend/CouponModal.vue';
 import Pagination from '@/components/frontend/Pagination.vue';
@@ -108,9 +109,7 @@ export default {
     updataCoupon(item) {
       this.isLoading = true;
       if (this.isNew) {
-        const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`;
-        this.$http
-          .post(api, { data: item })
+        apiGetCoupons({ data: item })
           .then((res) => {
             if (res.data.success) {
               this.isLoading = false;
@@ -126,9 +125,7 @@ export default {
             this.swalert('error', `新增優惠券時發生錯誤。 ${err.message}`);
           });
       } else {
-        const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
-        this.$http
-          .put(api, { data: item })
+        apiUpdateCoupon(item.id, { data: item })
           .then((res) => {
             if (res.data.success) {
               this.isLoading = false;
@@ -147,9 +144,7 @@ export default {
     },
     deleteCoupon(item) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`;
-      this.$http
-        .delete(api)
+      apiDeleteCoupon(item.id)
         .then((res) => {
           if (res.data.success) {
             this.$refs.deleteModal.hideModal();

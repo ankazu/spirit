@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import { apiGetProducts, apiUpdateProducts, apiDeleteProducts } from '@/methods/api';
 import Pagination from '@/components/frontend/Pagination.vue';
 import DeleteModal from '@/components/backend/DeleteModal.vue';
 import ProductModal from '@/components/backend/ProductModal.vue';
@@ -97,11 +98,9 @@ export default {
   },
   inject: ['emitter', 'swalert'],
   methods: {
-    getProducts(page = 1) {
+    getProducts(page) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
-      this.$http
-        .get(api)
+      apiGetProducts(page)
         .then((res) => {
           if (res.data.success) {
             this.products = res.data.products;
@@ -136,16 +135,15 @@ export default {
       }
     },
     updata(item) {
-      let api = '';
+      let id = '';
       let path = '';
       if (this.isNew) {
-        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`;
         path = 'post';
       } else {
-        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
+        id = item.id;
         path = 'put';
       }
-      this.$http[path](api, { data: item })
+      apiUpdateProducts(path, { data: item }, id)
         .then((res) => {
           if (res.data.success) {
             this.$refs.ProductModal.hideModal();
@@ -160,9 +158,7 @@ export default {
         });
     },
     deleteProduct(item) {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
-      this.$http
-        .delete(api)
+      apiDeleteProducts(item.id)
         .then((res) => {
           if (res.data.success) {
             this.$refs.DeleteModal.hideModal();

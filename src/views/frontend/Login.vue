@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import { apiUserLogin } from '@/methods/api';
+
 export default {
   inject: ['swalert'],
   data() {
@@ -57,9 +59,7 @@ export default {
         this.swalert('error', '請輸入帳號密碼', 'top');
         return;
       }
-      const api = `${process.env.VUE_APP_API}/admin/signin`;
-      this.$http
-        .post(api, this.user)
+      apiUserLogin(this.user)
         .then((res) => {
           if (res.data.success) {
             const { token, expired } = res.data;

@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { apiUserCheck } from '@/methods/api';
 import emitter from '@/methods/eventBus';
 
 export default {
@@ -71,9 +72,7 @@ export default {
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       if (token) {
         this.$http.defaults.headers.common.Authorization = token;
-        const api = `${process.env.VUE_APP_API}/api/user/check`;
-        this.$http
-          .post(api, { api_token: this.token })
+        apiUserCheck({ api_token: this.token })
           .then((res) => {
             if (res.data.success) {
               this.checkSuccess = true;

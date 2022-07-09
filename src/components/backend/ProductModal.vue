@@ -284,6 +284,7 @@
 </template>
 
 <script>
+import { apiUploadFile } from '@/methods/api';
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
@@ -314,10 +315,8 @@ export default {
       const uploadedFile = this.$refs[refipt].files[0];
       const formData = new FormData(); // js建構函式
       formData.append('file-to-upload', uploadedFile);
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/upload`;
       this.status.fileUploading = true;
-      this.$http
-        .post(url, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      apiUploadFile(formData)
         .then((res) => {
           this.status.fileUploading = false;
           if (res.data.success) {

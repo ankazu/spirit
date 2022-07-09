@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { apiGetOrders, apiUpdateOrder, apiDeleteOrder } from '@/methods/api';
 import OrderModal from '@/components/backend/OrderModal.vue';
 import Pagination from '@/components/frontend/Pagination.vue';
 import DeleteModal from '@/components/backend/DeleteModal.vue';
@@ -90,12 +91,10 @@ export default {
   },
   inject: ['swalert'],
   methods: {
-    getOrders(page = 1) {
+    getOrders(page) {
       this.currentPage = page;
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?${page}`;
-      this.$http
-        .get(api)
+      apiGetOrders(page)
         .then((res) => {
           if (res.data.success) {
             this.orders = res.data.orders;
@@ -111,7 +110,6 @@ export default {
     },
     updatePaid(item) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
       let paidDate = 0;
       if (item.is_paid) {
         paidDate = Date.parse(new Date()) / 1000;
@@ -123,8 +121,7 @@ export default {
         paid_date: paidDate,
       };
 
-      this.$http
-        .put(api, { data: paid })
+      apiUpdateOrder({ data: paid })
         .then((res) => {
           if (res.data.success) {
             this.isLoading = false;
@@ -149,9 +146,7 @@ export default {
     },
     deleteOrder(item) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
-      this.$http
-        .delete(api)
+      apiDeleteOrder(item.id)
         .then((res) => {
           if (res.data.success) {
             this.$refs.DeleteModal.hideModal();

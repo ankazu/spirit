@@ -68,6 +68,9 @@
 </template>
 
 <script>
+import {
+  apiGetArticles, apiGetArticle, apiDeleteArticle, apiUpdateArticle,
+} from '@/methods/api';
 import ArticleModal from '@/components/backend/ArticleModal.vue';
 import DeleteModal from '@/components/backend/DeleteModal.vue';
 
@@ -87,12 +90,10 @@ export default {
     DeleteModal,
   },
   methods: {
-    getArticles(page = 1) {
+    getArticles(page) {
       this.currentPage = page;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/articles?page=${page}`;
       this.isLoading = true;
-      this.$http
-        .get(api)
+      apiGetArticles(page)
         .then((res) => {
           this.isLoading = false;
           if (res.data.success) {
@@ -106,10 +107,8 @@ export default {
         });
     },
     getArticle(id) {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/article/${id}`;
       this.isLoading = true;
-      this.$http
-        .get(api)
+      apiGetArticle(id)
         .then((res) => {
           this.isLoading = false;
           if (res.data.success) {
@@ -139,16 +138,16 @@ export default {
     updateArticle(item) {
       this.isLoading = true;
       this.tempArticle = item;
-      let api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/article`;
+      let id = '';
       let httpMethod = 'post';
       let status = '新增貼文';
       if (!this.isNew) {
-        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/article/${this.tempArticle.id}`;
+        id = this.tempArticle.id;
         httpMethod = 'put';
         status = '更新貼文';
       }
       const articleComponent = this.$refs.articleModal;
-      this.$http[httpMethod](api, { data: this.tempArticle })
+      apiUpdateArticle(httpMethod, { data: this.tempArticle }, id)
         .then((res) => {
           if (res.data.success) {
             articleComponent.hideModal();
@@ -169,10 +168,8 @@ export default {
       this.$refs.delModal.openModal();
     },
     delArticle() {
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/article/${this.tempArticle.id}`;
       this.isLoading = true;
-      this.$http
-        .delete(url)
+      apiDeleteArticle(this.tempArticle.id)
         .then((res) => {
           if (res.data.success) {
             const delComponent = this.$refs.delModal;
