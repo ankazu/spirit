@@ -23,3 +23,4 @@
 - mitt
 - Bootstrap 5
 - Material icons
+- Vuex

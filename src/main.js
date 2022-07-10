@@ -30,6 +30,7 @@ import { date, currency } from './methods/filters';
 
 import App from './App.vue';
 import router from './router';
+import store from './stores';
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
@@ -54,6 +55,7 @@ app.config.globalProperties.$filters = {
   currency,
 };
 app.use(router);
+app.use(store);
 app.use(VueAxios, axios);
 app.use(VueSweetalert2);
 app.use(CKEditor);
