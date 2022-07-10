@@ -3,13 +3,21 @@
 </template>
 
 <script>
+import { provide } from 'vue';
 import swalert from '@/methods/swal';
 
 export default {
-  provide() {
-    return { swalert };
+  setup() {
+    const swalerta = swalert;
+
+    provide('swalert', swalerta);
+    return {
+
+    };
   },
 };
+
+
 </script>
 
 <style lang="scss">
