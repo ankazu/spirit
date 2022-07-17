@@ -139,49 +139,66 @@
 </template>
 
 <script>
+import { inject, ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { apiGetAllArticles } from '@/methods/api';
 import ProductAlike from '@/components/frontend/ProductAlike.vue';
 
 export default {
-  inject: ['swalert'],
-  data() {
-    return {
-      isLoading: false,
-      articles: [],
-      tempArticle: [],
-      email: '',
-    };
-  },
   components: {
     ProductAlike,
   },
-  mounted() {
-    this.getArticles();
-  },
-  methods: {
-    getArticles() {
-      this.isLoading = true;
+  setup() {
+    const swalert = inject('swalert');
+
+    let isLoading = ref(false);
+
+    // 精選好文
+    const articles = ref([]);
+    const tempArticle = ref([]);
+    const getArticles = () => {
+      isLoading = true;
       apiGetAllArticles()
         .then((res) => {
           if (res.data.success) {
-            this.isLoading = false;
-            this.articles = res.data.articles;
-            const data = this.articles.filter((article) => article.isShowIndex === true);
-            this.tempArticle = data.slice(0, 3);
+            isLoading = false;
+            articles.value = res.data.articles;
+            const data = articles.value.filter((article) => article.isShowIndex === true);
+            tempArticle.value = data.slice(0, 3);
           }
         })
         .catch((err) => {
-          this.swalert('error', `發生錯誤，請重新整理此頁面。 ${err.message}`);
+          swalert('error', `發生錯誤，請重新整理此頁面。 ${err.message}`);
         });
-    },
-    getArticle(id) {
-      this.$router.push(`/coffee/${id}`);
-    },
-    subscription() {
-      this.email = '';
-      this.$refs.subForm.resetForm();
-      this.swalert('success', '訂閱成功');
-    },
+    };
+
+    const router = useRouter();
+    const getArticle = (id) => {
+      router.push(`/coffee/${id}`);
+    };
+
+    // 頁尾email
+    const email = ref('');
+    const subForm = ref(null);
+    const subscription = () => {
+      email.value = '';
+      subForm.value.resetForm();
+      swalert('success', '訂閱成功');
+    };
+
+    onMounted(() => {
+      getArticles();
+    });
+
+    return {
+      email,
+      swalert,
+      isLoading,
+      tempArticle,
+      subForm,
+      getArticle,
+      subscription,
+    };
   },
 };
 </script>

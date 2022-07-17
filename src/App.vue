@@ -8,15 +8,14 @@ import swalert from '@/methods/swal';
 
 export default {
   setup() {
-    const swalerta = swalert;
+    const swAlert = swalert;
 
-    provide('swalert', swalerta);
+    provide('swalert', swAlert);
     return {
 
     };
   },
 };
-
 
 </script>
 
