@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading" />
+  <Loading :active="isLoading.load" />
 
   <div class="banner">
     <img
@@ -139,8 +139,11 @@
 </template>
 
 <script>
-import { inject, ref, onMounted } from 'vue';
+import {
+  inject, ref, onMounted, computed, reactive,
+} from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import { apiGetAllArticles } from '@/methods/api';
 import ProductAlike from '@/components/frontend/ProductAlike.vue';
 
@@ -151,17 +154,19 @@ export default {
   setup() {
     const swalert = inject('swalert');
 
-    let isLoading = ref(false);
-
+    const store = useStore();
+    const isLoading = reactive({
+      load: computed(() => store.state.isLoading),
+    });
     // 精選好文
     const articles = ref([]);
     const tempArticle = ref([]);
     const getArticles = () => {
-      isLoading = true;
+      store.commit('checkLoading', true);
       apiGetAllArticles()
         .then((res) => {
           if (res.data.success) {
-            isLoading = false;
+            store.commit('checkLoading', false);
             articles.value = res.data.articles;
             const data = articles.value.filter((article) => article.isShowIndex === true);
             tempArticle.value = data.slice(0, 3);
@@ -181,6 +186,7 @@ export default {
     const email = ref('');
     const subForm = ref(null);
     const subscription = () => {
+      store.commit('checkLoading', false);
       email.value = '';
       subForm.value.resetForm();
       swalert('success', '訂閱成功');
@@ -193,9 +199,9 @@ export default {
     return {
       email,
       swalert,
-      isLoading,
       tempArticle,
       subForm,
+      isLoading,
       getArticle,
       subscription,
     };
