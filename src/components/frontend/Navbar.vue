@@ -42,7 +42,9 @@
                 </tr>
                 <tr class="bg-white text-end">
                   <td colspan="3">
-                    <div class="text-center w-100 d-block" v-if="cart?.carts?.length === 0">
+                    <div style="max-width:none;"
+                    class="text-center w-100 d-block"
+                    v-if="cart?.carts?.length === 0">
                       趕快放入喜歡的商品吧!
                     </div>
                     <span class="d-flex justify-content-end align-items-center" v-else>
